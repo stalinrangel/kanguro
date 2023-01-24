@@ -1,0 +1,191 @@
+
+<main>
+    <div class="position-relative">
+        <!-- shape Hero -->
+        <section class="section section-lg section-shaped pb-250">
+        <div class="shape shape-style-1 shape-default">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container py-lg-md d-flex">
+            
+            <div class="col-12 fondo" ><br>
+                <div class="row" style="justify-content: center;">
+                    <button class="btn btn-primary print" [useExistingCss] =" true " printSectionId="print-section" ngxPrint>Imprimir</button> 
+                    <button [hidden]="false" class="btn btn-primary print" [useExistingCss] =" true " printSectionId="print-section2" ngxPrint>Imprimir vertical</button> 
+                </div>
+                
+                <div class="row" *ngFor="let d of data" style="margin: 2px; height: 600px; border: dotted;" >
+                    <br>
+                    <div class="col-1">
+                        <div class="">
+                            <div fxLayout="row">
+                                <div fxLayout="column" style="transform: rotate(90deg);    margin-top: 108px;">
+                                <ngx-barcode *ngFor="let bcValue of values"
+                                    [bc-element-type]="elementType"
+                                    [bc-value]="bcValue"
+                                    [bc-format]="format"
+                                    [bc-line-color]="lineColor"
+                                    [bc-width]="4"
+                                    [bc-height]="40"
+                                    [bc-display-value]="displayValue"
+                                    [bc-font-options]="fontOptions"
+                                    [bc-font]="font"
+                                    [bc-text-align]="textAlign"
+                                    [bc-text-position]="textPosition"
+                                    [bc-text-margin]="textMargin"
+                                    [bc-font-size]="14"
+                                    [bc-background]="background"
+                                    [bc-margin]="margin"
+                                    [bc-margin-top]="marginTop"
+                                    [bc-margin-bottom]="marginBottom"
+                                    [bc-margin-left]="marginLeft"
+                                    [bc-margin-right]="marginRight"
+                                ></ngx-barcode>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-11">
+                    
+                        <br>
+                        <p style="display: flex;
+                        justify-content: center; font-weight: bold; font-size: 25px;">ZONA: {{d.distrito_destino}}</p>
+                        <p style="font-size: 24px;">DESTINO: {{d.destino}} - {{d.departamento_destino}}</p>
+                        <p style="font-size: 24px;">NOMBRE: {{d.nombre_destino}}</p>
+                        <p style="font-size: 24px;">DETALLES: {{d.comentarios2}}</p>
+                        <p style="font-size: 24px;">ENTREGA: {{d.fecha_destino}}</p>
+                        <p style="font-size: 24px;">HORA: {{d.hora_destino}}</p>
+                    
+                        <p style="font-size: 24px;">PRODUCTO: {{d.detalle}}</p>
+                        <p style="font-size: 24px;">A COBRAR: {{d.acobrar}}</p>
+                    </div>
+                    <hr>
+                </div>
+                
+                
+            </div>
+            <div class="col-12 fondo " id="print-section" [hidden]="true">
+
+                <div class="row prints" *ngFor="let d of data" id="print-section" style="margin: 2px; height: 14vh; margin-top: 1400px;" >
+                    <br>
+                    <div class="col-1">
+                        <div class="">
+                            <div fxLayout="row">
+                                <div fxLayout="column" style="transform: rotate(90deg);margin-top: 10px;">
+                                <ngx-barcode *ngFor="let bcValue of values"
+                                    [bc-element-type]="elementType"
+                                    [bc-value]="bcValue"
+                                    [bc-format]="format"
+                                    [bc-line-color]="lineColor"
+                                    [bc-width]="8"
+                                    [bc-height]="90"
+                                    [bc-display-value]="displayValue"
+                                    [bc-font-options]="fontOptions"
+                                    [bc-font]="font"
+                                    [bc-text-align]="textAlign"
+                                    [bc-text-position]="textPosition"
+                                    [bc-text-margin]="textMargin"
+                                    [bc-font-size]="40"
+                                    [bc-background]="background"
+                                    [bc-margin]="margin"
+                                    [bc-margin-top]="marginTop"
+                                    [bc-margin-bottom]="marginBottom"
+                                    [bc-margin-left]="marginLeft"
+                                    [bc-margin-right]="marginRight"
+                                ></ngx-barcode>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-11">
+                    
+                    
+                        <span style="display: flex;
+                        justify-content: center;  font-weight: bold;">ZONA: {{d.distrito_destino}}</span><br>
+                        <span>DESTINO: {{d.destino}} - {{d.departamento_destino}}</span><br>
+                        <span>NOMBRE: {{d.nombre_destino}}</span><br>
+                        <span>DETALLES: {{d.comentarios2}}</span><br>
+                        <span>ENTREGA: {{d.fecha_destino}}</span><br>
+                        <span>HORA: {{d.hora_destino}}</span><br>
+                        
+                        <span>PRODUCTO: {{d.detalle}}</span><br>
+                        <span>A COBRAR: {{d.acobrar}}</span><br>
+                    </div>
+                    <hr>
+                </div>
+                
+                
+            </div>
+            <div class="col-12 fondo " id="print-section2" [hidden]="true">
+
+                <div class="row prints2" *ngFor="let d of data" id="print-section2" style="margin: 2px; height: 14vh; margin-top: 660px;" >
+                    <br>
+                    <div class="col-1">
+                        <div class="">
+                            <div fxLayout="row">
+                                <div fxLayout="column" style="transform: rotate(90deg);margin-top: 5px;">
+                                <ngx-barcode *ngFor="let bcValue of values"
+                                    [bc-element-type]="elementType"
+                                    [bc-value]="bcValue"
+                                    [bc-format]="format"
+                                    [bc-line-color]="lineColor"
+                                    [bc-width]="9"
+                                    [bc-height]="90"
+                                    [bc-display-value]="displayValue"
+                                    [bc-font-options]="fontOptions"
+                                    [bc-font]="font"
+                                    [bc-text-align]="textAlign"
+                                    [bc-text-position]="textPosition"
+                                    [bc-text-margin]="textMargin"
+                                    [bc-font-size]="34"
+                                    [bc-background]="background"
+                                    [bc-margin]="margin"
+                                    [bc-margin-top]="marginTop"
+                                    [bc-margin-bottom]="marginBottom"
+                                    [bc-margin-left]="marginLeft"
+                                    [bc-margin-right]="marginRight"
+                                ></ngx-barcode>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-11" style="font-size: 50px;">
+                    
+                        
+                        <span style="display: flex;
+                        justify-content: center;  font-weight: bold;">ZONA: {{d.distrito_destino}}</span><br>
+                        <span>DESTINO: {{d.destino}} - {{d.departamento_destino}}</span><br>
+                        <span>NOMBRE: {{d.nombre_destino}}</span><br>
+                        <span>DETALLES: {{d.comentarios2}}</span><br>
+                        <span>ENTREGA: {{d.fecha_destino}}</span><br>
+                        <span>HORA: {{d.hora_destino}}</span><br>
+                        
+                        <span>PRODUCTO: {{d.detalle}}</span><br>
+                        <span>A COBRAR: {{d.acobrar}}</span><br>
+                    </div>
+                    <hr>
+                </div>
+                
+                
+            </div>
+        </div>
+        <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+            <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+            </svg>
+        </div>
+        </section>
+        <!-- 1st Hero Variation -->
+    </div>
+
+    <div id="account-about"></div>
+</main>

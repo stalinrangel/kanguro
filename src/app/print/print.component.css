@@ -1,0 +1,58 @@
+.fondo {
+    background-color: white;
+}
+
+span {
+   
+    font-size: 41px;
+    color: black;
+}
+p {
+    font-size: 33px;
+    /* font-weight: 300; */
+    /* line-height: 1.7; */
+    color: black;
+}
+#print-section {
+    /*-webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);*/
+}
+
+.prints{
+    /*width: 377px;*/
+    /*height: 245px;
+    border-style: dotted;*/
+    margin-top: 700px;
+    width: 100vh;
+    height: 90vh;
+    font-size: 30px;
+    /*-webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);*/
+}
+.prints2{
+    /*width: 377px;*/
+    /*height: 245px;
+    border-style: dotted;*/
+    margin-top: 700px;
+    width: 100vh;
+    height: 90vh;
+    font-size: 30px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+@media print {
+    @page {
+        orientation: landscape !important;
+        size: landscape;
+    }
+}

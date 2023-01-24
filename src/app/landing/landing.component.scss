@@ -1,0 +1,70 @@
+.head{
+    margin-bottom: -31px;
+}
+.uno{
+    padding-top: 0px;
+    padding-left: 17px;
+}
+.cotiza{
+    margin-top: 30px;
+    padding-left: 8px;
+}
+.box{
+    padding-top: 80px;
+}
+.direccion{
+    border: 0;
+    background-color: #F5F5F5;
+    margin-left: 38px;
+    height: 40px;
+    width: 82%;
+    border-radius: 10px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #A5A5A5;
+    opacity: 1; /* Firefox */
+    padding-left: 8px;
+  }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.camion{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.line6{
+    height: 300px;
+    margin-left: 4px;
+}
+.cm120{
+    font-size: 10px;
+    color: #494848;
+    margin-top: -10px;
+}
+.cm100{
+    font-size: 10px;
+    color: #494848;
+    right: 5px;
+    margin-top: 36%;
+}
+.precio{
+    margin-top: -26px;
+    height: 21px;
+}
+.solicitar{
+    background-color: #F43A20;
+    border-radius: 15px;
+    height: 48px;
+    padding: 10px 10px 10px 10px;
+    gap: 10px;
+    width: 343px;
+    font-family: Baloo Thambi;
+    color: white;
+    border: 0px;
+}
