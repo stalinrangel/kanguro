@@ -1,8 +1,11 @@
 <main>
   <section>
     <div class="head">
-      <img src="./assets/img/kanguro/1..png" alt="" class="uno">
-      <img src="./assets/img/kanguro/¡Cotiza y entrega hoy!.png" alt="" class="cotiza">
+      <div>
+        <img src="./assets/img/kanguro/1..png" alt="" class="uno">
+        <!--img src="./assets/img/kanguro/¡Cotiza y entrega hoy!.png" alt="" class="cotiza"-->
+        <p class="cotiza">¡Cotiza <br> y entrega hoy!</p>
+      </div>
       <img src="./assets/img/kanguro/box XL Kanguro 1.png" alt="" class="box">
     </div>
     <div>
@@ -10,26 +13,111 @@
       <input type="text" class="direccion" placeholder="Direccion de Entrega">
     </div>
     <div class="image-container ">
-      <img src="./assets/img/kanguro/Elige tu espacio.png" alt="" >
+      <!--img src="./assets/img/kanguro/Elige tu espacio.png" alt="" -->
+      <p class="text_space">Elige tu espacio</p>
     </div>
-    <div class="image-container ">
-      <img src="./assets/img/kanguro/CAMION KANGURO 1.png" alt="" style="margin-left: 23px;">
-      <img src="./assets/img/kanguro/Line 6.png" alt="" class="line6">
-      <p class="cm100">100cm</p>
+
+    <div class="image-containerC">
+      <div class="content-container">
+        <div class="container">
+          <div class="row" style="border-bottom: 1px solid #969696;">
+            <div class="col-6 line-col pd-checkbox" style="padding-top: 10px;">
+              <input class="form-check-input" type="checkbox" value="" id="box1">
+              <label for="box1" (click)="open(classic,'Cotizar', '')">
+                <img src="./assets/img/kanguro/box.png" alt="box">
+              </label>
+            </div>
+            <div class="col-6 pd-checkbox" style="padding-top: 10px;">
+              <input class="form-check-input" type="checkbox" value="" id="box2">
+              <label for="box2" (click)="open(classic,'Cotizar', '')">
+                <img src="./assets/img/kanguro/box.png" alt="box">
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 line-col pd-checkbox">
+              <input class="form-check-input" type="checkbox" value="" id="box3">
+              <label for="box3" (click)="open(classic,'Cotizar', '')">
+                <img src="./assets/img/kanguro/box.png" alt="box">
+              </label>
+            </div>
+            <div class="col-6 pd-checkbox">
+              <input class="form-check-input" type="checkbox" value="" id="box4">
+              <label for="box4" (click)="open(classic,'Cotizar', '')">
+                <img src="./assets/img/kanguro/box.png" alt="box">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-line">
+        <img src="./assets/img/kanguro/Line 6.png" alt="" class="line6">
+        <p class="cm100">120cm</p>
+      </div>
     </div>
+
     <div>
       <img src="./assets/img/kanguro/Line 5.png" alt="" class="camion">
     </div>
     <div class="image-container ">
-      <p class="cm120">120cm</p>
+      <p class="cm120">126cm</p>
+    </div>
+    <div class="image-container" style="margin-top: 0px;">
+      <!--img src="./assets/img/kanguro/PRECIO.png" alt="" class="precio"-->
+      <p class="text-price-empty">PRECIO</p>
     </div>
     <div class="image-container ">
-      <img src="./assets/img/kanguro/PRECIO.png" alt="" class="precio">
-    </div>
-    <div class="image-container ">
-      <button class="solicitar">Solicitar</button>
+      <button class="solicitar">SOLICITAR</button>
     </div>
   </section>
+
+  <ng-template #classic let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <p class="modal-title" id="modal-title-default">Elige tu espacio</p>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true" class="icon-delete">X</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="content-boxModal">
+        <img src="./assets/img/kanguro/box.png" alt="box" class="boxModal">
+        <div class="lineV"></div>
+        <p>80cm</p>
+      </div>
+      <div class="content-lineH">
+        <div class="lineH"></div>
+        <p>60cm</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-6" style="border-right: 1px solid #000000;">
+            <p class="title-text">Medidas box</p>
+            <div class="desc-text">
+              <p>Alto: 80cm</p>
+              <p>Ancho: 60cm</p>
+              <p>Profundidad: 40cm</p>
+            </div>
+            <p class="title-text">Medidas baul</p>
+            <div class="desc-text">
+              <p>Alto: 120cm</p>
+              <p>Ancho: 126cm</p>
+              <p>Profundidad: 88cm</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <p class="title-text">PESO</p>
+            <div class="desc-text">
+              <p>Máximo 25 kg</p>
+            </div>
+            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="c('Close click')">SELECCIONAR</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
   
   
   

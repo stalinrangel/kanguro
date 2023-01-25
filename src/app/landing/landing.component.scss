@@ -1,24 +1,46 @@
 .head{
-    margin-bottom: -31px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: -15px;
+    div{
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
 }
 .uno{
     padding-top: 0px;
     padding-left: 17px;
+    margin-top: 5px;
 }
 .cotiza{
-    margin-top: 30px;
     padding-left: 8px;
+    font-family: 'BalooThambi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 33px;
+    letter-spacing: -0.03em;
+    color: #000000;
+    margin-bottom: 0px;
 }
 .box{
-    padding-top: 80px;
+    padding-top: 30px;
+    max-width: 20vw;
+    margin-right: 15px;
 }
 .direccion{
     border: 0;
     background-color: #F5F5F5;
-    margin-left: 38px;
-    height: 40px;
-    width: 82%;
+    margin: auto;
+    height: 45px;
+    width: 83%;
     border-radius: 10px;
+    display: block;
+    font-size: 14px;
+    color: #A5A5A5;
+    padding-left: 10px;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -31,16 +53,17 @@
     display: flex;
     justify-content: center;
     margin-top: 15px;
+    position: relative;
 }
-
 .camion{
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 .line6{
-    height: 300px;
+    height: 250px;
     margin-left: 4px;
+    margin-top: 2vh;
 }
 .cm120{
     font-size: 10px;
@@ -50,7 +73,6 @@
 .cm100{
     font-size: 10px;
     color: #494848;
-    right: 5px;
     margin-top: 36%;
 }
 .precio{
@@ -63,8 +85,246 @@
     height: 48px;
     padding: 10px 10px 10px 10px;
     gap: 10px;
-    width: 343px;
-    font-family: Baloo Thambi;
-    color: white;
+    width: 85%;
     border: 0px;
+    font-family: 'BalooThambi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 33px;
+    color: rgba(255, 255, 255, 0.5);
 }
+.text_space{
+    font-family: 'BalooThambi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: -0.03em;
+    color: #000000;
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+.content-container{
+    background-image: url('/assets/img/kanguro/CAMION KANGURO 1.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: auto;
+    width: 80%;
+    min-height: 370px;
+    max-width: 330px;
+    padding: 26px 30px;
+    margin: auto;
+    .container{
+        background: rgba(217, 217, 217, 0.6);
+        .col-6{
+            text-align: center;
+            padding: 0px;
+            padding-bottom: 5px;
+            img{
+                width: 100%;
+            }
+        }
+        .line-col{
+            border-right: 1px solid #969696;
+        }
+    }
+}
+.content-line{
+    position: absolute;
+    right: 3px;
+    display: flex;
+    align-items: center;
+}
+.image-containerC {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 15px;
+    position: relative;
+    max-width: 420px;
+}
+.text-price-empty{
+    font-family: 'BalooThambi';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 33px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+input[type=checkbox]{
+    position: absolute;
+    right: 16%;
+    top: 18px;
+}
+#box3,#box4{
+    top: 8px !important;
+}
+label{
+    margin-bottom: 0px;
+}
+.pd-checkbox input {
+    opacity: 0;
+    position: absolute;
+}
+.pd-checkbox input,
+.pd-checkbox label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.pd-checkbox label {
+    position: relative;
+}
+.pd-checkbox input+label:before {
+    content: '';
+    border: 2px solid rgb(221, 221, 221);
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    padding: 4px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 10px;
+    position: absolute;
+    right: 9px;
+    top: 13px;
+    border-radius: 50em;
+}
+.pd-checkbox input:checked+label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    background: rgb(211, 47, 47);
+    color: rgb(0, 0, 0);
+    border-color: rgb(211, 47, 47);
+    width: 23px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    right: 3px;
+    top: 9px;
+}
+
+/*** MODAL ***/
+::ng-deep .modal-cotizar{
+    .modal-content{
+        border-radius: 10px;
+        background-color: rgba(198, 198, 198, 0.7);
+        width: 95%;
+        margin: auto;
+    }
+    .modal-header{
+        background-color: #F43A20;
+        color: #ffffff;
+        text-align: center;
+        align-items: center;
+    }
+    .modal-title{
+        font-family: 'BalooThambi';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 33px;
+        letter-spacing: -0.03em;
+        color: #FFFFFF;
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .icon-delete{
+        font-family: 'Almarai-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px !important;
+        color: #FFFFFF !important;
+    }
+    .close{
+        opacity: 1 !important;
+        z-index: 9999 !important;
+    }
+    .modal-body{
+        padding: 10px 20px;
+        font-family: 'Almarai';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 33px;
+        color: #020202;
+    }
+    .content-boxModal{
+        display: flex;
+        align-items: center;
+    }
+    .boxModal{
+        height: 140px;
+    }
+    .lineV{
+        border: 1px dashed rgba(0, 0, 0, 0.70);
+        height: 120px;
+        margin-right: 10px;
+    }
+    .lineH{
+        border: 1px dashed rgba(0, 0, 0, 0.70);
+        height: 1px;
+        margin-top: 10px;
+    }
+    .content-lineH{
+        width: 130px;
+        text-align: center;
+        margin-left: 15px;
+        p{
+            margin-bottom: 0px;
+        }
+    }
+    .modal-footer{
+        background-color: #F43A20;
+        border-top: none;
+        border-radius: 0px 0px 10px 10px;
+        padding: 10px 10px 15px 10px;
+        .title-text{
+            font-family: 'BebasNeue';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 33px;
+            color: #FFFFFF;
+            margin-bottom: 0px;
+        }
+        .desc-text{
+            p{
+                font-family: 'Almarai';
+                font-style: normal;
+                font-size: 13px;
+                line-height: 16px;
+                color: #FFFFFF;
+                margin-bottom: 0px;
+            }
+        }
+        .btn-select{
+            padding: 2px 8px;
+            margin: 30px auto 10px;
+            background: #090909;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-family: 'BalooThambi';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            display: block;
+        }
+    }
+}
+ 

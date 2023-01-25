@@ -1,2 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+    font-family: "BalooThambi";
+    src: local("BalooThambi"), url(./assets/fonts/BalooThambi-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Almarai";
+    src: local("Almarai"), url(./assets/fonts/Almarai/Almarai-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Almarai-Bold";
+    src: local("Almarai-Bold"), url(./assets/fonts/Almarai/Almarai-ExtraBold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "BebasNeue";
+    src: local("BebasNeue"), url(./assets/fonts/BebasNeue-Regular.ttf) format("truetype");
+}
