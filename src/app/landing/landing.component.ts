@@ -111,7 +111,7 @@ export class LandingComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
       });
     } else if (modalDimension === '' && type === 'Cotizar') {
-    this.modalService.open(content, { windowClass: 'modal-cotizar', centered: true }).result.then((result) => {
+    this.modalService.open(content, { windowClass: 'modal-cotizar', centered: true, backdrop: false }).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
         this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
