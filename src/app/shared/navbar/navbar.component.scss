@@ -1,3 +1,37 @@
 .navbar-transparent{
     position:  relative !important;
 }
+.navbar{
+    padding: 5px 10px;
+}
+@media (min-width: 992px){
+    .navbar-brand img{
+        height: 40px;
+    }
+    .container{
+        max-width: none;
+    }
+    .navbar-nav .nav-item{
+        margin-right: 0px;
+    }
+    .navbar-nav .nav-link{
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .navbar-nav .nav-link-icon i {
+        margin-right: 5px;
+        font-size: 22px;
+    }
+    .ml-left{
+        margin-left: 15vw;
+    }
+    .navbar-nav .nav-link .nav-link-inner--text{
+        font-family: 'Almarai';
+        font-style: normal;
+        font-size: 15px;
+        padding-bottom: 5px;
+    }
+    .line-site{
+        border-bottom: 2px solid #FFFFFF;
+    }
+}

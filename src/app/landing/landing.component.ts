@@ -1,7 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { serializeNodes } from '@angular/compiler/src/i18n/digest';
-import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbModal, ModalDismissReasons,  NgbCarousel, NgbCarouselModule, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -18,7 +18,21 @@ export class LandingComponent implements OnInit {
   public pedidos:any=[];
   mostrar=false;
   closeResult: string;
-  constructor(private viewportScroller: ViewportScroller, private api: ApiService, private modalService: NgbModal) { }
+
+  images = ["./assets/img/kanguro/slider1.svg",
+            "./assets/img/kanguro/slider2.svg",
+            "./assets/img/kanguro/slider3.svg",
+            "./assets/img/kanguro/slider4.svg"];
+	@ViewChild('carousel', { static: true }) carousel: NgbCarousel;
+
+  showWeb: boolean = false;
+
+  constructor(private viewportScroller: ViewportScroller, private api: ApiService, private modalService: NgbModal) {
+    var mediaqueryList = window.matchMedia("(min-width: 992px)");
+    if(mediaqueryList.matches) {
+      this.showWeb = true;
+    }
+  }
 
   ngOnInit() {}
 

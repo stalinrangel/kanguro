@@ -19,3 +19,13 @@
     font-family: "BebasNeue";
     src: local("BebasNeue"), url(./assets/fonts/BebasNeue-Regular.ttf) format("truetype");
 }
+
+@font-face {
+    font-family: "BalooTammudu2";
+    src: local("BalooTammudu2"), url(./assets/fonts/Baloo_Tammudu_2/BalooTammudu2-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "BalooTammudu2-Semi";
+    src: local("BalooTammudu2"), url(./assets/fonts/Baloo_Tammudu_2/BalooTammudu2-SemiBold.ttf) format("truetype");
+}

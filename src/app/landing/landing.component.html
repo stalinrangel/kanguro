@@ -1,9 +1,9 @@
 <main>
-  <section>
+   <!-- VERSION APP -->
+  <section *ngIf="!showWeb">
     <div class="head">
       <div>
         <img src="./assets/img/kanguro/1..png" alt="" class="uno">
-        <!--img src="./assets/img/kanguro/¡Cotiza y entrega hoy!.png" alt="" class="cotiza"-->
         <p class="cotiza">¡Cotiza <br> y entrega hoy!</p>
       </div>
       <img src="./assets/img/kanguro/box XL Kanguro 1.png" alt="" class="box">
@@ -13,7 +13,6 @@
       <input type="text" class="direccion" placeholder="Direccion de Entrega">
     </div>
     <div class="image-container ">
-      <!--img src="./assets/img/kanguro/Elige tu espacio.png" alt="" -->
       <p class="text_space">Elige tu espacio</p>
     </div>
 
@@ -56,7 +55,6 @@
         <p class="cm100">120cm</p>
       </div>
     </div>
-
     <div>
       <img src="./assets/img/kanguro/Line 5.png" alt="" class="camion">
     </div>
@@ -64,7 +62,6 @@
       <p class="cm120">126cm</p>
     </div>
     <div class="image-container" style="margin-top: 0px;">
-      <!--img src="./assets/img/kanguro/PRECIO.png" alt="" class="precio"-->
       <p class="text-price-empty">PRECIO</p>
     </div>
     <div class="image-container ">
@@ -72,6 +69,121 @@
     </div>
   </section>
 
+  <!-- VERSION WEB -->
+  <section *ngIf="showWeb">
+    <div class="header-web">
+      <div class="container container-web">
+        <div class="row">
+          <div class="col-6">
+            <div class="head">
+              <div>
+                <p class="cotiza">¡Cotiza tu envío <br> y entrega hoy!</p>
+              </div>
+              <img src="./assets/img/kanguro/box XL Kanguro 1.png" alt="" class="box">
+            </div>
+            <div>
+              <input type="text" class="direccion" placeholder="Direccion de Recojida" style="margin-bottom: 14px;">
+              <input type="text" class="direccion" placeholder="Direccion de Entrega">
+            </div>
+            <div class="image-container">
+              <p class="text-price-empty">PRECIO</p>
+            </div>
+            <div class="image-container ">
+              <button class="solicitar">SOLICITAR</button>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="image-container">
+              <p class="text_space">¡Elige tu espacio!</p>
+            </div>
+            <div class="image-containerC">
+              <div class="content-container">
+                <div class="container">
+                  <div class="row" style="border-bottom: 1px solid #969696;">
+                    <div class="col-6 line-col pd-checkbox" style="padding-top: 10px;">
+                      <input class="form-check-input" type="checkbox" value="" id="box1">
+                      <label for="box1" (click)="open(classic,'Cotizar', '')">
+                        <img src="./assets/img/kanguro/box.png" alt="box">
+                      </label>
+                    </div>
+                    <div class="col-6 pd-checkbox" style="padding-top: 10px;">
+                      <input class="form-check-input" type="checkbox" value="" id="box2">
+                      <label for="box2" (click)="open(classic,'Cotizar', '')">
+                        <img src="./assets/img/kanguro/box.png" alt="box">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 line-col pd-checkbox">
+                      <input class="form-check-input" type="checkbox" value="" id="box3">
+                      <label for="box3" (click)="open(classic,'Cotizar', '')">
+                        <img src="./assets/img/kanguro/box.png" alt="box">
+                      </label>
+                    </div>
+                    <div class="col-6 pd-checkbox">
+                      <input class="form-check-input" type="checkbox" value="" id="box4">
+                      <label for="box4" (click)="open(classic,'Cotizar', '')">
+                        <img src="./assets/img/kanguro/box.png" alt="box">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="content-line">
+                <img src="./assets/img/kanguro/Line 6.png" alt="line" class="line6">
+                <p class="cm100">120cm</p>
+              </div>
+            </div>
+            <div>
+              <img src="./assets/img/kanguro/Line 5.png" alt="line" class="camion">
+            </div>
+            <div class="image-container ">
+              <p class="cm120">126cm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="title-web">
+      <h1>Envíos sostenibles</h1>
+      <h3>Mensajería responsable para mejorar el mundo</h3>
+    </div>
+
+    <ngb-carousel
+      #carousel
+      [keyboard]="true"
+      (slide)="onSlide($event)"
+    >
+      <ng-template ngbSlide *ngFor="let img of images; index as i">
+        <div class="picsum-img-wrapper">
+          <img class="img-slider" [src]="img" alt="ENVÍOS FLEXIBLES" />
+        </div>
+      </ng-template>
+    </ngb-carousel>
+
+    <div class="container content-info">
+      <div class="row">
+        <div class="col-4">
+          <img src="./assets/img/kanguro/iconland1.svg" alt="TRASLADO PARTICULAR">
+          <p class="titleI">TRASLADO PARTICULAR</p>
+          <p class="descriptionI">Envío rápido y seguro de <br> tus artículos personales</p>
+        </div>
+        <div class="col-4">
+          <img src="./assets/img/kanguro/iconland2.svg" alt="E-COMMERCE">
+          <p class="titleI">E-COMMERCE</p>
+          <p class="descriptionI">Servicio de <br> almacenamiento y envíos <br> programados</p>
+        </div>
+        <div class="col-4">
+          <img src="./assets/img/kanguro/iconland3.svg" alt="ENVÍOS FLEXIBLES">
+          <p class="titleI">ENVÍOS FLEXIBLES</p>
+          <p class="descriptionI">Servicio de paqueteria<br> grande a toda <span>BARCELONA</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL SELECCION DE TAMAÑO -->
   <ng-template #classic let-c="close" let-d="dismiss">
     <div class="modal-header">
       <p class="modal-title" id="modal-title-default">Elige tu espacio</p>
@@ -118,11 +230,6 @@
       </div>
     </div>
   </ng-template>
-  
-  
-  
-  
-  
   
   
   <div class="position-relative">
