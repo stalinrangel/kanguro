@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { PrintComponent } from './print/print.component';
 import { GuiaComponent } from './guia/guia.component';
 import { SucursalComponent } from './sucursal/sucursal.component';
+import { ParticularComponent } from './particular/particular.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component'; 
+import { XlComponent } from './xl/xl.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -21,6 +24,9 @@ const routes: Routes =[
     { path: 'print/:id',             component: PrintComponent },
     { path: 'guia/:id',             component: GuiaComponent },
     { path: 'login',          component: LoginComponent },
+    { path: 'particular',          component: ParticularComponent },
+    { path: 'ecommerce',          component: EcommerceComponent },
+    { path: 'xl',          component: XlComponent },
     { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 

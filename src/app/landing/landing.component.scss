@@ -218,6 +218,50 @@ label{
 }
 
 /*** WEB ***/
+
+.slider1{
+
+    background: #FF3D00;
+    display: flex;
+    padding: 7.5rem 18.5rem 7.5rem 18.5rem;
+}
+.slider1__container1{
+    align-items: flex-start;
+    
+}
+.slider1__container2{
+    display: flex;
+    align-items: flex-end;
+}
+.slider1_p1{
+    font-family: 'BalooTammudu2Extra';
+    line-height: 57px;
+    color: #000000;
+    font-weight: 700;
+    font-size: 82px;
+}
+.slider1_p2{
+    font-family: 'BalooTammudu2Extra';
+    line-height: 17px;
+    color: #000000;
+    font-weight: 700;
+    font-size: 70px;
+}
+.slider1_p3{
+    font-family: 'BalooTammudu2';
+    line-height: 17px;
+    color: #FFD41A;
+    font-weight: 700;
+    font-size: 34px;
+}
+.slider1_p4{
+    font-family: 'BalooTammudu2-Semi';
+    line-height: 34px;
+    color: #FFD41A;
+    font-weight: 700;
+    font-size: 52px;
+}
+
 .header-web{
     background-image: url('/assets/img/kanguro/fondo.svg');
     background-repeat: no-repeat;
@@ -291,13 +335,13 @@ label{
     }
 }
 .img-slider{
-    max-height: 450px;
+    max-height: 720px;
     width: 85%;
     margin: auto;
     display: block;
 }
 .carousel, ::ng-deep .carousel-item{
-    height: 450px;
+    height: 720px;
 }
 ::ng-deep .carousel-control-prev-icon{
     background-image: url('/assets/img/kanguro/arrow-prev.svg');

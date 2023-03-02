@@ -145,42 +145,56 @@
       </div>
     </div>
 
-    <div class="title-web">
-      <h1>Envíos sostenibles</h1>
-      <h3>Mensajería responsable para mejorar el mundo</h3>
-    </div>
+    <section>
+      <div class="container content-info">
+        <div class="row">
+          <div class="col-4">
+            <img src="./assets/img/kanguro/iconland1.svg" alt="TRASLADO PARTICULAR">
+            <p class="titleI">TRASLADO PARTICULAR</p>
+            <p class="descriptionI">Envío rápido y seguro de <br> tus artículos personales</p>
+          </div>
+          <div class="col-4">
+            <img src="./assets/img/kanguro/iconland2.svg" alt="E-COMMERCE">
+            <p class="titleI">E-COMMERCE</p>
+            <p class="descriptionI">Servicio de <br> almacenamiento y envíos <br> programados</p>
+          </div>
+          <div class="col-4">
+            <img src="./assets/img/kanguro/iconland3.svg" alt="ENVÍOS FLEXIBLES">
+            <p class="titleI">ENVÍOS FLEXIBLES</p>
+            <p class="descriptionI">Servicio de paqueteria<br> grande a toda <span>BARCELONA</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <ngb-carousel
+    <section>
+      <ngb-carousel
       #carousel
       [keyboard]="true"
       (slide)="onSlide($event)"
-    >
-      <ng-template ngbSlide *ngFor="let img of images; index as i">
-        <div class="picsum-img-wrapper">
-          <img class="img-slider" [src]="img" alt="ENVÍOS FLEXIBLES" />
-        </div>
-      </ng-template>
-    </ngb-carousel>
+      >
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="img-slider" src="./assets/img/kanguro/slider1.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/particular']"/>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="img-slider" src="./assets/img/kanguro/slider2.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/ecommerce']"/>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="img-slider" src="./assets/img/kanguro/slider3.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/xl']"/>
+          </div>
+        </ng-template>
+       
+      </ngb-carousel>
+    </section>
 
-    <div class="container content-info">
-      <div class="row">
-        <div class="col-4">
-          <img src="./assets/img/kanguro/iconland1.svg" alt="TRASLADO PARTICULAR">
-          <p class="titleI">TRASLADO PARTICULAR</p>
-          <p class="descriptionI">Envío rápido y seguro de <br> tus artículos personales</p>
-        </div>
-        <div class="col-4">
-          <img src="./assets/img/kanguro/iconland2.svg" alt="E-COMMERCE">
-          <p class="titleI">E-COMMERCE</p>
-          <p class="descriptionI">Servicio de <br> almacenamiento y envíos <br> programados</p>
-        </div>
-        <div class="col-4">
-          <img src="./assets/img/kanguro/iconland3.svg" alt="ENVÍOS FLEXIBLES">
-          <p class="titleI">ENVÍOS FLEXIBLES</p>
-          <p class="descriptionI">Servicio de paqueteria<br> grande a toda <span>BARCELONA</span></p>
-        </div>
-      </div>
-    </div>
+    <div style="margin: 100px;"></div>
+
+    
   </section>
 
   <!-- MODAL SELECCION DE TAMAÑO -->

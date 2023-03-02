@@ -21,8 +21,7 @@ export class LandingComponent implements OnInit {
 
   images = ["./assets/img/kanguro/slider1.svg",
             "./assets/img/kanguro/slider2.svg",
-            "./assets/img/kanguro/slider3.svg",
-            "./assets/img/kanguro/slider4.svg"];
+            "./assets/img/kanguro/slider3.svg"];
 	@ViewChild('carousel', { static: true }) carousel: NgbCarousel;
 
   showWeb: boolean = false;

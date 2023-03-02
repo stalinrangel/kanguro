@@ -21,6 +21,9 @@ import { NgxBarcodeModule } from 'ngx-barcode';
 import { NgxPrintModule } from 'ngx-print';
 import { GuiaComponent } from './guia/guia.component';
 import { SucursalComponent } from './sucursal/sucursal.component';
+import { ParticularComponent } from './particular/particular.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
+import { XlComponent } from './xl/xl.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { SucursalComponent } from './sucursal/sucursal.component';
     LoginComponent,
     PrintComponent,
     GuiaComponent,
-    SucursalComponent
+    SucursalComponent,
+    ParticularComponent,
+    EcommerceComponent,
+    XlComponent
   ],
   imports: [
     BrowserModule,
