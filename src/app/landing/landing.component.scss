@@ -336,9 +336,16 @@ label{
 }
 .img-slider{
     max-height: 720px;
-    width: 85%;
+    width: 90%;
     margin: auto;
     display: block;
+    cursor: pointer;
+}
+.kanguro{
+    width: 150px;
+    position: absolute;
+    right: 5%;
+    margin-top: 10px;
 }
 .carousel, ::ng-deep .carousel-item{
     height: 720px;
