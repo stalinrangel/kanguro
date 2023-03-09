@@ -24,6 +24,7 @@ import { SucursalComponent } from './sucursal/sucursal.component';
 import { ParticularComponent } from './particular/particular.component';
 import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { XlComponent } from './xl/xl.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { XlComponent } from './xl/xl.component';
     SucursalComponent,
     ParticularComponent,
     EcommerceComponent,
-    XlComponent
+    XlComponent,
+    PedidoComponent
   ],
   imports: [
     BrowserModule,
