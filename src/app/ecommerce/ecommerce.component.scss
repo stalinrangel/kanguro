@@ -1,0 +1,349 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container1{
+    display: flex;
+    margin: 2.5rem 2.5rem 0 2.5rem;
+}
+.head_left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 9%;
+}
+.head1{
+    font-family: 'BalooTammudu2Extra';
+    color: black;
+    font-size: 55px;
+    line-height: 53px;
+}
+.red{
+    color: red;
+    font-family: 'BalooTammudu2Extra';
+}
+.head2{
+    font-family: 'BalooTammudu2';
+    color: black;
+    font-size: 30px;
+    line-height: 29px;
+}
+.head_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-left: 5%;
+}
+.img_head{
+    width: 90%;
+}
+.kanguro{
+   
+    position: absolute;
+    right: 5%;
+    margin-top: 10px;
+}
+.head_botton{
+    
+}
+.head3{
+    font-family: 'BalooTammudu2Extra';
+    color: #F43A20;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container2{
+    margin-top: 23px;
+    border-top: solid 1px rgba(255, 0, 0, 0.605);
+}
+.head4{
+    display: flex;
+    font-family: 'BalooTammudu2';
+    color: #666666;
+}
+.c1{
+    font-size: 18px;
+    margin: 2.5rem 6.5rem 1.5rem 5.5rem;
+    width: 80%;
+    line-height: 21px;
+}
+.container3{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.p1{
+    font-family: 'BalooTammudu2Extra';
+    color: black;
+    font-size: 60px;
+    line-height: 71px;
+}
+.boton{
+    background-color: #F43A20;
+    color: white;
+    width: 262px;
+    height: 50px;
+    font-size: 38px;
+    font-family: 'BalooTammudu2';
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px 0px 0px;
+    gap: 10px;
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+.p2{
+    font-family: 'BalooTammudu2Extra';
+    color: black;
+    font-size: 28px;
+    margin-top: 2.5rem;
+}
+.img4x2{
+    margin-top: 4.5rem;
+    width: 120%;
+}
+
+.gallery{ 
+    margin: 10rem auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-areas: 
+    "img1 img2 img3"
+    "img4 img5 img6"
+    ;
+    gap: .8em;
+    width:80%;
+}
+.gallery__pic--i1{
+    grid-area: img1;
+}
+.gallery__pic--i2{
+    grid-area: img2;
+}
+.gallery__pic--i3{
+    grid-area: img3;
+}
+.gallery__pic--i4{
+    grid-area: img4;
+}
+.gallery__pic--i5{
+    grid-area: img5;
+}
+.gallery__pic--i6{
+    grid-area: img6;
+}
+.gallery__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.pp2{
+    font-family: 'BalooTammudu2Extra';
+    color: black;
+    font-size: 28px;
+    margin-top: 5rem;
+}
+.logistica{
+    margin: 7rem 0 0 0 ;
+}
+.log1{
+    font-family: 'BalooTammudu2Extra';
+    color: black;
+    font-size: 21px;
+    line-height: 21px;
+}
+.log2{
+    font-family: 'BalooTammudu2';
+    color: black;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 22px;
+}
+
+/** MOVIL **/
+.content-header{
+    background: #FED730;
+    opacity: 0.9;
+    color: #000000;
+    padding: 60px 30px 25px;
+    text-align: center;
+    h2{
+        font-family: 'BalooTammudu2Extra';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 35px;
+        line-height: 26px;
+        color: #000000;
+        letter-spacing: -0.04em;
+        margin-bottom: 0px;
+    }
+    p{
+        font-family: 'BalooTammudu2';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: -0.06em;
+        margin-bottom: 0px;
+    }
+    h3{
+        font-family: 'BalooTammudu2-Semi';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 45px;
+        letter-spacing: -0.05em;
+        color: #F43A20;
+    }
+}
+b{
+    font-family: "BalooTammudu2-Semi";
+    color: #000000;
+}
+.img-mud{
+    margin: 30px auto 20px;
+    display: block;
+    height: 130px;
+    width: auto;
+}
+.text-why{
+    font-family: "BalooTammudu2-Semi";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 21px;
+    text-align: center;
+    letter-spacing: -0.06em;
+    color: #000000;
+    padding: 20px 80px;;
+    margin-bottom: 10px;
+}
+.solicitar{
+    background-color: #F43A20;
+    border-radius: 10px;
+    height: 70px;
+    padding: 10px 10px 10px 10px;
+    width: 230px;
+    border: 0px;
+    font-family: "BalooThambi";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    color: #fff;
+    margin: auto;
+    display: block;
+}
+hr{
+    border: none;
+    border-top: 1px solid #F43A20;
+}
+.text-price{
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 21px;
+    color: #F43A20;
+    text-align: center;
+    margin: 70px 10px 80px;
+}
+.rectangle-line{
+    position: relative;
+    div{
+        width: 13px;
+        height: 13px;
+        background: #000;
+        position: absolute;
+        top: -6px;
+        right: 30px;
+    }
+}
+.text-info1{   
+    font-family: "BalooTammudu2";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 15px;
+    text-align: center;
+    letter-spacing: -0.06em;
+    color: #666666;
+    padding: 5px 40px 10px;
+    margin: 40px 0px;
+}
+.title-info{
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.06em;
+    color: #000000;
+    margin: 80px 0px 30px;
+}
+.container{
+    margin: 90px 0px 30px;
+}
+.img-info1{
+    margin:auto;
+    display: block;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 40px;
+}
+.circle-line{
+    position: relative;
+    div{
+        width: 13px;
+        height: 13px;
+        background: #000;
+        position: absolute;
+        top: -6px;
+        left: 30px;
+        border-radius: 50em;
+    }
+}
+.containera1{
+    margin: -10px 0px 80px;
+    padding: 5px;
+    .col-6{
+        padding: 3px;
+    }
+    .content-infoF{
+        background: rgba(248, 248, 248, 0.9);
+        height: 152px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        h3{
+            font-family: 'BalooTammudu2-Semi';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: center;
+            letter-spacing: -0.05em;
+            color: #000000;
+        }
+        p{
+            font-family: 'BalooTammudu2';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: center;
+            letter-spacing: -0.05em;
+            color: #000000;
+        }
+    }
+}

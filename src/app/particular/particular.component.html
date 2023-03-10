@@ -1,4 +1,126 @@
-<section>
+ <!-- VERSION MOVIL -->
+ <section *ngIf="!showWeb">
+    <div class="content-header">
+        <h2>TRASLADO <br> PARTICULAR</h2>
+        <p>De <b>ARTICULOS</b> del <b>HOGAR</b> y de <b>OFICINA</b> a <b>TODA</b> </p>
+        <h3>BARCELONA</h3>
+    </div>
+    <img class="img-mud" src="./assets/img/kanguro/MUDANZA 1.png" alt="mudanza">
+    <p class="text-why">¿POR QUÉ ESCOGER NUESTRO SERVICIO DE TRASLADO PARTICULAR EN BARCELONA? </p>
+    <button class="solicitar">SOLICITAR</button>
+    <hr>
+    <p class="text-info1">Somos conscientes de que tus artículos personales son muy importantes, por ello te ofrecemos un servicio impecable, con el que tus enseres llegarán a su destino en perfectas condiciones, en el tiempo óptimo, y de las manos de los mejores profesionales.</p>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-2">
+                <img class="img-info1" src="./assets/img/kanguro/telemarketer 1.png" alt="telemarketer">
+            </div>
+            <div class="col-2">
+                <img class="img-info1" src="./assets/img/kanguro/smartphone 1.png" alt="smartphone">
+            </div>
+            <div class="col-2">
+                <img class="img-info1" src="./assets/img/kanguro/express 1.png" alt="express">
+            </div>
+            <div class="col-2">
+                <img class="img-info1" src="./assets/img/kanguro/piggy-bank-with-coin 1.png" alt="piggy-bank">
+            </div>
+            <div class="col-2">
+                <img class="img-info1" src="./assets/img/kanguro/save 1.png" alt="save">
+            </div>
+        </div>
+    </div>
+    <div class="rectangle-line">
+        <hr>
+        <div></div>
+    </div>
+    <div class="container content-info2">
+        <div class="row d-flex align-items-center justify-content-between">
+            <div class="col-10">
+                <div class="title-2">
+                    <h1>1.</h1>
+                    <p>¡PORQUE ESTAMOS A LA VANGUARDIA!</p>
+                </div>
+            </div>
+            <div class="col-8">
+                <div>
+                    <div class="rectangle bk-black"></div>
+                    <p class="text-info2">¡Porque en <b>KANGURO LOGISTIC</b> nos adaptamos a las tendencias nacionales e internacionales!</p>
+                </div>
+            </div>
+            <div class="col-3 offset-1">
+                <img class="img-info2" src="./assets/img/kanguro/globalization 1.png" alt="globalization">
+            </div>
+        </div>
+        <br><br>
+        <div class="row d-flex align-items-center justify-content-between">
+            <div class="col-10">
+                <div class="title-2">
+                    <h1>2.</h1>
+                    <p>¡PORQUE SOLO PAGAS POR EL ESPACIO UTILIZADO!</p>
+                </div>
+            </div>
+            <div class="col-8">
+                <div>
+                    <div class="rectangle bk-black"></div>
+                    <p class="text-info2">En <b>KANGURO LOGISTIC</b> Lo cual nos permite ofrecer precios competitivos en el transporte de tus artículos personales.</p>
+                </div>
+            </div>
+            <div class="col-3 offset-1">
+                <img class="img-info2" src="./assets/img/kanguro/earnings 1.png" alt="earnings 1">
+            </div>
+        </div>
+        <br><br>
+        <div class="row d-flex align-items-center justify-content-between">
+            <div class="col-10">
+                <div class="title-2">
+                    <h1>3.</h1>
+                    <p>PORQUE NUESTRO TRANSPORTE ES RÁPIDO Y SEGURO</p>
+                </div>
+            </div>
+            <div class="col-8">
+                <div>
+                    <div class="rectangle bk-black"></div>
+                    <p class="text-info2">Hoy puedes programar el transporte de tus artículos, y tener 
+                        la seguridad de que contarás con un equipo de profesionales cuando lo requieras.</p>
+                </div>
+                <div>
+                    <div class="rectangle bk-black"></div>
+                    <p class="text-info2">Traslada tus enseres a su lugar de destino, sin preocuparte por la seguridad de los mismos antes de las 24Hrs.</p>
+                </div>
+            </div>
+            <div class="col-3 offset-1">
+                <img class="img-info2" src="./assets/img/kanguro/checked 4.png" alt="checked">
+            </div>
+        </div>
+        <br><br>
+        <div class="row d-flex align-items-center justify-content-between">
+            <div class="col-10">
+                <div class="title-2">
+                    <h1>4.</h1>
+                    <p>PORQUE TENDRÁS UN SEGUIMIENTO DE TU PAQUETERÍA 100% FIABLE</p>
+                </div>
+            </div>
+            <div class="col-8">
+                <div>
+                    <div class="rectangle bk-black"></div>
+                    <p class="text-info2">Contarás con una comunicación interna de manera instantánea durante el traslado de tus artículos del hogar y de la oficina.</p>
+                </div>
+                <div>
+                    <div class="rectangle bk-black"></div>
+                    <p class="text-info2">El tracking tiene lugar en tiempo real, haciendo que el seguimiento de tus enseres sea totalmente fiable desde el momento de la recepción de los mismos, hasta que llega a su destino final. </p>
+                </div>
+            </div>
+            <div class="col-3 offset-1">
+                <img class="img-info2" src="./assets/img/kanguro/gps 1.png" alt="gps">
+            </div>
+        </div>
+    </div>
+    <img class="img-map" src="./assets/img/kanguro/map.svg" alt="mapa">
+</section>
+ 
+ 
+ <!-- VERSION WEB -->
+ <section *ngIf="showWeb">
     <div class="header">
         
         <div class="header__left col-5">
@@ -10,15 +132,15 @@
             <span class="btn_solicitar">SOLICITAR</span>
         </div>
 
-        <div class="header__right col-7">
+        <div class="header__right col-8">
             <img class="img_solicitar" src="./assets/img/kanguro/1 27.svg" alt="" >
         </div>
     </div>
 </section>
-<section>
+<section *ngIf="showWeb">
     <img class="mapita" src="./assets/img/kanguro/mapa.svg" alt="">
 </section>
-<section>
+<section *ngIf="showWeb">
     <br>
     <div class="container3">
         <div class="c3">
@@ -37,7 +159,7 @@
     </div>
     <br>
 </section>
-<section>
+<section *ngIf="showWeb">
     <div class="container4">
         <p class="c4_titulo1"><span class="extra">1.</span>¡PORQUE ESTAMOS A LA VANGUARDIA! </p>
         <img class="" src="./assets/img/kanguro/globalization 1.svg"  alt="">

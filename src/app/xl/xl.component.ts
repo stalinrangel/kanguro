@@ -7,7 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class XlComponent implements OnInit {
 
-  constructor() { }
+  showWeb: boolean = false;
+
+  constructor() { 
+    var mediaqueryList = window.matchMedia("(min-width: 992px)");
+    if(mediaqueryList.matches) {
+      this.showWeb = true;
+    }
+  }
 
   ngOnInit(): void {
   }

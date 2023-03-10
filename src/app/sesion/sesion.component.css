@@ -4,7 +4,11 @@
     box-sizing: border-box;
     height:100%;
 }
-
+.content-login{
+    background-color: rgba(255, 187, 0, 1);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .login{
     width: 100%;
     height: 100%;
@@ -15,14 +19,12 @@
     flex-direction: column;
     align-items: center;
     justify-self: center;
-    background-color: rgba(255, 187, 0, 1);
-    background-repeat: no-repeat;
-    background-size: cover;
     padding: 7px 12%;
-    min-height: 100vh; 
+    min-height: calc(100vh - 75px); 
 }
 .logotipo{
-    margin-top: 80px;
+    margin-top: 60px;
+    height: 25vh;
 }
 .sesion{
     color: #676767;
@@ -82,4 +84,35 @@ input::placeholder {
     color: #676767;
     font-family: 'Almarai';
     font-size: 14px;
+}
+.custom-control{
+    margin-top: 15px;
+}
+.custom-control-label{
+    margin-left: 30px;
+    color: white;
+}
+.custom-control-input-green:focus~.custom-control-label::before {
+    border-color: #F43A20 !important;
+    box-shadow: 0 0 0 0.2rem #a7282840 !important;
+  }
+  
+  .custom-control-input-green:checked~.custom-control-label::before {
+    border-color: #F43A20 !important;
+    background-color: #F43A20 !important;
+  }
+  
+  .custom-control-input-green:focus:not(:checked)~.custom-control-label::before {
+    border-color: #F43A20 !important;
+  }
+  
+  .custom-control-input-green:not(:disabled):active~.custom-control-label::before {
+    background-color: #d6f5dd !important;
+    border-color: #d6f5dd !important;
+  }
+
+  .custom-control-label::before {
+    border: 1px solid #F43A20;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: #F43A20;
 }

@@ -1,4 +1,121 @@
-<section>
+ <!-- VERSION MOVIL -->
+ <section *ngIf="!showWeb">
+    <div class="content-header">
+        <h2>ALMACENAJE <br> y ENVÍO.</h2>
+        <p>¡Todo lo que un E-COMMERCE NECESITA para enviar a</p>
+        <h3>CATALUÑA!</h3>
+    </div>
+    <img class="img-mud" src="./assets/img/kanguro/ECOMMERCE 1.png" alt="ECOMMERCE">
+    
+    <p class="text-why">¿COMENZAMOS? 
+        ¡SOLICITA TU PRESUPUESTO AHORA! </p>
+    
+    <button class="solicitar">SOLICITAR</button>
+    
+    <p class="text-price">Tarifas plana para toda Cataluña</p>
+    
+    <div class="rectangle-line">
+        <hr>
+        <div></div>
+    </div>
+    <p class="text-info1">Nuestra experiencia en el sector Ecommerce  nos permite ofrecerte soluciones logísticas a la medida de las necesidades de tu negocio, y en el tiempo óptimo de envío.</p>
+    <p class="text-info1">Nos encargamos del almacenamiento, picking & packing y la entrega de tus productos en la provincia de Cataluña. Ocúpate de vender Nosotros nos encargamos del resto!</p>
+    <hr>
+
+    <p class="title-info">¡KANGURO LOGISTIC ES <br> EL SOCIO LOGÍSTICO QUE <br> ESTABAS BUSCANDO!</p>
+    <div class="rectangle-line">
+        <div></div>
+    </div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e1.svg" alt="e1">
+            </div>
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e2.svg" alt="e2">
+            </div>
+        </div>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e3.svg" alt="e3">
+            </div>
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e4.svg" alt="e4">
+            </div>
+        </div>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e5.svg" alt="e5">
+            </div>
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e6.svg" alt="e6">
+            </div>
+        </div>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e7.svg" alt="e7">
+            </div>
+            <div class="col-6">
+                <img class="img-info1" src="./assets/img/kanguro/e8.svg" alt="e8">
+            </div>
+        </div>
+    </div>
+    <div class="circle-line">
+        <hr>
+        <div></div>
+    </div>
+    <p class="title-info">¿CÓMO FUNCIONA <br> LA LOGÍSTICA PARA <br> E-COMMERCE? </p>
+
+    <div class="containera1">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <div class="content-infoF">
+                    <h3>1. RECEPCIÓN</h3>
+                    <p>Almacenamiento y clasificación</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="content-infoF">
+                    <h3>2. ALMACÉN</h3>
+                    <p>Almacén logístico personalizado</p>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <div class="content-infoF">
+                    <h3>3. CONTROL 
+                        DE INVENTARIO</h3>
+                    <p>¡Seguimiento automatizado en tiempo real!</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="content-infoF">
+                    <h3>4. PREPARACIÓN DE PEDIDOS</h3>
+                    <p>Eficencia y agilidad de entrega</p>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <div class="content-infoF">
+                    <h3>5. DISTRIBUCIÓN</h3>
+                    <p>Envíos urgentes a toda BARCELONA</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="content-infoF">
+                    <h3>6. SEGUIMIENTO EN TIEMPO REAL</h3>
+                    <p>¡A solo un clic de cumplir tus objetivos de venta!</p>
+                </div>
+            </div>
+        </div>
+    </div>  
+</section>
+ 
+
+ <!-- VERSION WEB -->
+ <section *ngIf="showWeb">
     <div class="container1">
         <div class="head_left col-5">
             <p class="head1">ALMACENAJE <br>y ENVÍO.</p>
@@ -15,7 +132,7 @@
     </div>
 </section>
 
-<section class="container2">
+<section class="container2" *ngIf="showWeb">
     <div class="head4">
         <div class="col6">
             <p class="c1">Nuestra experiencia en el sector Ecommerce  nos permite ofrecerte soluciones logísticas a la medida de las necesidades de tu negocio, y en el tiempo óptimo de envío. 
@@ -27,7 +144,7 @@
     </div>
 </section>
 
-<section class="container3">
+<section class="container3" *ngIf="showWeb">
     <p class="head1">
         ¿Comenzamos?<br>¡Solicita tu presupuesto ahora!
     </p>
@@ -66,7 +183,7 @@
     </div>
 </section>
 
-<section class="gallery">
+<section class="gallery" *ngIf="showWeb">
     <figure class="gallery__pic gallery__pic--i1">
         <img src="./assets/img/kanguro/recepcion.svg" alt="" class="gallery__img">
     </figure>

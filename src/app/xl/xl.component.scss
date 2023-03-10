@@ -130,13 +130,14 @@
     padding: 25px 25px 20px 25px;
     color: #000000;
     min-height: 280px;
+    position: relative;
     h2{
         font-family: 'BalooTammudu2Extra';
         color: #000000;
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 33px;
+        line-height: 25px;
     }
     p{
         font-weight: 400;
@@ -208,4 +209,193 @@
         text-align: left;
         line-height: 20px;
     }
+}
+
+/** MOVIL **/
+.content-header{
+    background: #FED730;
+    opacity: 0.9;
+    color: #000000;
+    padding: 60px 30px 25px;
+    text-align: center;
+    h2{
+        font-family: 'BalooTammudu2Extra';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 35px;
+        line-height: 30px;
+        color: #000000;
+        letter-spacing: -0.04em;
+        margin-bottom: 0px;
+    }
+    p{
+        font-family: 'BalooTammudu2-Semi';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        letter-spacing: -0.06em;
+        margin-bottom: 0px;
+        line-height: 20px;
+    }
+    h3{
+        font-family: 'BalooTammudu2-Semi';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 45px;
+        letter-spacing: -0.05em;
+        color: #F43A20;
+    }
+}
+b{
+    font-family: "BalooTammudu2-Semi";
+    color: #000000;
+}
+.img-mud{
+    margin: 30px auto 20px;
+    display: block;
+    height: auto;
+    width: 85%;
+}
+.img-mud2{
+    margin: 30px auto 20px;
+    display: block;
+    height: 300px;
+    width: auto;
+}
+.text-info1{   
+    font-family: "BalooTammudu2";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 11px;
+    text-align: left;
+    letter-spacing: -0.06em;
+    color: #666666;
+    padding: 30px 20px 20px;
+    margin: 60px 0px 0px;
+    background: #FFD41A;
+    p{
+        font-size: 15px;
+        line-height: 14px;
+        margin-bottom: 15px;
+    }
+}
+.title-info{
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.06em;
+    color: #000000;
+    margin: 70px 0px 30px;
+}
+.img-mud1{
+    margin: 30px auto 20px;
+    display: block;
+    height: 220px;
+    width: auto;
+}
+.text-info2{
+    font-family: 'BalooTammudu2';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: center;
+    color: #000000;
+    padding: 30px 28px 20px;
+}
+hr{
+    border: none;
+    border-top: 1px solid #F43A20;
+}
+.rectangle-line{
+    position: relative;
+    div{
+        width: 13px;
+        height: 13px;
+        background: #000;
+        position: absolute;
+        top: -6px;
+        right: 30px;
+    }
+}
+.title-info1{
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 23px;
+    text-align: left;
+    letter-spacing: -0.06em;
+    color: #000000;
+    margin: 50px 20px 0px;
+}
+.title-info2{
+    font-family: 'BalooTammudu2';
+    font-style: normal;
+    font-weight: 700;
+    text-align: left;
+    font-size: 16px;
+    line-height: 15px;
+    color: #000000;
+    margin: 5px 20px 0px;
+    padding-right: 40px;
+}
+.rectangle-line2{
+    position: relative;
+    margin-bottom: 75px;
+    div{
+        width: 13px;
+        height: 13px;
+        background: #000;
+        position: absolute;
+        top: -6px;
+        left: 30px;
+    }
+}
+.text-why{
+    font-family: "BalooTammudu2-Semi";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: -0.06em;
+    color: #F43A20;
+    padding: 20px 40px;
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+.solicitar{
+    background-color: #F43A20;
+    border-radius: 10px;
+    height: 70px;
+    padding: 10px 10px 10px 10px;
+    width: 230px;
+    border: 0px;
+    font-family: "BalooThambi";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    color: #fff;
+    margin: auto;
+    display: block;
+    margin-bottom: 45px;
+}
+.arrow-down1 {
+    height: 60px;
+    display: block;
+    margin: 10px auto;
+}
+.content-emb{
+    padding: 0px 20px;
+    text-align: center;
+}
+.text-emb{
+
 }
