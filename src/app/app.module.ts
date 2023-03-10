@@ -31,6 +31,11 @@ import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { SesionComponent } from './sesion/sesion.component';
 import { RegistroComponent } from './registro/registro.component';
+import { PedidoEcommerceComponent } from './pedido-ecommerce/pedido-ecommerce.component';
+import { PedidoEstadoEcommerceComponent } from './pedido-estado-ecommerce/pedido-estado-ecommerce.component';
+import { PedidoHistorialEcommerceComponent } from './pedido-historial-ecommerce/pedido-historial-ecommerce.component';
+import { PedidoReprogramarEcommerceComponent } from './pedido-reprogramar-ecommerce/pedido-reprogramar-ecommerce.component';
+import { ProductoComponent } from './producto/producto.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +58,12 @@ import { RegistroComponent } from './registro/registro.component';
     MiCuentaComponent,
     ContactoComponent,
     SesionComponent,
-    RegistroComponent
+    RegistroComponent,
+    PedidoEcommerceComponent,
+    PedidoEstadoEcommerceComponent,
+    PedidoHistorialEcommerceComponent,
+    PedidoReprogramarEcommerceComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
