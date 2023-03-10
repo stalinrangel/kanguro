@@ -6,7 +6,7 @@
     </div>
     
     <div class="cuadro">
-        <p class="texto2">Seleccionar envío:</p>
+        <!--p class="texto2">Seleccionar envío:</p-->
         <table class="lista"> 
             <tr class="tabla_top">
                 <th>Orden</th>
@@ -14,19 +14,19 @@
                 <th>Contacto</th>
                 <th>Fecha Solicitud</th>
             </tr>
-            <tr class="tabla">
+            <tr class="tabla" (click)="open(detail, 'detail')">
               <th>001</th>
               <th>Cajas con cuadros y adornos personales</th>
               <th>Carlos Villanueva</th>
               <th>05/03/2023</th>
             </tr>
-            <tr class="tabla">
+            <tr class="tabla" (click)="open(detail, 'detail')">
                 <th>001</th>
                 <th>Cajas con cuadros y adornos personales</th>
                 <th>Carlos Villanueva</th>
                 <th>05/03/2023</th>
             </tr>
-            <tr class="tabla">
+            <tr class="tabla" (click)="open(detail, 'detail')">
                 <th>001</th>
                 <th>Cajas con cuadros y adornos personales</th>
                 <th>Carlos Villanueva</th>
@@ -38,3 +38,87 @@
         
     </div>
 </section>
+
+<!-- MODAL DETAIL -->
+<ng-template #detail let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <p class="modal-title" id="modal-title-default">Detalle del Envío</p>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true" class="icon-delete">X</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-4">
+                <p class="campo1">Orden Solicitud</p>
+                <p><b>K001</b></p>
+            </div>
+            <div class="col-4">
+                <p class="campo1">Fecha de solicitud</p>
+                <p><b>08/03/2023</b></p>
+            </div>
+            <div class="col-4">
+                <p class="campo1">Rango de envío</p>
+                <p><b>09 - 10 Hrs.</b></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <p class="campo1">Estado</p>
+                <p><b>ENTREGADO</b></p>
+            </div>
+            <div class="col-4">
+                <p class="campo1">Fecha de envío</p>
+                <p><b>10/03/2023</b></p>
+            </div>
+            <div class="col-4">
+               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <p class="campo1">Nro. Piso</p>
+                <p><b>2</b></p>
+            </div>
+            <div class="col-4">
+                <p class="campo1">Puerta</p>
+                <p><b>1</b></p>
+            </div>
+            <div class="col-4">
+                <p class="campo1">C.P.</p>
+                <p><b>08901</b></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p class="campo1">Contacto</p>
+                <p><b>Carlos Villanueva</b></p>
+            </div>
+            <div class="col-6">
+                <p class="campo1">Teléfono</p>
+                <p><b>123456789</b></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="campo1">Productos</p>
+                <p class="content-product">3 Limpiadores Multifuncionales / Color: gris / Modelo: Celeste con plomo</p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <p class="campo1">Cantidad</p>
+                <p><b>3</b></p>
+            </div>
+            <div class="col-6">
+                <div class="content-title">
+                    <p class="title1">COSTO</p>
+                    <p class="title2">50.00 €</p>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+  </ng-template>
