@@ -1,0 +1,200 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: BalooTammudu2-Semi;
+    overflow: hidden;
+}
+
+.header{
+    margin: 0 auto;
+    width: 100%;
+    height: 125px;
+    background-image: url("../../assets/img/kanguro/perfil_fondo.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 7px 0px; 
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+.perfil{
+    padding-left: 16px;
+}
+.nombre{
+    color: white;
+    font-size: 22px;
+    margin-top: 25px;
+}
+.info{
+    color: white;
+    font-size: 20px;
+}
+
+.gallery{ 
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: 
+    "img1 img2"
+    "img3 img4"
+    ;
+    gap: .8em;
+    width:80%;
+}
+.gallery__pic--i1{
+    grid-area: img1;
+}
+.gallery__pic--i2{
+    grid-area: img2;
+}
+.gallery__pic--i3{
+    grid-area: img3;
+}
+.gallery__pic--i4{
+    grid-area: img4;
+}
+.btn{
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 187, 0, 1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 13px;
+    font-size: .9rem;
+    cursor: pointer;
+    padding-top: 10px;
+    text-overflow: ellipsis;
+}
+.btn_danger{
+    background: red;
+}
+
+
+.datos_pedido{
+    width: 50%;
+}
+.pedido{
+    display: flex;
+}
+.mapa{
+    width: 40%;
+}
+.ml{
+    margin-right: 16px;
+}
+.btn_limpiar{
+    display: flex;
+    justify-content: start;
+    font-size: 12px;
+}
+.limpiar{
+    text-align: left;
+    font-family: BalooTammudu2;
+    color: white;
+    font-size: 29px;
+    padding: 8px 5px 0px 16px;
+}
+.precio_km{
+    text-align: right;
+    font-family: BalooTammudu2Extra;
+    color: #00000032;
+    font-size: 23px;
+    padding: 10px 35px 0px 0px;
+}
+.titulo{
+    font-family: BalooTammudu2-Semi;
+    color: red;
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 9px;
+}
+.origen{
+    background-color: #343434;
+    padding: 0px 0px 0px 0px;
+    margin: 1rem 10%;
+    border-radius: 16px;
+}
+.campos{
+    padding: 0px 0px 15px 16px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.campo1{
+    font-family: BalooTammudu2;
+    color: white;
+    font-size: 1.1rem;
+    line-height: 9px;
+    margin-left: 1px;
+    white-space: nowrap;
+    padding-top: 6px;
+}
+.campo13{
+    font-family: BalooTammudu2;
+    color: rgb(0, 0, 0);
+    font-size: 1.1rem;
+    line-height: 9px;
+    margin-left: 1px;
+    white-space: nowrap;
+    padding-top: 6px;
+}
+.campo2{
+    width: 100%;
+    border-radius: 12px;
+    border: 0px;
+    height: 40px;
+}
+.campos2{
+    padding: 0px 0px 15px 16px;
+    display: flex;
+    flex-direction: column;
+}
+.rango{
+    background-color: #FFBD00;
+    padding: 16px;
+    padding: 16px 16px 0 0;
+}
+.izquierda{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+.derecha{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+.title_rango{
+    font-family: BalooTammudu2-Semi;
+    color: black;
+    line-height: 13px;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+.btn_espacio{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    font-family: BalooTammudu2-Semi;
+    color: white;
+    background: red;
+    padding: 6px 0px 0px 0px;
+    border-radius: 12px;
+    height: 55px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.sle{
+    width: 125px;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+.medio{
+    display: flex;
+    justify-content: center;
+}
