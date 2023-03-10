@@ -1,0 +1,76 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: BalooTammudu2-Semi;
+}
+
+.container{
+    margin: 0 auto;
+}
+h1{
+    color: #FFBD00;
+}
+.header{
+    margin-top: 1rem;
+    color: black;
+    padding: 16px 16px 16px 16px;
+}
+.title{
+    font-family: BalooTammudu2Extra;
+    font-size: 22px;
+    line-height: 5px;
+    margin-top: 16px;
+    color: black;
+}
+.texto{
+    font-size: 12px;
+    color: black;
+    margin-bottom: 16px;
+}
+.cuadro{   
+    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+.estado{   
+    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+.texto2{
+    font-size: 16px;
+    color: black;
+}
+.lista{
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 400px;
+}
+.tabla_top{
+    width: 100%;
+    height: 30px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.poli{
+    margin-right: 5px;
+    height: 45%;
+}
+.tabla{
+    width: 100%;
+    height: 30px;
+    background: #f2f2f2;
+    border-top: 1px solid black;
+    color: black;
+    font-family: 'Almarai';
+    font-size: 13px;
+    padding: 3px 0px 3px 0px;
+}
+th{padding: 3px 0px 3px 0px;}
+.tex{
+    font-size: 17px;
+    color: black;
+}
+.estado{
+    display: flex;
+    flex-direction: column;
+}
