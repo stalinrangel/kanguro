@@ -1,0 +1,85 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height:100%;
+}
+
+.login{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    background-color: rgba(255, 187, 0, 1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 7px 12%;
+    min-height: 100vh; 
+}
+.logotipo{
+    margin-top: 80px;
+}
+.sesion{
+    color: #676767;
+    font-family: 'Almarai';
+    font-size: 14px;
+    text-align: center;
+}
+
+.sesion2{
+    font-family: 'Almarai';
+    text-align: left;
+    justify-content: left;
+    color: #676767;
+    font-size: 14px;
+}
+.tipo{
+    font-size: 20px;
+    font-family: BalooTammudu2-Semi;
+    color: black;
+    margin-bottom: 15px;
+}
+.inp{
+    background-color: rgba(226, 226, 226, 0.9);
+    width: 100%;
+    border: 0px;
+    height: 48px;
+    margin-bottom: 13px;
+    border-radius: 5px;
+
+}
+input {
+    margin: 0px 5px 0px 5px;
+}
+
+input::placeholder {
+    font-family: BalooTammudu2;
+    opacity: 0.5;
+    color: #A5A5A5;
+    padding-left: 15px;
+}
+.boton{
+    background: rgba(244, 58, 32, 1);
+    width: 100%;
+    color: white;
+    font-family: 'Almarai';
+    font-size: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    margin-top: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.sesion{
+    color: #676767;
+    font-family: 'Almarai';
+    font-size: 14px;
+}

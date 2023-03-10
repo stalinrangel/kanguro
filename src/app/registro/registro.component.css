@@ -1,0 +1,114 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    height:100%;
+}
+
+.registro{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    background-image: url("../../assets/img/kanguro/bosque.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 7px 12%;
+    min-height: 100vh; 
+}
+
+.title{
+    margin-top: 16px;
+    font-family: BalooTammudu2Extra;
+    font-size: 35px;
+    color: black;
+}
+.sub_title{
+    color: #B1B1B1;
+    font-size: 25px;
+    font-family: BalooTammudu2Extra;
+    text-align: center;
+    line-height: 26px;
+}
+.car{
+    width: 200px;
+    margin-bottom: 15px;
+}
+.texto{
+    font-family: 'Almarai';
+    text-align: center;
+    color: #676767;
+    font-size: 12px;
+}
+.tipo{
+    font-size: 20px;
+    font-family: BalooTammudu2-Semi;
+    color: black;
+    margin-bottom: 15px;
+}
+.inp{
+    background-color: #e2e2e2c2;
+    width: 100%;
+    border: 0px;
+    height: 48px;
+    margin-bottom: 13px;
+    border-radius: 5px;
+
+}
+input {
+    margin: 0px 5px 0px 5px;
+}
+
+input::placeholder {
+    font-family: BalooTammudu2;
+    opacity: 0.5;
+    color: #A5A5A5;
+    padding-left: 15px;
+}
+.boton{
+    background: #8DB23D;
+    width: 100%;
+    color: white;
+    font-family: 'Almarai';
+    font-size: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    margin-top: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.sesion{
+    color: #676767;
+    font-family: 'Almarai';
+    font-size: 14px;
+}
+.o{
+
+}
+.google{
+    background: rgba(143, 178, 59, 0.6);
+    width: 100%;
+    color: white;
+    font-family: 'Almarai';
+    font-size: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    margin-top: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+}
+.bosque{
+
+}

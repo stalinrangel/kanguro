@@ -25,6 +25,12 @@ import { ParticularComponent } from './particular/particular.component';
 import { EcommerceComponent } from './ecommerce/ecommerce.component';
 import { XlComponent } from './xl/xl.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { PedidoEstadoComponent } from './pedido-estado/pedido-estado.component';
+import { PedidoHistorialComponent } from './pedido-historial/pedido-historial.component';
+import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { SesionComponent } from './sesion/sesion.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,13 @@ import { PedidoComponent } from './pedido/pedido.component';
     ParticularComponent,
     EcommerceComponent,
     XlComponent,
-    PedidoComponent
+    PedidoComponent,
+    PedidoEstadoComponent,
+    PedidoHistorialComponent,
+    MiCuentaComponent,
+    ContactoComponent,
+    SesionComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +64,7 @@ import { PedidoComponent } from './pedido/pedido.component';
     HomeModule,
     HttpClientModule,
     NgxBarcodeModule,
-    NgxPrintModule
+    NgxPrintModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
