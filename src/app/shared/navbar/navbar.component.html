@@ -75,7 +75,8 @@
           </div>
         </li-->
       </ul>
-      <ul class="navbar-nav align-items-lg-center">
+
+      <ul class="navbar-nav align-items-lg-center" *ngIf="show==0">
         <li class="nav-item">
           <a class="nav-link" href="/#/particular" data-toggle="tooltip" title="">
             <span class="nav-link-inner--text line-site">Traslado particular</span>
@@ -92,16 +93,62 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="" data-toggle="tooltip" title="Follow us on Twitter">
-            <span class="nav-link-inner--text">Empresas</span>
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
             <span class="nav-link-inner--text">Contacto</span>
           </a>
         </li>
       </ul>
+      <ul class="navbar-nav align-items-lg-center" *ngIf="show==1">
+        <li class="nav-item">
+          <a class="nav-link" href="/#/pedido" data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text line-site">Realizar envíos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/estadoPedido"  data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text">Estado del envío</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/historialPedido"  data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text">Historial de envíos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/miCuenta" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+            <span class="nav-link-inner--text">Mi cuenta</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav align-items-lg-center" *ngIf="show==2">
+        <li class="nav-item">
+          <a class="nav-link" href="/#/pedidoEcommerce" data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text line-site">Realizar envíos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/estadoPedidoEcommerce"  data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text">Estado del envío</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/historialPedidoEcommerce"  data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text">Historial de envíos</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/reprogramarEcommerce" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+            <span class="nav-link-inner--text">Reprogramar envío</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/miCuenta" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+            <span class="nav-link-inner--text">Mi cuenta</span>
+          </a>
+        </li>
+      </ul>
+
       <ul class="navbar-nav align-items-lg-center ml-left">
         <li class="nav-item">
           <a class="nav-link nav-link-icon" href="https://www.facebook.com/" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
@@ -128,11 +175,15 @@
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item ml-lg-auto">
-          <a class="nav-link nav-link-icon" href="https://www.instagram.com/" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+          <a class="nav-link nav-link-icon" href="/#/miCuenta" data-toggle="tooltip">
             <img src="./assets/img/kanguro/profile.png" alt="">
           </a>
         </li>
       </ul>
+      {{this.show}}
+      <button (click)="particular()">Particular</button>
+      <button (click)="ecommerce()">E-Commerce</button>
+      <button (click)="cerrar()" [routerLink]="['/landing']">Cerrar sesión</button>
     </div>
   </div>
 </nav>

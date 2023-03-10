@@ -11,6 +11,7 @@ export class NavbarComponent implements OnInit {
     public isCollapsed = true;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
+    public show:any=0;
 
     constructor(public location: Location, private router: Router) {
     }
@@ -52,5 +53,20 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+    particular(){
+        console.log('32')
+        
+            this.show=1;
+
+    }
+    ecommerce(){
+        console.log('3s2')
+            this.show=2;
+        
+    }
+    cerrar(){
+        this.show=0;
     }
 }
