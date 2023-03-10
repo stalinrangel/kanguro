@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, ModalDismissReasons,  NgbCarousel, NgbCarouselModule, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 declare var google: any;
+
 @Component({
   selector: 'app-pedido',
   templateUrl: './pedido.component.html',
-  styleUrls: ['./pedido.component.css']
+  styleUrls: ['./pedido.component.scss']
 })
 export class PedidoComponent implements OnInit {
-  constructor() { }
+
+  closeResult: string;
+
+  constructor(
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
   }
@@ -25,4 +32,24 @@ export class PedidoComponent implements OnInit {
     map: map,
   });
   } 
+
+  open(content, type) {
+    console.log(type)
+    if(type == 'classic'){
+      this.modalService.open(content, { windowClass: 'modal-cotizar', centered: true, backdrop: false }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {      
+      });
+    } else if(type == 'payment'){
+      this.modalService.open(content, { windowClass: 'modal-payment', centered: true, backdrop: false }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {      
+      });
+    } else if(type == 'confirm'){
+      this.modalService.open(content, { windowClass: 'modal-confirm', centered: true, backdrop: false }).result.then((result) => {
+        this.closeResult = `Closed with: ${result}`;
+      }, (reason) => {      
+      });
+    } 
+  }
 }

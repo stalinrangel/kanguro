@@ -1,0 +1,556 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.datos_pedido{
+    width: 50%;
+}
+.pedido{
+    display: flex;
+}
+.mapa{
+    width: 40%;
+}
+.ml{
+    margin-right: 16px;
+}
+.btn_limpiar{
+    display: flex;
+    justify-content: end;
+    font-size: 12px;
+}
+.limpiar{
+    text-align: right;
+    background-color: black;
+    font-family: BalooTammudu2;
+    color: white;
+    font-size: 13px;
+    padding: 2px 5px 0px 5px;
+}
+.precio_km{
+    text-align: right;
+    font-family: BalooTammudu2Extra;
+    color: #00000032;
+    font-size: 23px;
+    padding: 10px 35px 0px 0px;
+}
+.titulo{
+    font-family: BalooTammudu2-Semi;
+    color: red;
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 9px;
+}
+.origen{
+    background-color: #343434;
+    padding: 0px 0px 0px 0px;
+}
+.campos{
+    padding: 0px 0px 15px 16px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.campo1{
+    font-family: BalooTammudu2;
+    color: white;
+    font-size: 14px;
+    line-height: 9px;
+    margin-left: 1px;
+    white-space: nowrap;
+}
+.campo2{
+    width: 100%;
+    border-radius: 6px;
+}
+.campos2{
+    padding: 0px 0px 15px 16px;
+    display: flex;
+    flex-direction: column;
+}
+.rango{
+    background-color: #FFBD00;
+    padding: 16px;
+}
+.izquierda{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+}
+.derecha{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+.title_rango{
+    font-family: BalooTammudu2-Semi;
+    color: black;
+    line-height: 13px;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+.btn_espacio{
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    font-family: BalooTammudu2-Semi;
+    color: white;
+    background: black;
+    padding: 6px 0px 0px 0px;
+    border-radius: 12px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 15px;
+}
+.sle{
+    width: 125px;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+.medio{
+    display: flex;
+    justify-content: center;
+}
+.boton{
+    background-color: #F43A20;
+    color: white;
+    width: 244px;
+    height: 50px;
+    font-size: 29px;
+    font-family: 'BalooTammudu2Extra';
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px 0px 0px;
+    gap: 10px;
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+#map {
+    height: 400px; /* The height is 400 pixels */
+    width: 100%; /* The width is the width of the web page */
+  }
+
+
+
+
+  @media (max-width: 990px) {
+    .datos_pedido{
+      width: 100%;
+    }
+    .mapa{
+        width: 0%;
+        display: none;
+    }
+  }
+
+
+  /*** MODAL ***/
+::ng-deep .modal-cotizar{
+    .modal-content{
+        border-radius: 10px;
+        background-color: #C6C6C6;
+        width: 90%;
+        margin: auto;
+    }
+    .modal-header{
+        background-color: #F43A20;
+        color: #ffffff;
+        text-align: center;
+        align-items: center;
+    }
+    .modal-title{
+        font-family: 'BalooThambi';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 25px;
+        line-height: 33px;
+        letter-spacing: -0.03em;
+        color: #FFFFFF;
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+    }
+    .icon-delete{
+        font-family: 'Almarai-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px !important;
+        color: #FFFFFF !important;
+    }
+    .close{
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        margin-right: 0px;
+    }
+    .modal-body{
+        padding: 10px 20px;
+        font-family: 'Almarai';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 33px;
+        color: #020202;
+    }
+    .content-boxModal{
+        display: flex;
+        align-items: center;
+    }
+    .boxModal{
+        height: 140px;
+    }
+    .lineV{
+        border: 1px dashed rgba(0, 0, 0, 0.70);
+        height: 120px;
+        margin-right: 10px;
+    }
+    .lineH{
+        border: 1px dashed rgba(0, 0, 0, 0.70);
+        height: 1px;
+        margin-top: 10px;
+    }
+    .content-lineH{
+        width: 130px;
+        text-align: center;
+        margin-left: 15px;
+        p{
+            margin-bottom: 0px;
+        }
+    }
+    .modal-footer{
+        background-color: #F43A20;
+        border-top: none;
+        border-radius: 0px 0px 10px 10px;
+        padding: 10px 10px 15px 10px;
+        .title-text{
+            font-family: 'BebasNeue';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 33px;
+            color: #FFFFFF;
+            margin-bottom: 0px;
+        }
+        .desc-text{
+            p{
+                font-family: 'Almarai';
+                font-style: normal;
+                font-size: 13px;
+                line-height: 16px;
+                color: #FFFFFF;
+                margin-bottom: 0px;
+            }
+        }
+        .btn-select{
+            padding: 2px 8px;
+            margin: 30px auto 10px;
+            background: #090909;
+            border-radius: 5px;
+            color: #FFFFFF;
+            font-family: 'BalooThambi';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            display: block;
+        }
+    }
+}
+.image-containerC {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 15px;
+    position: relative;
+    max-width: 420px;
+}
+input[type=checkbox]{
+    position: absolute;
+    right: 16%;
+    top: 18px;
+}
+#box3,#box4{
+    top: 8px !important;
+}
+label{
+    margin-bottom: 0px;
+}
+.pd-checkbox input {
+    opacity: 0;
+    position: absolute;
+}
+.pd-checkbox input,
+.pd-checkbox label {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.pd-checkbox label {
+    position: relative;
+}
+.pd-checkbox input+label:before {
+    content: '';
+    border: 2px solid rgb(221, 221, 221);
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    padding: 4px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 10px;
+    position: absolute;
+    right: 9px;
+    top: 13px;
+    border-radius: 50em;
+}
+.pd-checkbox input:checked+label:before {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    background: rgb(211, 47, 47);
+    color: rgb(0, 0, 0);
+    border-color: rgb(211, 47, 47);
+    width: 23px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    right: 3px;
+    top: 9px;
+}
+.content-container{
+    background-image: url('/assets/img/kanguro/CAMION KANGURO 1.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: auto;
+    width: 100%;
+    min-height: 41vh;
+    max-width: 330px;
+    padding: 26px 30px;
+    margin: auto;
+    .container{
+        background: rgba(217, 217, 217, 0.6);
+        .col-6{
+            text-align: center;
+            padding: 0px;
+            padding-bottom: 5px;
+            img{
+                width: 100%;
+            }
+        }
+        .line-col{
+            border-right: 1px solid #969696;
+        }
+    }
+}
+
+/** MODAL PAGO **/
+::ng-deep .modal-payment{
+    .modal-content{
+        border-radius: 10px;
+        background-color: transparent;
+        width: 90%;
+        margin: auto;
+        background: rgba(198, 198, 198, 0.9);
+    }
+    .modal-header{
+        background: transparent;
+        color: #ffffff;
+        text-align: center;
+        align-items: center;
+        height: 100px;
+    }
+    .icon-delete{
+        font-family: 'Almarai-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px !important;
+        color: #FFFFFF !important;
+    }
+    .close{
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        margin-right: 0px;
+    }
+    .modal-body{
+        padding: 10px 20px;
+        font-family: 'BalooTammudu2';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 33px;
+        color: #ffffff;
+        background-color: #343434;
+        border-radius: 5px;
+    }
+    .content-title{
+        display: flex;
+        align-items: center;
+        .title1{
+            font-family: "BalooTammudu2-Semi";
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 30px;
+            flex: 1;
+            text-align: right;
+            border-right: 3px solid #FFBD00;
+            padding-right: 5px;
+            padding-top: 10px;
+        }
+        .title2{
+            flex: 1;
+            font-family: "BalooTammudu2-Semi";
+            font-size: 35px;
+            text-align: left;
+            padding-left: 7px;
+            line-height: 35px;
+            padding-top: 16px;
+        }
+    }
+    .campos1{
+        margin: 20px 0px 10px;
+    }
+    .campo2a{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        padding-left: 10px;
+        padding-top: 10px;
+        line-height: 25px;
+    }
+    .btn-pay{
+        background: #FFBB00;
+        border-radius: 5px;
+        font-family: "BalooThambi";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 17px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 100%;
+        padding: 8px;
+        text-align: center;
+        border: none;
+        margin: 5px 0px;
+    }
+    .custom-control{
+        text-align: center;
+        margin-top: 10px;
+    }
+    .custom-control-label{
+        margin-left: 30px;
+        color: white;
+    }
+    .custom-control-input-green:focus~.custom-control-label::before {
+        border-color: #FFBB00 !important;
+        box-shadow: 0 0 0 0.2rem #f6c91540 !important;
+      }
+      
+      .custom-control-input-green:checked~.custom-control-label::before {
+        border-color: #FFBB00 !important;
+        background-color: #FFBB00 !important;
+      }
+      
+      .custom-control-input-green:focus:not(:checked)~.custom-control-label::before {
+        border-color: #FFBB00 !important;
+      }
+      
+      .custom-control-input-green:not(:disabled):active~.custom-control-label::before {
+        background-color: #d6f5dd !important;
+        border-color: #d6f5dd !important;
+      }
+    
+      .custom-control-label::before {
+        border: 1px solid #FFBB00;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        background: #FFBB00;
+    }
+    .modal-footer{
+        background-color: transparent;
+        border-top: none;
+        height: 100px;
+    }
+}
+
+/** MODAL CONFIRM **/
+::ng-deep .modal-confirm{
+    .modal-content{
+        background: #343434;
+        height: 100vh;
+    }
+    .modal-dialog{
+        margin: 0px;
+    }
+    .modal-header{
+        background: #343434;
+        color: #ffffff;
+        text-align: center;
+        align-items: center;
+        height: 100px;
+        border: none;
+    }
+    .icon-delete{
+        font-family: 'Almarai-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px !important;
+        color: #FFFFFF !important;
+    }
+    .close{
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        margin-right: 0px;
+    }
+    .modal-body{
+        padding: 10px 50px;
+        font-family: 'BalooTammudu2';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 33px;
+        color: #ffffff;
+        background-color: #343434;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .text-info{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 20px;
+        color: #fff !important;
+        margin-bottom: 15px;
+    }
+    .logotipo{
+        margin-top: 20px;
+        height: 29vh;
+        margin-bottom: 30px;
+    }
+    .btn-pay{
+        background: #F43A20;
+        border-radius: 15px;
+        font-family: "BalooThambi";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 17px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 80%;
+        padding: 12px 0px;
+        text-align: center;
+        border: none;
+        margin: 7px 0px;
+    }
+}
