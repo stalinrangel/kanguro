@@ -19,4 +19,25 @@ export class ApiService {
     console.log(url)
     return this.http.get(url)
   }
+  signin(model: any): Observable<any> {
+    console.log(model)
+    return this.http.post(this.apiUrl+'/auth/login', model)
+  }
+  signup(model: any): Observable<any> {
+    console.log(model)
+    return this.http.post(this.apiUrl+'/auth/signup', model)
+  }
+  reenviar(id): Observable<any> {
+    console.log(id)
+    return this.http.get(this.apiUrl+'/auth/enviar_validacion/'+id)
+  }
+  getuser(id): Observable<any> {
+    console.log(id)
+    return this.http.get(this.apiUrl+'/auth/show_users/'+id)
+  }
+  update_user(id,data): Observable<any> {
+    console.log(id)
+    console.log(data)
+    return this.http.put(this.apiUrl+'/auth/update_user/'+id,data)
+  }
 }
