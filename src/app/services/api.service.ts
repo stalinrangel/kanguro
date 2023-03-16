@@ -43,4 +43,7 @@ export class ApiService {
   reset_password(email): Observable<any> {
     return this.http.post(this.apiUrl+'/auth/resetpassword/'+email,{})
   }
+  estado(): Observable<any> {
+    return this.http.get(this.apiUrl+'/pedido_con_productos')
+  }
 }

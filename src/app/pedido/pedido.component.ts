@@ -16,6 +16,7 @@ export class PedidoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.initMap();
   }
   // Initialize and add the map
   initMap() {
