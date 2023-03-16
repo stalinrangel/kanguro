@@ -33,7 +33,7 @@ export class ApiService {
   }
   getuser(id): Observable<any> {
     console.log(id)
-    return this.http.get(this.apiUrl+'/auth/show_users/'+id)
+    return this.http.get(this.apiUrl+'/info_user/'+id)
   }
   update_user(id,data): Observable<any> {
     console.log(id)

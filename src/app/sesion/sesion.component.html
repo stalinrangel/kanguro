@@ -13,7 +13,7 @@
           </ng-container>
       </form>
       <div style="width: 100%;">
-       <p class="sesion2">Has perdido tu contraseña? <span style="color:red">Recuperar</span></p>
+       <p class="sesion2">Has perdido tu contraseña? <span style="color:red"  (click)="open(confirm, 'confirm')">Recuperar</span></p>
        
        <div class="custom-control custom-checkbox custom-checkbox-green">
          <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheck1" >
@@ -22,6 +22,21 @@
    
       </div>
          <span class="boton" (click)="login()">INGRESAR</span>
-      <p class="sesion">No tienes una cuenta? <span style="color:red">Registrarte</span></p>
+      <p class="sesion">No tienes una cuenta? <span style="color:red" [routerLink]="['/registro']">Registrarte</span></p>
    </div>
 </div>
+
+<ng-template #confirm let-c="close" let-d="dismiss">
+   <div class="modal-header">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+       <span aria-hidden="true" class="icon-delete">X</span>
+     </button>
+   </div>
+   <div class="modal-body">
+       <img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> 
+       <p class="text-info">Para recuperar su contraseña de acceso, deberá ingresar el e-mail con el que se registro en nuestro portal y le enviaremos la información necesaria para la restauración.</p>
+       <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email">
+
+       <p class="text-info"> <span (click)="recuperar()">Recuperar</span>.</p>
+   </div>
+ </ng-template>

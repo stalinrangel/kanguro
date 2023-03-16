@@ -15,12 +15,16 @@ export class MiCuentaComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.uss)
-    this.user=this.user;
+    this.user=this.uss.user;
+    console.log(this.user)
+    this.id=this.user.user.id;
+    console.log(this.id)
+    this.getInfo();
   }
 
   getInfo(){
     let self = this;
-    this.api.signup(this.id).subscribe({
+    this.api.getuser(this.id).subscribe({
       next(data){
         console.log(data);
       },error(err){
