@@ -40,4 +40,7 @@ export class ApiService {
     console.log(data)
     return this.http.put(this.apiUrl+'/auth/update_user/'+id,data)
   }
+  reset_password(email): Observable<any> {
+    return this.http.post(this.apiUrl+'/auth/resetpassword/'+email,{})
+  }
 }
