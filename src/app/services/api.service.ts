@@ -38,7 +38,7 @@ export class ApiService {
   update_user(id,data): Observable<any> {
     console.log(id)
     console.log(data)
-    return this.http.put(this.apiUrl+'/auth/update_user/'+id,data)
+    return this.http.put(this.apiUrl+'/update_user',data)
   }
   reset_password(email): Observable<any> {
     return this.http.post(this.apiUrl+'/auth/resetpassword/'+email,{})
