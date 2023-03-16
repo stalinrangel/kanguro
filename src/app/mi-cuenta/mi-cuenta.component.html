@@ -30,27 +30,27 @@
         <div class="row ml">
             <div class="col-6 campos">
                 <p class="campo1">Nombre(s)</p>
-                <input class="campo2" type="text" placeholder="">
+                <input class="campo2" [(ngModel)]="userData.name" type="text">
             </div>
             <div class="col-6 campos">
                 <p class="campo1">Apellido(s)</p>
-                <input class="campo2" type="text" placeholder="">
+                <input class="campo2" [(ngModel)]="userData.apellidos" type="text">
             </div>
         </div>
         <div class="row ml">
             <div class="col-6 campos">
                 <p class="campo1">NIF/NIE/Pasaporte</p>
-                <input class="campo2" type="text" placeholder="">
+                <input class="campo2" type="text" [(ngModel)]="userData.dni" placeholder="">
             </div>
             <div class="col-6 campos">
                 <p class="campo1">Teléfono</p>
-                <input class="campo2" type="text" placeholder="">
+                <input class="campo2" type="text" [(ngModel)]="userData.telefono" placeholder="">
             </div>
         </div>
         <div class="row ml">
             <div class="col-8 campos">
                 <p class="campo1">Correo eléctronico</p>
-                <input class="campo2" type="text" placeholder="">
+                <input class="campo2" type="text" [(ngModel)]="userData.email" placeholder="">
             </div>
         </div>
         <div class=" rango">
@@ -74,7 +74,7 @@
                     <input class="campo2" type="text" placeholder="">
                 </div>
                 <div class="col-6 medio">
-                    <span class="btn_espacio">Actualizar Datos</span>
+                    <span class="btn_espacio" (click)="updateInfo()">Actualizar Datos</span>
                 </div>
             </div>
         </div>

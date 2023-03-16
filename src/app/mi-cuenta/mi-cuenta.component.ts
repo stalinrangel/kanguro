@@ -11,6 +11,14 @@ import { Router } from '@angular/router';
 export class MiCuentaComponent implements OnInit {
   public user:any;
   private id;
+  public userData: any = {
+    name: '',
+    apellidos: '',
+    dni: '',
+    telefono: '',
+    email: ''
+  };
+
   constructor(private api: ApiService, private uss: UserStorageService, private router: Router) { }
 
   ngOnInit(): void {
@@ -26,9 +34,22 @@ export class MiCuentaComponent implements OnInit {
     let self = this;
     this.api.getuser(this.id).subscribe({
       next(data){
-        console.log(data);
+        if(data.users.length > 0){
+          self.userData = data.users[0];
+        }   
       },error(err){
         console.log(err.error.err);
+      }
+    })
+  }
+
+  updateInfo(){
+    let self = this;
+    this.api.update_user(this.id, this.userData).subscribe({
+      next(data){
+        console.log(data)  
+      },error(err){
+        console.log(err.error);
       }
     })
   }
