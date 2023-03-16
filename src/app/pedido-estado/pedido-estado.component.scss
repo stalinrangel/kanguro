@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: BalooTammudu2-Semi;
+    font-family: BalooTammudu2;
 }
 
 .container{
@@ -19,21 +19,31 @@
     line-height: 5px;
     margin-top: 16px;
     color: black;
+    font-family: BalooTammudu2-Semi;
 }
 .texto{
+    font-family: 'BalooTammudu2';
     font-size: 12px;
     color: black;
     margin-bottom: 16px;
+    margin-top: 5px;
 }
 .cuadro{   
-    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+    padding: 40px 40px 20px 40px;
 }
 .estado{   
     margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+    img{
+        width: 100%;
+        height: auto;
+        max-width: 450px;
+        margin: auto;
+    }
 }
 .texto2{
     font-size: 16px;
     color: black;
+    font-family: 'BalooTammudu2';
 }
 .lista{
     width: 100%;
@@ -66,8 +76,26 @@ th{padding: 3px 0px 3px 0px;}
 .tex{
     font-size: 17px;
     color: black;
+    line-height: 18px;
+    margin-top: 50px;
+}
+.tex2{
+    font-size: 17px;
+    color: black;
+    line-height: 18px;
+    font-family: BalooTammudu2-Semi;
 }
 .estado{
     display: flex;
     flex-direction: column;
+}
+select{
+    width: 100%;
+    background-color: #CACACA;
+    margin-bottom: 10px;
+    border-radius: 0px;
+    border: none;
+    padding: 3px 5px 0px;
+    height: 35px;
+    font-family: 'BalooTammudu2';
 }
