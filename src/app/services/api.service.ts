@@ -47,7 +47,7 @@ export class ApiService {
     return this.http.get(this.apiUrl+'/pedido_con_productos')
   }
   historial(date): Observable<any> {
-    return this.http.get(this.apiUrl+'/pedido_historial?fecha_destino=2023-03-16')
+    return this.http.get(this.apiUrl+'/pedido_historial?fecha_destino='+date)
   }
   fecha(){
     return this.http.get(this.apiUrl+'/auth/getHour')

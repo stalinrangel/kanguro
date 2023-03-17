@@ -4,6 +4,25 @@
         <p class="texto">Se visualizan todos los envíos.</p>
     </div>
     
+    <form class="row row-cols-sm-auto form-date">
+        <div class="col-12">
+            <div class="input-group">
+                <input
+                    class="form-control"
+                    placeholder="DD/MM/YYYY"
+                    name="dp"
+                    [(ngModel)]="model"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                    (navigate)="updateDay()"
+                />
+                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                    <img src="./assets/img/kanguro/calendar.png" alt="">
+                </button>
+            </div>
+        </div>
+    </form>
+
     <div class="cuadro">
         <div class="lista"> 
             <div class="row header-table">

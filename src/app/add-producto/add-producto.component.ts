@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import {Location} from '@angular/common';
 
 export interface IAlert {
   id: number;
@@ -47,7 +48,9 @@ export class AddProductoComponent implements OnInit {
     private api: ApiService, 
     private uss: UserStorageService, 
     private router: Router,
-    private fb: FormBuilder) { 
+    private fb: FormBuilder,
+    private location: Location
+  ) { 
   }
 
   ngOnInit(): void {
@@ -63,7 +66,8 @@ export class AddProductoComponent implements OnInit {
       cantidad: ['', Validators.required],
       color: ['', Validators.required],
       nombre_color: ['', Validators.required],
-      user_id: [this.id, Validators.required]
+      user_id: [this.id, Validators.required],
+      precio: ['', Validators.required]
     }, { updateOn: 'submit' });
   }
 
@@ -126,7 +130,7 @@ export class AddProductoComponent implements OnInit {
   uploadPhoto(id){
     let self = this;
     let formData = new FormData();
-    formData.append("File", this.photoUrl);
+    formData.append("file", this.photoUrl);
     this.api.subir_imagen(formData).subscribe({
       next(data){
         console.log(data);
@@ -134,21 +138,8 @@ export class AddProductoComponent implements OnInit {
           self.saveColor(id,data);
         }  
       },error(err){
-        console.log(err.error.err);
-      }
-    })
-  }
-  uploadPhotoStalin(){
-    let self = this;
-    let formData = new FormData();
-    console.log(this.photoUrl)
-    formData.append("file", this.photoUrl);
-
-    this.api.subir_imagen(formData).subscribe({
-      next(data){
-        console.log(data);
-      },error(err){
-        console.log(err.error.err);
+        console.log(err.error.text);
+        self.saveColor(id,err.error.text);
       }
     })
   }
@@ -185,13 +176,19 @@ export class AddProductoComponent implements OnInit {
       precio: this.serviceForm.value.precio
     }
     console.log(data)
-    this.api.add_color(data).subscribe({
+    this.api.add_atributo(data).subscribe({
       next(data){
         console.log(data);
+        //this.router.navigate(['/producto']);
+        this.location.back();
       },error(err){
         console.log(err.error.err);
       }
     })
+  }
+
+  goBack(){
+    this.location.back();
   }
   
 

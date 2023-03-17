@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
+import { UserStorageService } from '../../services/user-storage.service';
 
 @Component({
     selector: 'app-navbar',
@@ -12,8 +13,25 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
     public show:any=0;
+    public showWeb:any;
+    public user: any;
+    public id: any;
+    public showApp:any=0;
 
-    constructor(public location: Location, private router: Router) {
+    constructor(public location: Location, private router: Router, private uss: UserStorageService) {
+        var mediaqueryList = window.matchMedia("(min-width: 992px)");
+        if(mediaqueryList.matches) {
+            this.showWeb = true;
+        }
+        this.user=this.uss.user;
+        if(this.user){
+            if (this.user.user.tipo_usuario == '1') {
+                this.showApp = 0;
+            } else {
+                this.showApp = 1;
+            }
+        }
+        console.log(this.showApp)
     }
 
     ngOnInit() {
@@ -33,6 +51,18 @@ export class NavbarComponent implements OnInit {
      this.location.subscribe((ev:PopStateEvent) => {
          this.lastPoppedUrl = ev.url;
      });
+    }
+
+    getUser(){
+        this.user=this.uss.user;
+        if(this.user){
+            if (this.user.user.tipo_usuario == '1') {
+                this.showApp = 0;
+            } else {
+                this.showApp = 1;
+            }
+        }
+        console.log(this.showApp)
     }
 
     isHome() {

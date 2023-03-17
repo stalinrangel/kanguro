@@ -29,7 +29,7 @@
     font-family: BalooTammudu2;
 }
 .cuadro{   
-    padding: 25px;
+    padding: 15px 20px 25px;
 }
 .estado{   
     margin: 25px;
@@ -94,6 +94,17 @@ th{padding: 3px 0px 3px 0px;}
 .estado{
     display: flex;
     flex-direction: column;
+}
+.form-date{
+    width: 60%;
+    margin: 30px auto 0px;
+    img{
+        height: 16px;
+        margin: 5px 10px;
+    }
+    input{
+        height: 35px;
+    }
 }
 
  /*** MODAL ***/

@@ -6,6 +6,7 @@
 }
 .container{
     margin: 0 auto;
+    padding: 10px 20px;
 }
 h1{
     color: #FFBD00;
@@ -15,12 +16,62 @@ h1{
 .header{
     margin-top: 1rem;
     color: black;
-    padding: 16px 16px 0px 16px;
     display: flex;
     justify-content: space-between;
     img{
         margin-left: 10px;
     }
+}
+.title{
+    font-family: BalooTammudu2Extra;
+    font-size: 20px;
+    line-height: 5px;
+    margin-top: 20px;
+    color: black;
+    margin-bottom: 20px;
+}
+.content-product{
+    border: 1px solid #D6D6D6;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    color: #000;
+}
+.titleP{
+    padding: 0px 15px;
+    line-height: 15px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-family: BalooTammudu2-Semi;
+}
+.titleP1{
+    line-height: 13px;
+    margin-top: 12px;
+    font-size: 14px;
+    font-family: BalooTammudu2-Semi;
+}
+.cantP{
+    font-size: 11px;
+}
+.imageP{
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}
+.solicitar{
+    background: #FFBD00;
+    border-radius: 10px;
+    font-family: "BalooThambi";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 10px;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
+}
+.col-6{
+    padding: 0px 4px 8px;
 }
 
 /*** MODAL ADD ***/
@@ -95,5 +146,55 @@ h1{
         font-size: 10px;
         line-height: 33px;
         color: #020202;
+    }
+    .solicitar1{
+        background: #FFBD00;
+        border-radius: 10px;
+        font-family: "BalooThambi";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 9px;
+        color: #fff;
+        border: none;
+        padding: 12px 12px;
+        margin: 12px auto;
+        display: block;
+        width: 90%;
+    }
+    .rectangle-color{
+        width: 30px;
+        height: 30px;
+    }
+    .text-infoP{
+        line-height: 20px;
+        font-size: 15px;
+    }
+    .content-colors{
+        display: flex;
+        margin-bottom: 15px;
+    }
+    input{
+        background: #F2F2F2;
+        border-radius: 5px;
+        border: none;
+        padding-left: 10px;
+        width: 100%;
+        font-size: 13px;
+        padding-top: 7px;
+        height: 30px;
+        font-family: "BalooTammudu2-Semi";
+        color: #000;
+        margin-bottom: 10px;
+    }
+    .inpCant{
+        width: 60%;
+        font-size: 17px;
+        height: 32px;
+        text-align: center;
+        padding-left: 0px;
+    }
+    .col-6 {
+        padding: 0px 10px 8px;
     }
 }

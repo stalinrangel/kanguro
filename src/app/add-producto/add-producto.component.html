@@ -2,7 +2,7 @@
     <div class="content-page">
         <div class="header">
             <p class="title" id="modal-title-default">Agregar producto</p>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="goBack()">
             <span aria-hidden="true" class="icon-delete">X</span>
             </button>
         </div>
@@ -75,12 +75,21 @@
                     Nombre del color / combinación es requerido
                 </div>
             </div>
+
+            <input type="text" class="inp" placeholder="Precio" formControlName="precio" name="inputprecioP" required>
+            <div *ngIf="serviceForm.controls['precio'].invalid && (serviceForm.controls['precio'].dirty || serviceForm.controls['precio'].touched)"
+            class="alert alert-danger">
+                <div *ngIf="serviceForm.controls['precio'].errors?.['required']">
+                    Precio es requerido
+                </div>
+            </div>
+
             <div class="content-btns">
                 <div class="add-btn" (click)="open(add,'add')">
                     <p>Agregar más items</p>
                     <img src="./assets/img/kanguro/add.png" alt="add">
                 </div>
-                <button class="solicitar" type="submit">AGREGAR</button><button class="" (click)="uploadPhotoStalin()">subir image</button>
+                <button class="solicitar" type="submit">AGREGAR</button>
             </div>
         </form>  
     </div>

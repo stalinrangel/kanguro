@@ -35,3 +35,49 @@
         border-bottom: 2px solid #FFFFFF;
     }
 }
+@media (max-width: 991.98px){
+
+    .navbar-collapse.show {
+        padding: 0px;
+        border-radius:0px;
+        background: #FFBB00;
+        animation: show-navbar-collapse 0.01s ease forwards;
+        box-shadow: none;
+    }
+    .navbar-collapse{
+        width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+        z-index: 1050;
+        margin: 0px;
+        overflow-y: auto;
+        opacity: 0;
+        bottom: 0;
+        height: 95vh !important;
+        text-align: right;
+    }
+
+    .line-bottom{
+        border-bottom: 1px solid #FFFFFF;
+        padding-left: 20px;
+    }
+    .content-ul{
+        width: 70%;
+        float: right;
+        margin-top: 8vh;
+    }
+    .text-li{
+        font-family: "BalooTammudu2-Semi";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+        margin-top: 17px;
+    }
+}
