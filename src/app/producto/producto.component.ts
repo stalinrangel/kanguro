@@ -7,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-producto',
   templateUrl: './producto.component.html',
-  styleUrls: ['./producto.component.css']
+  styleUrls: ['./producto.component.scss']
 })
 export class ProductoComponent implements OnInit {
   public user:any;
@@ -21,7 +21,6 @@ export class ProductoComponent implements OnInit {
   }
 
   init(){
-
     let self = this;
     this.api.inventario(this.user.id).subscribe({
       next(data){
@@ -30,6 +29,18 @@ export class ProductoComponent implements OnInit {
         console.log(err.error.err);
       }
     })
+  }
+
+  open(content, type) {
+    if(type == 'add'){
+      this.modalService.open(content, { windowClass: 'modal-add', centered: true, backdrop: false }).result.then((result) => {
+      }, (reason) => {      
+      });
+    } else if(type == 'color'){
+      this.modalService.open(content, { windowClass: 'modal-color', centered: true, backdrop: false }).result.then((result) => {
+      }, (reason) => {      
+      });
+    }
   }
 
 }

@@ -1,1 +1,133 @@
-<p>add-producto works!</p>
+<section class="container">
+    <div class="content-page">
+        <div class="header">
+            <p class="title" id="modal-title-default">Agregar producto</p>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="icon-delete">X</span>
+            </button>
+        </div>
+        <div>
+            <div class="content-img">
+                <label for="filesx">
+                    <img *ngIf="!photo" src="./assets/img/kanguro/notes 1.png" alt="add">
+                    <input (change)=takePicture2($event) accept=".png,.jpg,.jpeg" class="input" type="file" id="filesx" name="filesx"> 
+                    <img id="output" [src]="photo" *ngIf="photo" alt="img">
+                </label>
+            </div>
+            <p class="text-photo">Fotos: 0/5 - Elige primero la foto principal de la publicación.</p>
+        </div>
+        <form [formGroup]="serviceForm" (ngSubmit)="addProduct(serviceForm)" novalidate>
+            <input type="text" class="inp" placeholder="Nombre del producto" formControlName="nombre" name="inputNombreP" required>
+            <div *ngIf="serviceForm.controls['nombre'].invalid && (serviceForm.controls['nombre'].dirty || serviceForm.controls['nombre'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="serviceForm.controls['nombre'].errors.required">
+                    Nombre del producto es requerido
+                </div>
+            </div> 
+
+            <input type="text" class="inp" placeholder="Descripción del producto"  formControlName="descripcion" name="inputdescripcion" required>
+            <div *ngIf="serviceForm.controls['descripcion'].invalid && (serviceForm.controls['descripcion'].dirty || serviceForm.controls['descripcion'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="serviceForm.controls['descripcion'].errors?.['required']">
+                    Descripción del producto es requerido
+                </div>
+            </div> 
+
+             <select class="inp" name="selectCategoria" formControlName="categoria">
+             </select>
+
+            <input type="text" class="inp" placeholder="Modelo" formControlName="modelo" name="inputmodeloP" required>
+            <div *ngIf="serviceForm.controls['modelo'].invalid && (serviceForm.controls['modelo'].dirty || serviceForm.controls['modelo'].touched)"
+             class="alert alert-danger">
+                <div *ngIf="serviceForm.controls['modelo'].errors?.['required']">
+                    Modelo del producto es requerido
+                </div>
+            </div>
+
+              <div class="row justify-content-between">
+                <div class="col-6">
+                    <input style="width:96%;" type="text" class="inp" placeholder="Medidas" formControlName="medidas" name="inputmedidasP" required>
+                    <div *ngIf="serviceForm.controls['medidas'].invalid && (serviceForm.controls['medidas'].dirty || serviceForm.controls['medidas'].touched)"
+                    class="alert alert-danger">
+                        <div *ngIf="serviceForm.controls['medidas'].errors?.['required']">
+                            Medidas del producto es requerido
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <input type="text" class="inp" placeholder="Cantidad" formControlName="cantidad" name="inputcantidadP" required>
+                    <div *ngIf="serviceForm.controls['cantidad'].invalid && (serviceForm.controls['cantidad'].dirty || serviceForm.controls['cantidad'].touched)"
+                    class="alert alert-danger">
+                        <div *ngIf="serviceForm.controls['cantidad'].errors?.['required']">
+                            Cantidad del producto es requerido
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <input class="rectangle-color" type="color" formControlName="color" name="inputcolorP" required>
+                </div>
+              </div>
+              
+            <input type="text" class="inp" placeholder="Nombre del color / combinación" formControlName="nombre_color" name="inputnombre_colorP" required>
+            <div *ngIf="serviceForm.controls['nombre_color'].invalid && (serviceForm.controls['nombre_color'].dirty || serviceForm.controls['nombre_color'].touched)"
+            class="alert alert-danger">
+                <div *ngIf="serviceForm.controls['nombre_color'].errors?.['required']">
+                    Nombre del color / combinación es requerido
+                </div>
+            </div>
+            <div class="content-btns">
+                <div class="add-btn" (click)="open(add,'add')">
+                    <p>Agregar más items</p>
+                    <img src="./assets/img/kanguro/add.png" alt="add">
+                </div>
+                <button class="solicitar" type="submit">AGREGAR</button>
+            </div>
+        </form>  
+    </div>
+</section>
+
+<ngb-alert [dismissible]="true" *ngIf="showAlert" (close)="showAlert=false">
+    <span class="alert-inner--text"> Por favor completa todos los campos y selecciona un color</span>
+</ngb-alert>
+
+<!-- MODAL ADD -->
+<ng-template #add let-c="close" let-d="dismiss">
+    <div class="header">
+        <p class="title" id="modal-title-default">Agregar producto</p>
+        <img src="./assets/img/kanguro/add.png" alt="add">
+    </div>
+    <hr>
+    <div class="modal-body">
+       <form>
+           <div>
+                <div class="row justify-content-between">
+                    <div class="col-6">
+                        <input style="width:96%;" type="text" class="inp" placeholder="Medidas" [(ngModel)]="model.medidas" name="inputmedidasP" #medidas="ngModel" required>
+                        <ng-container *ngIf="medidas.invalid && medidas.dirty">
+                            <span class="help is-danger">Medidas es requerido</span>
+                        </ng-container>
+                    </div>
+                    <div class="col-4">
+                        <input type="text" class="inp" placeholder="Cantidad" [(ngModel)]="model.cantidad" name="inputcantidadP" #cantidad="ngModel" required>
+                        <ng-container *ngIf="cantidad.invalid && cantidad.dirty">
+                            <span class="help is-danger">Cantidad es requerido</span>
+                        </ng-container>
+                    </div>
+                    <div class="col-2">
+                        <input class="rectangle-color" type="color" [(ngModel)]="model.color" name="inputcolorP" #color="ngModel" required>
+                    </div>
+                </div>
+                <input type="text" class="inp" placeholder="Nombre del color / combinación" [(ngModel)]="model.nombre_color" name="inputnombre_colorP" #nombre_color="ngModel" required>
+                <ng-container *ngIf="nombre_color.invalid && nombre_color.dirty">
+                    <span class="help is-danger">Nombre del color / combinación es requerido</span>
+                </ng-container>
+                <hr>
+           </div>
+       </form>
+
+       <div class="content-btns around">
+        <button class="solicitar" (click)="d('Cross click')">CANCELAR</button>
+        <button class="solicitar">AGREGAR</button>
+    </div>
+    </div>
+</ng-template>
