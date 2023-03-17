@@ -87,7 +87,7 @@ export class PedidoComponent implements OnInit {
     this.user=this.user.user;
     console.log(this.user)
     //this.initMap();
-    this.initDatos();
+   
     this.getDate();
   }
 
@@ -99,6 +99,12 @@ export class PedidoComponent implements OnInit {
     this.origen.estado=0;
     this.origen.nombre=this.user.name;
     this.origen.tipo_usuario=this.user.tipo_usuario;
+
+    this.destinos.push(this.destino);
+  }
+  addDestinos(){
+    console.log('add')
+    this.destinos.push(this.destino);
   }
   getDate(){
     let self = this;
@@ -115,6 +121,7 @@ export class PedidoComponent implements OnInit {
         console.log(self.fecha.getFullYear());
         console.log(self.fecha.getHours());
         console.log(self.fecha.getFullYear()+'-'+self.fecha.getMonth()+'-'+self.fecha.getDate()+' '+self.fecha.getHours()+':'+'00'+':'+'00');
+        self.initDatos();
       }
     })
   }

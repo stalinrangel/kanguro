@@ -26,6 +26,7 @@ import { PedidoEstadoEcommerceComponent } from './pedido-estado-ecommerce/pedido
 import { PedidoHistorialEcommerceComponent } from './pedido-historial-ecommerce/pedido-historial-ecommerce.component';
 import { PedidoReprogramarEcommerceComponent } from './pedido-reprogramar-ecommerce/pedido-reprogramar-ecommerce.component';
 import { ProductoComponent } from './producto/producto.component';
+import { AddProductoComponent } from './add-producto/add-producto.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -51,6 +52,7 @@ const routes: Routes =[
     { path: 'historialPedidoEcommerce',          component: PedidoHistorialEcommerceComponent },
     { path: 'reprogramarEcommerce',          component: PedidoReprogramarEcommerceComponent },
     { path: 'producto',          component: ProductoComponent },
+    { path: 'addProducto',          component: AddProductoComponent },
     { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
