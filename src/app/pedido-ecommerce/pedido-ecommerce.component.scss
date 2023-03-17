@@ -200,9 +200,6 @@
     width: 100%; /* The width is the width of the web page */
   }
 
-
-
-
   @media (max-width: 990px) {
     .datos_pedido{
       width: 100%;
@@ -212,3 +209,165 @@
         display: none;
     }
   }
+
+  /*** MODAL ADD ***/
+::ng-deep .modal-add{
+    .modal-content{
+        border-radius: 10px;
+        background-color: #fff;
+        width: 100%;
+        margin: auto;
+    }
+    .modal-header{
+        background-color: #FFBD00;
+        color: #ffffff;
+        text-align: center;
+        align-items: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .modal-title{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 29px;
+        letter-spacing: -0.03em;
+        color: #FFFFFF;
+        width: 100%;
+        text-align: left;
+        margin: 20px 20px 5px;
+    }
+    .icon-delete{
+        font-family: 'Almarai-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px !important;
+        color: #F43A20 !important;
+    }
+    .close{
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        margin-right: 0px;
+        width: 225px;
+    }
+    .content-title{
+        display: flex;
+        align-items: center;
+        .title1{
+            font-family: "BalooTammudu2-Semi";
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 30px;
+            flex: 1;
+            text-align: right;
+            border-right: 3px solid #FFBD00;
+            padding-right: 5px;
+            padding-top: 18px;
+            opacity: 0.3;
+        }
+        .title2{
+            flex: 1;
+            font-family: "BalooTammudu2-Semi";
+            font-size: 22px;
+            text-align: left;
+            padding-left: 7px;
+            line-height: 35px;
+            padding-top: 16px;
+        }
+    }
+    .modal-body{
+        padding: 10px 5px;
+        font-family: 'Almarai';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 33px;
+        color: #020202;
+    }
+    .solicitar1{
+        background: #FFBD00;
+        border-radius: 10px;
+        font-family: "BalooThambi";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 9px;
+        color: #fff;
+        border: none;
+        padding: 12px 12px;
+        margin: 12px auto;
+        display: block;
+        width: 90%;
+    }
+    .rectangle-color{
+        width: 30px;
+        height: 30px;
+    }
+    .text-infoP{
+        line-height: 20px;
+        font-size: 15px;
+    }
+    .content-colors{
+        display: flex;
+        margin-bottom: 15px;
+    }
+    input{
+        background: #F2F2F2;
+        border-radius: 5px;
+        border: none;
+        padding-left: 10px;
+        width: 100%;
+        font-size: 13px;
+        padding-top: 7px;
+        height: 30px;
+        font-family: "BalooTammudu2-Semi";
+        color: #000;
+        margin-bottom: 10px;
+    }
+    .inpCant{
+        width: 60%;
+        font-size: 17px;
+        height: 32px;
+        text-align: center;
+        padding-left: 0px;
+    }
+    .col-6 {
+        padding: 0px 10px 8px;
+    }
+    .titleP1{
+        line-height: 13px;
+        margin-top: 12px;
+        font-size: 14px;
+        font-family: BalooTammudu2-Semi;
+    }
+    .cantP{
+        font-size: 11px;
+    }
+    .imageP{
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
+    }
+    .content-product{
+        border: 1px solid #000000;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 5px;
+        padding: 7px;
+    }
+    hr{
+        border-top: 1px solid #F43A20;
+    }
+    .content-btn{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p{
+            font-size: 25px;
+            font-family: BalooTammudu2Extra; 
+            margin-top: 17px;
+        }
+        img{
+            margin-left: 10px;
+        }
+    }
+}

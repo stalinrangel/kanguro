@@ -88,7 +88,7 @@
                       </ng-container>
                 </div>
                 <div class="col-2 campos2">
-                    <img src="./assets/img/kanguro/cesta.svg" alt="" class="cesta">
+                    <img src="./assets/img/kanguro/cesta.svg" (click)="open(view,'view')" alt="" class="cesta">
                 </div>
             </div>
             <div class="row ml">
@@ -131,5 +131,44 @@
         <div id="map"></div>
     </div>
 </section>
+
+<!-- MODAL VIEW -->
+<ng-template #view let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <p class="modal-title" id="modal-title-default">Producto</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true" class="icon-delete">DESPACHAR</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-6" *ngFor="let item of products">
+                <div class="content-product">
+                    <img class="imageP" src="{{item.imagen}}" alt="imagen">
+                    <p class="titleP1">{{item.nombre}}</p>
+                    <p class="cantP">{{item.descripcion}}</p>
+                    
+                    <p class="text-infoP">Color</p>
+                    <div class="content-colors">
+                        <div class="rectangle-color" *ngFor="let item of item.colores" [ngStyle]="{'background-color': item.color}" (click)="selectColor(item)"></div>
+                    </div>
+
+                    <p class="text-infoP">Modelo:</p>
+
+                    <p class="cantP">Cantidad disponible: {{item.cantidad}}</p>
+
+                    <hr>
+                    <div class="content-btn">
+                        <p>X1</p>
+                        <div>
+                            <img src="./assets/img/kanguro/menos.svg" alt="">
+                            <img src="./assets/img/kanguro/mas.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
 
 

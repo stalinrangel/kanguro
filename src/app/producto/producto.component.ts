@@ -56,12 +56,10 @@ export class ProductoComponent implements OnInit {
 
   selectColor(item){
     this.color_select = item;
-    item.colores.forEach(element => {
-      element.atributos.forEach(element1 => {
-        if (element.id == element1.color_id) {
-          this.atributo_select = element1;
-        }
-      });
+    this.color_select.atributos.forEach(element1 => {
+      if (this.color_select.id == element1.color_id) {
+        this.atributo_select = element1;
+      }
     });
   }
 

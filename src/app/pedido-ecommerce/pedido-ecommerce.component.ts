@@ -8,7 +8,7 @@ declare var google: any;
 @Component({
   selector: 'app-pedido-ecommerce',
   templateUrl: './pedido-ecommerce.component.html',
-  styleUrls: ['./pedido-ecommerce.component.css']
+  styleUrls: ['./pedido-ecommerce.component.scss']
 })
 export class PedidoEcommerceComponent implements OnInit {
 
@@ -97,6 +97,7 @@ export class PedidoEcommerceComponent implements OnInit {
     'productos':''
   }
   public fecha:any;
+  public products: any = [];
 
   ngOnInit(): void {
     this.user=this.uss.user;
@@ -105,6 +106,7 @@ export class PedidoEcommerceComponent implements OnInit {
     
    
     this.getDate();
+    this.getProduct();
   }
 
   initDatos(){
@@ -365,7 +367,32 @@ export class PedidoEcommerceComponent implements OnInit {
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {      
       });
-    } 
+    } else if(type == 'view'){
+      this.modalService.open(content, { windowClass: 'modal-add', centered: true, backdrop: false }).result.then((result) => {
+      }, (reason) => {      
+      });
+    }
+  }
+
+  getProduct(){
+    let self = this;
+    this.api.inventario(this.user.id).subscribe({
+      next(data:any){
+        self.products = data.productos;
+        self.products.forEach(element => {
+          element.cantidad = 0;
+          element.colores.forEach(element1 => {
+            element.imagen = 'https://www.kangurodelivery.com/Pedido/' + element1.imagen;
+            element1.atributos.forEach(element2 => {
+              element.cantidad = element.cantidad + element2.cantidad;
+            });
+          });
+        });
+        console.log(self.products);
+      },error(err){
+        console.log(err.error.err);
+      }
+    })
   }
 
 }
