@@ -19,34 +19,37 @@ export class PedidoComponent implements OnInit {
   public places: google.maps.places.PlacesService;
   public center:any;
   public markers: google.maps.Marker[] = [];
-  public km: any='';
+  public km: any=0;
   public directionsRenderer = new google.maps.DirectionsRenderer();
   public directionsService = new google.maps.DirectionsService();
 
-  public origen:any={
+  public orige:any={
     'tipo':'',
     'fecha':'',
+    'fecha_origen':'',
     'hora':'',
     'horario':'',
     'estado':'',
     'nombre':'',
     'forma_pago': '',
-    'costo':'',
-    'costo_recojo': '',
+    'costo':0,
+    'costo_recojo': 0,
     'km':'',
     'min':'',
     'cajap':'',
     'cajam':'',
     'cajag':'',
-    'cancelado':'',
+    'cancelado':0,
     'reprogramado':0,
     'tipo_usuario':'',
-    'nombre_origen':'',
+    'nombre_origen':'eimar',
     'origen':'',
-    'departamento_origen':'',
-    'distrito_origen':'',
-    'telefono_origen':'',
-    'comentarios':''
+    'departamento_origen':'123',
+    'distrito_origen':'1234',
+    'telefono_origen':'12345',
+    'comentarios':'123456',
+    'lat':'',
+    'lng':''
   }
   public destinos:any=[];
   public destino:any={
@@ -61,12 +64,12 @@ export class PedidoComponent implements OnInit {
     'lat':'',
     'lng':'',
     'destino':'',
-    'departamento_destino':'',
-    'nombre_destino':'',
-    'telefono_destino':'',
-    'distrito_destino':'',
+    'departamento_destino':'dfsdf',
+    'nombre_destino':'fsfsf',
+    'telefono_destino':'234',
+    'distrito_destino':'244',
     'zona_destino':'',
-    'comentarios2':'',
+    'comentarios2':'4444444444',
     'lat2':'',
     'lng2':'',
     'km':'',
@@ -74,10 +77,10 @@ export class PedidoComponent implements OnInit {
     'n_marcador':'',
     'cobrarecommerce':'',
     'descuento':'',
-    'costo':'',
-    'cantidad':'',
+    'costo':0,
+    'cantidad':0,
     'detalle':'',
-    'subtotal':'',
+    'subtotal':0,
     'fecha_destino':'',
     'turno_destino':'',
     'hora_destino':''
@@ -92,7 +95,7 @@ export class PedidoComponent implements OnInit {
     this.user=this.uss.user;
     this.user=this.user.user;
     console.log(this.user)
-    //this.initMap();
+    
    
     this.getDate();
   }
@@ -100,13 +103,16 @@ export class PedidoComponent implements OnInit {
   initDatos(){
 
     //Inicio Origen
-    this.origen.tipo='URGENTE';
-    this.origen.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
-    this.origen.estado=0;
-    this.origen.nombre=this.user.name;
-    this.origen.tipo_usuario=this.user.tipo_usuario;
-
+    this.orige.tipo='URGENTE';
+    this.orige.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.orige.fecha_origen=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.orige.estado=0;
+    this.orige.nombre=this.user.name;
+    this.orige.tipo_usuario=this.user.tipo_usuario;
+    console.log(this.orige)
+    this.destino.fecha_destino=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate();
     this.destinos.push(this.destino);
+    this.initMap();
   }
   addDestinos(){
     console.log('add')
@@ -151,24 +157,25 @@ export class PedidoComponent implements OnInit {
       position: center,
       map: this.map,
     });*/
-    const input = document.getElementById("pac-input") as HTMLInputElement;
-    const input2 = document.getElementById("pac-input2") as HTMLInputElement;
-    
-    const options = {
-      bounds: defaultBounds,
-      componentRestrictions: { country: "es" },
-      fields: ["address_components", "geometry", "icon", "name"],
-      strictBounds: false,
-      types: ["establishment"],
-    };
-    this.autocomplete[0] = new google.maps.places.Autocomplete(input, options);
-    this.autocomplete[1] = new google.maps.places.Autocomplete(input2, options);
-    this.places = new google.maps.places.PlacesService(this.map);
-    this.directionsRenderer.setMap(this.map);
     let self=this;
-    
-    console.log(this.autocomplete)
-    //this.autocomplete.addListener('place_changed',{})
+    setTimeout(function(){
+      const input = document.getElementById("pac-input") as HTMLInputElement;
+      const input2 = document.getElementById("pac-input2") as HTMLInputElement;
+      
+      const options = {
+        bounds: defaultBounds,
+        componentRestrictions: { country: "es" },
+        fields: ["address_components", "geometry", "icon", "name"],
+        strictBounds: false,
+        types: ["establishment"],
+      };
+      self.autocomplete[0] = new google.maps.places.Autocomplete(input, options);
+      self.autocomplete[1] = new google.maps.places.Autocomplete(input2, options);
+      self.places = new google.maps.places.PlacesService(self.map);
+      self.directionsRenderer.setMap(self.map);
+      
+      console.log(self.autocomplete)
+    }, 800);
   } 
   onPlaceChanged(i):any {
     const place = this.autocomplete[i].getPlace();
@@ -199,15 +206,38 @@ export class PedidoComponent implements OnInit {
       self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
     }, 800);
   }
-  traceRoute(){
+  ver2(i){
+    console.log(i)
+    let self=this;
+    setTimeout(function(){
+      console.log(self.autocomplete[i].getPlace())
+      self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
+      self.traceRoute(i);
+    }, 800);
+  }
+  traceRoute(i){
     
     this.calculateAndDisplayRoute(this.directionsService,this.directionsRenderer);
-    this.calculekm();
+    this.calculekm(i);
   }
-  calculekm(){
+  calculekm(i){
     var n=this.markers.length;
     console.log(n);
-    this.km=this.haversine_distance(this.markers[0],this.markers[1]);
+    this.km=this.km+this.haversine_distance(this.markers[i-1],this.markers[i]);
+    this.destinos[i-1].km=this.haversine_distance(this.markers[i-1],this.markers[i]);
+
+    this.asignaKm(i);
+  }
+  asignaKm(i){
+    this.orige.km=this.km;
+    this.orige.lat=this.markers[0].getPosition().lat();
+    this.orige.lng=this.markers[0].getPosition().lng();
+    this.destinos[i-1].lat=this.markers[0].getPosition().lat();
+    this.destinos[i-1].lng=this.markers[0].getPosition().lng();
+    this.destinos[i-1].lat2=this.markers[1].getPosition().lat();
+    this.destinos[i-1].lng2=this.markers[1].getPosition().lng();
+    console.log(this.markers[0].getPosition().lat())
+    console.log(this.markers[1].getPosition().lat())
   }
   calculateAndDisplayRoute(
     directionsService: google.maps.DirectionsService,
@@ -237,7 +267,7 @@ export class PedidoComponent implements OnInit {
     var difflon = (mk2.position.lng()-mk1.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
 
     var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
-    alert(d)
+   
     return d;
   }
   clearMarkers() {
@@ -250,6 +280,50 @@ export class PedidoComponent implements OnInit {
   }
   limpiar(){
     this.clearMarkers();
+  }
+
+
+  enviar(){
+    console.log(this.orige)
+    console.log(this.destinos)
+    for (let i = 0; i < this.destinos.length; i++) {
+      this.destinos[i].nombre_origen=this.orige.nombre_origen;
+      this.destinos[i].origen=this.orige.origen;
+      this.destinos[i].departamento_origen=this.orige.departamento_origen;
+      this.destinos[i].distrito_origen=this.orige.distrito_origen;
+      this.destinos[i].telefono_origen=this.orige.telefono_origen;
+      this.destinos[i].comentarios=this.orige.comentarios;
+      this.destinos[i].lat=this.orige.lat;
+      this.destinos[i].lng=this.orige.lng;
+    }
+
+    this.crear_pedido();
+  }
+
+  crear_pedido(){
+    let self = this;
+    this.api.crear_pedido(this.orige).subscribe({
+      next(data){
+        console.log(data);
+        for (let i = 0; i < self.destinos.length; i++) {
+         self.destinos[i].pedido_id=data.id;
+          self.crear_destino(i,self.destinos[i]);
+        }
+      },error(err){
+        console.log(err.error.err);
+      }
+    })
+  }
+  crear_destino(i,data){
+    let self = this;
+    this.api.crear_destino(data).subscribe({
+      next(data){
+        console.log(data);
+        
+      },error(err){
+        console.log(err.error.err);
+      }
+    })
   }
 
   open(content, type) {

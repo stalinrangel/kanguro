@@ -67,4 +67,10 @@ export class ApiService {
   subir_imagen(data): Observable<any> {
     return this.http.post('https://www.kangurodelivery.com/Pedido/php/subirImagenProducto.php',data)
   }
+  crear_pedido(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/pedido/store',data)
+  }
+  crear_destino(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/destino/store',data)
+  }
 }
