@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { UserStorageService } from '../services/user-storage.service';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-producto',
@@ -6,10 +10,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent implements OnInit {
-
-  constructor() { }
+  public user:any;
+  constructor(private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router) { }
 
   ngOnInit(): void {
+    this.user=this.uss.user;
+    this.user=this.user.user;
+    console.log(this.user)
+    this.init();
+  }
+
+  init(){
+
+    let self = this;
+    this.api.inventario(this.user.id).subscribe({
+      next(data){
+        console.log(data);
+      },error(err){
+        console.log(err.error.err);
+      }
+    })
   }
 
 }

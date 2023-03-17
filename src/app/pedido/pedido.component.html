@@ -1,4 +1,4 @@
-<p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">|</span> KM</p>
+<p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">|</span> {{km | number : '1.0-2'}} KM</p>
 <section class="pedido"> 
     <div class="datos_pedido">
         <p class="titulo">ORIGEN</p>
@@ -19,7 +19,7 @@
             <div class="row ml">
                 <div class="col-8 campos">
                     <p class="campo1">Dirección</p>
-                    <input class="campo2" type="text" placeholder="">
+                    <input class="campo2" type="text" placeholder="" id="pac-input" (blur)="ver(0)">
                 </div>
                 <div class="col-2 campos">
                     <p class="campo1">Nro. Piso</p>
@@ -51,7 +51,7 @@
         <p class="titulo">DESTINO</p>
         <div class="origen">
             <div class="row" class="btn_limpiar">
-                <p class="limpiar">Limpiar Campos</p>
+                <p class="limpiar" (click)="limpiar()">Limpiar Campos</p>
             </div>
             <div class="row ml">
                 <div class="col-4 campos">
@@ -66,7 +66,7 @@
             <div class="row ml">
                 <div class="col-8 campos">
                     <p class="campo1">Dirección</p>
-                    <input class="campo2" type="text" placeholder="">
+                    <input class="campo2" type="text" placeholder="" id="pac-input2" (blur)="ver(1)">
                 </div>
                 <div class="col-2 campos">
                     <p class="campo1">Nro. Piso</p>
@@ -106,7 +106,7 @@
             </div>
         </div>
         <div class="medio">
-            <span class="boton" (click)="open(payment, 'payment')">ENVIAR</span>
+            <span class="boton" (click)="open(payment, 'payment');traceRoute()" >ENVIAR</span>
         </div>
     </div>
     <div class="mapa">
