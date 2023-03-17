@@ -10,7 +10,7 @@
               <div class="row ml">
                   <div class="col-4 campos">
                       <p class="campo1">Nombre(s)</p>
-                      <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.nombre_origen" name="inputnombre_origen" #nombre_origen="ngModel" required>
+                      <input class="campo2" type="text" placeholder="" [(ngModel)]="origen.nombre_origen" name="inputnombre_origen" #nombre_origen="ngModel" required>
                       <ng-container *ngIf="nombre_origen.invalid && nombre_origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>
@@ -23,12 +23,18 @@
               <div class="row ml">
                   <div class="col-8 campos">
                       <p class="campo1">Dirección</p>
-                      <input class="campo2" type="text" placeholder="" id="pac-input" (blur)="ver(0)">
+                      <input class="campo2" type="text" placeholder="" id="pac-input" (blur)="ver(0)" [(ngModel)]="origen.origen" name="inputorigen" #origen="ngModel" required>
+                      <ng-container *ngIf="origen.invalid && origen.dirty">
+                        <span class="help is-danger">Este campo es requerido</span>
+                      </ng-container>  
                   </div>
                   <div class="col-2 campos">
                       <p class="campo1">Nro. Piso</p>
-                      <input class="campo2" type="text" placeholder="">
-                  </div>
+                      <input class="campo2" type="text" placeholder=""  [(ngModel)]="origen.departamento_origen" name="inputdepartamento_origen" #departamento_origen="ngModel" required>
+                      <ng-container *ngIf="departamento_origen.invalid && departamento_origen.dirty">
+                        <span class="help is-danger">Este campo es requerido</span>
+                      </ng-container>
+                    </div>
                   <div class="col-2 campos">
                       <p class="campo1">Puerta</p>
                       <input class="campo2" type="text" placeholder="">
@@ -37,18 +43,30 @@
               <div class="row ml">
                   <div class="col-2 campos2">
                       <p class="campo1">C.P</p>
-                      <input type="text" class="campo2">
+                      <input type="text" class="campo2" [(ngModel)]="origen.distrito_origen" name="inputdistrito_origen" #distrito_origen="ngModel" required>
+                      <ng-container *ngIf="distrito_origen.invalid && distrito_origen.dirty">
+                        <span class="help is-danger">Este campo es requerido</span>
+                      </ng-container>
                       <p class="campo1" style="margin-top: 14px; text-align: right;">FECHA</p>
                   </div>
                   <div class="col-4 campos2">
                       <p class="campo1">Teléfono</p>
-                      <input type="text" class="campo2">
-                      <input type="text" class="campo2">
+                      <input type="text" class="campo2" [(ngModel)]="origen.telefono_origen" name="inputtelefono_origen" #telefono_origen="ngModel" required>
+                      <ng-container *ngIf="telefono_origen.invalid && telefono_origen.dirty">
+                        <span class="help is-danger">Este campo es requerido</span>
+                      </ng-container>
+                      <input type="text" class="campo2" [(ngModel)]="origen.fecha" name="inputfecha" #fecha="ngModel" required>
+                      <ng-container *ngIf="fecha.invalid && fecha.dirty">
+                        <span class="help is-danger">Este campo es requerido</span>
+                      </ng-container>
                   </div>
                   <div class="col-6 campos2">
                       <p class="campo1">Notas</p>
-                      <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;"></textarea>
-                  </div>
+                      <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="origen.comentarios" name="inputcomentarios" #comentarios="ngModel" required></textarea>
+                      <ng-container *ngIf="comentarios.invalid && comentarios.dirty">
+                        <span class="help is-danger">Este campo es requerido</span>
+                      </ng-container>
+                    </div>
               </div>
           </div>
         </form>
@@ -61,7 +79,10 @@
             <div class="row ml">
                 <div class="col-4 campos">
                     <p class="campo1">Nombre(s)</p>
-                    <input class="campo2" type="text" placeholder="">
+                    <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.nombre_destino" name="inputnombre_destino" #nombre_destino="ngModel" required>
+                    <ng-container *ngIf="nombre_destino.invalid && nombre_destino.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
                 </div>
                 <div class="col-8 campos">
                     <p class="campo1">Apellido(s)</p>
@@ -71,11 +92,17 @@
             <div class="row ml">
                 <div class="col-8 campos">
                     <p class="campo1">Dirección</p>
-                    <input class="campo2" type="text" placeholder="" id="pac-input2" (blur)="ver(1)">
-                </div>
+                    <input class="campo2" type="text" placeholder="" id="pac-input2" (blur)="ver(indice)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
+                    <ng-container *ngIf="destino.invalid && destino.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
+                  </div>
                 <div class="col-2 campos">
                     <p class="campo1">Nro. Piso</p>
-                    <input class="campo2" type="text" placeholder="">
+                    <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.departamento_destino" name="inputdepartamento_destino" #departamento_destino="ngModel" required>
+                    <ng-container *ngIf="departamento_destino.invalid && departamento_destino.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
                 </div>
                 <div class="col-2 campos">
                     <p class="campo1">Puerta</p>
@@ -86,16 +113,28 @@
                 <div class="col-2 campos2">
                     <p class="campo1">C.P</p>
                     <input type="text" class="campo2">
+                    <ng-container *ngIf="nombre_destino.invalid && nombre_destino.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
                     <p class="campo1" style="margin-top: 14px; text-align: right;">FECHA</p>
                 </div>
                 <div class="col-4 campos2">
                     <p class="campo1">Teléfono</p>
                     <input type="text" class="campo2">
+                    <ng-container *ngIf="nombre_destino.invalid && nombre_destino.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
                     <input type="text" class="campo2">
+                    <ng-container *ngIf="nombre_destino.invalid && nombre_destino.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
                 </div>
                 <div class="col-6 campos2">
                     <p class="campo1">Notas</p>
                     <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;"></textarea>
+                    <ng-container *ngIf="nombre_destino.invalid && nombre_destino.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
                 </div>
             </div>
             <div class="row rango">

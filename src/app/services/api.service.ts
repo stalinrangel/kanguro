@@ -55,4 +55,16 @@ export class ApiService {
   inventario(id){
     return this.http.get(this.apiUrl+'/inventario/'+id)
   }
+  add_producto(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/producto/store',data)
+  }
+  add_color(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/color/store',data)
+  }
+  add_atributo(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/atributo/store',data)
+  }
+  subir_imagen(data): Observable<any> {
+    return this.http.post('https://www.kangurodelivery.com/Pedido/php/subirImagenProducto.php',data)
+  }
 }

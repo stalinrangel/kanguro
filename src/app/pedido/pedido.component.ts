@@ -40,7 +40,13 @@ export class PedidoComponent implements OnInit {
     'cajag':'',
     'cancelado':'',
     'reprogramado':0,
-    'tipo_usuario':''
+    'tipo_usuario':'',
+    'nombre_origen':'',
+    'origen':'',
+    'departamento_origen':'',
+    'distrito_origen':'',
+    'telefono_origen':'',
+    'comentarios':''
   }
   public destinos:any=[];
   public destino:any={
@@ -186,6 +192,7 @@ export class PedidoComponent implements OnInit {
     this.markers.push(marker)
   }
   ver(i){
+    console.log(i)
     let self=this;
     setTimeout(function(){
       console.log(self.autocomplete[i].getPlace())
