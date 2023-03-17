@@ -70,6 +70,9 @@ export class ApiService {
   crear_pedido(data): Observable<any> {
     return this.http.post(this.apiUrl+'/pedido/store',data)
   }
+  crear_pedido_ecommerce(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/pedido2/store',data)
+  }
   crear_destino(data): Observable<any> {
     return this.http.post(this.apiUrl+'/destino/store',data)
   }
