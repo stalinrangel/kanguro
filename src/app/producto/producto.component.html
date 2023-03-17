@@ -1,1 +1,37 @@
-<p>producto works!</p>
+<section class="container">
+    <div class="header">
+        <h1>E-Commerce</h1>
+        <div class="content-menu">
+            <img src="./assets/img/kanguro/add.png" alt="add" (click)="open(add,'add')">
+            <img src="./assets/img/kanguro/xls-file 1.png" alt="add">
+            <img src="./assets/img/kanguro/zoom 1.png" alt="add">
+        </div>
+    </div>
+</section>
+
+<!-- MODAL ADD -->
+<ng-template #add let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <p class="modal-title" id="modal-title-default">Detalle del Envío</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true" class="icon-delete">X</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p (click)="open(color,'color')">color</p>
+    </div>
+</ng-template>
+
+<!-- MODAL COLOR -->
+<ng-template #color let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <p class="modal-title" id="modal-title-default">Color</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true" class="icon-delete">X</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+    </div>
+</ng-template>
+

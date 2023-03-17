@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: BalooTammudu2;
+}
+.container{
+    margin: 0 auto;
+}
+h1{
+    color: #FFBD00;
+    font-family: BalooTammudu2Extra;
+    font-size: 28px;
+}
+.header{
+    margin-top: 1rem;
+    color: black;
+    padding: 16px 16px 0px 16px;
+    display: flex;
+    justify-content: space-between;
+    img{
+        margin-left: 10px;
+    }
+}
+
+/*** MODAL ADD ***/
+::ng-deep .modal-add{
+    .modal-content{
+        border-radius: 10px;
+        background-color: #fff;
+        width: 100%;
+        margin: auto;
+    }
+    .modal-header{
+        background-color: #FFBD00;
+        color: #ffffff;
+        text-align: center;
+        align-items: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .modal-title{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 19px;
+        line-height: 29px;
+        letter-spacing: -0.03em;
+        color: #FFFFFF;
+        width: 100%;
+        text-align: left;
+        margin: 20px 20px 5px;
+    }
+    .icon-delete{
+        font-family: 'Almarai-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px !important;
+        color: #FFFFFF !important;
+    }
+    .close{
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        margin-right: 0px;
+    }
+    .content-title{
+        display: flex;
+        align-items: center;
+        .title1{
+            font-family: "BalooTammudu2-Semi";
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 30px;
+            flex: 1;
+            text-align: right;
+            border-right: 3px solid #FFBD00;
+            padding-right: 5px;
+            padding-top: 18px;
+            opacity: 0.3;
+        }
+        .title2{
+            flex: 1;
+            font-family: "BalooTammudu2-Semi";
+            font-size: 22px;
+            text-align: left;
+            padding-left: 7px;
+            line-height: 35px;
+            padding-top: 16px;
+        }
+    }
+    .modal-body{
+        padding: 10px 20px;
+        font-family: 'Almarai';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 33px;
+        color: #020202;
+    }
+}

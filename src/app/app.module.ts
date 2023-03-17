@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app.routing';
 
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -81,6 +81,7 @@ import { AddProductoComponent } from './add-producto/add-producto.component';
     HttpClientModule,
     NgxBarcodeModule,
     NgxPrintModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
