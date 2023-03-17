@@ -138,6 +138,20 @@ export class AddProductoComponent implements OnInit {
       }
     })
   }
+  uploadPhotoStalin(){
+    let self = this;
+    let formData = new FormData();
+    console.log(this.photoUrl)
+    formData.append("file", this.photoUrl);
+
+    this.api.subir_imagen(formData).subscribe({
+      next(data){
+        console.log(data);
+      },error(err){
+        console.log(err.error.err);
+      }
+    })
+  }
 
   saveColor(id,imagen){
     let self = this;
