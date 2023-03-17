@@ -8,31 +8,33 @@
 .container{
     margin: 0 auto;
 }
+h1{
+    color: #FFBD00;
+}
 .header{
-    margin-top: 3rem;
-    background-color: rgba(255, 187, 0, 1);
+    margin-top: 1rem;
     color: black;
     padding: 16px 16px 16px 16px;
 }
 .title{
+    font-family: BalooTammudu2Extra;
     font-size: 22px;
     line-height: 5px;
-    margin-top: 16px;
+    margin-top: 5px;
     color: black;
-    font-family: BalooTammudu2-Semi;
 }
 .texto{
-    font-family: 'BalooTammudu2';
-    font-size: 12px;
+    font-size: 15px;
     color: black;
-    margin-bottom: 16px;
     margin-top: 5px;
+    margin-bottom: 16px;
+    font-family: BalooTammudu2;
 }
 .cuadro{   
-    padding: 40px 40px 20px 40px;
+    padding: 0px 20px 20px 20px;
 }
 .estado{   
-    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+    margin: 2.5rem 2.5rem 20px 2.5rem;
     img{
         width: 100%;
         height: auto;
@@ -53,7 +55,7 @@
 .tabla_top{
     width: 100%;
     height: 30px;
-    background-color: rgba(52, 52, 52, 1);
+    background-color: #f2f2f2;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -65,9 +67,9 @@
 .tabla{
     width: 100%;
     height: 30px;
-    background: rgba(52, 52, 52, 0.8);
-    border-bottom: 1px solid white;
-    color: white;
+    background: #f2f2f2;
+    border-top: 1px solid black;
+    color: black;
     font-family: 'Almarai';
     font-size: 13px;
     padding: 3px 0px 3px 0px;
@@ -78,6 +80,12 @@ th{padding: 3px 0px 3px 0px;}
     color: black;
     line-height: 18px;
     margin-top: 50px;
+}
+.texa{
+    font-size: 17px;
+    color: black;
+    line-height: 18px;
+    margin-top: 20px;
 }
 .tex2{
     font-size: 17px;
@@ -111,7 +119,7 @@ th{padding: 3px 0px 3px 0px;}
     color: #000;
     height: 35px;
     line-height: 18px;
-    background: #CACACA;
+    background: #F2F2F2;
     cursor: pointer;
     span{
         font-size: 13px;
@@ -130,7 +138,7 @@ th{padding: 3px 0px 3px 0px;}
     left: 0;
     right: 0;
     border-top: 0;
-    background: #E3E3E3;
+    background: #F2F2F2;
     transition: all 0.5s;
     opacity: 0;
     visibility: hidden;
@@ -180,12 +188,12 @@ th{padding: 3px 0px 3px 0px;}
 .arrow::before {
     left: -3px;
     transform: rotate(-45deg);
-    background-color: #000;
+    background-color: #FFBB00;
 }
 .arrow::after {
     left: 4px;
     transform: rotate(45deg);
-    background-color: #000;
+    background-color: #FFBB00;
 }
 .open .arrow::before {
     left: -3px;
@@ -194,4 +202,20 @@ th{padding: 3px 0px 3px 0px;}
 .open .arrow::after {
     left: 4px;
     transform: rotate(-45deg);
+}
+hr{
+    border-top: 1px solid #FFBD00;
+}
+.container-info{
+    color: #000;
+    padding: 30px 2.5rem 2.5rem 2.5rem;
+    p{
+        line-height: 20px;
+    }
+}
+b{
+    font-family: BalooTammudu2-Semi; 
+}
+.row{
+    margin-bottom: 10px;
 }

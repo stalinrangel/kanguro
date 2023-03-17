@@ -6,9 +6,16 @@
     
     <div class="cuadro">
         <p class="texto2">Seleccionar envío:</p>
-        <select name="orders" [(ngModel)]="order_select" (change)="changeOrder()">
-            <option [ngValue]="item" *ngFor="let item of orders">{{item.id}}  &nbsp; {{item.destino}} &nbsp; {{item.fecha | date: 'dd/MM/YYYY'}} </option>
-        </select>
+        <div class="select-wrapper">
+            <div class="select">
+                <div class="select__trigger"><span>{{order_select.id}}  &nbsp;&nbsp; {{order_select.destino}} &nbsp;&nbsp; {{order_select.fecha | date: 'dd/MM/YYYY'}}</span>
+                    <div class="arrow"></div>
+                </div>
+                <div class="custom-options">
+                    <span class="custom-option" *ngFor="let item of orders" data-value="item" (click)="changeOrder(item)">{{item.id}}  &nbsp;&nbsp; {{item.destino}} &nbsp;&nbsp; {{item.fecha | date: 'dd/MM/YYYY'}}</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="estado" *ngIf="status == '0'">
@@ -31,5 +38,8 @@
         <p class="tex">Estado:</p>
         <p class="tex2">ENTREGADO</p>      
     </div>
+    <div class="estado" *ngIf="status == '4'">
+        <p class="tex">Estado:</p>
+        <p class="tex2">CANCELADO</p>      
+    </div>
 </section>
-

@@ -6,36 +6,20 @@
     </div>
     
     <div class="cuadro">
-        <!--p class="texto2">Seleccionar envío:</p-->
-        <table class="lista"> 
-            <tr class="tabla_top">
-                <th>Orden</th>
-                <th>Descripción</th>
-                <th>Contacto</th>
-                <th>Fecha Solicitud</th>
-            </tr>
-            <tr class="tabla" (click)="open(detail, 'detail')">
-              <th>001</th>
-              <th>Cajas con cuadros y adornos personales</th>
-              <th>Carlos Villanueva</th>
-              <th>05/03/2023</th>
-            </tr>
-            <tr class="tabla" (click)="open(detail, 'detail')">
-                <th>001</th>
-                <th>Cajas con cuadros y adornos personales</th>
-                <th>Carlos Villanueva</th>
-                <th>05/03/2023</th>
-            </tr>
-            <tr class="tabla" (click)="open(detail, 'detail')">
-                <th>001</th>
-                <th>Cajas con cuadros y adornos personales</th>
-                <th>Carlos Villanueva</th>
-                <th>05/03/2023</th>
-            </tr>
-        </table>
-    </div>
-    <div class="estado">
-        
+        <div class="lista"> 
+            <div class="row header-table">
+                <div class="col-2">Orden</div>
+                <div class="col-4">Descripción</div>
+                <div class="col-3">Contacto</div>
+                <div class="col-3">Fecha</div>
+            </div>
+            <div class="row tabla" *ngFor="let item of orders" (click)="open(detail,'detail',item)">
+                <div class="col-2">{{item.id}}</div>
+                <div class="col-4">{{item.destino}}</div>
+                <div class="col-3">{{item.contacto}}</div>
+                <div class="col-3">{{item.fecha | date: 'dd/MM/YYYY'}}</div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -51,25 +35,29 @@
         <div class="row">
             <div class="col-4">
                 <p class="campo1">Orden Solicitud</p>
-                <p><b>K001</b></p>
+                <p><b>{{order_selected.id}}</b></p>
             </div>
             <div class="col-4">
                 <p class="campo1">Fecha de solicitud</p>
-                <p><b>08/03/2023</b></p>
+                <p><b>{{order_selected.fecha | date: 'dd/MM/YYYY'}}</b></p>
             </div>
             <div class="col-4">
                 <p class="campo1">Rango de envío</p>
-                <p><b>09 - 10 Hrs.</b></p>
+                <p><b>{{order_selected.hora_origen}}</b></p>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
                 <p class="campo1">Estado</p>
-                <p><b>ENTREGADO</b></p>
+                <p *ngIf="order_selected.estado == 0"><b>CREADO</b></p>
+                <p *ngIf="order_selected.estado == 1"><b>PROCESANDO</b></p>
+                <p *ngIf="order_selected.estado == 2"><b>EN CAMINO</b></p>
+                <p *ngIf="order_selected.estado == 3"><b>ENTREGADO</b></p>
+                <p *ngIf="order_selected.estado == 4"><b>CANCELADO</b></p>
             </div>
             <div class="col-4">
                 <p class="campo1">Fecha de envío</p>
-                <p><b>10/03/2023</b></p>
+                <p><b>{{order_selected.fecha_destino | date: 'dd/MM/YYYY'}}</b></p>
             </div>
             <div class="col-4">
                
@@ -78,47 +66,45 @@
         <div class="row">
             <div class="col-4">
                 <p class="campo1">Nro. Piso</p>
-                <p><b>2</b></p>
+                <p><b></b></p>
             </div>
             <div class="col-4">
                 <p class="campo1">Puerta</p>
-                <p><b>1</b></p>
+                <p><b></b></p>
             </div>
             <div class="col-4">
                 <p class="campo1">C.P.</p>
-                <p><b>08901</b></p>
+                <p><b></b></p>
             </div>
         </div>
         <div class="row">
             <div class="col-6">
                 <p class="campo1">Contacto</p>
-                <p><b>Carlos Villanueva</b></p>
+                <p><b>{{order_selected.contacto}}</b></p>
             </div>
             <div class="col-6">
                 <p class="campo1">Teléfono</p>
-                <p><b>123456789</b></p>
+                <p><b>{{order_selected.telefono}}</b></p>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <p class="campo1">Productos</p>
-                <p class="content-product">3 Limpiadores Multifuncionales / Color: gris / Modelo: Celeste con plomo</p>
+                <p class="content-product"></p>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-6">
                 <p class="campo1">Cantidad</p>
-                <p><b>3</b></p>
+                <p><b>1</b></p>
             </div>
             <div class="col-6">
                 <div class="content-title">
                     <p class="title1">COSTO</p>
-                    <p class="title2">50.00 €</p>
+                    <p class="title2">{{order_selected.costo}} €</p>
                 </div>
             </div>
-        </div>
-
-        
+        </div>     
     </div>
   </ng-template>

@@ -11,10 +11,13 @@ import { Router } from '@angular/router';
 export class PedidoEstadoComponent implements OnInit {
 
   orders: any;
-  order_select: any;
+  order_select: any = {
+    destino: ''
+  }
   status: string = '0';
 
-  constructor(private api: ApiService, private uss: UserStorageService, private router: Router) { }
+  constructor(private api: ApiService, private uss: UserStorageService, private router: Router) { 
+  }
 
   ngOnInit(): void {
     let self = this;
@@ -31,10 +34,17 @@ export class PedidoEstadoComponent implements OnInit {
         console.log(err.error.err);
       }
     })
+   
+    document.querySelector('.select-wrapper').addEventListener('click', function() {
+      this.querySelector('.select').classList.toggle('open');
+    })
   }
 
-  changeOrder(){
-    this.status = this.order_select.estado;
+  changeOrder(item){
+    this.order_select = item;
+    this.status = item.estado;
   }
+
+  
 
 }

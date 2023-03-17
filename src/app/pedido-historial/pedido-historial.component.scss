@@ -8,29 +8,28 @@
 .container{
     margin: 0 auto;
 }
-h1{
-    color: #FFBD00;
-}
 .header{
-    margin-top: 1rem;
+    background: rgba(244, 58, 32, 1);
+    margin-top: 3rem;
     color: black;
-    padding: 16px 16px 0px 16px;
+    padding: 16px 16px 10px 16px;
 }
 .title{
     font-family: BalooTammudu2Extra;
     font-size: 22px;
     line-height: 5px;
-    margin-top: 5px;
+    margin-top: 20px;
     color: black;
 }
 .texto{
     font-size: 15px;
     color: black;
     margin-top: 5px;
+    margin-bottom: 16px;
     font-family: BalooTammudu2;
 }
 .cuadro{   
-    padding: 20px 25px;
+    padding: 25px;
 }
 .estado{   
     margin: 25px;
@@ -42,7 +41,7 @@ h1{
 .lista{
     width: 100%;
     overflow-y: scroll;
-    max-height: 60vh;
+    max-height: 250px;
 }
 .tabla_top{
     width: 100%;
@@ -58,7 +57,7 @@ h1{
 }
 .tabla{
     width: 100%;
-    background: #F2F2F2;
+    background: #E3E3E3;
     border-bottom: 1px solid white;
     color: #000;
     font-size: 13px;
@@ -69,7 +68,7 @@ h1{
 }
 .header-table{
     width: 100%;
-    background: #FFBB00;
+    background: #CACACA;
     color: #000;   
     font-size: 13px;
     padding: 3px 0px 3px 0px;
@@ -79,6 +78,7 @@ h1{
         padding-top: 10px;
     }
 }
+th{padding: 3px 0px 3px 0px;}
 .tex{
     font-size: 18px;
     font-family: BalooTammudu2;
@@ -96,8 +96,8 @@ h1{
     flex-direction: column;
 }
 
-  /*** MODAL ***/
-  ::ng-deep .modal-detail{
+ /*** MODAL ***/
+ ::ng-deep .modal-detail{
     .modal-content{
         border-radius: 10px;
         background-color: #fff;
@@ -105,7 +105,7 @@ h1{
         margin: auto;
     }
     .modal-header{
-        background-color: #FFBD00;
+        background-color: rgba(244, 58, 32, 1);
         color: #ffffff;
         text-align: center;
         align-items: center;
@@ -145,7 +145,7 @@ h1{
             line-height: 30px;
             flex: 1;
             text-align: right;
-            border-right: 3px solid #FFBD00;
+            border-right: 3px solid rgba(244, 58, 32, 1);
             padding-right: 5px;
             padding-top: 18px;
             opacity: 0.3;
