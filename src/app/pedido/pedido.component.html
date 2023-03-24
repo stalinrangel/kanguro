@@ -1,23 +1,32 @@
 <p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">|</span> {{km | number : '1.0-2'}} KM</p>
 <section class="pedido"> 
     <div class="datos_pedido">
-        <p class="titulo">ORIGEN</p>
+        
         <form role="form">
           <div class="origen">
+            
               <div class="row" class="btn_limpiar">
-                  <p class="limpiar">Limpiar Campos</p>
+                  <p class="limpiar1" (click)="geolocate()">Limpiar Campos</p>
               </div>
+              <p class="titulo">ORIGEN</p>
               <div class="row ml">
-                  <div class="col-4 campos">
+                  <div class="col-5 campos">
                       <p class="campo1">Nombre(s)</p>
                       <input class="campo2" type="text" placeholder="" [(ngModel)]="orige.nombre_origen" name="inputnombre_origen" #nombre_origen="ngModel" required>
                       <ng-container *ngIf="nombre_origen.invalid && nombre_origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>
                   </div>
-                  <div class="col-8 campos">
+                  <div class="col-5 campos">
                       <p class="campo1">Apellido(s)</p>
                       <input class="campo2" type="text" placeholder="">
+                  </div>
+                  <div class="col-2 campos">
+                    <p class="campo1">Teléfono</p>
+                    <input type="text" class="campo2" [(ngModel)]="orige.telefono_origen" name="inputtelefono_origen" #telefono_origen="ngModel" required>
+                    <ng-container *ngIf="telefono_origen.invalid && telefono_origen.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
                   </div>
               </div>
               <div class="row ml">
@@ -47,15 +56,11 @@
                       <ng-container *ngIf="distrito_origen.invalid && distrito_origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>
-                      <p class="campo1" style="margin-top: 14px; text-align: right;">FECHA</p>
+                      <p class="campo1" style="margin-top: 18px; text-align: right;">FECHA</p>
                   </div>
                   <div class="col-4 campos2">
-                      <p class="campo1">Teléfono</p>
-                      <input type="text" class="campo2" [(ngModel)]="orige.telefono_origen" name="inputtelefono_origen" #telefono_origen="ngModel" required>
-                      <ng-container *ngIf="telefono_origen.invalid && telefono_origen.dirty">
-                        <span class="help is-danger">Este campo es requerido</span>
-                      </ng-container>
-                      <input type="text" class="campo2" [(ngModel)]="orige.fecha" name="inputfecha" #fecha="ngModel" required>
+                     
+                      <input type="text" style="margin-top: 9px;" class="campo2" [(ngModel)]="orige.fecha" name="inputfecha" #fecha="ngModel" required>
                       <ng-container *ngIf="fecha.invalid && fecha.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>
@@ -116,7 +121,7 @@
                     <ng-container *ngIf="distrito_destino.invalid && distrito_destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
-                    <p class="campo1" style="margin-top: 14px; text-align: right;">FECHA</p>
+                    <p class="campo1" style="margin-top: 18px; text-align: right;">FECHA</p>
                 </div>
                 <div class="col-4 campos2">
                     <p class="campo1">Teléfono</p>
@@ -124,7 +129,7 @@
                     <ng-container *ngIf="telefono_destino.invalid && telefono_destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
-                    <input type="text" class="campo2" [(ngModel)]="destino.fecha_destino" name="inputfecha_destino" #fecha_destino="ngModel" required>
+                    <input type="text" style="margin-top: 9px;" class="campo2" [(ngModel)]="destino.fecha_destino" name="inputfecha_destino" #fecha_destino="ngModel" required>
                     <ng-container *ngIf="fecha_destino.invalid && fecha_destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
@@ -149,14 +154,17 @@
                 </div>
             </div>
         </div>
-        <div class="medio">
-            <span class="boton" (click)="open(payment, 'payment');enviar()" >ENVIAR</span>
-        </div>
+        
     </div>
     <div class="mapa">
         <div id="map"></div>
+        <div class="row medio">
+          <span class="boton" (click)="open(payment, 'payment');enviar()" >ENVIAR</span>
+        </div>
     </div>
+    
 </section>
+
 
  <!-- MODAL SELECCION DE TAMAÑO -->
  <ng-template #classic let-c="close" let-d="dismiss">

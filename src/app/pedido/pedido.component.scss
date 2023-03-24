@@ -4,21 +4,42 @@
     box-sizing: border-box;
 }
 .datos_pedido{
-    width: 50%;
+    width: 60%;
+    background: #F1F1F1;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 15px;
+
 }
 .pedido{
     display: flex;
 }
+.content_map{
+    width: 40%;
+}
 .mapa{
-    width: 50%;
+    width: 40%;
+    background: rgba(237, 237, 237, 0.8);
+    padding: 22px 16px 94px 16px;
+    border-radius: 15px;
 }
 .ml{
     margin-right: 16px;
+    margin-top: 12px;
 }
 .btn_limpiar{
     display: flex;
     justify-content: end;
     font-size: 12px;
+}
+.limpiar1 {
+    text-align: right;
+    background-color: black;
+    font-family: BalooTammudu2;
+    color: white;
+    font-size: 13px;
+    border-radius: 0px 11px 0px 0px;
+    padding: 2px 5px 0px 5px;
 }
 .limpiar{
     text-align: right;
@@ -31,20 +52,23 @@
 .precio_km{
     text-align: right;
     font-family: BalooTammudu2Extra;
-    color: #00000032;
+    color: #000000;
     font-size: 23px;
     padding: 10px 35px 0px 0px;
 }
 .titulo{
     font-family: BalooTammudu2-Semi;
     color: red;
-    padding-left: 20px;
+    padding-left: 40px;
     font-size: 18px;
     line-height: 9px;
+    padding-top: 7px;
+    border-bottom: 2px solid rgba(255, 189, 0, 1);
 }
 .origen{
-    background-color: #343434;
+   // background-color: #343434;
     padding: 0px 0px 0px 0px;
+    color: #020202;
 }
 .campos{
     padding: 0px 0px 15px 16px;
@@ -54,7 +78,7 @@
 }
 .campo1{
     font-family: BalooTammudu2;
-    color: white;
+    color: black;
     font-size: 14px;
     line-height: 9px;
     margin-left: 1px;
@@ -62,7 +86,8 @@
 }
 .campo2{
     width: 100%;
-    border-radius: 6px;
+    border-radius: 2px;
+    border: 0px;
 }
 .campos2{
     padding: 0px 0px 15px 16px;
@@ -72,6 +97,7 @@
 .rango{
     background-color: #FFBD00;
     padding: 16px;
+    border-radius: 0px 0px 15px 15px;
 }
 .izquierda{
     display: flex;

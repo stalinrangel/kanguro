@@ -22,6 +22,7 @@ export class PedidoComponent implements OnInit {
   public km: any=0;
   public directionsRenderer = new google.maps.DirectionsRenderer();
   public directionsService = new google.maps.DirectionsService();
+  public geocoder = new google.maps.Geocoder();
 
   public orige:any={
     'tipo':'',
@@ -42,12 +43,12 @@ export class PedidoComponent implements OnInit {
     'cancelado':0,
     'reprogramado':0,
     'tipo_usuario':'',
-    'nombre_origen':'eimar',
+    'nombre_origen':'',
     'origen':'',
-    'departamento_origen':'123',
-    'distrito_origen':'1234',
-    'telefono_origen':'12345',
-    'comentarios':'123456',
+    'departamento_origen':'',
+    'distrito_origen':'',
+    'telefono_origen':'',
+    'comentarios':'',
     'lat':'',
     'lng':''
   }
@@ -64,12 +65,12 @@ export class PedidoComponent implements OnInit {
     'lat':'',
     'lng':'',
     'destino':'',
-    'departamento_destino':'dfsdf',
-    'nombre_destino':'fsfsf',
-    'telefono_destino':'234',
-    'distrito_destino':'244',
+    'departamento_destino':'',
+    'nombre_destino':'',
+    'telefono_destino':'',
+    'distrito_destino':'',
     'zona_destino':'',
-    'comentarios2':'4444444444',
+    'comentarios2':'',
     'lat2':'',
     'lng2':'',
     'km':'',
@@ -114,6 +115,30 @@ export class PedidoComponent implements OnInit {
     this.destinos.push(this.destino);
     this.initMap();
   }
+  geolocate(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position: GeolocationPosition) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          console.log(pos)
+          this.geocodePosition(pos,0);
+         // infoWindow.setPosition(pos);
+         // infoWindow.setContent("Location found.");
+         // infoWindow.open(map);
+         // map.setCenter(pos);
+        },
+        () => {
+          //handleLocationError(true, infoWindow, map.getCenter()!);
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      //handleLocationError(false, infoWindow, map.getCenter()!);
+    }
+  }
   addDestinos(){
     console.log('add')
     this.destinos.push(this.destino);
@@ -139,18 +164,43 @@ export class PedidoComponent implements OnInit {
   }
   // Initialize and add the map
   initMap() {
-    this.center = { lat: 41.3887900, lng: 2.1589900 };
+    this.center = { lat: 41.363218, lng: 2.112014 };
 
     const defaultBounds = {
-      north: this.center.lat + 0.1,
-      south: this.center.lat - 0.1,
-      east: this.center.lng + 0.1,
-      west: this.center.lng - 0.1,
+      north: this.center.lat + 0.9,
+      south: this.center.lat - 0.9,
+      east: this.center.lng + 0.9,
+      west: this.center.lng - 0.9,
     };
     // The map, centered at Uluru
     this.map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
       center: this.center,
+      draggable: true
+    });
+    this.directionsService = new google.maps.DirectionsService();
+    var mapa=this.map;
+    this.directionsRenderer = new google.maps.DirectionsRenderer({
+      draggable: true,
+      mapa,
+      panel: document.getElementById("panel") as HTMLElement,
+    });
+    console.log(this.directionsRenderer);
+    this.directionsRenderer.addListener("directions_changed", () => {
+      const directions = this.directionsRenderer.getDirections();
+
+      if (directions) {
+        //console.log(directions)
+        let info=directions;
+        console.log(info)
+        console.log(info.routes[0].legs[0].start_address)
+        console.log(info.routes[0].legs[0].end_address)
+        this.orige.origen=info.routes[0].legs[0].start_address;
+        this.orige.km=info.routes[0].legs[0].distance.value/1000;
+        this.km=info.routes[0].legs[0].distance.value/1000;
+        this.destinos[0].destino=info.routes[0].legs[0].end_address;
+        //computeTotalDistance(directions);
+      }
     });
     // The marker, positioned at Uluru
     /*const marker = new google.maps.Marker({
@@ -166,16 +216,26 @@ export class PedidoComponent implements OnInit {
         bounds: defaultBounds,
         componentRestrictions: { country: "es" },
         fields: ["address_components", "geometry", "icon", "name"],
-        strictBounds: false,
+        strictBounds: true,
+        types: ["geocode"],
+      };
+      const options2 = {
+        fields: ["address_components", "geometry", "icon", "name"],
         types: ["establishment"],
       };
       self.autocomplete[0] = new google.maps.places.Autocomplete(input, options);
       self.autocomplete[1] = new google.maps.places.Autocomplete(input2, options);
       self.places = new google.maps.places.PlacesService(self.map);
       self.directionsRenderer.setMap(self.map);
-      
+      const newBounds = new google.maps.LatLngBounds(this.center);
+
+      //self.autocomplete[0].setBounds(newBounds);
+     // self.autocomplete[1].setBounds(newBounds);
       console.log(self.autocomplete)
     }, 800);
+    setTimeout(function(){
+     // self.geolocate();
+    }, 1800)
   } 
   onPlaceChanged(i):any {
     const place = this.autocomplete[i].getPlace();
@@ -183,20 +243,48 @@ export class PedidoComponent implements OnInit {
     if (place.geometry && place.geometry.location) {
       this.map.panTo(place.geometry.location);
       this.map.setZoom(15);
-      this.set_markers(place.geometry.location);
+      this.set_markers(place.geometry.location,i);
     } else {
       (document.getElementById("autocomplete") as HTMLInputElement).placeholder =
         "Enter a city";
     }
   }
-  set_markers(val){
+  set_markers(val,i){
     console.log(val)
     
     const marker = new google.maps.Marker({
       position: val,
       map: this.map,
+      draggable: true,
     });
     this.markers.push(marker)
+    let self=this;
+    marker.addListener('dragend',(event) => { 
+      console.log(event.latLng.lat());
+      console.log(event.latLng.lng());
+      self.geocodePosition(event.latLng,i)
+    });
+  }
+  geocodePosition(pos,i) {
+    let self=this;
+    this.geocoder.geocode({
+      'latLng': pos
+    }, function(responses) {
+      console.log(responses);
+      if (responses && responses.length > 0) {
+        console.log(responses[0]);
+        if (i==0) {
+          self.orige.origen=responses[0].formatted_address;
+          self.orige.distrito_origen=responses[0].address_components[6].long_name;
+
+        }else{
+          console.log(i)
+          self.destinos[i-1].destino=responses[0].formatted_address;
+          self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
+        }
+      } else {
+      }
+    });
   }
   ver(i){
     console.log(i)
@@ -209,6 +297,7 @@ export class PedidoComponent implements OnInit {
   ver2(i){
     console.log(i)
     let self=this;
+    //this.limpiar();
     setTimeout(function(){
       console.log(self.autocomplete[i].getPlace())
       self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
@@ -238,6 +327,7 @@ export class PedidoComponent implements OnInit {
     this.destinos[i-1].lng2=this.markers[1].getPosition().lng();
     console.log(this.markers[0].getPosition().lat())
     console.log(this.markers[1].getPosition().lat())
+    this.limpiar();
   }
   calculateAndDisplayRoute(
     directionsService: google.maps.DirectionsService,
@@ -319,7 +409,8 @@ export class PedidoComponent implements OnInit {
     this.api.crear_destino(data).subscribe({
       next(data){
         console.log(data);
-        
+        alert('Pedido creado!');
+        self.router.navigate(['/estadoPedido']);
       },error(err){
         console.log(err.error.err);
       }
