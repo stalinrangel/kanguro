@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons,  NgbCarousel, NgbCarouselModule, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../services/api.service';
 import { UserStorageService } from '../services/user-storage.service';
+import { NgbDateStruct, NgbCalendar, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 declare var google: any;
 
 @Component({
@@ -23,6 +24,20 @@ export class PedidoComponent implements OnInit {
   public directionsRenderer = new google.maps.DirectionsRenderer();
   public directionsService = new google.maps.DirectionsService();
   public geocoder = new google.maps.Geocoder();
+
+  public rangos:any=[
+    '10-11',
+    '11-12',
+    '12-13',
+    '13-14',
+    '14-15',
+    '15-16',
+    '16-17',
+    '17-18',
+    '18-19'
+  ];
+  public rango:any;
+  public hora:any;
 
   public orige:any={
     'tipo':'',
@@ -89,7 +104,7 @@ export class PedidoComponent implements OnInit {
   public fecha:any;
 
   constructor(
-    private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router
+    private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router, private calendar: NgbCalendar
   ) { }
 
   ngOnInit(): void {
@@ -157,10 +172,92 @@ export class PedidoComponent implements OnInit {
         console.log(self.fecha.getMonth());
         console.log(self.fecha.getFullYear());
         console.log(self.fecha.getHours());
+        self.hora=self.fecha.getHours()+6;
+        self.asignarango();
         console.log(self.fecha.getFullYear()+'-'+self.fecha.getMonth()+'-'+self.fecha.getDate()+' '+self.fecha.getHours()+':'+'00'+':'+'00');
         self.initDatos();
       }
     })
+  }
+  
+  asignarango(){
+    if (this.hora<10) {
+      this.rangos=[
+        '10-11',
+        '11-12',
+        '12-13',
+        '13-14',
+        '14-15',
+        '15-16',
+        '16-17',
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==10) {
+      this.rangos=[
+        '11-12',
+        '12-13',
+        '13-14',
+        '14-15',
+        '15-16',
+        '16-17',
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==11) {
+      this.rangos=[
+        '12-13',
+        '13-14',
+        '14-15',
+        '15-16',
+        '16-17',
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==12) {
+      this.rangos=[
+        '13-14',
+        '14-15',
+        '15-16',
+        '16-17',
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==13) {
+      this.rangos=[
+        '14-15',
+        '15-16',
+        '16-17',
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==14) {
+      this.rangos=[
+        '15-16',
+        '16-17',
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==15) {
+      this.rangos=[
+        '16-17',
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==16) {
+      this.rangos=[
+        '17-18',
+        '18-19'
+      ];
+    }else if (this.hora==17) {
+      this.rangos=[
+        '18-19'
+      ];
+    }else if (this.hora>18) {
+      this.rangos=[
+        
+      ];
+    }
   }
   // Initialize and add the map
   initMap() {
@@ -195,10 +292,13 @@ export class PedidoComponent implements OnInit {
         console.log(info)
         console.log(info.routes[0].legs[0].start_address)
         console.log(info.routes[0].legs[0].end_address)
-        this.orige.origen=info.routes[0].legs[0].start_address;
+        this.geocodePosition(info.routes[0].legs[0].start_location,0)
+        this.geocodePosition(info.routes[0].legs[0].end_location,1)
+
+      /*this.orige.origen=info.routes[0].legs[0].start_address;
         this.orige.km=info.routes[0].legs[0].distance.value/1000;
         this.km=info.routes[0].legs[0].distance.value/1000;
-        this.destinos[0].destino=info.routes[0].legs[0].end_address;
+        this.destinos[0].destino=info.routes[0].legs[0].end_address;*/
         //computeTotalDistance(directions);
       }
     });
@@ -240,6 +340,14 @@ export class PedidoComponent implements OnInit {
   onPlaceChanged(i):any {
     const place = this.autocomplete[i].getPlace();
     console.log(place)
+
+    if (i==0) {
+      this.orige.distrito_origen=place.address_components[6].long_name;
+    }else{
+      console.log(i)
+      this.destinos[i-1].distrito_destino=place.address_components[6].long_name;
+    }
+
     if (place.geometry && place.geometry.location) {
       this.map.panTo(place.geometry.location);
       this.map.setZoom(15);
@@ -276,11 +384,22 @@ export class PedidoComponent implements OnInit {
         if (i==0) {
           self.orige.origen=responses[0].formatted_address;
           self.orige.distrito_origen=responses[0].address_components[6].long_name;
+          if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
+            self.orige.distrito_origen=responses[0].address_components[6].long_name;
+          }else if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
+            self.orige.distrito_origen=responses[0].address_components[5].long_name;
+          }
+          
 
         }else{
           console.log(i)
           self.destinos[i-1].destino=responses[0].formatted_address;
-          self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
+          if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
+            self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
+          }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
+            self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
+          }
+          
         }
       } else {
       }
@@ -291,7 +410,14 @@ export class PedidoComponent implements OnInit {
     let self=this;
     setTimeout(function(){
       console.log(self.autocomplete[i].getPlace())
+      if (i==0) {
+        self.orige.distrito_origen=self.autocomplete[i].getPlace().address_components[6].long_name;
+      }else{
+        console.log(i)
+        self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[6].long_name;
+      }
       self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
+
     }, 800);
   }
   ver2(i){

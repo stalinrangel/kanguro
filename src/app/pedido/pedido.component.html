@@ -30,42 +30,52 @@
                   </div>
               </div>
               <div class="row ml">
-                  <div class="col-8 campos">
+                  <div class="col-7 campos">
                       <p class="campo1">Dirección</p>
                       <input class="campo2" type="text" placeholder="" id="pac-input" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                      <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
                       <ng-container *ngIf="origen.invalid && origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>  
                   </div>
-                  <div class="col-2 campos">
+                  <div class="col-1 campos">
                       <p class="campo1">Nro. Piso</p>
                       <input class="campo2" type="text" placeholder=""  [(ngModel)]="orige.departamento_origen" name="inputdepartamento_origen" #departamento_origen="ngModel" required>
                       <ng-container *ngIf="departamento_origen.invalid && departamento_origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>
                     </div>
-                  <div class="col-2 campos">
+                  <div class="col-1 campos">
                       <p class="campo1">Puerta</p>
                       <input class="campo2" type="text" placeholder="">
                   </div>
+                  <div class="col-1 campos">
+                    <p class="campo1">C.P</p>
+                    <input type="text" class="campo2" [(ngModel)]="orige.distrito_origen" name="inputdistrito_origen" #distrito_origen="ngModel" required>
+                    <ng-container *ngIf="distrito_origen.invalid && distrito_origen.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
+                  </div>
+                  <div class="col-2 campos">
+                    <p class="campo1">Fecha</p>
+                    <input type="text" class="campo2" [(ngModel)]="orige.fecha" ngbDatepicker #d="ngbDatepicker" name="inputfecha" #fecha="ngModel" required>
+                    <input
+                    class="form-control"
+                    placeholder="DD/MM/YYYY"
+                    name="dp"
+                    [(ngModel)]="orige.fecha"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                    (navigate)="geolocate()"
+                />
+                    <ng-container *ngIf="fecha.invalid && fecha.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
+                </div>
               </div>
               <div class="row ml">
-                  <div class="col-2 campos2">
-                      <p class="campo1">C.P</p>
-                      <input type="text" class="campo2" [(ngModel)]="orige.distrito_origen" name="inputdistrito_origen" #distrito_origen="ngModel" required>
-                      <ng-container *ngIf="distrito_origen.invalid && distrito_origen.dirty">
-                        <span class="help is-danger">Este campo es requerido</span>
-                      </ng-container>
-                      <p class="campo1" style="margin-top: 18px; text-align: right;">FECHA</p>
-                  </div>
-                  <div class="col-4 campos2">
-                     
-                      <input type="text" style="margin-top: 9px;" class="campo2" [(ngModel)]="orige.fecha" name="inputfecha" #fecha="ngModel" required>
-                      <ng-container *ngIf="fecha.invalid && fecha.dirty">
-                        <span class="help is-danger">Este campo es requerido</span>
-                      </ng-container>
-                  </div>
-                  <div class="col-6 campos2">
+                  
+                  <div class="col-10 campos">
                       <p class="campo1">Notas</p>
                       <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="orige.comentarios" name="inputcomentarios" #comentarios="ngModel" required></textarea>
                       <ng-container *ngIf="comentarios.invalid && comentarios.dirty">
@@ -82,59 +92,55 @@
                 <p class="limpiar" (click)="limpiar()">Limpiar Campos</p>
             </div>
             <div class="row ml">
-                <div class="col-4 campos">
+                <div class="col-5 campos">
                     <p class="campo1">Nombre(s)</p>
                     <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.nombre_destino" name="inputnombre_destino" #nombre_destino="ngModel" required>
                     <ng-container *ngIf="nombre_destino.invalid && nombre_destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
                 </div>
-                <div class="col-8 campos">
+                <div class="col-5 campos">
                     <p class="campo1">Apellido(s)</p>
                     <input class="campo2" type="text" placeholder="">
                 </div>
             </div>
             <div class="row ml">
-                <div class="col-8 campos">
+                <div class="col-7 campos">
                     <p class="campo1">Dirección</p>
                     <input class="campo2" type="text" placeholder="" id="pac-input2" (blur)="ver2(indice+1)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
                     <ng-container *ngIf="destino.invalid && destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
                   </div>
-                <div class="col-2 campos">
+                <div class="col-1 campos">
                     <p class="campo1">Nro. Piso</p>
                     <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.departamento_destino" name="inputdepartamento_destino" #departamento_destino="ngModel" required>
                     <ng-container *ngIf="departamento_destino.invalid && departamento_destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
                 </div>
-                <div class="col-2 campos">
+                <div class="col-1 campos">
                     <p class="campo1">Puerta</p>
                     <input class="campo2" type="text" placeholder="">
                 </div>
+                <div class="col-1 campos">
+                  <p class="campo1">C.P</p>
+                  <input type="text" class="campo2" [(ngModel)]="destino.distrito_destino" name="inputdistrito_destino" #distrito_destino="ngModel" required>
+                  <ng-container *ngIf="distrito_destino.invalid && distrito_destino.dirty">
+                    <span class="help is-danger">Este campo es requerido</span>
+                  </ng-container>
+                </div>
+                <div class="col-2 campos">
+                  <p class="campo1">Teléfono</p>
+                  <input type="text" class="campo2" [(ngModel)]="destino.telefono_destino" name="inputtelefono_destino" #telefono_destino="ngModel" required>
+                  <ng-container *ngIf="telefono_destino.invalid && telefono_destino.dirty">
+                    <span class="help is-danger">Este campo es requerido</span>
+                  </ng-container>
+                </div>
             </div>
             <div class="row ml">
-                <div class="col-2 campos2">
-                    <p class="campo1">C.P</p>
-                    <input type="text" class="campo2" [(ngModel)]="destino.distrito_destino" name="inputdistrito_destino" #distrito_destino="ngModel" required>
-                    <ng-container *ngIf="distrito_destino.invalid && distrito_destino.dirty">
-                      <span class="help is-danger">Este campo es requerido</span>
-                    </ng-container>
-                    <p class="campo1" style="margin-top: 18px; text-align: right;">FECHA</p>
-                </div>
-                <div class="col-4 campos2">
-                    <p class="campo1">Teléfono</p>
-                    <input type="text" class="campo2" [(ngModel)]="destino.telefono_destino" name="inputtelefono_destino" #telefono_destino="ngModel" required>
-                    <ng-container *ngIf="telefono_destino.invalid && telefono_destino.dirty">
-                      <span class="help is-danger">Este campo es requerido</span>
-                    </ng-container>
-                    <input type="text" style="margin-top: 9px;" class="campo2" [(ngModel)]="destino.fecha_destino" name="inputfecha_destino" #fecha_destino="ngModel" required>
-                    <ng-container *ngIf="fecha_destino.invalid && fecha_destino.dirty">
-                      <span class="help is-danger">Este campo es requerido</span>
-                    </ng-container>
-                </div>
-                <div class="col-6 campos2">
+               
+                <div class="col-10 campos2">
                     <p class="campo1">Notas</p>
                     <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="destino.comentarios2" name="inputcomentarios2" #comentarios2="ngModel" required></textarea>
                     <ng-container *ngIf="comentarios2.invalid && comentarios2.dirty">
@@ -147,7 +153,11 @@
                     <p class="title_rango">
                         Rango de envío
                     </p>   
-                    <select name="" id="" class="sle"></select>
+                    <select [(ngModel)]="destino.hora_destino" class="sle">
+                      <option *ngFor="let r of rangos" [value]="r">
+                        {{r}}
+                      </option>
+                  </select>
                 </div>
                 <div class="col-6 derecha">
                     <span class="btn_espacio" (click)="open(classic, 'classic')">ELEGIR ESPACIO</span>
