@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { UserStorageService } from '../services/user-storage.service';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SesionService } from '../services/sesion.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class SesionComponent implements OnInit {
     password:this.password
   };
 
-  constructor(private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router) { }
+  constructor(private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router, private sesion:SesionService) { }
 
   ngOnInit(): void {
   }
@@ -50,7 +51,7 @@ export class SesionComponent implements OnInit {
             self.router.navigate(['/pedido']);
           }
           
-          
+          self.sesion.emitirEvento();
         }, 800);
       },error(err){
         console.log(err.error.err);

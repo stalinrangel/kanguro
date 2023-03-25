@@ -25,6 +25,14 @@ export class PedidoComponent implements OnInit {
   public directionsService = new google.maps.DirectionsService();
   public geocoder = new google.maps.Geocoder();
 
+  public box1=false;
+  public box2=false;
+  public box3=false;
+  public box4=false;
+
+  public precio:any='PRECIO';
+  public cajas=0;
+
   public rangos:any=[
     '10-11',
     '11-12',
@@ -438,6 +446,7 @@ export class PedidoComponent implements OnInit {
   calculekm(i){
     var n=this.markers.length;
     console.log(n);
+    this.km=0;
     this.km=this.km+this.haversine_distance(this.markers[i-1],this.markers[i]);
     this.destinos[i-1].km=this.haversine_distance(this.markers[i-1],this.markers[i]);
 
@@ -541,6 +550,79 @@ export class PedidoComponent implements OnInit {
         console.log(err.error.err);
       }
     })
+  }
+
+  boxes(){
+    this.cajas=0;
+    console.log(this.box1, this.box2,this.box3,this.box4)
+    if (this.box1) {
+      this.cajas=this.cajas+1;
+    }
+    if (this.box2) {
+      this.cajas=this.cajas+1;
+    }
+    if (this.box3) {
+      this.cajas=this.cajas+1;
+    }
+    if (this.box4) {
+      this.cajas=this.cajas+1;
+    }
+    console.log(this.cajas)
+    this.calcular();
+  }
+
+  calcular(){
+    let xl1=1.80;
+    let xl2=2.40;
+    let xl3=3.00;
+    let xl4=3.60;
+
+    this.precio=0;
+    console.log(this.precio,this.km,this.cajas);
+    if (this.cajas==0) {
+      alert('Seleccione una el tamano de su envio');    
+    }else{
+      console.log(this.precio,this.km,this.cajas);
+      if (this.km==0) {
+        alert('Seleccione un origen y un destino');  
+      } else {
+        console.log(this.precio,this.km,this.cajas);
+          if (this.km>20) {
+            alert('Tu pedido es mayor a 20 km no lo podemos procesar.');
+          }else{
+            console.log(this.precio,this.km,this.cajas);
+            if (this.km<=5) {
+              if (this.cajas==1) {
+              this.precio=xl1*5; 
+              }
+              if (this.cajas==2) {
+                this.precio=xl2*5; 
+              }
+              if (this.cajas==3) {
+                this.precio=xl3*5; 
+              }
+              if (this.cajas==4) {
+                this.precio=xl4*5; 
+              }
+            }else if (this.km>5) {
+                
+                if (this.cajas==1) {
+                  this.precio=xl1*this.km; 
+                }
+                if (this.cajas==2) {
+                  this.precio=xl2*this.km; 
+                }
+                if (this.cajas==3) {
+                  this.precio=xl3*this.km; 
+                }
+                if (this.cajas==4) {
+                  this.precio=xl4*this.km; 
+                }
+            }
+          }
+      }
+    }
+
   }
 
   open(content, type) {

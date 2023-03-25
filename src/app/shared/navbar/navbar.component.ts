@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 import { UserStorageService } from '../../services/user-storage.service';
+import { SesionService } from 'src/app/services/sesion.service';
 
 @Component({
     selector: 'app-navbar',
@@ -17,8 +18,9 @@ export class NavbarComponent implements OnInit {
     public user: any;
     public id: any;
     public showApp:any=0;
+    public ensesion: any={name:null};
 
-    constructor(public location: Location, private router: Router, private uss: UserStorageService) {
+    constructor(public location: Location, private router: Router, private uss: UserStorageService, private sesion: SesionService) {
         var mediaqueryList = window.matchMedia("(min-width: 992px)");
         if(mediaqueryList.matches) {
             this.showWeb = true;
@@ -32,6 +34,30 @@ export class NavbarComponent implements OnInit {
             }
         }
         console.log(this.showApp)
+        this.check()
+        sesion.$emitter.subscribe(() => {
+            this.check()
+          });
+    }
+
+    check(){
+        console.log(this.uss)
+        this.user=this.uss.user;
+        console.log(this.user)
+        if(!this.user){
+            this.ensesion={name:null};
+            console.log(this.ensesion);
+        }else if (this.user.user) {
+            this.ensesion=this.user.user;
+            console.log(this.ensesion);
+        }
+        
+        
+        
+    }
+
+    iniciar(){
+        this.router.navigate(['/iniciar'])
     }
 
     ngOnInit() {
@@ -54,6 +80,7 @@ export class NavbarComponent implements OnInit {
     }
 
     getUser(){
+        this.check();
         this.user=this.uss.user;
         if(this.user){
             if (this.user.user.tipo_usuario == '1') {

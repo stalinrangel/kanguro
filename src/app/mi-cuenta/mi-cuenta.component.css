@@ -30,6 +30,10 @@
     color: white;
     font-size: 20px;
 }
+.cerrar{
+    border: 1px solid white;
+    text-align: center;
+}
 
 .gallery{ 
     margin: 1rem auto;

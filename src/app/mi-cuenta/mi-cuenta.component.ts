@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UserStorageService } from '../services/user-storage.service';
 import { Router } from '@angular/router';
+import { SesionService } from '../services/sesion.service';
 
 @Component({
   selector: 'app-mi-cuenta',
@@ -19,7 +20,7 @@ export class MiCuentaComponent implements OnInit {
     email: ''
   };
 
-  constructor(private api: ApiService, private uss: UserStorageService, private router: Router) { }
+  constructor(private api: ApiService, private uss: UserStorageService, private router: Router, private sesion:SesionService) { }
 
   ngOnInit(): void {
     console.log(this.uss)
@@ -28,6 +29,12 @@ export class MiCuentaComponent implements OnInit {
     this.id=this.user.user.id;
     console.log(this.id)
     this.getInfo();
+  }
+
+  cerrar(){
+    this.uss.destroy();
+    this.sesion.emitirEvento();
+    this.router.navigate(['/iniciar']);
   }
 
   getInfo(){

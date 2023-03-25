@@ -122,7 +122,7 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto"> <span class="sesion" *ngIf="ensesion.name!=null"> Hola, {{ensesion.name}} </span> <span class="sesion" *ngIf="ensesion.name==null" (click)="iniciar()">Iniciar sesión</span>
         <li class="nav-item ml-lg-auto">
           <a class="nav-link nav-link-icon" href="/#/miCuenta" data-toggle="tooltip">
             <img src="./assets/img/kanguro/profile.png" alt="">

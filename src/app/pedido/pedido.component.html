@@ -1,4 +1,4 @@
-<p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">|</span> {{km | number : '1.0-2'}} KM</p>
+<p class="precio_km">{{precio | number : '1.0-2'}} € <span style="color:#FFBD00; font-weight: bold;">|</span> {{km | number : '1.0-2'}} KM</p>
 <section class="pedido"> 
     <div class="datos_pedido">
         
@@ -58,16 +58,7 @@
                   </div>
                   <div class="col-2 campos">
                     <p class="campo1">Fecha</p>
-                    <input type="text" class="campo2" [(ngModel)]="orige.fecha" ngbDatepicker #d="ngbDatepicker" name="inputfecha" #fecha="ngModel" required>
-                    <input
-                    class="form-control"
-                    placeholder="DD/MM/YYYY"
-                    name="dp"
-                    [(ngModel)]="orige.fecha"
-                    ngbDatepicker
-                    #d="ngbDatepicker"
-                    (navigate)="geolocate()"
-                />
+                    <input type="text" class="campo2" [(ngModel)]="orige.fecha" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" name="inputfecha" #fecha="ngModel" required>
                     <ng-container *ngIf="fecha.invalid && fecha.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
@@ -190,13 +181,13 @@
               <div class="container">
                 <div class="row" style="border-bottom: 1px solid #969696;">
                   <div class="col-6 line-col pd-checkbox" style="padding-top: 10px;">
-                    <input class="form-check-input" type="checkbox" value="" id="box1">
+                    <input class="form-check-input" type="checkbox" value="" id="box1" [(ngModel)]="box1" >
                     <label for="box1">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
                   </div>
                   <div class="col-6 pd-checkbox" style="padding-top: 10px;">
-                    <input class="form-check-input" type="checkbox" value="" id="box2">
+                    <input class="form-check-input" type="checkbox" value="" id="box2" [(ngModel)]="box2">
                     <label for="box2">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
@@ -204,13 +195,13 @@
                 </div>
                 <div class="row">
                   <div class="col-6 line-col pd-checkbox">
-                    <input class="form-check-input" type="checkbox" value="" id="box3">
+                    <input class="form-check-input" type="checkbox" value="" id="box3" [(ngModel)]="box3">
                     <label for="box3">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
                   </div>
                   <div class="col-6 pd-checkbox">
-                    <input class="form-check-input" type="checkbox" value="" id="box4">
+                    <input class="form-check-input" type="checkbox" value="" id="box4" [(ngModel)]="box4">
                     <label for="box4">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
@@ -245,7 +236,7 @@
             <div class="desc-text">
               <p>Máximo 25 kg</p>
             </div>
-            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="c('Close click')">SELECCIONAR</button>
+            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="boxes(); c('Close click')">SELECCIONAR</button>
           </div>
         </div>
       </div>
