@@ -1,5 +1,6 @@
 <main>
    <!-- VERSION APP -->
+   <div id="map"></div>
   <section *ngIf="!showWeb">
     <div class="head">
       <div>
@@ -8,10 +9,12 @@
       </div>
       <img src="./assets/img/kanguro/box XL Kanguro 1.png" alt="" class="box">
     </div>
+    
     <div>
-      <input type="text" class="direccion" placeholder="Direccion de Recojida" style="margin-bottom: 14px;">
-      <input type="text" class="direccion" placeholder="Direccion de Entrega">
+      <input type="text" class="direccion" placeholder="Direccion de Recojida" style="margin-bottom: 14px;" [(ngModel)]="infopedido.origen" id="pac-input" (blur)="ver(0)">
+      <input type="text" class="direccion" placeholder="Direccion de Entrega" [(ngModel)]="infopedido.destino" id="pac-input2" (blur)="ver(1)">
     </div>
+    
     <div class="image-container ">
       <p class="text_space">Elige tu espacio</p>
     </div>
@@ -21,13 +24,13 @@
         <div class="container">
           <div class="row" style="border-bottom: 1px solid #969696;">
             <div class="col-6 line-col pd-checkbox" style="padding-top: 10px;">
-              <input class="form-check-input" type="checkbox" value="" id="box1">
+              <input class="form-check-input" type="checkbox" value="" id="box1" [(ngModel)]="box1">
               <label for="box1" (click)="open(classic,'Cotizar', '')">
                 <img src="./assets/img/kanguro/box.png" alt="box">
               </label>
             </div>
             <div class="col-6 pd-checkbox" style="padding-top: 10px;">
-              <input class="form-check-input" type="checkbox" value="" id="box2">
+              <input class="form-check-input" type="checkbox" value="" id="box2" [(ngModel)]="box2">
               <label for="box2" (click)="open(classic,'Cotizar', '')">
                 <img src="./assets/img/kanguro/box.png" alt="box">
               </label>
@@ -35,13 +38,13 @@
           </div>
           <div class="row">
             <div class="col-6 line-col pd-checkbox">
-              <input class="form-check-input" type="checkbox" value="" id="box3">
+              <input class="form-check-input" type="checkbox" value="" id="box3" [(ngModel)]="box3">
               <label for="box3" (click)="open(classic,'Cotizar', '')">
                 <img src="./assets/img/kanguro/box.png" alt="box">
               </label>
             </div>
             <div class="col-6 pd-checkbox">
-              <input class="form-check-input" type="checkbox" value="" id="box4">
+              <input class="form-check-input" type="checkbox" value="" id="box4" [(ngModel)]="box4">
               <label for="box4" (click)="open(classic,'Cotizar', '')">
                 <img src="./assets/img/kanguro/box.png" alt="box">
               </label>
@@ -62,10 +65,11 @@
       <p class="cm120">126cm</p>
     </div>
     <div class="image-container" style="margin-top: 0px;">
-      <p class="text-price-empty">PRECIO</p>
+      <p class="text-price-empty"><span *ngIf="!precio">PRECIO</span><span *ngIf="precio" style="color:#000000 !important">{{precio | number : '1.0-2'}} €</span></p>
     </div>
     <div class="image-container ">
-      <button class="solicitar" [routerLink]="['/iniciar']">SOLICITAR</button>
+      <button class="solicitar" *ngIf="!soli">SOLICITAR</button>
+      <button class="solicitar" *ngIf="soli" (click)="solicitar()" style="color:white">SOLICITAR</button>
     </div>
   </section>
 
@@ -82,14 +86,15 @@
               <img src="./assets/img/kanguro/box XL Kanguro 1.png" alt="" class="box">
             </div>
             <div>
-              <input type="text" class="direccion" placeholder="Direccion de Recojida" style="margin-bottom: 14px;">
-              <input type="text" class="direccion" placeholder="Direccion de Entrega">
+              <input type="text" class="direccion" placeholder="Direccion de Recojida" style="margin-bottom: 14px;"  [(ngModel)]="infopedido.origen" id="pac-input" (blur)="ver(0)">
+              <input type="text" class="direccion" placeholder="Direccion de Entrega"  [(ngModel)]="infopedido.destino" id="pac-input2" (blur)="ver(1)">
             </div>
             <div class="image-container">
-              <p class="text-price-empty">PRECIO</p>
+              <p class="text-price-empty"><span *ngIf="!precio">PRECIO</span><span *ngIf="precio" style="color:#000000 !important">{{precio | number : '1.0-2'}} €</span></p>
             </div>
             <div class="image-container ">
-              <button class="solicitar" [routerLink]="['/iniciar']">SOLICITAR</button>
+              <button class="solicitar" *ngIf="!soli">SOLICITAR</button>
+              <button class="solicitar" *ngIf="soli" (click)="solicitar()" style="color:white">SOLICITAR</button>
             </div>
           </div>
           <div class="col-6">
@@ -101,13 +106,13 @@
                 <div class="container">
                   <div class="row" style="border-bottom: 1px solid #969696;">
                     <div class="col-6 line-col pd-checkbox" style="padding-top: 10px;">
-                      <input class="form-check-input" type="checkbox" value="" id="box1">
+                      <input class="form-check-input" type="checkbox" value="" id="box1" [(ngModel)]="box1">
                       <label for="box1" (click)="open(classic,'Cotizar', '')">
                         <img src="./assets/img/kanguro/box.png" alt="box">
                       </label>
                     </div>
                     <div class="col-6 pd-checkbox" style="padding-top: 10px;">
-                      <input class="form-check-input" type="checkbox" value="" id="box2">
+                      <input class="form-check-input" type="checkbox" value="" id="box2" [(ngModel)]="box2">
                       <label for="box2" (click)="open(classic,'Cotizar', '')">
                         <img src="./assets/img/kanguro/box.png" alt="box">
                       </label>
@@ -115,13 +120,13 @@
                   </div>
                   <div class="row">
                     <div class="col-6 line-col pd-checkbox">
-                      <input class="form-check-input" type="checkbox" value="" id="box3">
+                      <input class="form-check-input" type="checkbox" value="" id="box3" [(ngModel)]="box3">
                       <label for="box3" (click)="open(classic,'Cotizar', '')">
                         <img src="./assets/img/kanguro/box.png" alt="box">
                       </label>
                     </div>
                     <div class="col-6 pd-checkbox">
-                      <input class="form-check-input" type="checkbox" value="" id="box4">
+                      <input class="form-check-input" type="checkbox" value="" id="box4" [(ngModel)]="box4">
                       <label for="box4" (click)="open(classic,'Cotizar', '')">
                         <img src="./assets/img/kanguro/box.png" alt="box">
                       </label>
@@ -241,7 +246,7 @@
             <div class="desc-text">
               <p>Máximo 25 kg</p>
             </div>
-            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="c('Close click')">SELECCIONAR</button>
+            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="boxes();c('Close click')">SELECCIONAR</button>
           </div>
         </div>
       </div>

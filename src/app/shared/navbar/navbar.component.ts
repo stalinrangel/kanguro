@@ -50,6 +50,11 @@ export class NavbarComponent implements OnInit {
         }else if (this.user.user) {
             this.ensesion=this.user.user;
             console.log(this.ensesion);
+            if (this.ensesion.tipo_usuario == '1') {
+                this.showApp = 0;
+            } else {
+                this.showApp = 1;
+            }
         }
         
         

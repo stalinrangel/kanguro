@@ -272,10 +272,10 @@ export class PedidoComponent implements OnInit {
     this.center = { lat: 41.363218, lng: 2.112014 };
 
     const defaultBounds = {
-      north: this.center.lat + 0.9,
-      south: this.center.lat - 0.9,
-      east: this.center.lng + 0.9,
-      west: this.center.lng - 0.9,
+      north: this.center.lat + 0.2,
+      south: this.center.lat - 0.2,
+      east: this.center.lng + 0.2,
+      west: this.center.lng - 0.2,
     };
     // The map, centered at Uluru
     this.map = new google.maps.Map(document.getElementById("map"), {

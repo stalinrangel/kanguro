@@ -1,8 +1,10 @@
 import { ViewportScroller } from '@angular/common';
 import { serializeNodes } from '@angular/compiler/src/i18n/digest';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons,  NgbCarousel, NgbCarouselModule, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../services/api.service';
+import { UserStorageService } from '../services/user-storage.service';
 
 @Component({
     selector: 'app-landing',
@@ -18,6 +20,7 @@ export class LandingComponent implements OnInit {
   public pedidos:any=[];
   mostrar=false;
   closeResult: string;
+  public soli=false;
 
   images = ["./assets/img/kanguro/slider1.svg",
             "./assets/img/kanguro/slider2.svg",
@@ -26,14 +29,41 @@ export class LandingComponent implements OnInit {
 
   showWeb: boolean = false;
 
-  constructor(private viewportScroller: ViewportScroller, private api: ApiService, private modalService: NgbModal) {
+  public box1=false;
+  public box2=false;
+  public box3=false;
+  public box4=false;
+
+  public precio:any=null;
+  public cajas=0;
+
+  public autocomplete:google.maps.places.Autocomplete[] = [];
+  public map: google.maps.Map;
+  public places: google.maps.places.PlacesService;
+  public center:any;
+  public markers: google.maps.Marker[] = [];
+  public km: any=0;
+
+  public infopedido:any={
+    origen:'',
+    destino:''
+  }
+
+  public origen:any='';
+  public destino:any='';
+
+  public user;
+
+  constructor(private router: Router ,private viewportScroller: ViewportScroller, private api: ApiService, private modalService: NgbModal, private uss: UserStorageService) {
     var mediaqueryList = window.matchMedia("(min-width: 992px)");
     if(mediaqueryList.matches) {
       this.showWeb = true;
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.initMap();
+  }
 
   public navigateToSection(id,section: string) {
     console.log(id)
@@ -51,6 +81,161 @@ export class LandingComponent implements OnInit {
       }
     })
   }
+
+  initMap(){
+   /* 
+
+    
+    // The map, centered at Uluru
+   */
+    this.center = { lat: 41.363218, lng: 2.112014 };
+    this.map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 13,
+      center: this.center,
+      draggable: true
+    });
+    const defaultBounds = {
+      north: this.center.lat + 0.2,
+      south: this.center.lat - 0.2,
+      east: this.center.lng + 0.2,
+      west: this.center.lng - 0.2,
+    };
+    const options = {
+      bounds: defaultBounds,
+      componentRestrictions: { country: "es" },
+      fields: ["address_components", "geometry", "icon", "name"],
+      strictBounds: true,
+      types: ["geocode"],
+    };
+    setTimeout(function(){
+      const input = document.getElementById("pac-input") as HTMLInputElement;
+      const input2 = document.getElementById("pac-input2") as HTMLInputElement;
+      this.origen = new google.maps.places.Autocomplete(input, options);
+      this.destino = new google.maps.places.Autocomplete(input2, options);
+      //self.places = new google.maps.places.PlacesService(self.map);
+    }, 1800)
+  }
+
+  ver(i){
+    let self=this;
+    setTimeout(function(){
+      if (i==0) {
+        console.log(this.origen.getPlace().geometry)
+      }else if (i==1) {
+        console.log(this.destino.getPlace().geometry)
+      }
+      if (this.origen.getPlace().geometry.location && this.destino.getPlace().geometry.location) {
+        console.log('amos')
+        self.calculekm(this.origen.getPlace().geometry,this.destino.getPlace().geometry);
+      }
+      
+    }, 800);
+  }
+
+  calculekm(o,d){
+
+    console.log(this.haversine_distance(o,d));
+    this.km=0;
+    this.km=this.haversine_distance(o,d);
+  }
+  haversine_distance(mk1, mk2) {
+    var R = 3958.8; // Radius of the Earth in miles
+    var rlat1 = mk1.location.lat() * (Math.PI/180); // Convert degrees to radians
+    var rlat2 = mk2.location.lat() * (Math.PI/180); // Convert degrees to radians
+    var difflat = rlat2-rlat1; // Radian difference (latitudes)
+    var difflon = (mk2.location.lng()-mk1.location.lng()) * (Math.PI/180); // Radian difference (longitudes)
+
+    var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+   
+    return d;
+  }
+
+  calcular(){
+    let xl1=1.80;
+    let xl2=2.40;
+    let xl3=3.00;
+    let xl4=3.60;
+
+    this.precio=0;
+    console.log(this.precio,this.km,this.cajas);
+    if (this.cajas==0) {
+      alert('Seleccione una el tamano de su envio');    
+    }else{
+      console.log(this.precio,this.km,this.cajas);
+      if (this.km==0) {
+        alert('Seleccione un origen y un destino');  
+      } else {
+        console.log(this.precio,this.km,this.cajas);
+          if (this.km>20) {
+            alert('Tu pedido es mayor a 20 km no lo podemos procesar.');
+          }else{
+            console.log(this.precio,this.km,this.cajas);
+            this.soli=true;
+            console.log(this.soli);
+            if (this.km<=5) {
+              if (this.cajas==1) {
+              this.precio=xl1*5; 
+              }
+              if (this.cajas==2) {
+                this.precio=xl2*5; 
+              }
+              if (this.cajas==3) {
+                this.precio=xl3*5; 
+              }
+              if (this.cajas==4) {
+                this.precio=xl4*5; 
+              }
+            }else if (this.km>5) {
+                
+                if (this.cajas==1) {
+                  this.precio=xl1*this.km; 
+                }
+                if (this.cajas==2) {
+                  this.precio=xl2*this.km; 
+                }
+                if (this.cajas==3) {
+                  this.precio=xl3*this.km; 
+                }
+                if (this.cajas==4) {
+                  this.precio=xl4*this.km; 
+                }
+            }
+            
+          }
+      }
+    }
+
+  }
+  boxes(){
+    this.cajas=0;
+    console.log(this.box1, this.box2,this.box3,this.box4)
+    if (this.box1) {
+      this.cajas=this.cajas+1;
+    }
+    if (this.box2) {
+      this.cajas=this.cajas+1;
+    }
+    if (this.box3) {
+      this.cajas=this.cajas+1;
+    }
+    if (this.box4) {
+      this.cajas=this.cajas+1;
+    }
+    console.log(this.cajas)
+    this.calcular();
+  }
+
+  solicitar(){
+    console.log(this.uss)
+        this.user=this.uss.user;
+        console.log(this.user)
+        if(!this.user){
+          this.router.navigate(['/iniciar']);
+        }else if (this.user.user) {
+          this.router.navigate(['/pedido']);
+        }
+  }
+    
 
   construir(section){
     //this.pedidos=[];
