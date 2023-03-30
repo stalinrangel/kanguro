@@ -1,4 +1,55 @@
-<section class="container">
+<section *ngIf="showWeb">
+    <div class="header">
+        <p class="title">ESTADO DEL ENVÍO</p>
+        <p class="texto">Solo se visualizan los envíos en proceso de entrega.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="cuadro">
+                <p class="texto2">Seleccionar envío:</p>
+                <div class="lista"> 
+                   <div class="content-list">
+                        <div class="row tabla" *ngFor="let item of orders; let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true, 'selecTable': order_select.id == item.id }" (click)="changeOrder(item)">
+                            <div class="col-3">{{item.id}}</div>
+                            <div class="col-6">{{item.destino}}</div>
+                            <div class="col-3">{{item.fecha | date: 'dd/MM/YYYY'}}</div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="estado estadoweb" *ngIf="status == '0'">
+                <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
+                <p class="tex">Estado:</p>
+                <p class="tex2">---------</p>     
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '1'">
+                <img src="./assets/img/kanguro/estado1.svg" alt="estado1">
+                <p class="tex">Estado:</p>
+                <p class="tex2">PROCESANDO</p>      
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '2'">
+                <img src="./assets/img/kanguro/estado2.svg" alt="estado2">
+                <p class="tex">Estado:</p>
+                <p class="tex2">EN CAMINO</p>      
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '3'">
+                <img src="./assets/img/kanguro/estado3.svg" alt="estado3">
+                <p class="tex">Estado:</p>
+                <p class="tex2">ENTREGADO</p>      
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '4'">
+                <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
+                <p class="tex">Estado:</p>
+                <p class="tex2">CANCELADO</p>      
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" *ngIf="!showWeb">
     <div class="header">
         <p class="title">ESTADO DEL ENVÍO</p>
         <p class="texto">Solo se visualizan los envíos en proceso de entrega.</p>
@@ -39,6 +90,7 @@
         <p class="tex2">ENTREGADO</p>      
     </div>
     <div class="estado" *ngIf="status == '4'">
+        <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
         <p class="tex">Estado:</p>
         <p class="tex2">CANCELADO</p>      
     </div>

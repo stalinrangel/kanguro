@@ -21,10 +21,16 @@ export class RegistroComponent implements OnInit {
     tipo_usuario:'1'
   };
   private id:any;
+  showWeb: boolean = false;
 
   constructor(
     private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router
-  ) { }
+  ) { 
+    var mediaqueryList = window.matchMedia("(min-width: 992px)");
+    if(mediaqueryList.matches) {
+      this.showWeb = true;
+    }
+  }
 
   ngOnInit(): void {
   }

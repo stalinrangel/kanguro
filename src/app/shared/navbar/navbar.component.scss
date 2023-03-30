@@ -85,3 +85,54 @@
         margin-top: 17px;
     }
 }
+
+.menu-web{
+    position: absolute;
+    right: 30px;
+    top: 70px;
+    background: #F43A20;
+    border-radius: 15px;  
+    padding: 7px;
+    width: 300px;
+    .content-web{
+        background-color: #fff;
+        border-radius: 15px;  
+    }
+    li{
+        list-style: none;
+        border-bottom: 1px solid #F43A20;
+        a{
+            font-size: 16px;
+            color: #000;
+            font-family: "BalooTammudu2-Semi";
+            padding-top: 17px;
+            line-height: 18px;
+            padding-left: 25px;
+        }
+    } 
+    img{
+        margin: 15px auto 10px;
+        display: block;
+        height: 18px;       
+    } 
+    .item-ye{
+        background-color: #FFBD00;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        p{
+            margin: 0px;
+            margin-top: 5px;
+            flex: 1;
+        }
+    }
+    .img-logo{
+        margin: 0px;
+    }
+    .li-session{
+        margin-bottom: 13px;
+        margin-top: 8px;
+    }
+}

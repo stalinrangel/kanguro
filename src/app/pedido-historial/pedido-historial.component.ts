@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UserStorageService } from '../services/user-storage.service';
 import { Router } from '@angular/router';
@@ -15,12 +15,21 @@ export class PedidoHistorialComponent implements OnInit {
   orders: any = [];
   total_km: number = 0;
   total_costo: number = 0;
-  order_selected: any;
   date = new Date();
   model: NgbDateStruct;
+  showWeb: boolean = false;
+  order_selected = {
+    id: null,
+    destino: ''
+  }
 
   constructor(private api: ApiService, private uss: UserStorageService, 
-    private router: Router, private modalService: NgbModal, private calendar: NgbCalendar) { 
+    private router: Router, private modalService: NgbModal, 
+    private calendar: NgbCalendar, private cf: ChangeDetectorRef) { 
+      var mediaqueryList = window.matchMedia("(min-width: 992px)");
+      if(mediaqueryList.matches) {
+        this.showWeb = true;
+      }
   }
 
   ngOnInit(): void {
@@ -48,7 +57,7 @@ export class PedidoHistorialComponent implements OnInit {
     })
   }
 
-  updateDay(){
+  updateDay(ev){
     console.log(this.model)
     let self = this;
     let date = this.model.year + '-' + this.model.month + '-' + this.model.day; 
@@ -79,6 +88,12 @@ export class PedidoHistorialComponent implements OnInit {
       }, (reason) => {      
       });
     } 
+  }
+
+  changeOrder(item){
+    this.order_selected = item;
+    console.log(this.order_selected)
+    this.cf.detectChanges();
   }
 
 }

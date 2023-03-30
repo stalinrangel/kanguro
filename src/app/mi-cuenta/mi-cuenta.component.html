@@ -4,80 +4,371 @@
         <div class="datos">
             <p class="nombre">MI CUENTA</p>
             <p class="info">Información general</p>
-            <p class="info cerrar" (click)="cerrar()">Cerrar sesión</p>
+            <!--p class="info cerrar" (click)="cerrar()">Cerrar sesión</p-->
         </div>
     </div>
 </section>
 
-<section class="gallery">
-    <figure class="gallery__pic gallery__pic--i1">
-        <span class="btn">Perfil</span>
-    </figure>
-    <figure class="gallery__pic gallery__pic--i2">
-        <span class="btn">Datos de facturación</span>
-    </figure>
-    <figure class="gallery__pic gallery__pic--i3">
-        <span class="btn">Favoritos</span>
-    </figure>
-    <figure class="gallery__pic gallery__pic--i4">
-        <span class="btn btn_danger">Realizar un envío</span>
-    </figure>
-</section>
-<section>
-    <div class="origen">
-        <div class="row" class="btn_limpiar">
-            <p class="limpiar">Perfil</p>
-        </div>
-        <div class="row ml">
-            <div class="col-6 campos">
-                <p class="campo1">Nombre(s)</p>
-                <input class="campo2" [(ngModel)]="userData.name" type="text">
+
+<section class="content-account" *ngIf="showWeb">
+
+    <div class="content-profile">
+        <div class="row">
+            <div class="col-4 option-row" style="border-radius: 5px 0px 0px 0px;" [ngClass]="{'selected-tab': section == '1'}" (click)="section = '1'">
+                <p>Perfil</p>
             </div>
-            <div class="col-6 campos">
-                <p class="campo1">Apellido(s)</p>
-                <input class="campo2" [(ngModel)]="userData.apellidos" type="text">
+            <div class="col-4 option-row" [ngClass]="{'selected-tab': section == '2'}"  (click)="section = '2'">
+                <p>Datos de facturación</p>
+            </div>
+            <div class="col-4 option-row" style="border-radius: 0px 5px 0px 0px;" [ngClass]="{'selected-tab': section == '3'}" (click)="section = '3'">
+                <p>Favoritos</p>
             </div>
         </div>
-        <div class="row ml">
-            <div class="col-6 campos">
-                <p class="campo1">NIF/NIE/Pasaporte</p>
-                <input class="campo2" type="text" [(ngModel)]="userData.dni" placeholder="">
-            </div>
-            <div class="col-6 campos">
-                <p class="campo1">Teléfono</p>
-                <input class="campo2" type="text" [(ngModel)]="userData.telefono" placeholder="">
+        <!-- DATOS PERFIL -->
+        <div class="row" *ngIf="section == '1'">
+            <div class="col-12 info-profile">
+                <div class="origenWeb">
+                    <div class="row" class="btn_limpiar">
+                        <p class="limpiar">Perfil</p>
+                    </div>
+                    <div class="row ml">
+                        <div class="col-4 campos">
+                            <p class="campo1">Nombre(s)</p>
+                            <input class="campo2" [(ngModel)]="userData.name" type="text">
+                        </div>
+                        <div class="col-4 campos">
+                            <p class="campo1">Apellido(s)</p>
+                            <input class="campo2" [(ngModel)]="userData.apellidos" type="text">
+                        </div>
+                        <div class="col-4 campos">
+                            <p class="campo1">NIF/NIE/Pasaporte</p>
+                            <input class="campo2" type="text" [(ngModel)]="userData.dni" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row ml">             
+                        <div class="col-4 campos">
+                            <p class="campo1">Teléfono</p>
+                            <input class="campo2" type="text" [(ngModel)]="userData.telefono" placeholder="">
+                        </div>
+                        <div class="col-8 campos">
+                            <p class="campo1">Correo eléctronico</p>
+                            <input class="campo2" type="text" [(ngModel)]="userData.email" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row ml">
+                        <div class="col-6 campos">
+                            <p class="campo1">Dirección principal</p> 
+                            <input class="campo2" type="text" placeholder="">  
+                        </div>
+                        <div class="col-2 campos">
+                            <p class="campo1">Nro. Piso</p>   
+                            <input class="campo2" type="text" placeholder="">
+                        </div>
+                        <div class="col-2 campos">
+                            <p class="campo1">Puerta</p> 
+                            <input class="campo2" type="text" placeholder="">  
+                        </div>
+                        <div class="col-2 campos">
+                            <p class="campo1">C.P.</p>   
+                            <input class="campo2" type="text" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row ml">                     
+                        <div class="col-12 text-rigth">
+                            <span class="btn_espacio1" (click)="updateInfo()">Actualizar Datos</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row ml">
-            <div class="col-8 campos">
-                <p class="campo1">Correo eléctronico</p>
-                <input class="campo2" type="text" [(ngModel)]="userData.email" placeholder="">
+        <!-- FACTURACION -->
+        <div class="row" *ngIf="section == '2'">
+            <div class="col-12 info-profile">
+                <div class="origenWeb">
+                    <div class="row btn_limpiar" *ngIf="sectionA != '3'">
+                        <div class="col-11 content-titleFac">
+                            <p class="info-fac"[ngClass]="{'selected-fac': sectionA == '1'}" (click)="sectionA = '1'">Información <br> de facturación</p>
+                            <p [ngClass]="{'selected-fac': sectionA == '2'}" (click)="sectionA = '2'">Detalles <br> de tarjeta</p>
+                        </div>
+                        <div class="col-1">
+                            <img class="icon-star" src="./assets/img/kanguro/Star 5.png" (click)="sectionA = '3'" alt="star">
+                        </div>
+                    </div>
+                    <div class="row btn_limpiar" *ngIf="sectionA == '3'">
+                        <div class="col-11 content-titleFac">
+                            <p>Tarjetas Guardadas</p>
+                        </div>
+                        <div class="col-1">
+                            <img class="icon-star" src="./assets/img/kanguro/Star 4.png" (click)="sectionA = '1'" alt="star">
+                        </div>
+                    </div>
+                    <div *ngIf="sectionA == '1'">
+                        <div class="row ml">
+                            <div class="col-6 campos">
+                                <p class="campo1">Dirección principal</p>
+                                <input class="campo2" [(ngModel)]="userDir.direccion" type="text">
+                            </div>
+                            <div class="col-2 campos">
+                                <p class="campo1">Nro. Piso</p>   
+                                <input class="campo2" [(ngModel)]="userDir.piso" type="text" placeholder="">
+                            </div>
+                            <div class="col-2 campos">
+                                <p class="campo1">Puerta</p> 
+                                <input class="campo2" [(ngModel)]="userDir.puerta" type="text" placeholder="">  
+                            </div>
+                            <div class="col-2 campos">
+                                <p class="campo1">C.P.</p>   
+                                <input class="campo2" [(ngModel)]="userDir.cp" type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row ml">             
+                            <div class="col-6 campos">
+                                <p class="campo1">Estado/Provincia</p>
+                                <input class="campo2" type="text" [(ngModel)]="userDir.estado" placeholder="">
+                            </div>
+                            <div class="col-6 campos">
+                                <p class="campo1">Ciudad</p>
+                                <input class="campo2" type="text" [(ngModel)]="userDir.ciudad" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row ml">
+                            <div class="col-6 campos">
+                                <p class="campo1">Persona de contacto</p> 
+                                <input class="campo2" type="text" [(ngModel)]="userDir.contacto" placeholder="">  
+                            </div> 
+                        </div>
+                        <div class="row ml">                     
+                            <div class="col-12 text-rigth">
+                                <span class="btn_espacio1" (click)="updateInfo()">Actualizar Datos</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="sectionA == '2'">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="custom-control custom-checkbox custom-checkbox-green">
+                                    <input type="checkbox" class="custom-control-input custom-control-input-green" id="customCheckFac" >
+                                    <label class="custom-control-label" for="customCheckFac">Acepto los <span>terminos y condiciones.</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ml">             
+                            <div class="col-6 campos">
+                                <p class="campo1">Número de tarjeta</p>
+                                <input class="campo2" type="text" [(ngModel)]="userCard.numero" placeholder="1234 1234 1234 1234">
+                                <img class="icon-pay" src="./assets/img/kanguro/payment.png" alt="star">
+                            </div>
+                        </div>
+                        <div class="row ml">             
+                            <div class="col-6 campos">
+                                <p class="campo1">Titular de tarjeta</p>
+                                <input class="campo2" type="text" [(ngModel)]="userCard.titular" placeholder="Nombre y apellido">
+                            </div>
+                        </div>
+                        <div class="row ml">             
+                            <div class="col-3 campos">
+                                <p class="campo1">Caducidad</p>
+                                <input class="campo2" type="text" [(ngModel)]="userCard.caducidad" placeholder="MM/AA">
+                            </div>
+                            <div class="col-3 campos">
+                                <p class="campo1">CVC</p>
+                                <input class="campo2" type="text" [(ngModel)]="userCard.cvc" placeholder="CVC">
+                                <img class="icon-pay2" src="./assets/img/kanguro/cvv 2.png" alt="star">
+                            </div>
+                        </div>
+                        <div class="row ml">                     
+                            <div class="col-6 text-rigth">
+                                <span class="btn_espacio2" (click)="updateInfo()">Guardar Tarjeta & <br> Habilitar Autopago</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="sectionA == '3'">
+                        <div class="content-list">
+                            <div class="row header-table">
+                                <div class="col-3">Títular</div>
+                                <div class="col-2">Tipo</div>
+                                <div class="col-4">Numero de Tarjeta</div>
+                                <div class="col-2">Expira</div>
+                                <div class="col-1"></div>
+                            </div>
+                            <div class="list-scroll">
+                                <div class="row tabla" *ngFor="let item of orders;">
+                                    <div class="col-3">{{item.contacto}}</div>
+                                    <div class="col-2">Visa</div>
+                                    <div class="col-4">{{item.telefono}}</div>
+                                    <div class="col-2">{{item.fecha | date: 'MM/YYYY'}}</div>
+                                    <div class="col-1 icon-delete">X</div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+                <div class="row ml" *ngIf="section == '2' && sectionA == '3'">                     
+                    <div class="col-12 text-center">
+                        <span class="btn_espacio2 btn-back" (click)="sectionA = '1'">Volver</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class=" rango">
-            <div class="row">
-                <div class="col-9 campos">
-                    <p class="campo13 ">Dirección principal</p> 
-                    <input class="campo2" type="text" placeholder="">  
-                </div>
-                <div class="col-3 campos">
-                    <p class="campo13 ">Nro. Piso</p>   
-                    <input class="campo2" type="text" placeholder="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3 campos">
-                    <p class="campo13 ">Puerta</p> 
-                    <input class="campo2" type="text" placeholder="">  
-                </div>
-                <div class="col-3 campos">
-                    <p class="campo13 ">C.P.</p>   
-                    <input class="campo2" type="text" placeholder="">
-                </div>
-                <div class="col-6 medio">
-                    <span class="btn_espacio" (click)="updateInfo()">Actualizar Datos</span>
+        <!-- FAVORITOS -->
+        <div class="row" *ngIf="section == '3'">
+            <div class="col-12 info-profile">
+                <div class="origenWeb">
+                    <div class="row btn_limpiar">
+                        <div class="col-12 content-titleFac">
+                            <div class="info-fac" (click)="sectionB = '1'">
+                                <p [ngClass]="{'selected-fav': sectionB == '1'}" style="margin-bottom: 0px;">Agregar <img class="icon-star2" src="./assets/img/kanguro/Star 4.png" alt="star"></p>
+                            </div>
+                            <p [ngClass]="{'selected-fav': sectionB == '2'}" style="margin-bottom: 0px;" (click)="sectionB = '2'">Mis favoritos</p>
+                        </div>
+                    </div>
+                    <br>
+                    <div *ngIf="sectionB == '1'">
+                        <div class="row ml">
+                            <div class="col-6 campos">
+                                <p class="campo1">Dirección principal</p>
+                                <input class="campo2" [(ngModel)]="userFav.direccion" type="text">
+                            </div>
+                            <div class="col-2 campos">
+                                <p class="campo1">Nro. Piso</p>   
+                                <input class="campo2" [(ngModel)]="userFav.piso" type="text" placeholder="">
+                            </div>
+                            <div class="col-2 campos">
+                                <p class="campo1">Puerta</p> 
+                                <input class="campo2" [(ngModel)]="userFav.puerta" type="text" placeholder="">  
+                            </div>
+                            <div class="col-2 campos">
+                                <p class="campo1">C.P.</p>   
+                                <input class="campo2" [(ngModel)]="userFav.cp" type="text" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row ml">             
+                            <div class="col-12 campos">
+                                <p class="campo1" style="font-size: 14px;margin-top: 5px;">Datos de contacto</p>
+                            </div>
+                        </div>
+                        <div class="row ml">
+                            <div class="col-4 campos">
+                                <p class="campo1">Nombre(s)</p>
+                                <input class="campo2" [(ngModel)]="userFav.name" type="text">
+                            </div>
+                            <div class="col-4 campos">
+                                <p class="campo1">Apellido(s)</p>
+                                <input class="campo2" [(ngModel)]="userFav.apellidos" type="text">
+                            </div>
+                            <div class="col-4 campos">
+                                <p class="campo1">NIF/NIE/Pasaporte</p>
+                                <input class="campo2" type="text" [(ngModel)]="userFav.dni" placeholder="">
+                            </div>
+                        </div>
+                        <div class="row ml">
+                            <div class="col-4 campos">
+                                <p class="campo1">Teléfono</p>
+                                <input class="campo2" [(ngModel)]="userFav.telefono" type="number">
+                            </div>
+                        </div>
+                        <div class="row ml">                     
+                            <div class="col-12 text-rigth">
+                                <span class="btn_espacio1" (click)="updateInfo()">GUARDAR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="sectionB == '2'">
+                        <div class="content-list">
+                            <div class="row header-table">
+                                <div class="col-2">Orden</div>
+                                <div class="col-7">Dirección</div>
+                                <div class="col-2">C.P.</div>
+                                <div class="col-1"></div>
+                            </div>
+                            <div class="list-scroll">
+                                <div class="row tabla" *ngFor="let item of orders;">
+                                    <div class="col-2">{{item.id}}</div>
+                                    <div class="col-7">{{item.destino}}</div>
+                                    <div class="col-2">08901</div>
+                                    <div class="col-1 icon-delete">X</div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </section>
+
+<div *ngIf="!showWeb">
+    <section class="gallery">
+        <figure class="gallery__pic gallery__pic--i1">
+            <span class="btn">Perfil</span>
+        </figure>
+        <figure class="gallery__pic gallery__pic--i2">
+            <span class="btn">Datos de facturación</span>
+        </figure>
+        <figure class="gallery__pic gallery__pic--i3">
+            <span class="btn">Favoritos</span>
+        </figure>
+        <figure class="gallery__pic gallery__pic--i4">
+            <span class="btn btn_danger">Realizar un envío</span>
+        </figure>
+    </section>
+    <section>
+        <div class="origen">
+            <div class="row" class="btn_limpiar">
+                <p class="limpiar">Perfil</p>
+            </div>
+            <div class="row ml">
+                <div class="col-6 campos">
+                    <p class="campo1">Nombre(s)</p>
+                    <input class="campo2" [(ngModel)]="userData.name" type="text">
+                </div>
+                <div class="col-6 campos">
+                    <p class="campo1">Apellido(s)</p>
+                    <input class="campo2" [(ngModel)]="userData.apellidos" type="text">
+                </div>
+            </div>
+            <div class="row ml">
+                <div class="col-6 campos">
+                    <p class="campo1">NIF/NIE/Pasaporte</p>
+                    <input class="campo2" type="text" [(ngModel)]="userData.dni" placeholder="">
+                </div>
+                <div class="col-6 campos">
+                    <p class="campo1">Teléfono</p>
+                    <input class="campo2" type="text" [(ngModel)]="userData.telefono" placeholder="">
+                </div>
+            </div>
+            <div class="row ml">
+                <div class="col-8 campos">
+                    <p class="campo1">Correo eléctronico</p>
+                    <input class="campo2" type="text" [(ngModel)]="userData.email" placeholder="">
+                </div>
+            </div>
+            <div class=" rango">
+                <div class="row">
+                    <div class="col-9 campos">
+                        <p class="campo13 ">Dirección principal</p> 
+                        <input class="campo2" type="text" placeholder="">  
+                    </div>
+                    <div class="col-3 campos">
+                        <p class="campo13 ">Nro. Piso</p>   
+                        <input class="campo2" type="text" placeholder="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3 campos">
+                        <p class="campo13 ">Puerta</p> 
+                        <input class="campo2" type="text" placeholder="">  
+                    </div>
+                    <div class="col-3 campos">
+                        <p class="campo13 ">C.P.</p>   
+                        <input class="campo2" type="text" placeholder="">
+                    </div>
+                    <div class="col-6 medio">
+                        <span class="btn_espacio" (click)="updateInfo()">Actualizar Datos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

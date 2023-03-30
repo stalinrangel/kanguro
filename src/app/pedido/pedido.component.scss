@@ -73,19 +73,20 @@
     color: #020202;
 }
 .campos{
-    padding: 0px 0px 7px 16px;
+    padding: 0px 0px 0px 16px;
     display: flex;
     flex-direction: column;
     
 }
 .campo1{
-    font-family: BalooTammudu2;
+    font-family: BalooTammudu2-Semi;
     color: black;
     font-size: 14px;
     margin-left: 1px;
     white-space: nowrap;
     overflow: hidden;  
     text-overflow: clip;
+    line-height: 20px;
 }
 .campo2{
     width: 100%;
@@ -130,11 +131,13 @@
     font-family: BalooTammudu2-Semi;
     color: white;
     background: black;
-    padding: 6px 0px 0px 0px;
-    border-radius: 12px;
-    height: 34px;
+    padding: 10px 0px 0px 0px;
+    border-radius: 10px;
+    height: 45px;
     cursor: pointer;
     font-size: 15px;
+    line-height: 17px;
+    border: none;
 }
 .sle{
     width: 125px;
@@ -259,14 +262,16 @@
         border-top: none;
         border-radius: 0px 0px 10px 10px;
         padding: 10px 10px 15px 10px;
+        position: relative;
         .title-text{
-            font-family: 'BebasNeue';
+            font-family: 'BalooThambi';
             font-style: normal;
             font-weight: 400;
-            font-size: 20px;
+            font-size: 19px;
             line-height: 33px;
             color: #FFFFFF;
             margin-bottom: 0px;
+            text-transform: uppercase;
         }
         .desc-text{
             p{
@@ -290,6 +295,42 @@
             font-size: 14px;
             display: block;
         }
+        .rectangle-black{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 20px;
+            top: -10px;
+            background: #000000;
+        }
+    }
+    .modal-dialog{
+        max-width: 650px;
+    }
+    .circle-box{
+        float: right;
+        margin-top: 30px;
+        margin-right: 20px;
+        border: 5px solid #F43A20;
+        border-radius: 50em;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p{
+            color: #FFFFFF;
+            font-family: 'BalooThambi';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 45px;
+            line-height: 33px;
+        }
+    }
+    .img-box{
+        width: 70%;
+        display: block;
+        margin: 130px auto 0px;
     }
 }
 .image-containerC {
@@ -514,6 +555,19 @@ label{
         height: 100px;
     }
 }
+.mlm{
+    margin-left: 0px;
+    margin-right: 14px;
+    margin-top: 0px;
+    input, textarea{
+        background: #F2F2F2;
+        border-radius: 5px;
+        margin-bottom: 7px;
+        padding-right: 25px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
 
 /** MODAL CONFIRM **/
 ::ng-deep .modal-confirm{
@@ -589,4 +643,5 @@ label{
 
 .help{
     color: red;
+    font-size: 13px;
 }

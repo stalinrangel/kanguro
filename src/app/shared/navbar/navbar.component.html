@@ -1,6 +1,6 @@
 <nav *ngIf="showWeb" id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top" style="background-color: #F43A20;">
   <div class="container">
-    <a class="navbar-brand mr-lg-5" [routerLink]="['/landing']">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/landing']" (click)="inicio()">
       <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
@@ -25,77 +25,122 @@
         </div>
       </div>
       
-      <ul class="navbar-nav align-items-lg-center" *ngIf="show==0">
+      <ul class="navbar-nav align-items-lg-center">
         <li class="nav-item">
-          <a class="nav-link" href="/#/particular" data-toggle="tooltip" title="">
+          <a class="nav-link" href="/#/particular" (click)="particular()" data-toggle="tooltip" title="">
             <span class="nav-link-inner--text line-site">Traslado particular</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#/ecommerce"  data-toggle="tooltip" title="">
+          <a class="nav-link" href="/#/ecommerce" (click)="ecommerce()" data-toggle="tooltip" title="">
             <span class="nav-link-inner--text">E-Commerce</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#/xl"  data-toggle="tooltip" title="">
+          <a class="nav-link" href="/#/xl" (click)="xl()"  data-toggle="tooltip" title="">
             <span class="nav-link-inner--text">Envio XL</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+          <a class="nav-link" href="" data-toggle="tooltip" title="">
             <span class="nav-link-inner--text">Contacto</span>
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav align-items-lg-center" *ngIf="show==1">
-        <li class="nav-item">
-          <a class="nav-link" href="/#/pedido" data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text line-site">Realizar envíos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#/estadoPedido"  data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text">Estado del envío</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#/historialPedido"  data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text">Historial de envíos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#/miCuenta" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
-            <span class="nav-link-inner--text">Mi cuenta</span>
-          </a>
-        </li>
+
+
+      <ul class="menu-web align-items-lg-center" *ngIf="showMenuWeb && ensesion.name!=null && showApp == '0'">
+        <div class="content-web">
+          <li class="nav-item">
+            <a class="nav-link item-ye" href="/#/pedido" (click)="realizarEnvio(2)" data-toggle="tooltip" title="">
+              <p class="nav-link-inner--text">Realizar envíos</p>
+              <img class="img-logo" src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/estadoPedido" (click)="estadoEnvio(2)" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Estado del envío</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/historialPedido" (click)="historialEnvio(2)"  data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Historial de envíos</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/miCuenta" (click)="miCuenta()" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Mi cuenta</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/miCuenta" (click)="miCuenta()" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Contacto</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link li-session" href="/#/iniciar" (click)="cerrar()" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Cerrar de sesión</span>
+            </a>
+          </li>
+        </div>
+        <img src="./assets/img/kanguro/Kanguro letras blancas 2.png" alt="" class="logotipo"> 
       </ul>
 
-      <ul class="navbar-nav align-items-lg-center" *ngIf="show==2">
-        <li class="nav-item">
-          <a class="nav-link" href="/#/pedidoEcommerce" data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text line-site">Realizar envíos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#/estadoPedidoEcommerce"  data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text">Estado del envío</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#/historialPedidoEcommerce"  data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text">Historial de envíos</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#/reprogramarEcommerce" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
-            <span class="nav-link-inner--text">Reprogramar envío</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/#/miCuenta" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
-            <span class="nav-link-inner--text">Mi cuenta</span>
-          </a>
-        </li>
+      <ul class="menu-web align-items-lg-center" *ngIf="showMenuWeb && ensesion.name!=null && showApp == '1'">
+        <div class="content-web">
+          <li class="nav-item">
+            <a class="nav-link item-ye" href="/#/pedidoEcommerce" (click)="realizarEnvio(1)" data-toggle="tooltip" title="">
+              <p class="nav-link-inner--text">Realizar envíos</p>
+              <img class="img-logo" src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/estadoPedidoEcommerce" (click)="estadoEnvio(1)" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Estado del envío</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/historialPedidoEcommerce" (click)="historialEnvio(1)"  data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Historial de envíos</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/reprogramarEcommerce" (click)="reprogramarEnvio()"  data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Reprogramar envío</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/producto" (click)="misProductos()"  data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Mis Productos</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/producto" (click)="misProductos()"  data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Guías</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/miCuenta" (click)="miCuenta()" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Mi cuenta</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/miCuenta" (click)="miCuenta()" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Usuarios</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/#/miCuenta" (click)="miCuenta()" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Contacto</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link li-session" href="/#/iniciar" (click)="cerrar()" data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Cerrar de sesión</span>
+            </a>
+          </li>
+        </div>
+        <img src="./assets/img/kanguro/Kanguro letras blancas 2.png" alt="" class="logotipo"> 
       </ul>
 
       <ul class="navbar-nav align-items-lg-center ml-left">
@@ -124,7 +169,7 @@
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto"> <span class="sesion" *ngIf="ensesion.name!=null"> Hola, {{ensesion.name}} </span> <span class="sesion" *ngIf="ensesion.name==null" (click)="iniciar()">Iniciar sesión</span>
         <li class="nav-item ml-lg-auto">
-          <a class="nav-link nav-link-icon" href="/#/miCuenta" data-toggle="tooltip">
+          <a class="nav-link nav-link-icon" (click)="showMenuWeb = !showMenuWeb" data-toggle="tooltip">
             <img src="./assets/img/kanguro/profile.png" alt="">
           </a>
         </li>
@@ -142,14 +187,16 @@
     <a class="navbar-brand mr-lg-5" [routerLink]="['/landing']">
       <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
     </a>
-    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed; getUser();"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
+    <div>
+      <span class="sesion" *ngIf="ensesion.name !=null"> Hola, {{ensesion.name}} </span>
+      <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed; getUser();"
+            [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
     <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed" style="background-color: #FFBB00; color: #FFBB00;">
-      <ul class="navbar-nav align-items-lg-center content-ul" *ngIf="showApp == '0'">
+      <ul class="navbar-nav align-items-lg-center content-ul" *ngIf="showApp == '0' && ensesion.name !=null">
         <li class="nav-item line-bottom">
           <a class="nav-link" href="/#/pedido" data-toggle="tooltip" title="">
             <span class="nav-link-inner--text line-site text-li">Realizar envíos</span>
@@ -176,13 +223,13 @@
           </a>
         </li>
         <li class="nav-item" style="padding-left:20px;">
-          <a class="nav-link" href="/#/landing" data-toggle="tooltip">
-            <span class="nav-link-inner--text text-li">Cerrar de sesión</span>
+          <a class="nav-link" href="/#/iniciar" (click)="cerrar()" data-toggle="tooltip">
+            <span class="nav-link-inner--text text-li">Cerrar sesión</span>
           </a>
         </li>
       </ul>
 
-      <ul class="navbar-nav align-items-lg-center content-ul" *ngIf="showApp == '1'">
+      <ul class="navbar-nav align-items-lg-center content-ul" *ngIf="showApp == '1' && ensesion.name !=null">
         <li class="nav-item line-bottom">
           <a class="nav-link" href="/#/pedidoEcommerce" data-toggle="tooltip" title="">
             <span class="nav-link-inner--text line-site text-li">Realizar envíos</span>
@@ -229,8 +276,46 @@
           </a>
         </li>
         <li class="nav-item" style="padding-left:20px;">
+          <a class="nav-link" href="/#/iniciar" (click)="cerrar()" data-toggle="tooltip">
+            <span class="nav-link-inner--text text-li">Cerrar sesión</span>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav align-items-lg-center content-ul" *ngIf="ensesion.name ==null">
+        <li class="nav-item line-bottom">
+          <a class="nav-link" href="/#/iniciar" data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text line-site text-li">Acceder</span>
+          </a>
+        </li>
+        <li class="nav-item line-bottom">
+          <a class="nav-link" href="/#/landing"  data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text text-li">Realizar envíos</span>
+          </a>
+        </li>
+        <li class="nav-item line-bottom">
+          <a class="nav-link" href="/#/particular"  data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text text-li">Traslado particular</span>
+          </a>
+        </li>
+        <li class="nav-item line-bottom">
+          <a class="nav-link" href="/#/ecommerce" data-toggle="tooltip">
+            <span class="nav-link-inner--text text-li">E-Commerce</span>
+          </a>
+        </li>
+        <li class="nav-item line-bottom">
+          <a class="nav-link" href="/#/xl" data-toggle="tooltip">
+            <span class="nav-link-inner--text text-li">Envíos XL</span>
+          </a>
+        </li>
+        <li class="nav-item line-bottom">
           <a class="nav-link" href="/#/landing" data-toggle="tooltip">
-            <span class="nav-link-inner--text text-li">Cerrar de sesión</span>
+            <span class="nav-link-inner--text text-li">Empresa</span>
+          </a>
+        </li>
+        <li class="nav-item line-bottom">
+          <a class="nav-link" href="/#/landing" data-toggle="tooltip">
+            <span class="nav-link-inner--text text-li">Contacto</span>
           </a>
         </li>
       </ul>

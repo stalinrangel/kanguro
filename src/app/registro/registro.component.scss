@@ -2,7 +2,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    height:100%;
 }
 
 .registro{
@@ -75,7 +74,7 @@ input::placeholder {
     width: 100%;
     color: white;
     font-family: 'Almarai';
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -89,6 +88,10 @@ input::placeholder {
     color: #676767;
     font-family: 'Almarai';
     font-size: 14px;
+    span{
+        margin-left: 5px;
+        font-family: BalooTammudu2-Semi;
+    }
 }
 .o{
 
@@ -98,7 +101,7 @@ input::placeholder {
     width: 100%;
     color: white;
     font-family: 'Almarai';
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -108,9 +111,6 @@ input::placeholder {
     border-radius: 5px;
     margin-bottom: 15px;
     border: 1px solid black;
-}
-.bosque{
-
 }
 
 /** MODAL CONFIRM **/
@@ -171,5 +171,55 @@ input::placeholder {
         margin-top: 20px;
         height: 30vh;
         margin-bottom: 30px;
+    }
+}
+.content-register{
+    background-image: url("../../assets/img/kanguro/bosque verde 3.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 63px);
+}
+.content-row{
+    height: calc(100vh - 63px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.content-info{
+    .sub_title{
+        font-family: BalooTammudu2-Semi;
+        font-size: 23px;
+    }
+    .title{
+        font-size: 45px;
+    }
+    .car{
+        width: 280px;
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+    .texto{
+        color: #F54A1C;
+        font-family: BalooTammudu2-Semi;
+        font-size: 16px;
+        line-height: 18px;
+        margin-top: 10px;
+    }
+}
+.help{
+    font-size: 13px;
+    color: #F54A1C;
+}
+.content-form{
+    background: rgba(255, 187, 0, 0.8);
+    border-radius: 15px;
+    padding: 55px 80px;
+    width: 60%;
+    min-width: 500px;
+    text-align: center;
+    input{
+        padding-left: 15px;
+        font-size: 15px;
     }
 }

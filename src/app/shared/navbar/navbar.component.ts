@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
     public id: any;
     public showApp:any=0;
     public ensesion: any={name:null};
+    public showMenuWeb: boolean = false;
 
     constructor(public location: Location, private router: Router, private uss: UserStorageService, private sesion: SesionService) {
         var mediaqueryList = window.matchMedia("(min-width: 992px)");
@@ -55,10 +56,7 @@ export class NavbarComponent implements OnInit {
             } else {
                 this.showApp = 1;
             }
-        }
-        
-        
-        
+        }  
     }
 
     iniciar(){
@@ -94,7 +92,6 @@ export class NavbarComponent implements OnInit {
                 this.showApp = 1;
             }
         }
-        console.log(this.showApp)
     }
 
     isHome() {
@@ -117,18 +114,72 @@ export class NavbarComponent implements OnInit {
         }
     }
 
-    particular(){
-        console.log('32')
-        
-            this.show=1;
+    inicio(){
+        this.showMenuWeb = false;
+        this.router.navigate[('/landing')];
+    }
 
+    particular(){
+        this.showMenuWeb = false;
+        this.router.navigate[('/particular')];
     }
+
     ecommerce(){
-        console.log('3s2')
-            this.show=2;
-        
+        this.showMenuWeb = false;
+        this.router.navigate[('/ecommerce')];
     }
+
+    xl(){
+        this.showMenuWeb = false;
+        this.router.navigate[('/xl')];
+    }
+
+    realizarEnvio(i){
+        this.showMenuWeb = false;
+        if(i == 1){
+            this.router.navigate[('/pedidoEcommerce')];
+        } else {
+            this.router.navigate[('/pedido')];
+        }   
+    }
+
+    estadoEnvio(i){
+        this.showMenuWeb = false;
+        if(i == 1){
+            this.router.navigate[('/estadoPedidoEcommerce')];
+        } else {
+            this.router.navigate[('/estadoPedido')];
+        } 
+    }
+
+    historialEnvio(i){
+        this.showMenuWeb = false;
+         if(i == 1){
+            this.router.navigate[('/historialPedidoEcommerce')];
+        } else {
+            this.router.navigate[('/historialPedido')];
+        } 
+    }
+
+    reprogramarEnvio(){
+        this.showMenuWeb = false;
+        this.router.navigate[('/reprogramarEcommerce')];
+    }
+
+    misProductos(){
+        this.showMenuWeb = false;
+        this.router.navigate[('/producto')];
+    }
+
+    miCuenta(){
+        this.showMenuWeb = false;
+        this.router.navigate[('/miCuenta')];
+    }
+
     cerrar(){
-        this.show=0;
+        this.ensesion.name = null;
+        this.showMenuWeb = false;  
+        this.uss.destroy();    
+        this.router.navigate(['/iniciar']);      
     }
 }

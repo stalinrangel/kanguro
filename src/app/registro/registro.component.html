@@ -1,8 +1,8 @@
-<div class="registro">
+<div class="registro" *ngIf="!showWeb">
     <p class="title">¡BIENVENIDO!</p>
     <p class="sub_title">Estas apunto de realizar <br>
-        envíos</p>
-    <img src="./assets/img/kanguro/van.svg" alt="" class="car">
+       un envío</p>
+    <img src="./assets/img/kanguro/van.png" alt="" class="car">
     <p class="texto">Regístrate  en KANGURO para realizar tu envío o almacenar con <br> nosotros</p>
     <p class="tipo"><span [style]="getTypeStyles1()" (click)="tipo('1')"> Persona </span> | <span [style]="getTypeStyles3()" (click)="tipo('3')">E-Commerce</span> </p>
     <form role="form">
@@ -21,6 +21,42 @@
     <p class="sesion" [routerLink]="['/iniciar']">Ya tienes una cuenta? <span style="color:red">Iniciar sesión</span></p>
     <img src="./assets/img/kanguro/o.svg" alt="" class="o">
     <span class="google">Continuar con Google</span>
+</div>
+
+<div *ngIf="showWeb" class="content-register">
+  <div class="container1">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-5 content-row content-info">
+        <p class="title">¡BIENVENIDO!</p>
+        <p class="sub_title">Estas apunto <br> de realizar un envío</p>
+        <img src="./assets/img/kanguro/van.png" alt="" class="car">
+        <p class="texto">Regístrate  en KANGURO para <br> realizar tu envío o almacenar con <br> nosotros</p>
+      </div>
+      <div class="col-5 content-row">
+        <div class="content-form">
+          <p class="tipo"><span [style]="getTypeStyles1()" (click)="tipo('1')"> Persona </span> <span style="color:#F43A20;">|</span>&nbsp;<span [style]="getTypeStyles3()" (click)="tipo('3')" style="color:#FFF;">E-Commerce</span> </p>
+          <form role="form">
+              <input type="text" class="inp" placeholder="Razon social" *ngIf="model.tipo_usuario==3" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
+              
+              <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
+              <ng-container *ngIf="email.invalid && email.dirty" style="margin-bottom: 5px;">
+                  <span class="help is-danger">El campo e-mail es requerido</span>
+                </ng-container>
+              <input type="password" class="inp" placeholder="Contraseña"  [(ngModel)]="model.password" name="inputPassword" #password="ngModel" required>
+              <ng-container *ngIf="password.invalid && email.dirty" style="margin-bottom: 5px;">
+                  <span class="help is-danger">El campo password es requerido</span>
+                </ng-container>
+          </form>
+          <span class="boton" (click)="open(confirm, 'confirm')" (click)="registro()">Registrarse</span>
+          <p class="sesion" [routerLink]="['/iniciar']">Ya tienes una cuenta? <span style="color:red">Iniciar sesión</span></p>
+          <img src="./assets/img/kanguro/o.svg" alt="" class="o">
+          <span class="google">Continuar con Google</span>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
+  </div>
 </div>
 
 <!-- MODAL CONFIRM -->

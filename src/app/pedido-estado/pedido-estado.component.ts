@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UserStorageService } from '../services/user-storage.service';
 import { Router } from '@angular/router';
@@ -8,15 +8,20 @@ import { Router } from '@angular/router';
   templateUrl: './pedido-estado.component.html',
   styleUrls: ['./pedido-estado.component.scss']
 })
-export class PedidoEstadoComponent implements OnInit {
+export class PedidoEstadoComponent implements OnInit, AfterViewInit {
 
   orders: any;
   order_select: any = {
     destino: ''
   }
   status: string = '0';
+  showWeb: boolean = false;
 
   constructor(private api: ApiService, private uss: UserStorageService, private router: Router) { 
+    var mediaqueryList = window.matchMedia("(min-width: 992px)");
+    if(mediaqueryList.matches) {
+      this.showWeb = true;
+    }
   }
 
   ngOnInit(): void {
@@ -34,7 +39,9 @@ export class PedidoEstadoComponent implements OnInit {
         console.log(err.error.err);
       }
     })
-   
+  }
+
+  ngAfterViewInit(): void {
     document.querySelector('.select-wrapper').addEventListener('click', function() {
       this.querySelector('.select').classList.toggle('open');
     })

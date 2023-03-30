@@ -113,6 +113,73 @@ export class LandingComponent implements OnInit {
       this.origen = new google.maps.places.Autocomplete(input, options);
       this.destino = new google.maps.places.Autocomplete(input2, options);
       //self.places = new google.maps.places.PlacesService(self.map);
+      
+      let hasDownBeenPressed = false;
+      let hasDownBeenPressed1 = false;
+
+      input.addEventListener('keydown', (e) => {
+        if (e.keyCode === 40) {
+            hasDownBeenPressed = true;
+        }
+      });
+
+      google.maps.event.addDomListener(input, 'keydown', (e:any) => {
+          e.cancelBubble = true;
+          if (e.keyCode === 13 || e.keyCode === 9) {
+              if (!hasDownBeenPressed && !e.hasRanOnce) {
+                  google.maps.event.trigger(e.target, 'keydown', {
+                      keyCode: 40,
+                      hasRanOnce: true,
+                  });
+              }
+          }
+      });
+
+      input.addEventListener('focus', () => {
+          hasDownBeenPressed = false;
+          input.value = '';
+      });
+
+      google.maps.event.addListener(this.origen, 'place_changed', () => {
+          const place = this.origen.getPlace();
+          console.log(place)
+
+          if (typeof place.address_components !== 'undefined') {          
+              hasDownBeenPressed = false;
+          }
+      });
+
+      input2.addEventListener('keydown', (e) => {
+        if (e.keyCode === 40) {
+            hasDownBeenPressed1 = true;
+        }
+      });
+
+      google.maps.event.addDomListener(input2, 'keydown', (e:any) => {
+          e.cancelBubble = true;
+          if (e.keyCode === 13 || e.keyCode === 9) {
+              if (!hasDownBeenPressed1 && !e.hasRanOnce) {
+                  google.maps.event.trigger(e.target, 'keydown', {
+                      keyCode: 40,
+                      hasRanOnce: true,
+                  });
+              }
+          }
+      });
+
+      input.addEventListener('focus', () => {
+          hasDownBeenPressed1 = false;
+          input2.value = '';
+      });
+
+      google.maps.event.addListener(this.destino, 'place_changed', () => {
+          const place = this.destino.getPlace();
+          console.log(place)
+
+          if (typeof place.address_components !== 'undefined') {          
+              hasDownBeenPressed1 = false;
+          }
+      });
     }, 1800)
   }
 
@@ -124,6 +191,7 @@ export class LandingComponent implements OnInit {
       }else if (i==1) {
         console.log(this.destino.getPlace().geometry)
       }
+      console.log(this.origen.getPlace().geometry.location)
       if (this.origen.getPlace().geometry.location && this.destino.getPlace().geometry.location) {
         console.log('amos')
         self.calculekm(this.origen.getPlace().geometry,this.destino.getPlace().geometry);

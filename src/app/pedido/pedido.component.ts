@@ -110,10 +110,16 @@ export class PedidoComponent implements OnInit {
     'hora_destino':''
   }
   public fecha:any;
+  showWeb: boolean = false;
 
   constructor(
     private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router, private calendar: NgbCalendar
-  ) { }
+  ) { 
+    var mediaqueryList = window.matchMedia("(min-width: 992px)");
+    if(mediaqueryList.matches) {
+      this.showWeb = true;
+    }
+  }
 
   ngOnInit(): void {
     this.user=this.uss.user;
@@ -138,6 +144,7 @@ export class PedidoComponent implements OnInit {
     this.destinos.push(this.destino);
     this.initMap();
   }
+
   geolocate(){
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -345,6 +352,7 @@ export class PedidoComponent implements OnInit {
      // self.geolocate();
     }, 1800)
   } 
+  
   onPlaceChanged(i):any {
     const place = this.autocomplete[i].getPlace();
     console.log(place)
@@ -554,7 +562,6 @@ export class PedidoComponent implements OnInit {
 
   boxes(){
     this.cajas=0;
-    console.log(this.box1, this.box2,this.box3,this.box4)
     if (this.box1) {
       this.cajas=this.cajas+1;
     }
@@ -567,8 +574,6 @@ export class PedidoComponent implements OnInit {
     if (this.box4) {
       this.cajas=this.cajas+1;
     }
-    console.log(this.cajas)
-    this.calcular();
   }
 
   calcular(){

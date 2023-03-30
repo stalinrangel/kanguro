@@ -1,5 +1,5 @@
 <p class="precio_km">{{precio | number : '1.0-2'}} € <span style="color:#FFBD00; font-weight: bold;">|</span> {{km | number : '1.0-2'}} KM</p>
-<section class="pedido"> 
+<section class="pedido" *ngIf="showWeb"> 
     <div class="datos_pedido">
         
         <form role="form">
@@ -151,7 +151,7 @@
                   </select>
                 </div>
                 <div class="col-6 derecha">
-                    <span class="btn_espacio" (click)="open(classic, 'classic')">ELEGIR ESPACIO</span>
+                    <button class="btn_espacio" (click)="open(classic, 'classic')">ELEGIR <br> ESPACIO</button>
                 </div>
             </div>
         </div>
@@ -166,6 +166,170 @@
     
 </section>
 
+<section *ngIf="!showWeb"> 
+  <div>
+      <form role="form">
+        <div class="origen">     
+            <p class="titulo">ORIGEN</p>
+            <div class="row" class="btn_limpiar">
+              <p class="limpiar1" (click)="geolocate()" style="border-radius: 0px;">Limpiar Campos</p>
+            </div>
+            <div class="row ml mlm">
+                <div class="col-5 campos">
+                    <p class="campo1">Nombre(s)</p>
+                    <input class="campo2" type="text" placeholder="" [(ngModel)]="orige.nombre_origen" name="inputnombre_origen" #nombre_origen="ngModel" required>
+                    <ng-container *ngIf="nombre_origen.invalid && nombre_origen.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
+                </div>
+                <div class="col-7 campos">
+                    <p class="campo1">Apellido(s)</p>
+                    <input class="campo2" type="text" placeholder="">
+                </div>
+            </div>
+            <div class="row ml mlm">
+                <div class="col-8 campos">
+                    <p class="campo1">Dirección</p>
+                    <input class="campo2" type="text" placeholder="" id="pac-input" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                    <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
+                    <ng-container *ngIf="origen.invalid && origen.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>  
+                </div>
+                <div class="col-2 campos">
+                    <p class="campo1">Nro. Piso</p>
+                    <input class="campo2" type="text" placeholder=""  [(ngModel)]="orige.departamento_origen" name="inputdepartamento_origen" #departamento_origen="ngModel" required>
+                    <ng-container *ngIf="departamento_origen.invalid && departamento_origen.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
+                  </div>
+                <div class="col-2 campos">
+                    <p class="campo1">Puerta</p>
+                    <input class="campo2" type="text" placeholder="">
+                </div>
+            </div>
+            <div class="row ml mlm">
+              <div class="col-2 campos">
+                <p class="campo1">C.P</p>
+                <input type="text" class="campo2" [(ngModel)]="orige.distrito_origen" name="inputdistrito_origen" #distrito_origen="ngModel" required>
+                <ng-container *ngIf="distrito_origen.invalid && distrito_origen.dirty">
+                  <span class="help is-danger">Este campo es requerido</span>
+                </ng-container>
+
+                <p class="campo1">Fecha</p>                 
+              </div>
+
+              <div class="col-4 campos">
+                <p class="campo1">Teléfono</p>
+                <input type="text" class="campo2" [(ngModel)]="orige.telefono_origen" name="inputtelefono_origen" #telefono_origen="ngModel" required>
+                <ng-container *ngIf="telefono_origen.invalid && telefono_origen.dirty">
+                  <span class="help is-danger">Este campo es requerido</span>
+                </ng-container>
+
+                <input type="text" class="campo2" [(ngModel)]="orige.fecha" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" name="inputfecha" #fecha="ngModel" required>
+                <ng-container *ngIf="fecha.invalid && fecha.dirty">
+                  <span class="help is-danger">Este campo es requerido</span>
+                </ng-container>
+              </div>
+                
+                <div class="col-6 campos">
+                    <p class="campo1">Notas</p>
+                    <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="orige.comentarios" name="inputcomentarios" #comentarios="ngModel" required></textarea>
+                    <ng-container *ngIf="comentarios.invalid && comentarios.dirty">
+                      <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
+                  </div>
+            </div>
+        </div>
+      </form>
+      <br>
+      <p class="titulo" >DESTINO</p>
+      <div class="origen" *ngFor="let destino of destinos;let indice=index">
+          <div class="row" class="btn_limpiar">
+              <p class="limpiar" (click)="limpiar()">Limpiar Campos</p>
+          </div>
+          <div class="row ml mlm">
+              <div class="col-5 campos">
+                  <p class="campo1">Nombre(s)</p>
+                  <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.nombre_destino" name="inputnombre_destino" #nombre_destino="ngModel" required>
+                  <ng-container *ngIf="nombre_destino.invalid && nombre_destino.dirty">
+                    <span class="help is-danger">Este campo es requerido</span>
+                  </ng-container>
+              </div>
+              <div class="col-7 campos">
+                  <p class="campo1">Apellido(s)</p>
+                  <input class="campo2" type="text" placeholder="">
+              </div>
+          </div>
+          <div class="row ml mlm">
+              <div class="col-8 campos">
+                  <p class="campo1">Dirección</p>
+                  <input class="campo2" type="text" placeholder="" id="pac-input2" (blur)="ver2(indice+1)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
+                  <ng-container *ngIf="destino.invalid && destino.dirty">
+                    <span class="help is-danger">Este campo es requerido</span>
+                  </ng-container>
+                </div>
+              <div class="col-2 campos">
+                  <p class="campo1">Nro. Piso</p>
+                  <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.departamento_destino" name="inputdepartamento_destino" #departamento_destino="ngModel" required>
+                  <ng-container *ngIf="departamento_destino.invalid && departamento_destino.dirty">
+                    <span class="help is-danger">Este campo es requerido</span>
+                  </ng-container>
+              </div>
+              <div class="col-2 campos">
+                  <p class="campo1">Puerta</p>
+                  <input class="campo2" type="text" placeholder="">
+              </div>
+          </div>
+          <div class="row ml mlm">
+            <div class="col-2 campos">
+              <p class="campo1">C.P</p>
+              <input type="text" class="campo2" [(ngModel)]="destino.distrito_destino" name="inputdistrito_destino" #distrito_destino="ngModel" required>
+              <ng-container *ngIf="distrito_destino.invalid && distrito_destino.dirty">
+                <span class="help is-danger">Este campo es requerido</span>
+              </ng-container>
+            </div>
+            <div class="col-4 campos">
+              <p class="campo1">Teléfono</p>
+              <input type="text" class="campo2" [(ngModel)]="destino.telefono_destino" name="inputtelefono_destino" #telefono_destino="ngModel" required>
+              <ng-container *ngIf="telefono_destino.invalid && telefono_destino.dirty">
+                <span class="help is-danger">Este campo es requerido</span>
+              </ng-container>
+            </div>
+            <div class="col-6 campos2">
+                <p class="campo1">Notas</p>
+                <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="destino.comentarios2" name="inputcomentarios2" #comentarios2="ngModel" required></textarea>
+                <ng-container *ngIf="comentarios2.invalid && comentarios2.dirty">
+                  <span class="help is-danger">Este campo es requerido</span>
+                </ng-container>
+            </div>
+          </div>
+          <div class="row rango">
+              <div class="col-6 izquierda">
+                  <p class="title_rango">
+                      Rango de envío
+                  </p>   
+                  <select [(ngModel)]="destino.hora_destino" class="sle">
+                    <option *ngFor="let r of rangos" [value]="r">
+                      {{r}}
+                    </option>
+                </select>
+              </div>
+              <div class="col-6 derecha">
+                  <button class="btn_espacio" (click)="open(classic, 'classic')">ELEGIR ESPACIO</button>
+              </div>
+          </div>
+      </div>
+      
+  </div>
+  <div class="mapa">
+      <div id="map"></div>
+      <div class="row medio">
+        <span class="boton" (click)="open(payment, 'payment');enviar()" >ENVIAR</span>
+      </div>
+  </div>
+  
+</section>
 
  <!-- MODAL SELECCION DE TAMAÑO -->
  <ng-template #classic let-c="close" let-d="dismiss">
@@ -175,19 +339,19 @@
         <span aria-hidden="true" class="icon-delete">X</span>
       </button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body"  *ngIf="!showWeb">
         <div class="image-containerC">
             <div class="content-container">
               <div class="container">
                 <div class="row" style="border-bottom: 1px solid #969696;">
                   <div class="col-6 line-col pd-checkbox" style="padding-top: 10px;">
-                    <input class="form-check-input" type="checkbox" value="" id="box1" [(ngModel)]="box1" >
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box1" [(ngModel)]="box1" >
                     <label for="box1">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
                   </div>
                   <div class="col-6 pd-checkbox" style="padding-top: 10px;">
-                    <input class="form-check-input" type="checkbox" value="" id="box2" [(ngModel)]="box2">
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box2" [(ngModel)]="box2">
                     <label for="box2">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
@@ -195,13 +359,13 @@
                 </div>
                 <div class="row">
                   <div class="col-6 line-col pd-checkbox">
-                    <input class="form-check-input" type="checkbox" value="" id="box3" [(ngModel)]="box3">
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box3" [(ngModel)]="box3">
                     <label for="box3">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
                   </div>
                   <div class="col-6 pd-checkbox">
-                    <input class="form-check-input" type="checkbox" value="" id="box4" [(ngModel)]="box4">
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box4" [(ngModel)]="box4">
                     <label for="box4">
                       <img src="./assets/img/kanguro/box.png" alt="box">
                     </label>
@@ -214,9 +378,85 @@
             <img src="./assets/img/kanguro/Line 5.png" alt="" class="camion">
         </div>
     </div>
+    <div class="modal-body"  *ngIf="showWeb">
+      <div class="row">
+        <div class="col-6">
+          <div class="image-containerC" style="max-width:250px;">
+            <div class="content-container">
+              <div class="container">
+                <div class="row" style="border-bottom: 1px solid #969696;">
+                  <div class="col-6 line-col pd-checkbox" style="padding-top: 10px;">
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box1" [(ngModel)]="box1" >
+                    <label for="box1">
+                      <img src="./assets/img/kanguro/box.png" alt="box">
+                    </label>
+                  </div>
+                  <div class="col-6 pd-checkbox" style="padding-top: 10px;">
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box2" [(ngModel)]="box2">
+                    <label for="box2">
+                      <img src="./assets/img/kanguro/box.png" alt="box">
+                    </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 line-col pd-checkbox">
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box3" [(ngModel)]="box3">
+                    <label for="box3">
+                      <img src="./assets/img/kanguro/box.png" alt="box">
+                    </label>
+                  </div>
+                  <div class="col-6 pd-checkbox">
+                    <input class="form-check-input" type="checkbox" (change)="boxes()" value="" id="box4" [(ngModel)]="box4">
+                    <label for="box4">
+                      <img src="./assets/img/kanguro/box.png" alt="box">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <div>
+              <img src="./assets/img/kanguro/Line 5.png" alt="" class="camion">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="circle-box">
+            <p *ngIf="cajas != 0">{{cajas}}</p>
+          </div>
+          <img src="./assets/img/kanguro/caja.svg" class="img-box" alt="caja">
+        </div>
+      </div>
+    </div>
     <div class="modal-footer">
+      <div class="rectangle-black"></div>
       <div class="container">
-        <div class="row">
+        <div class="row" *ngIf="showWeb">
+          <div class="col-1"></div>
+          <div class="col-4">
+            <p class="title-text">Medidas box</p>
+            <div class="desc-text">
+              <p>Alto: 80cm</p>
+              <p>Ancho: 60cm</p>
+              <p>Profundidad: 40cm</p>
+            </div>
+            <p class="title-text">PESO</p>
+            <div class="desc-text">
+              <p>Máximo 25 kg</p>
+            </div>
+          </div>
+          <div class="col-3">         
+            <p class="title-text">Medidas baul</p>
+            <div class="desc-text">
+              <p>Alto: 120cm</p>
+              <p>Ancho: 126cm</p>
+              <p>Profundidad: 88cm</p>
+            </div>
+          </div>
+          <div class="col-4">         
+            <button type="button" class="btn btn-select" style="padding: 8px 25px;" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR</button>
+          </div>
+        </div>
+        <div class="row" *ngIf="!showWeb">
           <div class="col-6">
             <p class="title-text">Medidas box</p>
             <div class="desc-text">
@@ -236,7 +476,7 @@
             <div class="desc-text">
               <p>Máximo 25 kg</p>
             </div>
-            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="boxes(); c('Close click')">SELECCIONAR</button>
+            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR</button>
           </div>
         </div>
       </div>
