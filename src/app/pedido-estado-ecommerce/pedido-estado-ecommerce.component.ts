@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { UserStorageService } from '../services/user-storage.service';
 import { Router } from '@angular/router';
@@ -8,22 +8,26 @@ import { Router } from '@angular/router';
   templateUrl: './pedido-estado-ecommerce.component.html',
   styleUrls: ['./pedido-estado-ecommerce.component.scss']
 })
-export class PedidoEstadoEcommerceComponent implements OnInit {
+export class PedidoEstadoEcommerceComponent implements OnInit, AfterViewInit {
 
   orders: any;
   order_select: any = {
     destino: ''
   }
   status: string = '0';
+  showWeb: boolean = false;
 
   constructor(private api: ApiService, private uss: UserStorageService, private router: Router) { 
+    var mediaqueryList = window.matchMedia("(min-width: 992px)");
+    if(mediaqueryList.matches) {
+      this.showWeb = true;
+    }
   }
 
   ngOnInit(): void {
     let self = this;
     this.api.estado().subscribe({
       next(data){
-        console.log(data);
         if (data.pedidos) {
           data.pedidos.forEach(element => {
             element.destino = element.destinos[0].destino;
@@ -36,7 +40,9 @@ export class PedidoEstadoEcommerceComponent implements OnInit {
         console.log(err.error.err);
       }
     })
-   
+  }
+
+  ngAfterViewInit(): void {
     document.querySelector('.select-wrapper').addEventListener('click', function() {
       this.querySelector('.select').classList.toggle('open');
     })

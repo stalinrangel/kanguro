@@ -1,4 +1,130 @@
-<section class="container">
+<section *ngIf="showWeb">
+    <div class="headerWeb">
+        <p class="titleWeb">HISTORIAL DE ENVÍOS</p>
+        <p class="textoWeb">Se visualizan todos los envíos.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="cuadro cuadroWeb">
+                <p class="texto2">Seleccionar envío:</p>
+                <form class="row row-cols-sm-auto form-date">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input
+                                class="form-control"
+                                placeholder="DD/MM/YYYY"
+                                name="dp"
+                                [(ngModel)]="model"
+                                ngbDatepicker
+                                #d="ngbDatepicker"
+                                (ngModelChange)="updateDay($event)"
+                            />
+                            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                                <img src="./assets/img/kanguro/calendar.png" alt="">
+                            </button>
+                        </div>
+                    </div>
+                </form>     
+                <div class="listaWeb"> 
+                   <div class="content-list">
+                        <div class="row tablaWeb" *ngFor="let item of orders; let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true, 'selecTableWeb': order_selected.id == item.id }" (click)="changeOrder(item)">
+                            <div class="col-3">{{item.id}}</div>
+                            <div class="col-6">{{item.destino}}</div>
+                            <div class="col-3">{{item.fecha | date: 'dd/MM/YYYY'}}</div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="estadoweb">
+                <div class="modal-headerWeb" *ngIf="order_selected.id != null">
+                    <p class="modal-title" id="modal-title-default">Detalle del Envío</p>
+                </div>
+                <div class="modal-bodyWeb" *ngIf="order_selected.id != null">
+                    <div class="row">
+                        <div class="col-3">
+                            <p class="campo1">Orden Solicitud</p>
+                            <p><b>{{order_selected.id}}</b></p>
+                        </div>
+                        <div class="col-3">
+                            <p class="campo1">Fecha de solicitud</p>
+                            <p><b>{{order_selected.fecha | date: 'dd/MM/YYYY'}}</b></p>
+                        </div>
+                        <div class="col-3">
+                            <p class="campo1">Rango de envío</p>
+                            <p><b>{{order_selected.hora_destino}}</b></p>
+                        </div>
+                        <div class="col-3">
+                            <p class="campo1">Fecha de envío</p>
+                            <p><b>{{order_selected.fecha_destino | date: 'dd/MM/YYYY'}}</b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <p class="campo1">Estado</p>
+                            <p *ngIf="order_selected.estado == 0"><b style="font-size: 16px;">CREADO</b></p>
+                            <p *ngIf="order_selected.estado == 1"><b style="font-size: 16px;">PROCESANDO</b></p>
+                            <p *ngIf="order_selected.estado == 2"><b style="font-size: 16px;">EN CAMINO</b></p>
+                            <p *ngIf="order_selected.estado == 3"><b style="font-size: 16px;">ENTREGADO</b></p>
+                            <p *ngIf="order_selected.estado == 4"><b style="font-size: 16px;">CANCELADO</b></p>
+                        </div>                  
+                        <div class="col-3">
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="campo1">Dirección destino</p>
+                            <p><b>{{order_selected.destino}}</b></p>
+                        </div>
+                        <div class="col-2">
+                            <p class="campo1">Nro. Piso</p>
+                            <p><b></b></p>
+                        </div>
+                        <div class="col-2">
+                            <p class="campo1">Puerta</p>
+                            <p><b></b></p>
+                        </div>
+                        <div class="col-2">
+                            <p class="campo1">C.P.</p>
+                            <p><b></b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="campo1">Contacto</p>
+                            <p><b>{{order_selected.contacto}}</b></p>
+                        </div>
+                        <div class="col-6">
+                            <p class="campo1">Teléfono</p>
+                            <p><b>{{order_selected.telefono}}</b></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="campo1">Productos</p>
+                            <p class="content-product">{{order_selected.detalle}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                        </div>
+                        <div class="col-4">
+                            <div class="content-title">
+                                <p class="title1">COSTO</p>
+                                <p class="title2">{{order_selected.costo}} €</p>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section *ngIf="!showWeb" class="container">
     <div class="header">
         <h1>E-Commerce</h1>
         <p class="title">HISTORIAL DE ENVÍOS</p>
@@ -43,7 +169,7 @@
             </div>
             <div class="col-4">
                 <p class="campo1">Rango de envío</p>
-                <p><b>{{order_selected.hora_origen}}</b></p>
+                <p><b>{{order_selected.hora_destino}}</b></p>
             </div>
         </div>
         <div class="row">
@@ -90,14 +216,14 @@
         <div class="row">
             <div class="col-12">
                 <p class="campo1">Productos</p>
-                <p class="content-product"></p>
+                <p class="content-product">{{order_selected.detalle}}</p>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-6">
                 <p class="campo1">Cantidad</p>
-                <p><b>1</b></p>
+                <p><b>{{order_selected.cantidad}}</b></p>
             </div>
             <div class="col-6">
                 <div class="content-title">

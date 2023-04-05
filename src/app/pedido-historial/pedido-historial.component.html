@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-3">
                             <p class="campo1">Rango de envío</p>
-                            <p><b>{{order_selected.hora_origen}}</b></p>
+                            <p><b>{{order_selected.hora_destino}}</b></p>
                         </div>
                         <div class="col-3">
                             <p class="campo1">Fecha de envío</p>
@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-2">
                             <p class="campo1">Nro. Piso</p>
-                            <p><b></b></p>
+                            <p><b>{{order_selected.departamento_destino}}</b></p>
                         </div>
                         <div class="col-2">
                             <p class="campo1">Puerta</p>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="col-2">
                             <p class="campo1">C.P.</p>
-                            <p><b></b></p>
+                            <p><b>{{order_selected.distrito_destino}}</b></p>
                         </div>
                     </div>
                     <div class="row">
@@ -104,8 +104,8 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <p class="campo1">Productos</p>
-                            <p class="content-product"></p>
+                            <p class="campo1">Comentarios</p>
+                            <p class="content-product">{{order_selected.comentarios}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -130,7 +130,7 @@
         <p class="texto">Se visualizan todos los envíos.</p>
     </div>
     
-    <form class="row row-cols-sm-auto form-date">
+    <form class="row row-cols-sm-auto form-date" style="margin-top: 30px;">
         <div class="col-12">
             <div class="input-group">
                 <input
@@ -141,7 +141,7 @@
                     ngbDatepicker
                     #d="ngbDatepicker"
                     (ngModelChange)="updateDay($event)"
-                />
+                /> 
                 <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                     <img src="./assets/img/kanguro/calendar.png" alt="">
                 </button>
@@ -187,13 +187,13 @@
                 <p class="campo1">Orden Solicitud</p>
                 <p><b>{{order_selected.id}}</b></p>
             </div>
-            <div class="col-5">
+            <div class="col-4">
                 <p class="campo1">Fecha de solicitud</p>
                 <p><b>{{order_selected.fecha | date: 'dd/MM/YYYY'}}</b></p>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <p class="campo1">Rango de envío</p>
-                <p><b>{{order_selected.hora_origen}}</b></p>
+                <p><b>{{order_selected.hora_destino}}</b></p>
             </div>
         </div>
         <div class="row">
@@ -216,7 +216,7 @@
         <div class="row">
             <div class="col-4">
                 <p class="campo1">Nro. Piso</p>
-                <p><b></b></p>
+                <p><b>{{order_selected.departamento_destino}}</b></p>
             </div>
             <div class="col-4">
                 <p class="campo1">Puerta</p>
@@ -224,7 +224,7 @@
             </div>
             <div class="col-4">
                 <p class="campo1">C.P.</p>
-                <p><b></b></p>
+                <p><b>{{order_selected.distrito_destino}}</b></p>
             </div>
         </div>
         <div class="row">
@@ -239,15 +239,13 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <p class="campo1">Productos</p>
-                <p class="content-product"></p>
+                <p class="campo1">Comentarios</p>
+                <p class="content-product">{{order_selected.comentarios}}</p>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-6">
-                <p class="campo1">Cantidad</p>
-                <p><b>1</b></p>
             </div>
             <div class="col-6">
                 <div class="content-title">

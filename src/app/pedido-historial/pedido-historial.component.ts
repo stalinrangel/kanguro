@@ -46,6 +46,11 @@ export class PedidoHistorialComponent implements OnInit {
             element.destino = element.destinos[0].destino;
             element.contacto = element.destinos[0].nombre_destino;
             element.telefono = element.destinos[0].telefono_destino;
+            element.fecha_destino = element.destinos[0].fecha_destino;
+            element.hora_destino = element.destinos[0].hora_destino;
+            element.comentarios = element.destinos[0].comentarios;
+            element.distrito_destino = element.destinos[0].distrito_destino;
+            element.departamento_destino = element.destinos[0].departamento_destino;
             self.total_km = self.total_km + Number(element.km);
             self.total_costo = self.total_costo + Number(element.costo);
           });
@@ -70,6 +75,11 @@ export class PedidoHistorialComponent implements OnInit {
             element.destino = element.destinos[0].destino;
             element.contacto = element.destinos[0].nombre_destino;
             element.telefono = element.destinos[0].telefono_destino;
+            element.fecha_destino = element.destinos[0].fecha_destino;
+            element.hora_destino = element.destinos[0].hora_destino;
+            element.comentarios = element.destinos[0].comentarios;
+            element.distrito_destino = element.destinos[0].distrito_destino;
+            element.departamento_destino = element.destinos[0].departamento_destino;
             self.total_km = self.total_km + Number(element.km);
             self.total_costo = self.total_costo + Number(element.costo);
           });
