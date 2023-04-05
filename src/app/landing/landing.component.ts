@@ -167,7 +167,7 @@ export class LandingComponent implements OnInit {
           }
       });
 
-      input.addEventListener('focus', () => {
+      input2.addEventListener('focus', () => {
           hasDownBeenPressed1 = false;
           input2.value = '';
       });

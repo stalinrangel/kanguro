@@ -4,13 +4,43 @@
     box-sizing: border-box;
 }
 .datos_pedido{
-    width: 50%;
+    width: 60%;
+    background: #F1F1F1;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 15px;
+    padding: 25px;
+}
+.boton{
+    background-color: #F43A20;
+    color: white;
+    width: 244px;
+    height: 50px;
+    font-size: 29px;
+    font-family: 'BalooTammudu2Extra';
+    border-radius: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px 0px 0px;
+    gap: 10px;
+    margin-top: 1.5rem;
+    cursor: pointer;
 }
 .pedido{
     display: flex;
 }
 .mapa{
-    width: 50%;
+    width: 40%;
+    background: rgba(237, 237, 237, 0.8);
+    padding: 22px 16px 94px 16px;
+    border-radius: 15px;
+    margin-right: 2rem;
+}
+.medio{
+    display: flex;
+    justify-content: center;
 }
 .ml{
     margin-right: 16px;
@@ -67,6 +97,7 @@
     background-color: white;
     padding: 0px 0px 0px 0px;
     padding-top: 20px;
+    margin-top: 3px;
 }
 .campos{
     padding: 0px 0px 15px 16px;
@@ -75,12 +106,14 @@
     
 }
 .campo1{
-    font-family: BalooTammudu2;
+    font-family: BalooTammudu2Extra;
     color: black;
-    font-size: 15px;
-    line-height: 9px;
+    font-size: 17px;
     margin-left: 1px;
     white-space: nowrap;
+    overflow: hidden;  
+    text-overflow: clip;
+    line-height: 20px;
 }
 .campo2{
     width: 100%;
@@ -92,7 +125,7 @@
 .poli{
     width: 12px;
     position: absolute;
-    top: 17px;
+    top: 32px;
     right: 3px;
 }
 .campos2{
@@ -170,6 +203,7 @@
     border: 1px solid black;
 }
 .sle2{
+    padding-left: 10px;
     width: 100%;
     border-radius: 9px;
     border: 1px solid black;
@@ -196,7 +230,7 @@
     cursor: pointer;
 }
 #map {
-    height: 400px; /* The height is 400 pixels */
+    height: 100%; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
   }
 

@@ -49,7 +49,7 @@ export class PedidoComponent implements OnInit {
 
   public orige:any={
     'tipo':'',
-    'fecha':'',
+    'fecha':new Date(),
     'fecha_origen':'',
     'hora':'',
     'horario':'',
@@ -269,8 +269,17 @@ export class PedidoComponent implements OnInit {
         '18-19'
       ];
     }else if (this.hora>18) {
+      //alert('Los pedidos recibidos después de las 18:00 hrs serán procesados al siguiente día hábil');
       this.rangos=[
-        
+        '10-11',
+        '11-12',
+        '12-13',
+        '13-14',
+        '14-15',
+        '15-16',
+        '16-17',
+        '17-18',
+        '18-19'
       ];
     }
   }
@@ -338,8 +347,55 @@ export class PedidoComponent implements OnInit {
         fields: ["address_components", "geometry", "icon", "name"],
         types: ["establishment"],
       };
+      let hasDownBeenPressed = false;
+      let hasDownBeenPressed1 = false;
+
+      //input 1
       self.autocomplete[0] = new google.maps.places.Autocomplete(input, options);
+      input.addEventListener('keydown', (e) => {
+        if (e.keyCode === 40) {
+            hasDownBeenPressed = true;
+        }
+      });
+      google.maps.event.addDomListener(input, 'keydown', (e:any) => {
+          e.cancelBubble = true;
+          if (e.keyCode === 13 || e.keyCode === 9) {
+              if (!hasDownBeenPressed && !e.hasRanOnce) {
+                  google.maps.event.trigger(e.target, 'keydown', {
+                      keyCode: 40,
+                      hasRanOnce: true,
+                  });
+              }
+          }
+      });
+      input.addEventListener('focus', () => {
+          hasDownBeenPressed = false;
+          input.value = '';
+      });
+      //input 2
       self.autocomplete[1] = new google.maps.places.Autocomplete(input2, options);
+      input2.addEventListener('keydown', (e) => {
+        if (e.keyCode === 40) {
+            hasDownBeenPressed1 = true;
+        }
+      });
+      google.maps.event.addDomListener(input2, 'keydown', (e:any) => {
+          e.cancelBubble = true;
+          if (e.keyCode === 13 || e.keyCode === 9) {
+              if (!hasDownBeenPressed1 && !e.hasRanOnce) {
+                  google.maps.event.trigger(e.target, 'keydown', {
+                      keyCode: 40,
+                      hasRanOnce: true,
+                  });
+              }
+          }
+      });
+      input2.addEventListener('focus', () => {
+          hasDownBeenPressed1 = false;
+          input2.value = '';
+      });
+      //////////////////////////////////////////////
+
       self.places = new google.maps.places.PlacesService(self.map);
       self.directionsRenderer.setMap(self.map);
       const newBounds = new google.maps.LatLngBounds(this.center);
@@ -628,6 +684,72 @@ export class PedidoComponent implements OnInit {
       }
     }
 
+  }
+
+  limpiar1(){
+    this.orige={
+      'tipo':'',
+      'fecha':'',
+      'fecha_origen':'',
+      'hora':'',
+      'horario':'',
+      'estado':'',
+      'nombre':'',
+      'forma_pago': '',
+      'costo':0,
+      'costo_recojo': 0,
+      'km':'',
+      'min':'',
+      'cajap':'',
+      'cajam':'',
+      'cajag':'',
+      'cancelado':0,
+      'reprogramado':0,
+      'tipo_usuario':'',
+      'nombre_origen':'',
+      'origen':'',
+      'departamento_origen':'',
+      'distrito_origen':'',
+      'telefono_origen':'',
+      'comentarios':'',
+      'lat':'',
+      'lng':''
+    }
+  }
+  limpiar2(){
+    this.destino={
+      'pedido_id':'',
+      'origen':'',
+      'departamento_origen':'',
+      'nombre_origen':'',
+      'telefono_origen':'',
+      'distrito_origen': '',
+      'zona_origen': '',
+      'comentarios':'',
+      'lat':'',
+      'lng':'',
+      'destino':'',
+      'departamento_destino':'',
+      'nombre_destino':'',
+      'telefono_destino':'',
+      'distrito_destino':'',
+      'zona_destino':'',
+      'comentarios2':'',
+      'lat2':'',
+      'lng2':'',
+      'km':'',
+      'min':'',
+      'n_marcador':'',
+      'cobrarecommerce':'',
+      'descuento':'',
+      'costo':0,
+      'cantidad':0,
+      'detalle':'',
+      'subtotal':0,
+      'fecha_destino':'',
+      'turno_destino':'',
+      'hora_destino':''
+    }
   }
 
   open(content, type) {

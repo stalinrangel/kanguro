@@ -1,4 +1,4 @@
-<p class="precio_km">{{precio | number : '1.0-2'}} € <span style="color:#FFBD00; font-weight: bold;">|</span> {{km | number : '1.0-2'}} KM</p>
+<p class="precio_km">PRECIO<span style="color:#FFBD00; font-weight: bold;">|</span> {{precio | number : '1.0-2'}} € </p>
 <section class="pedido" *ngIf="showWeb"> 
     <div class="datos_pedido">
         
@@ -6,7 +6,7 @@
           <div class="origen">
             
               <div class="row" class="btn_limpiar">
-                  <p class="limpiar1" (click)="geolocate()">Limpiar Campos</p>
+                  <p class="limpiar1" (click)="limpiar1()">Limpiar Campos</p>
               </div>
               <p class="titulo">ORIGEN</p>
               <div class="row ml">
@@ -80,7 +80,7 @@
         <p class="titulo" >DESTINO</p>
         <div class="origen" *ngFor="let destino of destinos;let indice=index">
             <div class="row" class="btn_limpiar">
-                <p class="limpiar" (click)="limpiar()">Limpiar Campos</p>
+                <p class="limpiar" (click)="limpiar2()">Limpiar Campos</p>
             </div>
             <div class="row ml">
                 <div class="col-5 campos">
@@ -172,7 +172,7 @@
         <div class="origen">     
             <p class="titulo">ORIGEN</p>
             <div class="row" class="btn_limpiar">
-              <p class="limpiar1" (click)="geolocate()" style="border-radius: 0px;">Limpiar Campos</p>
+              <p class="limpiar1" (click)="limpiar1()" style="border-radius: 0px;">Limpiar Campos</p>
             </div>
             <div class="row ml mlm">
                 <div class="col-5 campos">
@@ -246,7 +246,7 @@
       <p class="titulo" >DESTINO</p>
       <div class="origen" *ngFor="let destino of destinos;let indice=index">
           <div class="row" class="btn_limpiar">
-              <p class="limpiar" (click)="limpiar()">Limpiar Campos</p>
+              <p class="limpiar" (click)="limpiar2()">Limpiar Campos</p>
           </div>
           <div class="row ml mlm">
               <div class="col-5 campos">
