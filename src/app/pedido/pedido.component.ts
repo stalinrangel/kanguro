@@ -359,6 +359,7 @@ export class PedidoComponent implements OnInit {
       });
       google.maps.event.addDomListener(input, 'keydown', (e:any) => {
           e.cancelBubble = true;
+          console.log(e.keyCode)
           if (e.keyCode === 13 || e.keyCode === 9) {
               if (!hasDownBeenPressed && !e.hasRanOnce) {
                   google.maps.event.trigger(e.target, 'keydown', {
@@ -368,6 +369,7 @@ export class PedidoComponent implements OnInit {
               }
           }
       });
+      
       input.addEventListener('focus', () => {
           hasDownBeenPressed = false;
           input.value = '';
@@ -574,6 +576,7 @@ export class PedidoComponent implements OnInit {
 
   enviar(){
     console.log(this.orige)
+    this.orige.fecha=this.orige.fecha.year+'-'+this.orige.fecha.month+'-'+this.orige.fecha.day
     console.log(this.destinos)
     for (let i = 0; i < this.destinos.length; i++) {
       this.destinos[i].nombre_origen=this.orige.nombre_origen;

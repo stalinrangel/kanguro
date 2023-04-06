@@ -242,19 +242,10 @@ export class PedidoEcommerceComponent implements OnInit {
     this.precio=6;
   }
 
-  
   enviar(){
-    console.log(this.destino)
-    console.log(this.destinos)
-    //let data={
-    //  pedido
-    //}
-   // this.api.crear_pedido_ecommerce()
-  }
-
-  enviars(){
     console.log(this.orige)
     console.log(this.destinos)
+    this.calcular();
     for (let i = 0; i < this.destinos.length; i++) {
       this.destinos[i].nombre_origen=this.orige.nombre_origen;
       this.destinos[i].origen=this.orige.origen;
@@ -262,6 +253,7 @@ export class PedidoEcommerceComponent implements OnInit {
       this.destinos[i].distrito_origen=this.orige.distrito_origen;
       this.destinos[i].telefono_origen=this.orige.telefono_origen;
       this.destinos[i].comentarios=this.orige.comentarios;
+      this.destinos[i].fecha_destino=this.destinos[i].fecha_destino.year+'-'+this.destinos[i].fecha_destino.month+'-'+this.destinos[i].fecha_destino.day;
       this.destinos[i].lat=this.orige.lat;
       this.destinos[i].lng=this.orige.lng;
     }
@@ -271,13 +263,18 @@ export class PedidoEcommerceComponent implements OnInit {
 
   crear_pedido(){
     let self = this;
-    this.api.crear_pedido(this.orige).subscribe({
+    let destinos=JSON.stringify(this.destinos);
+    //this.destinos=JSON.parse(this.destinos);
+    console.log(this.destinos)
+    let data = {
+      pedido:destinos
+    }
+    console.log(data)
+    this.api.crear_pedido_ecommerce(data).subscribe({
       next(data){
         console.log(data);
-        for (let i = 0; i < self.destinos.length; i++) {
-         self.destinos[i].pedido_id=data.id;
-        
-        }
+        alert('pedido enviado con exito');
+        self.router.navigate(['/estadoPedidoEcommerce']);
       },error(err){
         console.log(err.error.err);
       }
@@ -351,7 +348,7 @@ export class PedidoEcommerceComponent implements OnInit {
   initDatos(){
 
     //Inicio Origen
-    this.orige.tipo='URGENTE';
+    this.orige.tipo='PROGRAMADO';
     this.orige.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate();
     this.orige.fecha_origen=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.orige.estado=0;
@@ -359,7 +356,7 @@ export class PedidoEcommerceComponent implements OnInit {
     this.orige.nombre_origen='Almacen Kanguro';
     this.orige.tipo_usuario=this.user.tipo_usuario;
 
-    this.destino.tipo='URGENTE';
+    this.destino.tipo='PROGRAMADO';
     this.destino.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.destino.fecha_origen=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.destino.estado=0;
