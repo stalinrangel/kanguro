@@ -21,6 +21,7 @@ export class LandingComponent implements OnInit {
   mostrar=false;
   closeResult: string;
   public soli=false;
+  public geocoder = new google.maps.Geocoder();
 
   images = ["./assets/img/kanguro/slider1.svg",
             "./assets/img/kanguro/slider2.svg",
@@ -187,9 +188,45 @@ export class LandingComponent implements OnInit {
     let self=this;
     setTimeout(function(){
       if (i==0) {
-        console.log(this.origen.getPlace().geometry)
+        console.log(this.origen.getPlace())
+        if(this.origen.getPlace()==undefined){
+          self.geocoder.geocode({
+            'address': self.infopedido.origen
+          }, function(responses) {
+            console.log(responses);
+            if (responses && responses.length > 0) {
+              console.log(responses[0]);
+              self.infopedido.origenInfo=responses[0];
+              self.infopedido.origen=responses[0].formatted_address;
+              if (self.infopedido.origenInfo.geometry.location && self.infopedido.destinoInfo.geometry.location) {
+                console.log('amos')
+                self.calculekm(self.infopedido.origenInfo.geometry,self.infopedido.destinoInfo.geometry);
+              }
+            } else {
+              alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            }
+          });
+        }
       }else if (i==1) {
-        console.log(this.destino.getPlace().geometry)
+        console.log(this.destino.getPlace())
+        if(this.destino.getPlace()==undefined){
+          self.geocoder.geocode({
+            'address': self.infopedido.destino
+          }, function(responses) {
+            console.log(responses);
+            if (responses && responses.length > 0) {
+              console.log(responses[0]);
+              self.infopedido.destinoInfo=responses[0];
+              self.infopedido.destino=responses[0].formatted_address;
+              if (self.infopedido.origenInfo.geometry.location && self.infopedido.destinoInfo.geometry.location) {
+                console.log('amos')
+                self.calculekm(self.infopedido.origenInfo.geometry,self.infopedido.destinoInfo.geometry);
+              }
+            } else {
+              alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            }
+          });
+        }
       }
       console.log(this.origen.getPlace().geometry.location)
       if (this.origen.getPlace().geometry.location && this.destino.getPlace().geometry.location) {

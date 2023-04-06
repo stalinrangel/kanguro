@@ -484,14 +484,50 @@ export class PedidoComponent implements OnInit {
     let self=this;
     setTimeout(function(){
       console.log(self.autocomplete[i].getPlace())
-      if (i==0) {
-        self.orige.distrito_origen=self.autocomplete[i].getPlace().address_components[6].long_name;
+      if (self.autocomplete[i].getPlace()!=undefined) {
+        
+        if (i==0) {
+          self.orige.distrito_origen=self.autocomplete[i].getPlace().address_components[6].long_name;
+        }else{
+          console.log(i)
+          self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[6].long_name;
+        }
+        self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
       }else{
-        console.log(i)
-        self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[6].long_name;
-      }
-      self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
 
+        self.geocoder.geocode({
+            'address': self.orige.origen
+          }, function(responses) {
+            console.log(responses);
+            if (responses && responses.length > 0) {
+            console.log(responses[0]);
+            if (i==0) {
+              self.orige.origen=responses[0].formatted_address;
+              if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
+                self.orige.distrito_origen=responses[0].address_components[5].long_name;
+              }else if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
+                self.orige.distrito_origen=responses[0].address_components[6].long_name;
+              }
+              if (responses[0].geometry && responses[0].geometry.location) {
+                self.map.panTo(responses[0].geometry.location);
+                self.map.setZoom(15);
+                self.set_markers(responses[0].geometry.location,i);
+              } 
+            }else{
+              console.log(i)
+              self.destinos[i-1].destino=responses[0].formatted_address;
+              if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
+                self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
+              }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
+                self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
+              }
+              self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
+            }
+          } else {
+            alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+          }
+          });
+        }
     }, 800);
   }
   ver2(i){
@@ -500,12 +536,54 @@ export class PedidoComponent implements OnInit {
     //this.limpiar();
     setTimeout(function(){
       console.log(self.autocomplete[i].getPlace())
-      self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
-      self.traceRoute(i);
+      if (self.autocomplete[i].getPlace()!=undefined) {
+        self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
+        self.traceRoute(i);
+      }else{
+
+        self.geocoder.geocode({
+            'address': self.destinos[i-1].destino
+          }, function(responses) {
+            console.log(responses);
+            if (responses && responses.length > 0) {
+            console.log(responses[0]);
+            if (i==0) {
+              self.orige.origen=responses[0].formatted_address;
+              if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
+                self.orige.distrito_origen=responses[0].address_components[5].long_name;
+              }else if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
+                self.orige.distrito_origen=responses[0].address_components[6].long_name;
+              }
+              if (responses[0].geometry && responses[0].geometry.location) {
+                self.map.panTo(responses[0].geometry.location);
+                self.map.setZoom(15);
+                self.set_markers(responses[0].geometry.location,i);
+                self.traceRoute(i);
+              } 
+            }else{
+              console.log(i)
+              self.destinos[i-1].destino=responses[0].formatted_address;
+              if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
+                self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
+              }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
+                self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
+              }
+              if (responses[0].geometry && responses[0].geometry.location) {
+                self.map.panTo(responses[0].geometry.location);
+                self.map.setZoom(15);
+                self.set_markers(responses[0].geometry.location,i);
+                self.traceRoute(i);
+              } 
+            }
+          } else {
+            alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+          }
+          });
+      }
     }, 800);
   }
   traceRoute(i){
-    
+    console.log('traceroute')
     this.calculateAndDisplayRoute(this.directionsService,this.directionsRenderer);
     this.calculekm(i);
   }
