@@ -81,7 +81,7 @@
                         </div>
                         <div class="col-2">
                             <p class="campo1">Nro. Piso</p>
-                            <p><b></b></p>
+                            <p><b>{{order_selected.departamento_destino}}</b></p>
                         </div>
                         <div class="col-2">
                             <p class="campo1">Puerta</p>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="col-2">
                             <p class="campo1">C.P.</p>
-                            <p><b></b></p>
+                            <p><b>{{order_selected.distrito_destino}}</b></p>
                         </div>
                     </div>
                     <div class="row">
@@ -130,6 +130,25 @@
         <p class="title">HISTORIAL DE ENVÍOS</p>
         <p class="texto">Se visualizan todos envíos.</p>
     </div>
+
+    <form class="row row-cols-sm-auto form-date" style="margin-top: 30px;">
+        <div class="col-12">
+            <div class="input-group">
+                <input
+                    class="form-control"
+                    placeholder="DD/MM/YYYY"
+                    name="dp"
+                    [(ngModel)]="model"
+                    ngbDatepicker
+                    #d="ngbDatepicker"
+                    (ngModelChange)="updateDay($event)"
+                /> 
+                <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                    <img src="./assets/img/kanguro/calendar.png" alt="">
+                </button>
+            </div>
+        </div>
+    </form>
     
     <div class="cuadro">
         <div class="lista"> 
@@ -192,7 +211,7 @@
         <div class="row">
             <div class="col-4">
                 <p class="campo1">Nro. Piso</p>
-                <p><b></b></p>
+                <p><b>{{order_selected.departamento_destino}}</b></p>
             </div>
             <div class="col-4">
                 <p class="campo1">Puerta</p>
@@ -200,7 +219,7 @@
             </div>
             <div class="col-4">
                 <p class="campo1">C.P.</p>
-                <p><b></b></p>
+                <p><b>{{order_selected.distrito_destino}}</b></p>
             </div>
         </div>
         <div class="row">

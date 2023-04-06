@@ -143,6 +143,11 @@ export class NavbarComponent implements OnInit {
         }   
     }
 
+    realizarEnvioU(){
+        this.showMenuWeb = false;
+        this.router.navigate[('/pedido')];
+    }
+
     estadoEnvio(i){
         this.showMenuWeb = false;
         if(i == 1){

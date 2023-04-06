@@ -40,11 +40,11 @@
                 <div class="row">
                     <div class="col-6">
                         <p class="tex1W">Fecha de envío</p>
-                        <p class="tex2W"><b>{{order_select.fecha | date: 'dd/MM/YYYY'}}</b></p>    
+                        <p class="tex2W"><b>{{order_select.fecha_destino | date: 'dd/MM/YYYY'}}</b></p>    
                     </div>
                     <div class="col-6">
                         <p class="tex1W">Rango de envío</p>
-                        <p class="tex2W"><b>{{order_select.hora_origen}}</b></p>  
+                        <p class="tex2W"><b>{{order_select.hora_destino}}</b></p>  
                     </div>
                 </div> 
                 <div class="row">
@@ -66,13 +66,81 @@
             </div>
             <div class="estado estadoweb" *ngIf="status == '2'">
                 <img src="./assets/img/kanguro/estado2.svg" alt="estado2">
-                <p class="tex">Estado:</p>
-                <p class="tex2">EN CAMINO</p>      
+                <div class="row">
+                    <div class="col-6">
+                        <p class="texW">Estado:</p>
+                        <p class="tex2W">EN CAMINO</p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="texW">Situación:</p>
+                        <p class="tex2W">{{order_select.tipo}}</p>    
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Fecha de envío</p>
+                        <p class="tex2W"><b>{{order_select.fecha_destino | date: 'dd/MM/YYYY'}}</b></p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Rango de envío</p>
+                        <p class="tex2W"><b>{{order_select.hora_destino}}</b></p>  
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Contacto</p>
+                        <p class="tex2W"><b>{{order_select.contacto}}</b></p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Teléfono</p>
+                        <p class="tex2W"><b>{{order_select.telefono}}</b></p> 
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-12">
+                        <p class="tex1W">Dirección destino</p>
+                        <p class="tex2W"><b>{{order_select.destino}}</b></p>    
+                    </div>
+                </div>      
             </div>
             <div class="estado estadoweb" *ngIf="status == '3'">
                 <img src="./assets/img/kanguro/estado3.svg" alt="estado3">
-                <p class="tex">Estado:</p>
-                <p class="tex2">ENTREGADO</p>      
+                <div class="row">
+                    <div class="col-6">
+                        <p class="texW">Estado:</p>
+                        <p class="tex2W">ENTREGADO</p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="texW">Situación:</p>
+                        <p class="tex2W">{{order_select.tipo}}</p>    
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Fecha de envío</p>
+                        <p class="tex2W"><b>{{order_select.fecha_destino | date: 'dd/MM/YYYY'}}</b></p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Rango de envío</p>
+                        <p class="tex2W"><b>{{order_select.hora_destino}}</b></p>  
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Contacto</p>
+                        <p class="tex2W"><b>{{order_select.contacto}}</b></p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Teléfono</p>
+                        <p class="tex2W"><b>{{order_select.telefono}}</b></p> 
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-12">
+                        <p class="tex1W">Dirección destino</p>
+                        <p class="tex2W"><b>{{order_select.destino}}</b></p>    
+                    </div>
+                </div>       
             </div>
             <div class="estado estadoweb" *ngIf="status == '4'">
                 <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
@@ -130,6 +198,7 @@
         <p class="tex2">ENTREGADO</p>      
     </div>
     <div class="estado" *ngIf="status == '4'">
+        <img src="./assets/img/kanguro/estadoe0.svg" alt="estado0">
         <p class="tex">Estado:</p>
         <p class="tex2">CANCELADO</p>      
     </div>
@@ -139,11 +208,11 @@
         <div class="row justify-content-between">
           <div class="col-5">
             <p>Fecha de envío</p>
-            <p><b>{{order_select.fecha | date: 'dd/MM/YYYY'}}</b></p>
+            <p><b>{{order_select.fecha_destino | date: 'dd/MM/YYYY'}}</b></p>
           </div>
           <div class="col-4 offset-1 text-right">
             <p>Rango de envío</p>
-            <p><b>{{order_select.hora_origen}}</b></p>
+            <p><b>{{order_select.hora_destino}}</b></p>
           </div>
           <div class="col-2">
           </div>

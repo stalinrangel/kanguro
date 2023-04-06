@@ -33,6 +33,8 @@ export class PedidoEstadoEcommerceComponent implements OnInit, AfterViewInit {
             element.destino = element.destinos[0].destino;
             element.contacto = element.destinos[0].nombre_destino;
             element.telefono = element.destinos[0].telefono_destino;
+            element.fecha_destino = element.destinos[0].fecha_destino;
+            element.hora_destino = element.destinos[0].hora_destino;
           });
           self.orders = data.pedidos;
         }
