@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-size: 20px;
 }
 .datos_pedido{
     width: 60%;
@@ -39,7 +40,7 @@
     background-color: black;
     font-family: BalooTammudu2;
     color: white;
-    font-size: 13px;
+    font-size: 16px;
     border-radius: 0px 11px 0px 0px;
     padding: 2px 5px 0px 5px;
 }
@@ -48,21 +49,21 @@
     background-color: black;
     font-family: BalooTammudu2;
     color: white;
-    font-size: 13px;
+    font-size: 16px;
     padding: 2px 5px 0px 5px;
 }
 .precio_km{
     text-align: right;
     font-family: BalooTammudu2Extra;
-    color: #000000;
-    font-size: 23px;
+    color: #00000032;
+    font-size: 31px;
     padding: 10px 35px 0px 0px;
 }
 .titulo{
     font-family: BalooTammudu2-Semi;
-    color: red;
+    color: #FFBD00;
     padding-left: 40px;
-    font-size: 18px;
+    font-size: 26px;
     line-height: 9px;
     padding-top: 7px;
     border-bottom: 2px solid rgba(255, 189, 0, 1);
@@ -81,19 +82,19 @@
 .campo1{
     font-family: BalooTammudu2-Semi;
     color: black;
-    font-size: 14px;
+    font-size: 17px;
     margin-left: 1px;
     white-space: nowrap;
     overflow: hidden;  
     text-overflow: clip;
     line-height: 20px;
+    padding-top: 5px;
 }
 .campo2{
     width: 100%;
     border-radius: 2px;
     border: 0px;
-    font-size: 0.7rem;
-    height: 1.6rem;
+    height: 42px;
 }
 .campos2{
     padding: 0px 0px 15px 16px;
@@ -135,12 +136,12 @@
     border-radius: 10px;
     height: 45px;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 19px;
     line-height: 17px;
     border: none;
 }
 .sle{
-    width: 125px;
+    width: 150px;
     border-radius: 9px;
     border: 1px solid black;
     text-align: center;
