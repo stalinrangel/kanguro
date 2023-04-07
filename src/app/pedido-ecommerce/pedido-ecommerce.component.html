@@ -1,6 +1,6 @@
 <div class="header">
     <p class="titu">E-Commerce</p>
-    <p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">|</span>{{precio | number : '1.0-2'}} € </p>
+    <p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">| </span><span style="color: black;" class="precio_km"> {{precio | number : '1.0-2'}} € </span></p>
 </div>
 
 <section class="pedido"> 
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="row ml">
-                <div class="col-10 campos2">
+                <div class="col-9 campos2">
                     <p class="campo1">Productos</p>
                     <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="destino.detalle" name="inputdetalle" #detalle="ngModel" required></textarea>
                     <ng-container *ngIf="detalle.invalid && detalle.dirty">
@@ -100,7 +100,7 @@
                     <img src="./assets/img/kanguro/cesta.svg" (click)="n(indice);open(view,'view')" alt="" class="cesta">
                 </div>
             </div>
-            <div class="row ml">
+            <div class="row ml" >
                 <div class="col-2 campos">
                     <p class="campo1">Cantidad</p>  
                     <input class="sle2" type="text" placeholder="" [(ngModel)]="destino.cantidad" name="inputcantidad" #cantidad="ngModel" required> 
@@ -138,7 +138,7 @@
                 <div class="col-5 campos">
                 </div>
                 <div class="col-5 campos">
-                    <span class="btn_enviar" (click)="calcular()">Calcular</span>
+                    <span class="btn_enviar" (click)="enviar()">ENVIAR</span>
                 </div>
             </div>
         </div>

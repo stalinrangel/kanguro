@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-size: 20px;
 }
 .datos_pedido{
     width: 60%;
@@ -34,7 +35,7 @@
 .mapa{
     width: 40%;
     background: rgba(237, 237, 237, 0.8);
-    padding: 22px 16px 94px 16px;
+    padding: 22px 16px 16px 16px;
     border-radius: 15px;
     margin-right: 2rem;
 }
@@ -76,25 +77,25 @@
     text-align: right;
     font-family: BalooTammudu2Extra;
     color: #00000032;
-    font-size: 23px;
+    font-size: 31px;
     padding: 10px 35px 0px 0px;
 }
 .titulo{
     font-family: BalooTammudu2-Semi;
     color: rgba(255, 189, 0, 1);
     padding-left: 20px;
-    font-size: 18px;
+    font-size: 26px;
     line-height: 9px;
 }
 .origen{
-    background-color: white;
+    background-color: #f2f2f2;
     padding: 0px 0px 0px 0px;
     margin-top: 3px;
     border-top: 1px solid #FFBD00;
     padding-top: 20px;
 }
 .destino{
-    background-color: white;
+    background-color: #f2f2f2;
     padding: 0px 0px 0px 0px;
     padding-top: 20px;
     margin-top: 3px;
@@ -106,7 +107,7 @@
     
 }
 .campo1{
-    font-family: BalooTammudu2Extra;
+    font-family: BalooTammudu2-Semi;
     color: black;
     font-size: 17px;
     margin-left: 1px;
@@ -114,13 +115,15 @@
     overflow: hidden;  
     text-overflow: clip;
     line-height: 20px;
+    padding-top: 5px;
 }
 .campo2{
     width: 100%;
     border-radius: 6px;
     background: rgba(242, 242, 242, 1);
     border: 0px;
-    height: 35px;
+    height: 42px;
+    background-color: white;
 }
 .poli{
     width: 12px;
@@ -190,7 +193,7 @@
     align-items: center;
     font-family: BalooTammudu2-Semi;
     color: white;
-    background: #FFBD00;
+    background: red;
     padding: 6px 0px 0px 0px;
     border-radius: 12px;
     height: 34px;
@@ -230,7 +233,7 @@
     cursor: pointer;
 }
 #map {
-    height: 100%; /* The height is 400 pixels */
+    height: 70vh; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
   }
 
@@ -242,6 +245,17 @@
         margin-right: 0;
         border-radius: 0;
         padding: 0;
+    }
+    .destino{
+        background-color: white;
+    }
+    .origen{
+        background-color: white;
+    }
+    .campo2{
+        background-color: #f2f2f2;
+        height: 34px;
+        font-size: 16px;
     }
     .mapa{
         width: 0%;
