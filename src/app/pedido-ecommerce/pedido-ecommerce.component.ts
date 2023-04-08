@@ -527,10 +527,12 @@ export class PedidoEcommerceComponent implements OnInit {
     console.log(place)
 
     if (i==0) {
-      this.orige.distrito_origen=place.address_components[6].long_name;
+      let tam=place.address_components.length;
+      this.orige.distrito_origen=place.address_components[tam-1].long_name;
     }else{
       console.log(i)
-      this.destinos[i-1].distrito_destino=place.address_components[6].long_name;
+      let tam=place.address_components.length;
+      this.destinos[i-1].distrito_destino=place.address_components[tam-1].long_name;
     }
 
     if (place.geometry && place.geometry.location) {
@@ -568,22 +570,15 @@ export class PedidoEcommerceComponent implements OnInit {
         console.log(responses[0]);
         if (i==0) {
           self.orige.origen=responses[0].formatted_address;
-          self.orige.distrito_origen=responses[0].address_components[6].long_name;
-          if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
-            self.orige.distrito_origen=responses[0].address_components[6].long_name;
-          }else if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
-            self.orige.distrito_origen=responses[0].address_components[5].long_name;
-          }
+          let tam=responses[0].address_components.length;
+          self.orige.distrito_origen=responses[0].address_components[tam-1].long_name;
           
 
         }else{
           console.log(i)
           self.destinos[i-1].destino=responses[0].formatted_address;
-          if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
-            self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
-          }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
-            self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
-          }
+          let tam=responses[0].address_components.length;
+          self.destinos[i-1].distrito_destino=responses[0].address_components[tam-1].long_name;
           
         }
       } else {
@@ -598,10 +593,12 @@ export class PedidoEcommerceComponent implements OnInit {
       if (self.autocomplete[i].getPlace()!=undefined) {
         
         if (i==0) {
-          self.orige.distrito_origen=self.autocomplete[i].getPlace().address_components[6].long_name;
+          let tam=self.autocomplete[i].getPlace().address_components.length;
+          self.orige.distrito_origen=self.autocomplete[i].getPlace().address_components[tam].long_name;
         }else{
           console.log(i)
-          self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[6].long_name;
+          let tam=self.autocomplete[i].getPlace().address_components.length;
+          self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[tam].long_name;
         }
         self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
       }else{
@@ -614,11 +611,8 @@ export class PedidoEcommerceComponent implements OnInit {
             console.log(responses[0]);
             if (i==0) {
               self.orige.origen=responses[0].formatted_address;
-              if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[5].long_name;
-              }else if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[6].long_name;
-              }
+              let tam=responses[0].address_components.length;
+              self.orige.distrito_origen=responses[0].address_components[tam-1].long_name;
               if (responses[0].geometry && responses[0].geometry.location) {
                 self.map.panTo(responses[0].geometry.location);
                 self.map.setZoom(15);
@@ -627,11 +621,8 @@ export class PedidoEcommerceComponent implements OnInit {
             }else{
               console.log(i)
               self.destinos[i-1].destino=responses[0].formatted_address;
-              if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
-              }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
-              }
+              let tam=responses[0].address_components.length;
+              self.destinos[i-1].distrito_destino=responses[0].address_components[tam-1].long_name;
               self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
             }
           } else {
@@ -660,11 +651,8 @@ export class PedidoEcommerceComponent implements OnInit {
             console.log(responses[0]);
             if (i==0) {
               self.orige.origen=responses[0].formatted_address;
-              if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[5].long_name;
-              }else if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[6].long_name;
-              }
+              let tam=responses[0].address_components.length;
+              self.orige.distrito_origen=responses[0].address_components[tam-1].long_name;
               if (responses[0].geometry && responses[0].geometry.location) {
                 self.map.panTo(responses[0].geometry.location);
                 self.map.setZoom(15);
@@ -674,11 +662,8 @@ export class PedidoEcommerceComponent implements OnInit {
             }else{
               console.log(i)
               self.destinos[i-1].destino=responses[0].formatted_address;
-              if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
-              }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
-              }
+              let tam=responses[0].address_components.length;
+              self.destinos[i-1].distrito_destino=responses[0].address_components[tam-1].long_name;
               if (responses[0].geometry && responses[0].geometry.location) {
                 self.map.panTo(responses[0].geometry.location);
                 self.map.setZoom(15);

@@ -32,7 +32,7 @@
               <div class="row ml">
                   <div class="col-7 campos">
                       <p class="campo1">Dirección</p>
-                      <input class="campo2" type="text" placeholder="" id="pac-input" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                      <input class="campo2" type="text" placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
                       <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
                       <ng-container *ngIf="origen.invalid && origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
@@ -98,7 +98,7 @@
             <div class="row ml">
                 <div class="col-7 campos">
                     <p class="campo1">Dirección</p>
-                    <input class="campo2" type="text" placeholder="" id="pac-input2" (blur)="ver2(indice+1)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
+                    <input class="campo2" type="text" placeholder="" id="pac-input2" (focus)="foco(indice+1)" (blur)="ver2(indice+1)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
                     <ng-container *ngIf="destino.invalid && destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
@@ -190,7 +190,7 @@
             <div class="row ml mlm">
                 <div class="col-8 campos">
                     <p class="campo1">Dirección</p>
-                    <input class="campo2" type="text" placeholder="" id="pac-input" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                    <input class="campo2" type="text" placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
                     <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
                     <ng-container *ngIf="origen.invalid && origen.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
@@ -265,7 +265,7 @@
           <div class="row ml mlm">
               <div class="col-8 campos">
                   <p class="campo1">Dirección</p>
-                  <input class="campo2" type="text" placeholder="" id="pac-input2" (blur)="ver2(indice+1)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
+                  <input class="campo2" type="text" placeholder="" id="pac-input2" (focus)="foco(indice+1)" (blur)="ver2(indice+1)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
                   <ng-container *ngIf="destino.invalid && destino.dirty">
                     <span class="help is-danger">Este campo es requerido</span>
                   </ng-container>

@@ -25,6 +25,8 @@ export class PedidoComponent implements OnInit {
   public directionsService = new google.maps.DirectionsService();
   public geocoder = new google.maps.Geocoder();
 
+  public ruta:any=[];
+
   public box1=false;
   public box2=false;
   public box3=false;
@@ -316,6 +318,7 @@ export class PedidoComponent implements OnInit {
         console.log(info)
         console.log(info.routes[0].legs[0].start_address)
         console.log(info.routes[0].legs[0].end_address)
+        this.limpiar();
         this.geocodePosition(info.routes[0].legs[0].start_location,0)
         this.geocodePosition(info.routes[0].legs[0].end_location,1)
 
@@ -359,7 +362,7 @@ export class PedidoComponent implements OnInit {
       });
       google.maps.event.addDomListener(input, 'keydown', (e:any) => {
           e.cancelBubble = true;
-          console.log(e.keyCode)
+         // console.log(e.keyCode)
           if (e.keyCode === 13 || e.keyCode === 9) {
               if (!hasDownBeenPressed && !e.hasRanOnce) {
                   google.maps.event.trigger(e.target, 'keydown', {
@@ -404,32 +407,102 @@ export class PedidoComponent implements OnInit {
 
       //self.autocomplete[0].setBounds(newBounds);
      // self.autocomplete[1].setBounds(newBounds);
-      console.log(self.autocomplete)
+      console.log('en init',self.autocomplete)
     }, 800);
     setTimeout(function(){
      // self.geolocate();
     }, 1800)
   } 
   
+  set_ruta(){
+
+  }
+  add_position(data,i){
+    console.log('addposition'+i,data)
+    if (i==0) {
+      if(this.ruta.length==0){
+        this.ruta.push(data);
+        this.map.setZoom(15);
+        this.set_markers(data.geometry.location,i);
+      }
+      if(this.ruta.length>0){
+        this.ruta[i]=data;
+      }
+    }else if (i==1) {
+      if(this.ruta.length==1){
+        this.ruta.push(data);
+      }
+      if(this.ruta.length>1){
+        this.ruta[i]=data;
+      }
+    }else if (i-1>1)  {
+        //luego lo vemos
+    }
+    console.log('ruta',this.ruta)
+    console.log('tamano',this.ruta.length)
+    if (this.ruta.length==2) {
+      this.onPlace(i);
+    }
+    
+  }
+  add_position2(data,i){
+    console.log(i,data)
+    if (i==0) {
+      if(this.ruta.length==0){
+        this.ruta.push(data);
+      }
+      if(this.ruta.length>0){
+        this.ruta[i]=data;
+      }
+    }else if (i==1) {
+      if(this.ruta.length==1){
+        this.ruta.push(data);
+      }
+      if(this.ruta.length>1){
+        this.ruta[i]=data;
+      }
+    }else if (i-1>1)  {
+        //luego lo vemos
+    }
+    console.log('ruta',this.ruta)
+    console.log('tamano',this.ruta.length)
+    if (this.ruta.length==2) {
+     // this.onPlace(i);
+    }
+    
+  }
+
+  onPlace(i){
+    this.limpiar();
+    this.set_markers(this.ruta[0].geometry.location,i);
+    this.set_markers(this.ruta[1].geometry.location,i);
+    this.map.setZoom(15);
+    this.traceRoute(i);
+  }
+
   onPlaceChanged(i):any {
     const place = this.autocomplete[i].getPlace();
     console.log(place)
 
     if (i==0) {
-      this.orige.distrito_origen=place.address_components[6].long_name;
+      let tam=place.address_components.length;
+      this.orige.distrito_origen=place.address_components[tam-1].long_name;
+      this.add_position(place,i)
     }else{
       console.log(i)
-      this.destinos[i-1].distrito_destino=place.address_components[6].long_name;
+      let tam=place.address_components.length;
+      this.destinos[i-1].distrito_destino=place.address_components[tam-1].long_name;
+      this.add_position(place,i)
     }
 
-    if (place.geometry && place.geometry.location) {
+   /* if (place.geometry && place.geometry.location) {
       this.map.panTo(place.geometry.location);
       this.map.setZoom(15);
       this.set_markers(place.geometry.location,i);
     } else {
       (document.getElementById("autocomplete") as HTMLInputElement).placeholder =
         "Enter a city";
-    }
+    }*/
   }
   set_markers(val,i){
     console.log(val)
@@ -452,32 +525,54 @@ export class PedidoComponent implements OnInit {
     this.geocoder.geocode({
       'latLng': pos
     }, function(responses) {
-      console.log(responses);
       if (responses && responses.length > 0) {
         console.log(responses[0]);
         if (i==0) {
           self.orige.origen=responses[0].formatted_address;
-          self.orige.distrito_origen=responses[0].address_components[6].long_name;
-          if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
-            self.orige.distrito_origen=responses[0].address_components[6].long_name;
-          }else if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
-            self.orige.distrito_origen=responses[0].address_components[5].long_name;
-          }
-          
+          let tam=responses[0].address_components.length;
+          self.orige.distrito_origen=responses[0].address_components[tam-1].long_name;
+          self.add_position2(responses[0],i)
 
         }else{
           console.log(i)
           self.destinos[i-1].destino=responses[0].formatted_address;
-          if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
-            self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
-          }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
-            self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
-          }
-          
+          let tam=responses[0].address_components.length;
+          self.destinos[i-1].distrito_destino=responses[0].address_components[tam-1].long_name;
+          self.add_position2(responses[0],i)
         }
       } else {
       }
     });
+  }
+  foco(i){
+      const defaultBounds = {
+        north: this.center.lat + 0.2,
+        south: this.center.lat - 0.2,
+        east: this.center.lng + 0.2,
+        west: this.center.lng - 0.2,
+      };
+      const input = document.getElementById("pac-input") as HTMLInputElement;
+      const input2 = document.getElementById("pac-input2") as HTMLInputElement;
+      
+      const options = {
+        bounds: defaultBounds,
+        componentRestrictions: { country: "es" },
+        fields: ["address_components", "geometry", "icon", "name"],
+        strictBounds: true,
+        types: ["geocode"],
+      };
+      const options2 = {
+        fields: ["address_components", "geometry", "icon", "name"],
+        types: ["establishment"],
+      };
+
+      //input 1
+      if (i=0) {
+        this.autocomplete[0] = new google.maps.places.Autocomplete(input, options);
+      }else{
+        this.autocomplete[i] = new google.maps.places.Autocomplete(input2, options);
+      }
+      
   }
   ver(i){
     console.log(i)
@@ -487,10 +582,12 @@ export class PedidoComponent implements OnInit {
       if (self.autocomplete[i].getPlace()!=undefined) {
         
         if (i==0) {
-          self.orige.distrito_origen=self.autocomplete[i].getPlace().address_components[6].long_name;
+          let tam=self.autocomplete[i].getPlace().address_components.length;
+          self.orige.distrito_origen=self.autocomplete[i].getPlace().address_components[tam].long_name;
         }else{
           console.log(i)
-          self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[6].long_name;
+          let tam=self.autocomplete[i].getPlace().address_components.length;
+          self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[tam].long_name;
         }
         self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
       }else{
@@ -498,30 +595,24 @@ export class PedidoComponent implements OnInit {
         self.geocoder.geocode({
             'address': self.orige.origen
           }, function(responses) {
-            console.log(responses);
             if (responses && responses.length > 0) {
-            console.log(responses[0]);
+            console.log('ver'+i+'geocode',responses[0]);
             if (i==0) {
               self.orige.origen=responses[0].formatted_address;
-              if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[5].long_name;
-              }else if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[6].long_name;
-              }
-              if (responses[0].geometry && responses[0].geometry.location) {
+              let tam=responses[0].address_components.length;
+              self.orige.distrito_origen=responses[0].address_components[tam-1].long_name;
+              self.add_position(responses[0],i)
+              /*if (responses[0].geometry && responses[0].geometry.location) {
                 self.map.panTo(responses[0].geometry.location);
                 self.map.setZoom(15);
                 self.set_markers(responses[0].geometry.location,i);
-              } 
+              }*/
             }else{
               console.log(i)
               self.destinos[i-1].destino=responses[0].formatted_address;
-              if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
-              }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
-              }
-              self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
+              let tam=responses[0].address_components.length;
+              self.destinos[i-1].distrito_destino=responses[0].address_components[tam-1].long_name;
+              self.add_position(responses[0],i)
             }
           } else {
             alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
@@ -538,42 +629,37 @@ export class PedidoComponent implements OnInit {
       console.log(self.autocomplete[i].getPlace())
       if (self.autocomplete[i].getPlace()!=undefined) {
         self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
-        self.traceRoute(i);
+        //self.traceRoute(i);
       }else{
 
         self.geocoder.geocode({
             'address': self.destinos[i-1].destino
           }, function(responses) {
-            console.log(responses);
             if (responses && responses.length > 0) {
             console.log(responses[0]);
             if (i==0) {
               self.orige.origen=responses[0].formatted_address;
-              if (self.orige.distrito_origen=responses[0].address_components[5].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[5].long_name;
-              }else if (self.orige.distrito_origen=responses[0].address_components[6].long_name) {
-                self.orige.distrito_origen=responses[0].address_components[6].long_name;
-              }
-              if (responses[0].geometry && responses[0].geometry.location) {
+              let tam=responses[0].address_components.length;
+              self.orige.distrito_origen=responses[0].address_components[tam-1].long_name;
+              self.add_position(responses[0],i)
+              /*if (responses[0].geometry && responses[0].geometry.location) {
                 self.map.panTo(responses[0].geometry.location);
                 self.map.setZoom(15);
                 self.set_markers(responses[0].geometry.location,i);
                 self.traceRoute(i);
-              } 
+              } */
             }else{
               console.log(i)
               self.destinos[i-1].destino=responses[0].formatted_address;
-              if (self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[5].long_name;
-              }else if (self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name) {
-                self.destinos[i-1].distrito_destino=responses[0].address_components[6].long_name;
-              }
-              if (responses[0].geometry && responses[0].geometry.location) {
+              let tam=responses[0].address_components.length;
+              self.destinos[i-1].distrito_destino=responses[0].address_components[tam-1].long_name;
+              self.add_position(responses[0],i)
+              /*if (responses[0].geometry && responses[0].geometry.location) {
                 self.map.panTo(responses[0].geometry.location);
                 self.map.setZoom(15);
                 self.set_markers(responses[0].geometry.location,i);
                 self.traceRoute(i);
-              } 
+              }*/
             }
           } else {
             alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
@@ -613,6 +699,7 @@ export class PedidoComponent implements OnInit {
     directionsRenderer: google.maps.DirectionsRenderer
   ) {
     const selectedMode = "DRIVING";
+    console.log(this.markers)
     this.directionsService
       .route({
         origin: this.markers[0].getPosition(), // Haight.
