@@ -12,7 +12,7 @@
 }
 
 .porq{
-    font-family: 'BalooTammudu2-Semi';
+    font-family: 'BalooTammudu2Extra';
     line-height: 40px;
     color: #F43A20;
     font-weight: 700;
@@ -136,6 +136,11 @@
     overflow: hidden;
 
 }
+.divrh{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    margin: 3rem 0 3rem 0;
+    width: 110%;
+}
 .extra{
     font-family: 'BalooTammudu2Extra';
 }
@@ -143,7 +148,7 @@
     font-family: 'BalooTammudu2';
     color: black;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 35px;
     margin-top: 30px;
     width: 50%;
     text-align: center;
@@ -152,19 +157,22 @@
 .c4_texto1_1{
     font-family: 'BalooTammudu2';
     color: black;
-    font-size: 24px;
+    font-size: 27px;
+    line-height: 1;
     margin-top: 24px;
 }
 .c4_texto1_2{
     font-family: 'BalooTammudu2';
     color: black;
-    font-size: 24px;
+    font-size: 27px;
+    line-height: 1;
     margin-top: -24px;
 }
 .c4_texto2_2{
     font-family: 'BalooTammudu2';
     color: black;
-    font-size: 24px;
+    font-size: 27px;
+    line-height: 1;
     margin-top: -24px;
     width: 50%;
     text-align: center;
@@ -172,7 +180,8 @@
 .c4_texto3{
     font-family: 'BalooTammudu2';
     color: black;
-    font-size: 24px;
+    font-size: 27px;
+    line-height: 1;
     width: 70%;
     text-align: center;
     margin-top: 24px;

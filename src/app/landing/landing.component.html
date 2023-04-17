@@ -16,7 +16,7 @@
     </div>
     
     <div class="image-container ">
-      <p class="text_space">Elige tu espacio</p>
+      <p class="text_space"><span style="color:red">2.</span> Elige tu espacio</p>
     </div>
 
     <div class="image-containerC">
@@ -81,7 +81,7 @@
           <div class="col-6">
             <div class="head">
               <div>
-                <p class="cotiza">¡Cotiza tu envío <br> y entrega hoy!</p>
+                <p class="cotiza">1. ¡Cotiza tu envío <br> y entrega hoy!</p>
               </div>
               <img src="./assets/img/kanguro/box XL Kanguro 1.png" alt="" class="box">
             </div>
@@ -99,7 +99,7 @@
           </div>
           <div class="col-6">
             <div class="image-container">
-              <p class="text_space">¡Elige tu espacio!</p>
+              <p class="text_space"><span>2.</span>  ¡Elige tu espacio!</p>
             </div>
             <div class="image-containerC">
               <div class="content-container">
@@ -153,18 +153,18 @@
     <section>
       <div class="container content-info">
         <div class="row">
-          <div class="col-4">
-            <img src="./assets/img/kanguro/iconland1.svg" alt="TRASLADO PARTICULAR" [routerLink]="['/particular']">
+          <div class="col-4 phover" [routerLink]="['/particular']">
+            <img src="./assets/img/kanguro/iconland1.svg" alt="TRASLADO PARTICULAR" >
             <p class="titleI">TRASLADO PARTICULAR</p>
             <p class="descriptionI">Envío rápido y seguro de <br> tus artículos personales</p>
           </div>
-          <div class="col-4">
-            <img src="./assets/img/kanguro/iconland2.svg" alt="E-COMMERCE" [routerLink]="['/ecommerce']">
+          <div class="col-4 phover" [routerLink]="['/ecommerce']">
+            <img src="./assets/img/kanguro/iconland2.svg" alt="E-COMMERCE" >
             <p class="titleI">E-COMMERCE</p>
             <p class="descriptionI">Servicio de <br> almacenamiento y envíos <br> programados</p>
           </div>
-          <div class="col-4">
-            <img src="./assets/img/kanguro/iconland3.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/xl']">
+          <div class="col-4 phover" [routerLink]="['/xl']">
+            <img src="./assets/img/kanguro/iconland3.svg" alt="ENVÍOS FLEXIBLES" >
             <p class="titleI">ENVÍOS FLEXIBLES</p>
             <p class="descriptionI">Servicio de paqueteria<br> grande a toda <span>BARCELONA</span></p>
           </div>
@@ -208,7 +208,7 @@
   <!-- MODAL SELECCION DE TAMAÑO -->
   <ng-template #classic let-c="close" let-d="dismiss">
     <div class="modal-header">
-      <p class="modal-title" id="modal-title-default">Elige tu espacio</p>
+      <p class="modal-title" id="modal-title-default"> Elige tu espacio</p>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
         <span aria-hidden="true" class="icon-delete">X</span>
       </button>
