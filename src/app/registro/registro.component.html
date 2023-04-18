@@ -37,7 +37,7 @@
         <div class="content-form">
           <p class="tipo"><span [style]="getTypeStyles1()" (click)="tipo('1')"> Persona </span> <span style="color:#F43A20;">|</span>&nbsp;<span [style]="getTypeStyles3()" (click)="tipo('3')" style="color:#FFF;">E-Commerce</span> </p>
           <form role="form">
-              <input type="text" class="inp" placeholder="Razon social" *ngIf="model.tipo_usuario==3" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
+              <input type="text" class="inp" placeholder="Razón social o Nombre" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
               
               <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
               <ng-container *ngIf="email.invalid && email.dirty" style="margin-bottom: 5px;">
