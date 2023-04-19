@@ -2,53 +2,84 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: BalooTammudu2-Semi;
+    font-family: BalooTammudu2;
 }
 
 .container{
     margin: 0 auto;
 }
-h1{
-    color: #FFBD00;
-}
 .header{
-    margin-top: 1rem;
+    margin-top: 3rem;
+    background-color: rgba(255, 187, 0, 1);
     color: black;
     padding: 16px 16px 16px 16px;
 }
 .title{
-    font-family: BalooTammudu2Extra;
     font-size: 22px;
     line-height: 5px;
     margin-top: 16px;
     color: black;
+    font-family: BalooTammudu2Extra;
 }
 .texto{
+    font-family: 'BalooTammudu2';
     font-size: 12px;
     color: black;
     margin-bottom: 16px;
+    margin-top: 5px;
 }
 .cuadro{   
-    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+    padding: 40px 40px 20px 40px;
 }
 .estado{   
     margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+    img{
+        width: 100%;
+        height: auto;
+        max-width: 450px;
+        margin: auto;
+    }
+}
+.estadoweb{
+    margin-top: 65px;
+    margin-right: 50px;
+    height: 380px;
+    background: rgba(237, 237, 237, 0.8);
+    border-radius: 15px;
+    padding: 50px 30px;
+}
+.borderTop{
+    border-top-left-radius: 10px;   
+    border-top-right-radius: 10px;
+}
+.borderBottom{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 .texto2{
     font-size: 16px;
     color: black;
+    font-family: 'BalooTammudu2';
 }
 .lista{
     width: 100%;
-    overflow-y: scroll;
-    max-height: 400px;
+    height: 380px;
+    background: #F1F1F1;
+    border-radius: 15px;
+    padding: 10px;
+    min-height: 100px;
+}
+.content-list{
+    height: 100%;
+    overflow-y: auto;
 }
 .tabla_top{
     width: 100%;
     height: 30px;
-    background-color: #FFBB00;
-    font-family: BalooTammudu2Extra;
-    color: black;
+    background-color: rgba(52, 52, 52, 1);
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 .poli{
     margin-right: 5px;
@@ -56,23 +87,170 @@ h1{
 }
 .tabla{
     width: 100%;
-    height: 30px;
-    background: #f2f2f2;
-    border-top: 1px solid black;
-    color: black;
-    font-family: 'Almarai';
-    font-size: 13px;
-    padding: 3px 0px 3px 0px;
+    min-height: 30px;
+    background: #ffffff;
+    border-bottom: 2px solid #F1F1F1;
+    color: #000;
+    font-family: "Almarai";
+    font-size: 14px;
+    padding: 20px 0px 10px 15px;
+    line-height: 16px;
+    pointer-events: auto;
+    cursor: pointer;
 }
-th{
-    padding: 3px 0px 3px 0px;
-    font-family: BalooTammudu2;
+.tabla:hover{
+    background-color: #FFBD00;
 }
+.selecTable{
+    background-color: #FFBD00;
+    div{
+        font-family: BalooTammudu2-Semi;
+    }
+}
+th{padding: 3px 0px 3px 0px;}
 .tex{
     font-size: 17px;
     color: black;
+    line-height: 18px;
+    margin-top: 50px;
+}
+.tex2{
+    font-size: 17px;
+    color: black;
+    line-height: 18px;
+    font-family: BalooTammudu2-Semi;
 }
 .estado{
     display: flex;
     flex-direction: column;
+}
+
+.select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+}
+.select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #000;
+    height: 35px;
+    line-height: 18px;
+    background: #CACACA;
+    cursor: pointer;
+    span{
+        font-size: 13px;
+        margin-top: 9px;
+        font-family: BalooTammudu2-Semi;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 93%;
+        overflow: hidden;
+    }
+}
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 0;
+    background: #E3E3E3;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+.select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    max-height: 330px;
+    overflow-y: scroll;
+}
+.custom-option {
+    position: relative;
+    display: block;
+    padding: 18px 15px 7px 15px;
+    font-size: 13px;
+    font-weight: 300;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-bottom: 1px solid #fff;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+.custom-option:hover {
+    cursor: pointer;
+    background-color: #b2b2b2;
+    font-family: BalooTammudu2-Semi;
+}
+.custom-option.selected {
+    color: #ffffff;
+    background-color: #305c91;
+}
+.arrow {
+    position: relative;
+    height: 10px;
+    width: 10px;
+}
+.arrow::before, .arrow::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.5s;
+}
+.arrow::before {
+    left: -3px;
+    transform: rotate(-45deg);
+    background-color: #000;
+}
+.arrow::after {
+    left: 4px;
+    transform: rotate(45deg);
+    background-color: #000;
+}
+.open .arrow::before {
+    left: -3px;
+    transform: rotate(45deg);
+}
+.open .arrow::after {
+    left: 4px;
+    transform: rotate(-45deg);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #DBDBDB;
+    opacity: 0.5;
+    border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }

@@ -62,7 +62,7 @@ export class PedidoComponent implements OnInit {
     'costo_recojo': 0,
     'km':'',
     'min':'',
-    'cajap':'',
+    'cajap':'1',
     'cajam':'',
     'cajag':'',
     'cancelado':0,
@@ -108,7 +108,7 @@ export class PedidoComponent implements OnInit {
     'detalle':'',
     'subtotal':0,
     'fecha_destino':'',
-    'turno_destino':'',
+    'turno_destino':'2',
     'hora_destino':''
   }
   public fecha:any;
@@ -136,13 +136,13 @@ export class PedidoComponent implements OnInit {
 
     //Inicio Origen
     this.orige.tipo='URGENTE';
-    this.orige.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
-    this.orige.fecha_origen=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.orige.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.orige.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.orige.estado=0;
     this.orige.nombre=this.user.name;
     this.orige.tipo_usuario=this.user.tipo_usuario;
     console.log(this.orige)
-    this.destino.fecha_destino=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate();
+    this.destino.fecha_destino=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate();
     this.destinos.push(this.destino);
     this.initMap();
   }
@@ -741,8 +741,8 @@ export class PedidoComponent implements OnInit {
 
   enviar(){
     console.log(this.orige)
-    this.orige.fecha=this.orige.fecha.year+'-'+this.orige.fecha.month+'-'+this.orige.fecha.day
-    console.log(this.destinos)
+    this.orige.fecha=this.orige.fecha.year+'-'+(this.orige.fecha.month+1)+'-'+this.orige.fecha.day
+    
     for (let i = 0; i < this.destinos.length; i++) {
       this.destinos[i].nombre_origen=this.orige.nombre_origen;
       this.destinos[i].origen=this.orige.origen;
@@ -752,8 +752,9 @@ export class PedidoComponent implements OnInit {
       this.destinos[i].comentarios=this.orige.comentarios;
       this.destinos[i].lat=this.orige.lat;
       this.destinos[i].lng=this.orige.lng;
+      this.destinos[i].fecha=this.orige.fecha;
     }
-
+    console.log(this.destinos)
     this.crear_pedido();
   }
 
@@ -881,7 +882,8 @@ export class PedidoComponent implements OnInit {
       'telefono_origen':'',
       'comentarios':'',
       'lat':'',
-      'lng':''
+      'lng':'',
+      'turno_origen':'2'
     }
   }
   limpiar2(){
@@ -915,7 +917,7 @@ export class PedidoComponent implements OnInit {
       'detalle':'',
       'subtotal':0,
       'fecha_destino':'',
-      'turno_destino':'',
+      'turno_destino':'2',
       'hora_destino':''
     }
   }

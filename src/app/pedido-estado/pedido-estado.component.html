@@ -10,7 +10,7 @@
                 <p class="texto2">Seleccionar envío:</p>
                 <div class="lista"> 
                    <div class="content-list">
-                        <div class="row tabla" *ngFor="let item of orders; let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true, 'selecTable': order_select.id == item.id }" (click)="changeOrder(item)">
+                        <div class="row tabla" *ngFor="let item of orders.slice().reverse(); let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true, 'selecTable': order_select.id == item.id }" (click)="changeOrder(item)">
                             <div class="col-3">{{item.id}}</div>
                             <div class="col-6">{{item.destino}}</div>
                             <div class="col-3">{{item.fecha | date: 'dd/MM/YYYY'}}</div>
@@ -63,7 +63,7 @@
                     <div class="arrow"></div>
                 </div>
                 <div class="custom-options">
-                    <span class="custom-option" *ngFor="let item of orders" data-value="item" (click)="changeOrder(item)">{{item.id}}  &nbsp;&nbsp; {{item.destino}} &nbsp;&nbsp; {{item.fecha | date: 'dd/MM/YYYY'}}</span>
+                    <span class="custom-option" *ngFor="let item of orders.slice().reverse()" data-value="item" (click)="changeOrder(item)">{{item.id}}  &nbsp;&nbsp; {{item.destino}} &nbsp;&nbsp; {{item.fecha | date: 'dd/MM/YYYY'}}</span>
                 </div>
             </div>
         </div>

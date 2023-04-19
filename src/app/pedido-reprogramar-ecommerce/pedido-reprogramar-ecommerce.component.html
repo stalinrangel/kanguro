@@ -1,40 +1,97 @@
-<section class="container">
+<section *ngIf="showWeb">
     <div class="header">
-        <h1>E-Commerce</h1>
-        <p class="title">REPROGRAMAR ENVÍO</p>
+        <p class="title">ESTADO DEL ENVÍO</p>
+        <p class="texto">Solo se visualizan los envíos en proceso de entrega.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="cuadro">
+                <p class="texto2">Seleccionar envío:</p>
+                <div class="lista"> 
+                   <div class="content-list">
+                        <div class="row tabla" *ngFor="let item of orders.slice().reverse(); let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true, 'selecTable': order_select.id == item.id }" (click)="changeOrder(item)">
+                            <div class="col-3">{{item.id}}</div>
+                            <div class="col-6">{{item.destino}}</div>
+                            <div class="col-3">{{item.fecha | date: 'dd/MM/YYYY'}}</div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="estado estadoweb" *ngIf="status == '0'">
+                <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
+                <p class="tex">Estado:</p>
+                <p class="tex2">---------</p>     
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '1'">
+                <img src="./assets/img/kanguro/estado1.svg" alt="estado1">
+                <p class="tex">Estado:</p>
+                <p class="tex2">PROCESANDO</p>      
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '2'">
+                <img src="./assets/img/kanguro/estado2.svg" alt="estado2">
+                <p class="tex">Estado:</p>
+                <p class="tex2">EN CAMINO</p>      
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '3'">
+                <img src="./assets/img/kanguro/estado3.svg" alt="estado3">
+                <p class="tex">Estado:</p>
+                <p class="tex2">ENTREGADO</p>      
+            </div>
+            <div class="estado estadoweb" *ngIf="status == '4'">
+                <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
+                <p class="tex">Estado:</p>
+                <p class="tex2">CANCELADO</p>      
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" *ngIf="!showWeb">
+    <div class="header">
+        <p class="title">ESTADO DEL ENVÍO</p>
         <p class="texto">Solo se visualizan los envíos en proceso de entrega.</p>
     </div>
     
     <div class="cuadro">
         <p class="texto2">Seleccionar envío:</p>
-        <table class="lista"> 
-            <tr class="tabla_top">
-                <th>Orden</th>
-                <th>Cliente final</th>
-                <th>Fecha Solicitud</th>
-                <th>Acción</th>
-            </tr>
-            <tr class="tabla">
-              <th>001</th>
-              <th>Carlos Villanueva</th>
-              <th>05/03/2023</th>
-              <th style="font-weight: bold;">REPROGRAMAR</th>
-            </tr>
-            <tr class="tabla">
-                <th>001</th>
-                <th>Carlos Villanueva</th>
-                <th>05/03/2023</th>
-                <th style="font-weight: bold;">REPROGRAMAR</th>
-            </tr>
-            <tr class="tabla">
-                <th>001</th>
-                <th>Carlos Villanueva</th>
-                <th>05/03/2023</th>
-                <th style="font-weight: bold;">REPROGRAMAR</th>
-            </tr>
-        </table>
+        <div class="select-wrapper">
+            <div class="select">
+                <div class="select__trigger"><span>{{order_select.id}}  &nbsp;&nbsp; {{order_select.destino}} &nbsp;&nbsp; {{order_select.fecha | date: 'dd/MM/YYYY'}}</span>
+                    <div class="arrow"></div>
+                </div>
+                <div class="custom-options">
+                    <span class="custom-option" *ngFor="let item of orders.slice().reverse()" data-value="item" (click)="changeOrder(item)">{{item.id}}  &nbsp;&nbsp; {{item.destino}} &nbsp;&nbsp; {{item.fecha | date: 'dd/MM/YYYY'}}</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="estado">
-        
+
+    <div class="estado" *ngIf="status == '0'">
+        <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
+        <p class="tex">Estado:</p>
+        <p class="tex2">---------</p>     
+    </div>
+    <div class="estado" *ngIf="status == '1'">
+        <img src="./assets/img/kanguro/estado1.svg" alt="estado1">
+        <p class="tex">Estado:</p>
+        <p class="tex2">PROCESANDO</p>      
+    </div>
+    <div class="estado" *ngIf="status == '2'">
+        <img src="./assets/img/kanguro/estado2.svg" alt="estado2">
+        <p class="tex">Estado:</p>
+        <p class="tex2">EN CAMINO</p>      
+    </div>
+    <div class="estado" *ngIf="status == '3'">
+        <img src="./assets/img/kanguro/estado3.svg" alt="estado3">
+        <p class="tex">Estado:</p>
+        <p class="tex2">ENTREGADO</p>      
+    </div>
+    <div class="estado" *ngIf="status == '4'">
+        <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
+        <p class="tex">Estado:</p>
+        <p class="tex2">CANCELADO</p>      
     </div>
 </section>

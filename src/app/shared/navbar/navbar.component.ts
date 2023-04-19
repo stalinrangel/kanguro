@@ -20,6 +20,10 @@ export class NavbarComponent implements OnInit {
     public showApp:any=0;
     public ensesion: any={name:null};
     public showMenuWeb: boolean = false;
+   // public isHome=0;
+    public isParticular=0;
+    public isEcommerce=0;
+    public isXL=0;
 
     constructor(public location: Location, private router: Router, private uss: UserStorageService, private sesion: SesionService) {
         var mediaqueryList = window.matchMedia("(min-width: 992px)");
@@ -27,7 +31,8 @@ export class NavbarComponent implements OnInit {
             this.showWeb = true;
         }
         this.user=this.uss.user;
-        if(this.user){
+        console.log(this.user)
+        if(this.user.user!=undefined){
             if (this.user.user.tipo_usuario == '1') {
                 this.showApp = 0;
             } else {
@@ -121,17 +126,28 @@ export class NavbarComponent implements OnInit {
 
     particular(){
         this.showMenuWeb = false;
+        this.reset();
+        this.isParticular=1;
         this.router.navigate[('/particular')];
     }
 
     ecommerce(){
         this.showMenuWeb = false;
+        this.reset();
+        this.isEcommerce=1;
         this.router.navigate[('/ecommerce')];
     }
 
     xl(){
         this.showMenuWeb = false;
+        this.reset();
+        this.isXL=1;
         this.router.navigate[('/xl')];
+    }
+    reset(){
+        this.isParticular=0;
+        this.isEcommerce=0;
+        this.isXL=0;
     }
 
     realizarEnvio(i){
@@ -186,5 +202,21 @@ export class NavbarComponent implements OnInit {
         this.showMenuWeb = false;  
         this.uss.destroy();    
         this.router.navigate(['/iniciar']);      
+    }
+
+    typeStyles1(){
+        if (this.isParticular==1) {
+            return 'border-bottom: 2px solid #FFFFFF';
+        }
+    }
+    typeStyles2(){
+        if (this.isEcommerce==1) {
+            return 'border-bottom: 2px solid #FFFFFF';
+        }
+    }
+    typeStyles3(){
+        if (this.isXL==1) {
+            return 'border-bottom: 2px solid #FFFFFF';
+        }
     }
 }

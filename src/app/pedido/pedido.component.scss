@@ -28,7 +28,7 @@
 .ml{
     margin-right: 30px;
     margin-left: 13px;
-    margin-top: 12px;
+    margin-top: 5px;
 }
 .btn_limpiar{
     display: flex;
@@ -37,33 +37,37 @@
 }
 .limpiar1 {
     text-align: right;
-    background-color: black;
+    background-color: #FFBD00;
     font-family: BalooTammudu2;
     color: white;
     font-size: 16px;
     border-radius: 0px 11px 0px 0px;
     padding: 2px 5px 0px 5px;
+    height: 24px;
 }
 .limpiar{
     text-align: right;
-    background-color: black;
+    background-color: #FFBD00;
     font-family: BalooTammudu2;
     color: white;
     font-size: 16px;
     padding: 2px 5px 0px 5px;
+    height: 24px;
 }
 .precio_km{
     text-align: right;
     font-family: BalooTammudu2Extra;
     color: #00000032;
     font-size: 31px;
-    padding: 10px 35px 0px 0px;
+    padding: 2px 35px 0px 0px;
+    margin-bottom: -15px;
 }
+
 .titulo{
-    font-family: BalooTammudu2-Semi;
-    color: #FFBD00;
+    font-family: BalooTammudu2Extra;
+    color: red;
     padding-left: 40px;
-    font-size: 2.2vh;
+    font-size: 2.5vh;
     line-height: 9px;
     padding-top: 7px;
     border-bottom: 2px solid rgba(255, 189, 0, 1);
@@ -80,7 +84,7 @@
     
 }
 .campo1{
-    font-family: BalooTammudu2-Semi;
+    font-family: BalooTammudu2Extra;
     color: black;
     font-size: 2vh;
     margin-left: 1px;

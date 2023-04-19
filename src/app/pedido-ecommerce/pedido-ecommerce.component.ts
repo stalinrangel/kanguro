@@ -43,12 +43,13 @@ export class PedidoEcommerceComponent implements OnInit {
     'costo_recojo': 0,
     'km':'',
     'min':'',
-    'cajap':'',
+    'cajap':'1',
     'cajam':'',
     'cajag':'',
     'cancelado':0,
     'reprogramado':0,
     'tipo_usuario':'',
+    'turno_origen':'2'
   }
   public destinos:any=[];
   public destino:any={
@@ -96,7 +97,7 @@ export class PedidoEcommerceComponent implements OnInit {
     'detalle':'',
     'subtotal':0,
     'fecha_destino':'',
-    'turno_destino':'',
+    'turno_destino':'2',
     'hora_destino':'',
     'productos':''
   }

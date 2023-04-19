@@ -64,27 +64,27 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 16px;
+    margin: 0px 0px -10px 2vh;
 }
 .titu{
     text-align: left;
     font-family: BalooTammudu2Extra;
     color: black;
     font-size: 24px;
-    padding: 10px 35px 0px 0px;
+    padding: 3px 35px 0px 0px;
 }
 .precio_km{
     text-align: right;
     font-family: BalooTammudu2Extra;
     color: #00000032;
     font-size: 31px;
-    padding: 10px 35px 0px 0px;
+    padding: 3px 35px 0px 0px;
 }
 .titulo{
-    font-family: BalooTammudu2-Semi;
+    font-family: BalooTammudu2Extra;
     color: rgba(255, 189, 0, 1);
     padding-left: 20px;
-    font-size: 2.2vh;
+    font-size: 2.5vh;
     line-height: 9px;
 }
 .origen{
@@ -92,29 +92,29 @@
     padding: 0px 0px 0px 0px;
     margin-top: 3px;
     border-top: 1px solid #FFBD00;
-    padding-top: 20px;
+    padding-top: 1vh;
 }
 .destino{
     background-color: #f2f2f2;
     padding: 0px 0px 0px 0px;
-    padding-top: 20px;
+    padding-top: 5px;
     margin-top: 3px;
 }
 .campos{
-    padding: 0px 0px 15px 16px;
+    padding: 0px 0px 0px 16px;
     display: flex;
     flex-direction: column;
     
 }
 .campo1{
-    font-family: BalooTammudu2-Semi;
+    font-family: BalooTammudu2Extra;
     color: black;
     font-size: 2vh;
     margin-left: 1px;
     white-space: nowrap;
     overflow: hidden;  
     text-overflow: clip;
-    line-height: 20px;
+    line-height: 16px;
     padding-top: 5px;
 }
 .campo2{
@@ -171,8 +171,10 @@
     height: 34px;
     cursor: pointer;
     font-size: 15px;
+    margin-top: 11px;
 }
 .btn_espacio2{
+    margin-top: 11px;
     display: flex;
     width: 150px;
     justify-content: center;
@@ -187,6 +189,7 @@
     font-size: 15px;
 }
 .btn_enviar{
+    margin-top: 11px;
     display: flex;
     width: 150px;
     justify-content: center;
@@ -232,8 +235,12 @@
     margin-top: 1.5rem;
     cursor: pointer;
 }
+
+.amarillo{
+   /* background-color: #FFBD00;*/
+}
 #map {
-    height: 100%; /* The height is 400 pixels */
+    height: 87%; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
   }
 

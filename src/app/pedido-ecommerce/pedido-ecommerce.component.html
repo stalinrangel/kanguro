@@ -1,5 +1,5 @@
 <div class="header">
-    <p class="titu">E-Commerce</p>
+    <p class="titu">Empresa</p>
     <p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">| </span><span style="color: black;" class="precio_km"> {{precio | number : '1.0-2'}} € </span></p>
 </div>
 
@@ -100,7 +100,7 @@
                     <img src="./assets/img/kanguro/cesta.svg" (click)="n(indice);open(view,'view')" alt="" class="cesta">
                 </div>
             </div>
-            <div class="row ml" >
+            <div class="row ml amarillo" >
                 <div class="col-2 campos">
                     <p class="campo1">Cantidad</p>  
                     <input class="sle2" type="text" placeholder="" [(ngModel)]="destino.cantidad" name="inputcantidad" #cantidad="ngModel" required> 
@@ -121,7 +121,7 @@
                     </select>
                 </div>
             </div>
-            <div class="row ml">
+            <div class="row ml amarillo">
                 <div class="col-2 campos">
                     
                 </div>
@@ -132,7 +132,7 @@
                     <span class="btn_espacio2" (click)="addDestinos()">Agregar Destino</span>
                 </div>
             </div>
-            <div class="row ml">
+            <div class="row ml amarillo">
                 <div class="col-2 campos">
                 </div>
                 <div class="col-5 campos">

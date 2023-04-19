@@ -3,6 +3,7 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
+import { SectionsComponent } from './sections/sections.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
@@ -29,6 +30,7 @@ import { ProductoComponent } from './producto/producto.component';
 import { AddProductoComponent } from './add-producto/add-producto.component';
 
 const routes: Routes =[
+  { path: 'section',             component: SectionsComponent },
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },

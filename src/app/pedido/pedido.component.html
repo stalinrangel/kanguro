@@ -1,4 +1,5 @@
 <p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">| </span><span style="color: black;" class="precio_km"> {{precio | number : '1.0-2'}} € </span></p>
+<!-- WEB  -->
 <section class="pedido" *ngIf="showWeb"> 
     <div class="datos_pedido">
         
@@ -68,7 +69,7 @@
                   
                   <div class="col-10 campos">
                       <p class="campo1">Notas</p>
-                      <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="orige.comentarios" name="inputcomentarios" #comentarios="ngModel" required></textarea>
+                      <input name="" id="" cols="30" rows="10" class="campo2" [(ngModel)]="orige.comentarios" name="inputcomentarios" #comentarios="ngModel" required>
                       <ng-container *ngIf="comentarios.invalid && comentarios.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>
@@ -133,7 +134,7 @@
                
                 <div class="col-10 campos2">
                     <p class="campo1">Notas</p>
-                    <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="destino.comentarios2" name="inputcomentarios2" #comentarios2="ngModel" required></textarea>
+                    <input name="" id="" cols="30" rows="10" class="campo2" [(ngModel)]="destino.comentarios2" name="inputcomentarios2" #comentarios2="ngModel" required>
                     <ng-container *ngIf="comentarios2.invalid && comentarios2.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
@@ -166,6 +167,7 @@
     
 </section>
 
+<!-- Movil-->
 <section *ngIf="!showWeb"> 
   <div>
       <form role="form">

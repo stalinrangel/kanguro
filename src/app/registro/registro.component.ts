@@ -37,8 +37,9 @@ export class RegistroComponent implements OnInit {
 
   open(content, type) {
     console.log(type)
+    //https://ng-bootstrap.github.io/#/components/modal/examples#options
     if(type == 'confirm'){
-      this.modalService.open(content, { windowClass: 'modal-confirm', centered: true, backdrop: false }).result.then((result) => {
+      this.modalService.open(content, { windowClass: 'modal-confirm', size: 'xl',centered: true, backdrop: true }).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {      
       });
