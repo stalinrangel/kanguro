@@ -27,7 +27,7 @@ export class PedidoEcommerceComponent implements OnInit {
   public directionsRenderer = new google.maps.DirectionsRenderer();
   public directionsService = new google.maps.DirectionsService();
   public geocoder = new google.maps.Geocoder();
-
+  public isDanger2=false;
   public precio=0;
   private pos=0;
   public orige:any={
@@ -627,7 +627,8 @@ export class PedidoEcommerceComponent implements OnInit {
               self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
             }
           } else {
-            alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            //alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            self.danger2();
           }
           });
         }
@@ -673,7 +674,8 @@ export class PedidoEcommerceComponent implements OnInit {
               } 
             }
           } else {
-            alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            //alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            self.danger2();
           }
           });
       }
@@ -776,6 +778,12 @@ export class PedidoEcommerceComponent implements OnInit {
     }
   }
 
-  
+  danger2(){
+    this.isDanger2=true;
+    let self = this;
+    setTimeout(() => {
+      self.isDanger2=false
+    }, 3000);
+  }
 
 }

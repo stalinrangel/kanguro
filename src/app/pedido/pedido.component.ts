@@ -25,6 +25,9 @@ export class PedidoComponent implements OnInit {
   public directionsService = new google.maps.DirectionsService();
   public geocoder = new google.maps.Geocoder();
 
+  public isDanger=false;
+  public isDanger2=false;
+
   public ruta:any=[];
 
   public box1=false;
@@ -277,6 +280,7 @@ export class PedidoComponent implements OnInit {
       ];
     }else if (this.hora>18) {
       //alert('Los pedidos recibidos después de las 18:00 hrs serán procesados al siguiente día hábil');
+      this.danger();
       this.rangos=[
         '10-11',
         '11-12',
@@ -631,7 +635,8 @@ export class PedidoComponent implements OnInit {
               self.add_position(responses[0],i)
             }
           } else {
-            alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            //alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            self.danger2();
           }
           });
         }
@@ -678,7 +683,8 @@ export class PedidoComponent implements OnInit {
               }*/
             }
           } else {
-            alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            //alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+            self.danger2();
           }
           });
       }
@@ -957,5 +963,20 @@ export class PedidoComponent implements OnInit {
       }, (reason) => {      
       });
     } 
+  }
+
+  danger(){
+    this.isDanger=true;
+    let self = this;
+    setTimeout(() => {
+      self.isDanger=false
+    }, 8000);
+  }
+  danger2(){
+    this.isDanger2=true;
+    let self = this;
+    setTimeout(() => {
+      self.isDanger2=false
+    }, 3000);
   }
 }

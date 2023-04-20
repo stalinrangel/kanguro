@@ -573,7 +573,17 @@ label{
         text-overflow: ellipsis;
     }
 }
-
+.alert{
+    font-size: 20px;
+    font-family: BalooTammudu2-Semi;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+}
 /** MODAL CONFIRM **/
 ::ng-deep .modal-confirm{
     .modal-content{

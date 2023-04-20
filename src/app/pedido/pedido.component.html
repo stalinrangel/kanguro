@@ -1,6 +1,13 @@
+<div class="alert alert-default" role="alert" *ngIf="isDanger">
+  <strong>Los pedidos recibidos después de las 18:00 hrs serán procesados al siguiente día hábil.</strong> .
+</div>
+<div class="alert alert-default" role="alert" *ngIf="isDanger2">
+  <strong>Error, no encontramos tu dirección.</strong> 
+</div>
 <p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">| </span><span style="color: black;" class="precio_km"> {{precio | number : '1.0-2'}} € </span></p>
 <!-- WEB  -->
 <section class="pedido" *ngIf="showWeb"> 
+  
     <div class="datos_pedido">
         
         <form role="form">
@@ -169,6 +176,7 @@
 
 <!-- Movil-->
 <section *ngIf="!showWeb"> 
+  
   <div>
       <form role="form">
         <div class="origen">     

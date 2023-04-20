@@ -4,6 +4,17 @@
     box-sizing: border-box;
     font-size: 2vh;
 }
+.alert{
+    font-size: 20px;
+    font-family: BalooTammudu2-Semi;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+}
 .datos_pedido{
     width: 60%;
     background: #F1F1F1;

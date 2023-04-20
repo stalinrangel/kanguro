@@ -54,7 +54,7 @@
                   <span class="help is-danger">El campo password es requerido</span>
                 </ng-container>
           </form>
-          <span class="boton" (click)="open(confirm, 'confirm')">Registrarse</span>
+          <span class="boton" (click)="open(confirm, 'confirm');registro()">Registrarse</span>
           <p class="sesion" [routerLink]="['/iniciar']">Ya tienes una cuenta? <span style="color:red">Iniciar sesión</span></p>
           <img src="./assets/img/kanguro/o.svg" alt="" class="o">
           <span class="google" >Continuar con Google</span>
