@@ -19,6 +19,8 @@ export class SesionComponent implements OnInit {
     email:this.email,
     password:this.password
   };
+  public isDanger=false;
+  public isInfo=false;
 
   constructor(private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router, private sesion:SesionService) { }
 
@@ -35,6 +37,21 @@ export class SesionComponent implements OnInit {
     } 
   }
 
+  danger(){
+    this.isDanger=true;
+    let self = this;
+    setTimeout(() => {
+      self.isDanger=false
+    }, 3000);
+  }
+  info(){
+    this.isInfo=true;
+    let self = this;
+    setTimeout(() => {
+      self.isInfo=false
+    }, 3000);
+  }
+
   login(){
 
     console.log(this.model);
@@ -45,6 +62,7 @@ export class SesionComponent implements OnInit {
         self.uss.set(data);
         setTimeout(() => {
           console.log(data.user.tipo_usuario)
+          self.info();
           if (data.user.tipo_usuario==3) {
             self.router.navigate(['/pedidoEcommerce']);
           }else{
@@ -54,6 +72,7 @@ export class SesionComponent implements OnInit {
           self.sesion.emitirEvento();
         }, 800);
       },error(err){
+        self.danger();
         console.log(err.error.err);
       }
     })

@@ -114,6 +114,8 @@ export class PedidoComponent implements OnInit {
   public fecha:any;
   showWeb: boolean = false;
 
+  public datos:any=null;
+
   constructor(
     private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router, private calendar: NgbCalendar
   ) { 
@@ -127,8 +129,11 @@ export class PedidoComponent implements OnInit {
     this.user=this.uss.user;
     this.user=this.user.user;
     console.log(this.user)
-    
-   
+    this.datos=this.uss.get_envio('envio');
+    let self=this;
+    setTimeout(function(){
+      self.uss.destroy_value('envio');
+    }, 180000)
     this.getDate();
   }
 
@@ -408,10 +413,21 @@ export class PedidoComponent implements OnInit {
       //self.autocomplete[0].setBounds(newBounds);
      // self.autocomplete[1].setBounds(newBounds);
       console.log('en init',self.autocomplete)
+      
     }, 800);
     setTimeout(function(){
-     // self.geolocate();
-    }, 1800)
+      console.log(self.datos)
+      if (self.datos!=null) {
+        console.log('this.datos')
+        self.geocodePosition(self.datos.origen.location,0);
+        self.geocodePosition(self.datos.destino.location,1);
+        self.cajas=self.datos.cajas;
+      }
+    }, 1200)
+    setTimeout(function(){
+      self.onPlace(1);
+      self.calcular();
+    }, 5000)
   } 
   
   set_ruta(){
@@ -756,6 +772,7 @@ export class PedidoComponent implements OnInit {
     }
     console.log(this.destinos)
     this.crear_pedido();
+    this.uss.destroy_value('envio');
   }
 
   crear_pedido(){

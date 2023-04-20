@@ -53,7 +53,12 @@ export class LandingComponent implements OnInit {
   public origen:any='';
   public destino:any='';
 
+  private ori:any='';
+  private des:any='';
+
   public user;
+
+  public isDanger=false;
 
   constructor(private router: Router ,private viewportScroller: ViewportScroller, private api: ApiService, private modalService: NgbModal, private uss: UserStorageService) {
     var mediaqueryList = window.matchMedia("(min-width: 992px)");
@@ -64,6 +69,14 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.initMap();
+  }
+
+  danger(){
+    this.isDanger=true;
+    let self = this;
+    setTimeout(() => {
+      self.isDanger=false
+    }, 3000);
   }
 
   public navigateToSection(id,section: string) {
@@ -200,10 +213,16 @@ export class LandingComponent implements OnInit {
               self.infopedido.origen=responses[0].formatted_address;
               if (self.infopedido.origenInfo.geometry.location && self.infopedido.destinoInfo.geometry.location) {
                 console.log('amos')
+                self.ori=self.infopedido.origenInfo;
+                self.des=self.infopedido.destinoInfo;
+                console.log(self.ori)
+                console.log(self.des)
                 self.calculekm(self.infopedido.origenInfo.geometry,self.infopedido.destinoInfo.geometry);
+                
               }
             } else {
-              alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+              //alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+              self.danger();
             }
           });
         }
@@ -220,10 +239,16 @@ export class LandingComponent implements OnInit {
               self.infopedido.destino=responses[0].formatted_address;
               if (self.infopedido.origenInfo.geometry.location && self.infopedido.destinoInfo.geometry.location) {
                 console.log('amos')
+                self.ori=self.infopedido.origenInfo;
+                self.des=self.infopedido.destinoInfo;
+                console.log(self.ori)
+                console.log(self.des)
                 self.calculekm(self.infopedido.origenInfo.geometry,self.infopedido.destinoInfo.geometry);
+                
               }
             } else {
-              alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+              //alert('No conseguimos tu direccion, por favor seleccionala del lista de recomendacion y arrastre el marcador a la posicion deseada.')
+              self.danger();
             }
           });
         }
@@ -231,7 +256,12 @@ export class LandingComponent implements OnInit {
       console.log(this.origen.getPlace().geometry.location)
       if (this.origen.getPlace().geometry.location && this.destino.getPlace().geometry.location) {
         console.log('amos')
+        self.ori=this.origen.getPlace().geometry;
+        self.des=this.destino.getPlace().geometry;
+        console.log(self.ori)
+        console.log(self.des)
         self.calculekm(this.origen.getPlace().geometry,this.destino.getPlace().geometry);
+        
       }
       
     }, 800);
@@ -256,6 +286,8 @@ export class LandingComponent implements OnInit {
   }
 
   calcular(){
+    console.log(this.ori)
+    console.log(this.des)
     let xl1=1.80;
     let xl2=2.40;
     let xl3=3.00;
@@ -312,6 +344,8 @@ export class LandingComponent implements OnInit {
 
   }
   boxes(){
+    console.log(this.ori)
+    console.log(this.des)
     this.cajas=0;
     console.log(this.box1, this.box2,this.box3,this.box4)
     if (this.box1) {
@@ -331,9 +365,15 @@ export class LandingComponent implements OnInit {
   }
 
   solicitar(){
-    console.log(this.uss)
         this.user=this.uss.user;
-        console.log(this.user)
+       // console.log(this.user)
+       let data={
+        origen:this.ori,
+        destino:this.des,
+        cajas:this.cajas
+       };
+       this.uss.set_envio('envio',JSON.stringify(data));
+
         if(!this.user){
           this.router.navigate(['/iniciar']);
         }else if (this.user.user) {

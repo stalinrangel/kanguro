@@ -2,6 +2,9 @@
    <!-- VERSION APP -->
    <div id="map"></div>
   <section *ngIf="!showWeb">
+    <div class="alert alert-default" role="alert" *ngIf="isDanger">
+      <strong>Error, no encontramos tu dirección.</strong> 
+    </div>
     <div class="head">
       <div>
         <img src="./assets/img/kanguro/1..png" alt="" class="uno">
@@ -75,6 +78,9 @@
 
   <!-- VERSION WEB -->
   <section *ngIf="showWeb">
+    <div class="alert alert-default" role="alert" *ngIf="isDanger">
+      <strong>Error, no encontramos tu dirección.</strong> 
+    </div>
     <div class="header-web">
       <div class="container container-web">
         <div class="row">

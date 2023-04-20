@@ -1,4 +1,11 @@
+
 <div class="content-login">
+   <div class="alert alert-default" role="alert" *ngIf="isDanger">
+      <strong>Error al iniciar sesión</strong> .
+   </div>
+   <div class="alert alert-info" role="alert" *ngIf="isInfo">
+      <strong>Bienvenido!</strong>
+  </div>
    <div class="login">
       <img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> 
       <p class="tipo">Persona <span style="color:#F43A20;">|</span>&nbsp;<span>E-Commerce</span></p>

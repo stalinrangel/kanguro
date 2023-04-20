@@ -9,6 +9,17 @@
         justify-content: flex-start;
     }
 }
+.alert{
+    font-size: 20px;
+    font-family: BalooTammudu2-Semi;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+}
 .phover{
     cursor: pointer;
 }

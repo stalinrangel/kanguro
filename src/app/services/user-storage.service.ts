@@ -67,4 +67,16 @@ export class UserStorageService {
     return null;
   }
 
+  set_envio(key,object):void{
+    console.log(key,object)
+    localStorage.setItem(key,object)
+  }
+  get_envio(key){
+    let envio=localStorage.getItem(key);
+    if (envio) {
+      let data = JSON.parse(envio);
+      return data;
+    }
+    return null;
+  }
 }

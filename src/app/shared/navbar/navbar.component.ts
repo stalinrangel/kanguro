@@ -32,11 +32,13 @@ export class NavbarComponent implements OnInit {
         }
         this.user=this.uss.user;
         console.log(this.user)
-        if(this.user.user!=undefined){
-            if (this.user.user.tipo_usuario == '1') {
-                this.showApp = 0;
-            } else {
-                this.showApp = 1;
+        if (this.user!=null) {
+            if(this.user.user!=undefined){
+                if (this.user.user.tipo_usuario == '1') {
+                    this.showApp = 0;
+                } else {
+                    this.showApp = 1;
+                }
             }
         }
         console.log(this.showApp)

@@ -22,6 +22,7 @@ export class RegistroComponent implements OnInit {
   };
   private id:any;
   showWeb: boolean = false;
+  public isDanger=false;
 
   constructor(
     private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router
@@ -45,6 +46,21 @@ export class RegistroComponent implements OnInit {
       });
     } 
   }
+  openXl(content) {
+		this.modalService.open(content, { windowClass: 'modal-confirm', size: 'xl',centered: true, backdrop: true }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {      
+    });
+	}
+
+  danger(){
+    this.isDanger=true;
+    let self = this;
+    setTimeout(() => {
+      self.isDanger=false
+    }, 3000);
+  }
+
   tipo(val){
     this.type=val;
     this.model.tipo_usuario=val;
@@ -77,6 +93,7 @@ export class RegistroComponent implements OnInit {
         self.router.navigate(['/iniciar']);
       },error(err){
         console.log(err.error.err);
+        self.danger();
       }
     })
   }

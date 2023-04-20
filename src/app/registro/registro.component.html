@@ -1,4 +1,7 @@
 <div class="registro" *ngIf="!showWeb">
+  <div class="alert alert-default" role="alert" *ngIf="isDanger">
+    <strong>Error al registrar el usuario! Comunicate con el servicio al cliente.</strong> .
+  </div>
     <p class="title">¡BIENVENIDO!</p>
     <p class="sub_title">Estas apunto de realizar <br>
        un envío</p>
@@ -24,6 +27,9 @@
 </div>
 
 <div *ngIf="showWeb" class="content-register">
+  <div class="alert alert-default" role="alert" *ngIf="isDanger">
+    <strong>Error al registrar el usuario! Comunicate con el servicio al cliente.</strong> .
+  </div>
   <div class="container1">
     <div class="row">
       <div class="col-1"></div>
@@ -51,7 +57,7 @@
           <span class="boton" (click)="open(confirm, 'confirm')">Registrarse</span>
           <p class="sesion" [routerLink]="['/iniciar']">Ya tienes una cuenta? <span style="color:red">Iniciar sesión</span></p>
           <img src="./assets/img/kanguro/o.svg" alt="" class="o">
-          <span class="google">Continuar con Google</span>
+          <span class="google" >Continuar con Google</span>
         </div>
       </div>
       <div class="col-1"></div>
