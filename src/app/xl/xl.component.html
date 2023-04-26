@@ -39,7 +39,7 @@
     <br><br>
     <hr>
     <p class="text-why">¡Nosotros nos encargamos del resto, solo debes decirnos a dónde lo llevamos!</p>
-    <button class="solicitar" href="/#/landing">SOLICITAR</button>
+    <button class="solicitar"[routerLink]="['/iniciar']">SOLICITAR</button>
     <hr>
 
     <p class="title-info">Consejos para un <br> buen embalaje</p>
@@ -145,7 +145,7 @@
 </section>
 <section class="container3" *ngIf="showWeb">
     <p class="texto3">¡Nosotros nos encargamos del resto, solo debes decirnos a <br> dónde lo llevamos! </p>
-    <span class="btn_solicitar" href="/#/ecommerce">COTIZAR</span>
+    <span class="btn_solicitar" [routerLink]="['/iniciar']">COTIZAR</span>
 </section>
 <section class="container4" *ngIf="showWeb">
     <p class="title1">Consejos para un buen embalaje</p>

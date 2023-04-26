@@ -18,7 +18,8 @@ export class RegistroComponent implements OnInit {
     name:'',
     email:'',
     password:'',
-    tipo_usuario:'1'
+    tipo_usuario:'1',
+    almacen:0
   };
   private id:any;
   showWeb: boolean = false;
@@ -64,6 +65,11 @@ export class RegistroComponent implements OnInit {
   tipo(val){
     this.type=val;
     this.model.tipo_usuario=val;
+    if (val==3) {
+      this.model.almacen=1;
+    }else{
+      this.model.almacen=0;
+    }
     
   }
   getTypeStyles1() {
