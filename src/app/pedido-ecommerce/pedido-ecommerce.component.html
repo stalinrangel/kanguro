@@ -10,6 +10,9 @@
     <div class="datos_pedido">
         <p class="titulo">ORIGEN</p>
         <div class="origen">
+            <div class="row" class="btn_limpiar">
+                <p class="limpiar" (click)="limpiar1(0)">Limpiar Campos</p>
+            </div>
             <div class="row ml">
                 <div class="col-8 campos">
                     <p class="campo1">Almacén</p>
@@ -87,7 +90,7 @@
             <div class="row ml">
                 <div class="col-12 campos2">
                     <p class="campo1">Notas</p>
-                    <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="destino.comentarios2" name="inputcomentarios2" #comentarios2="ngModel" required></textarea>
+                    <input name="" id="" cols="30" rows="10" class="campo2" [(ngModel)]="destino.comentarios2" name="inputcomentarios2" #comentarios2="ngModel" required>
                     
                 </div>
             </div>
@@ -103,7 +106,7 @@
                     <img src="./assets/img/kanguro/cesta.svg" (click)="n(indice);open(view,'view')" alt="" class="cesta">
                 </div>
             </div>
-            <div class="row ml amarillo" >
+            <div class="row amarillo" style="padding-top: 14px;">
                 <div class="col-2 campos">
                     <p class="campo1">Cantidad</p>  
                     <input class="sle2" type="text" placeholder="" [(ngModel)]="destino.cantidad" name="inputcantidad" #cantidad="ngModel" required> 
@@ -124,7 +127,7 @@
                     </select>
                 </div>
             </div>
-            <div class="row ml amarillo">
+            <div class="row amarillo">
                 <div class="col-2 campos">
                     
                 </div>
@@ -135,13 +138,13 @@
                     <span class="btn_espacio2" (click)="addDestinos()">Agregar Destino</span>
                 </div>
             </div>
-            <div class="row ml amarillo">
+            <div class="row  amarillo2" style="padding-bottom: 14px;">
                 <div class="col-2 campos">
                 </div>
                 <div class="col-5 campos">
                 </div>
                 <div class="col-5 campos">
-                    <span class="btn_enviar" (click)="enviar()">ENVIAR</span>
+                    <!--span class="btn_enviar" (click)="enviar()">ENVIAR</span-->
                 </div>
             </div>
         </div>

@@ -285,8 +285,15 @@ export class PedidoComponent implements OnInit {
         '18-19'
       ];
     }else if (this.hora>18) {
-      //alert('Los pedidos recibidos después de las 18:00 hrs serán procesados al siguiente día hábil');
-      this.danger();
+      //alert('Los pedidos recibidos después de las 18:00 hrs serán procesados al siguiente día hábil'); 
+      
+    let self=this;
+    setTimeout(function(){
+      const today = new Date();
+      self.orige.fecha={ year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() +1};
+      self.minDate = { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() +1};
+      self.danger();
+    },2800);
       this.rangos=[
         '10-11',
         '11-12',

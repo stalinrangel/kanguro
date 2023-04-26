@@ -21,7 +21,7 @@
     margin-left: 1rem;
     margin-right: 1rem;
     border-radius: 15px;
-    padding: 25px;
+    padding: 25px 0 0 0;
 }
 .boton{
     background-color: #F43A20;
@@ -46,7 +46,7 @@
 .mapa{
     width: 40%;
     background: rgba(237, 237, 237, 0.8);
-    padding: 22px 16px 16px 16px;
+    padding: 22px 16px 22px 16px;
     border-radius: 15px;
     margin-right: 2rem;
 }
@@ -64,11 +64,25 @@
 }
 .limpiar{
     text-align: right;
-    background-color: black;
+    background-color: #FFBD00;
     font-family: BalooTammudu2;
     color: white;
-    font-size: 13px;
-    padding: 2px 5px 0px 5px;
+    font-size: 11px;
+    border-radius: 0px 0px 0px 0px;
+    padding: 5px 5px 0px 5px;
+    height: 22px;
+    margin-bottom: 10px;
+}
+.limpiar1 {
+    text-align: right;
+    background-color: #FFBD00;
+    font-family: BalooTammudu2;
+    color: white;
+    font-size: 11px;
+    border-radius: 0px 11px 0px 0px;
+    padding: 5px 5px 0px 5px;
+    height: 22px;
+    margin-bottom: 10px;
 }
 .header{
     display: flex;
@@ -83,6 +97,7 @@
     color: black;
     font-size: 24px;
     padding: 3px 35px 0px 0px;
+    margin-bottom: 10px;
 }
 .precio_km{
     text-align: right;
@@ -103,7 +118,6 @@
     padding: 0px 0px 0px 0px;
     margin-top: 3px;
     border-top: 1px solid #FFBD00;
-    padding-top: 1vh;
 }
 .destino{
     background-color: #f2f2f2;
@@ -179,7 +193,7 @@
     align-items: center;
     font-family: BalooTammudu2-Semi;
     color: white;
-    background: black;
+    background: #F43A20;
     padding: 6px 0px 0px 0px;
     border-radius: 12px;
     height: 34px;
@@ -195,7 +209,7 @@
     align-items: center;
     font-family: BalooTammudu2-Semi;
     color: white;
-    background: #343434;
+    background: #F43A20;
     padding: 6px 0px 0px 0px;
     border-radius: 12px;
     height: 34px;
@@ -224,9 +238,10 @@
 }
 .sle2{
     padding-left: 10px;
-    width: 100%;
+    width: 95%;
     border-radius: 9px;
     border: 1px solid black;
+    margin-right: 16px;
 }  
 .medio{
     display: flex;
@@ -251,7 +266,11 @@
 }
 
 .amarillo{
-   /* background-color: #FFBD00;*/
+    background-color: #FFBD00;
+}
+.amarillo2{
+    background-color: #FFBD00;
+    border-radius: 0px 0px 15px 15px;
 }
 #map {
     height: 87%; /* The height is 400 pixels */
@@ -276,11 +295,17 @@
     .campo2{
         background-color: #f2f2f2;
         height: 34px;
-        font-size: 16px;
+        font-size: 13px;
     }
     .mapa{
         width: 0%;
         display: none;
+    }
+    .title_rango{
+        font-size: 16px;
+    }
+    .precio_km{
+        font-size: 25px;
     }
   }
 
