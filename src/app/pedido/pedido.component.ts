@@ -38,6 +38,8 @@ export class PedidoComponent implements OnInit {
   public precio:any='PRECIO';
   public cajas=0;
 
+  public minDate:any;
+
   public rangos:any=[
     '10-11',
     '11-12',
@@ -144,7 +146,11 @@ export class PedidoComponent implements OnInit {
 
     //Inicio Origen
     this.orige.tipo='URGENTE';
-    this.orige.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    //this.orige.telefono_origen='as';
+    const today = new Date();
+    //this.orige.fecha=(this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00');
+    this.orige.fecha={ year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() };
+    this.minDate = { year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() };
     this.orige.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.orige.estado=0;
     this.orige.nombre=this.user.name;
@@ -298,12 +304,10 @@ export class PedidoComponent implements OnInit {
   initMap() {
     this.center = { lat: 41.363218, lng: 2.112014 };
 
-    const defaultBounds = {
-      north: this.center.lat + 0.2,
-      south: this.center.lat - 0.2,
-      east: this.center.lng + 0.2,
-      west: this.center.lng - 0.2,
-    };
+    const defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(41.307158, 2.023506), // Southwest corner
+      new google.maps.LatLng(41.468936, 2.228101)  // Northeast corner
+    );
     // The map, centered at Uluru
     this.map = new google.maps.Map(document.getElementById("map"), {
       zoom: 13,
@@ -565,12 +569,10 @@ export class PedidoComponent implements OnInit {
     });
   }
   foco(i){
-      const defaultBounds = {
-        north: this.center.lat + 0.2,
-        south: this.center.lat - 0.2,
-        east: this.center.lng + 0.2,
-        west: this.center.lng - 0.2,
-      };
+      const defaultBounds = new google.maps.LatLngBounds(
+        new google.maps.LatLng(41.307158, 2.023506), // Southwest corner
+        new google.maps.LatLng(41.468936, 2.228101)  // Northeast corner
+      );
       const input = document.getElementById("pac-input") as HTMLInputElement;
       const input2 = document.getElementById("pac-input2") as HTMLInputElement;
       

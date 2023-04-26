@@ -40,14 +40,14 @@
               <div class="row ml">
                   <div class="col-7 campos">
                       <p class="campo1">Dirección</p>
-                      <input class="campo2" type="text" placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                      <input class="campo2" type="text" style="width: 95% !important; " placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
                       <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
                       <ng-container *ngIf="origen.invalid && origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>  
                   </div>
                   <div class="col-1 campos">
-                      <p class="campo1">Nro. Piso</p>
+                      <p class="campo1">Piso</p>
                       <input class="campo2" type="text" placeholder=""  [(ngModel)]="orige.departamento_origen" name="inputdepartamento_origen" #departamento_origen="ngModel" required>
                       <ng-container *ngIf="departamento_origen.invalid && departamento_origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
@@ -65,8 +65,8 @@
                     </ng-container>
                   </div>
                   <div class="col-2 campos">
-                    <p class="campo1">Fecha</p>
-                    <input type="text" class="campo2" [(ngModel)]="orige.fecha" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" name="inputfecha" #fecha="ngModel" required>
+                    <p class="campo1">Fechas</p>
+                    <input type="text" class="campo2" [(ngModel)]="orige.fecha" [minDate]="minDate" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" name="inputfecha" #fecha="ngModel" required>
                     <ng-container *ngIf="fecha.invalid && fecha.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
@@ -112,7 +112,7 @@
                     </ng-container>
                   </div>
                 <div class="col-1 campos">
-                    <p class="campo1">Nro. Piso</p>
+                    <p class="campo1">Piso</p>
                     <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.departamento_destino" name="inputdepartamento_destino" #departamento_destino="ngModel" required>
                     <ng-container *ngIf="departamento_destino.invalid && departamento_destino.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
@@ -150,7 +150,7 @@
             <div class="row rango">
                 <div class="col-6 izquierda">
                     <p class="title_rango">
-                        Rango de envío
+                        RANGO DE RECOJIDA Y ENTREGA
                     </p>   
                     <select [(ngModel)]="destino.hora_destino" class="sle">
                       <option *ngFor="let r of rangos" [value]="r">
@@ -200,14 +200,14 @@
             <div class="row ml mlm">
                 <div class="col-8 campos">
                     <p class="campo1">Dirección</p>
-                    <input class="campo2" type="text" placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                    <input class="campo2" type="text" style="width: 91% !important; " placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
                     <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
                     <ng-container *ngIf="origen.invalid && origen.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>  
                 </div>
                 <div class="col-2 campos">
-                    <p class="campo1">Nro. Piso</p>
+                    <p class="campo1">Piso</p>
                     <input class="campo2" type="text" placeholder=""  [(ngModel)]="orige.departamento_origen" name="inputdepartamento_origen" #departamento_origen="ngModel" required>
                     <ng-container *ngIf="departamento_origen.invalid && departamento_origen.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
@@ -281,7 +281,7 @@
                   </ng-container>
                 </div>
               <div class="col-2 campos">
-                  <p class="campo1">Nro. Piso</p>
+                  <p class="campo1">Piso</p>
                   <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.departamento_destino" name="inputdepartamento_destino" #departamento_destino="ngModel" required>
                   <ng-container *ngIf="departamento_destino.invalid && departamento_destino.dirty">
                     <span class="help is-danger">Este campo es requerido</span>
@@ -318,7 +318,7 @@
           <div class="row rango">
               <div class="col-6 izquierda">
                   <p class="title_rango">
-                      Rango de envío
+                    RANGO DE RECOJIDA Y ENTREGA
                   </p>   
                   <select [(ngModel)]="destino.hora_destino" class="sle">
                     <option *ngFor="let r of rangos" [value]="r">

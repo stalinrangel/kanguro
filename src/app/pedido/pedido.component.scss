@@ -40,19 +40,20 @@
     background-color: #FFBD00;
     font-family: BalooTammudu2;
     color: white;
-    font-size: 16px;
+    font-size: 11px;
     border-radius: 0px 11px 0px 0px;
-    padding: 2px 5px 0px 5px;
-    height: 24px;
+    padding: 5px 5px 0px 5px;
+    height: 22px;
 }
 .limpiar{
     text-align: right;
     background-color: #FFBD00;
     font-family: BalooTammudu2;
     color: white;
-    font-size: 16px;
-    padding: 2px 5px 0px 5px;
-    height: 24px;
+    font-size: 11px;
+    border-radius: 0px 0px 0px 0px;
+    padding: 5px 5px 0px 5px;
+    height: 22px;
 }
 .precio_km{
     text-align: right;
@@ -96,9 +97,10 @@
 }
 .campo2{
     width: 100%;
-    border-radius: 2px;
+    border-radius: 8px;
     border: 0px;
     height: 3.5vh;
+    padding-left: 10px;
 }
 .campos2{
     padding: 0px 0px 15px 16px;
@@ -145,7 +147,7 @@
     border: none;
 }
 .sle{
-    width: 150px;
+    width: 22vh;
     border-radius: 9px;
     border: 1px solid black;
     text-align: center;
