@@ -326,6 +326,66 @@ label{
         margin-left: 10px;
     }
 }
+@media (max-width: 360px) {
+    .cotiza{
+        font-size: 26px;
+    }
+    .direccion{
+        height: 39px;
+    }
+    .line6{
+        height: 190px;
+    }
+    .image-containerC{
+        height: 252px;
+    }
+    .text_space{
+        font-size: 26px;
+        margin-top: 5px;
+    }
+    .camion{
+        width: 288px;
+    }
+    .image-container{
+        margin-top: 5px;
+    }
+    .modal-title{
+        font-size: 20px !important;
+    }
+    .btn-select{
+        font-size: 11px !important;
+    }
+}
+@media (max-width: 320px) {
+    .cotiza{
+        font-size: 24px;
+    }
+    .direccion{
+        height: 37px;
+    }
+    .line6{
+        height: 176px;
+    }
+    .image-containerC{
+        height: 192px;
+    }
+    .text_space{
+        font-size: 24px;
+        margin-top: 5px;
+    }
+    .camion{
+        width: 218px;
+    }
+    .image-container{
+        margin-top: 5px;
+    }
+    .modal-title{
+        font-size: 20px !important;
+    }
+    .btn-select{
+        font-size: 11px !important;
+    }
+}
 .title-web{
     padding: 80px 45px 60px;
     h1{

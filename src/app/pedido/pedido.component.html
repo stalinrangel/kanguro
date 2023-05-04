@@ -4,7 +4,7 @@
 <div class="alert alert-default" role="alert" *ngIf="isDanger2">
   <strong>Error, no encontramos tu dirección.</strong> 
 </div>
-<p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">| </span><span style="color: black;" class="precio_km"> {{precio | number : '1.0-2'}} € </span></p>
+<p class="precio_km">PRECIO <span style="color:#FFBD00; font-weight: bold;">| </span><span style="color: black;" class="precio_km"> {{precio | number : '1.0-2'}}€ </span></p>
 <!-- WEB  -->
 <section class="pedido" *ngIf="showWeb"> 
   
@@ -40,8 +40,8 @@
               <div class="row ml">
                   <div class="col-7 campos">
                       <p class="campo1">Dirección</p>
-                      <input class="campo2" type="text" style="width: 95% !important; " placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
-                      <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
+                      <input class="campo2 pac-container pac-item" type="text" style="width: 95% !important; " placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                      <img src="./assets/img/kanguro/position.svg" alt="box" class="iconito" (click)="geolocate()">
                       <ng-container *ngIf="origen.invalid && origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                       </ng-container>  
@@ -84,7 +84,7 @@
               </div>
           </div>
         </form>
-        <br>
+
         <p class="titulo" >DESTINO</p>
         <div class="origen" *ngFor="let destino of destinos;let indice=index">
             <div class="row" class="btn_limpiar">
@@ -201,7 +201,7 @@
                 <div class="col-8 campos">
                     <p class="campo1">Dirección</p>
                     <input class="campo2" type="text" style="width: 91% !important; " placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
-                    <img src="./assets/img/kanguro/position.svg" alt="box" style="height: 1rem;position: absolute; top: 26px;right: 3px;" (click)="geolocate()">
+                    <img src="./assets/img/kanguro/position.svg" alt="box" class="iconito" (click)="geolocate()">
                     <ng-container *ngIf="origen.invalid && origen.dirty">
                       <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>  
@@ -253,7 +253,7 @@
             
         </div>
       </form>
-      <br>
+
       <p class="titulo" >DESTINO</p>
       <div class="origen" *ngFor="let destino of destinos;let indice=index">
           <div class="row" class="btn_limpiar">
@@ -508,7 +508,7 @@
     <div class="modal-body">
         <div class="content-title">
             <p class="title1">REALIZAR PAGO</p>
-            <p class="title2">50.00 €</p>
+            <p class="title2">{{precio | number : '1.0-2'}}€</p>
         </div>
         <div class="row">
             <div class="col-12 campos1">

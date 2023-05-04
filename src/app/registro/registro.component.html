@@ -9,8 +9,7 @@
     <p class="texto">Regístrate  en KANGURO para realizar tu envío o almacenar con <br> nosotros</p>
     <p class="tipo"><span [style]="getTypeStyles1()" (click)="tipo('1')"> Persona </span> | <span [style]="getTypeStyles3()" (click)="tipo('3')">E-Commerce</span> </p>
     <form role="form">
-        <input type="text" class="inp" placeholder="Razon social" *ngIf="model.tipo_usuario==3" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
-         
+        <input type="text" class="inp" placeholder="Razón social o Nombre" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
          <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
          <ng-container *ngIf="email.invalid && email.dirty">
             <span class="help is-danger">El campo e-mail es requerido</span>

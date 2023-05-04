@@ -35,6 +35,7 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tipo(1);
   }
 
   open(content, type) {

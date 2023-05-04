@@ -65,6 +65,7 @@
 }
 
 .titulo{
+    margin-top:7px;
     font-family: BalooTammudu2Extra;
     color: red;
     padding-left: 40px;
@@ -176,9 +177,30 @@
 #map {
     height: 100%; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
+}
+.pac-container {
+    font-family: Arial, sans-serif;
+    z-index: 10000;
+    background-color: red;
+    position: fixed;
+    display: inline-block;
+    float: left;
+  }
+  .pac-input {
+    cursor: pointer;
+    padding: 0.5em;
+    text-overflow: ellipsis;
+    background-color: red;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .pac-item:hover {
+    background-color: yellow;
   }
 
-
+.iconito{
+    height: 1rem;position: absolute; top: 26px;  right: -4px;
+}
 
 
   @media (max-width: 990px) {
@@ -195,8 +217,70 @@
     .campo2{
         font-size: 13px;
     }
-
+    .iconito{
+        top: 31px;
+        right: 16px;
+        height: 1.3rem;
+    }
     
+  }
+  @media (max-width: 490px) {
+        
+    .iconito{
+        top: 27px;
+        right: -4px;
+        height: 1.3rem;
+    }
+  }
+  @media (max-width: 320px) {
+    .campos{
+        padding: 0px 0px 0px 12px !important;
+    }
+    .campos2{
+        padding: 0px 0px 0px 12px !important;
+    }
+    .precio_km{
+        font-size: 18px;
+        padding: 2px 5px 0px 0px;
+    }
+    .mlm{
+        input{
+            padding-right: 5px !important;
+            padding-left: 1px !important;
+        }
+    }
+    .campo2{
+        font-size: 10px;
+    }
+    .campo1{
+        line-height: 6px;
+        font-size: 10px;
+    }
+    .help{
+        font-size: 7px !important;
+        color: #F43A20;
+    }
+    .iconito{
+        top: 14px;
+        right: -4px;
+        height: 1rem;
+    }
+    .title_rango{
+        font-size: 10px;
+    }
+    .sle{
+        width: 17vh;
+    }
+    .btn_espacio{
+        font-size: 14px;
+        width: 116px;
+    }
+    .boton{
+        width: 160px;
+        height: 40px;
+        font-size: 23px;
+        margin-top: 0.5rem;
+    }
   }
 
 
@@ -579,8 +663,7 @@ label{
         border-radius: 5px;
         margin-bottom: 7px;
         padding-right: 25px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        
     }
 }
 .alert{

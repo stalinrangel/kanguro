@@ -108,12 +108,10 @@ export class LandingComponent implements OnInit {
       center: this.center,
       draggable: true
     });
-    const defaultBounds = {
-      north: this.center.lat + 0.2,
-      south: this.center.lat - 0.2,
-      east: this.center.lng + 0.2,
-      west: this.center.lng - 0.2,
-    };
+    const defaultBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(41.307158, 2.023506), // Southwest corner
+      new google.maps.LatLng(41.468936, 2.228101)  // Northeast corner
+    );
     const options = {
       bounds: defaultBounds,
       componentRestrictions: { country: "es" },
