@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-
+@media (max-width: 490px) {
+.pac-container {
+    width: 90% !important;
+  }
+}
 @font-face {
     font-family: "BalooThambi";
     src: local("BalooThambi"), url(./assets/fonts/BalooThambi-Regular.ttf) format("truetype");

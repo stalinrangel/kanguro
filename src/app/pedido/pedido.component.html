@@ -40,7 +40,7 @@
               <div class="row ml">
                   <div class="col-7 campos">
                       <p class="campo1">Dirección</p>
-                      <input class="campo2 pac-container pac-item" type="text" style="width: 95% !important; " placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
+                      <input class="campo2" type="text" style="width: 95% !important; " placeholder="" id="pac-input" (focus)="foco(0)" (blur)="ver(0)" [(ngModel)]="orige.origen" name="inputorigen" #origen="ngModel" required>
                       <img src="./assets/img/kanguro/position.svg" alt="box" class="iconito" (click)="geolocate()">
                       <ng-container *ngIf="origen.invalid && origen.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
@@ -159,7 +159,8 @@
                   </select>
                 </div>
                 <div class="col-6 derecha">
-                    <button class="btn_espacio" (click)="open(classic, 'classic')">ELEGIR <br> ESPACIO</button>
+                    <button class="btn_espacio" (click)="open(classic, 'classic')" *ngIf="cajas == 0">ELEGIR ESPACIO </button>
+                    <button class="btn_espacio" (click)="open(classic, 'classic')" *ngIf="cajas != 0">ELEGIR ESPACIO <br> ( {{cajas}} )</button>
                 </div>
             </div>
         </div>
@@ -327,7 +328,8 @@
                 </select>
               </div>
               <div class="col-6 derecha">
-                  <button class="btn_espacio" (click)="open(classic, 'classic')">ELEGIR ESPACIO</button>
+                  <button class="btn_espacio" (click)="open(classic, 'classic')" *ngIf="cajas == 0">ELEGIR ESPACIO </button>
+                    <button class="btn_espacio" (click)="open(classic, 'classic')" *ngIf="cajas != 0">ELEGIR ESPACIO <br> ( {{cajas}} )</button>
               </div>
           </div>
       </div>
@@ -468,7 +470,10 @@
             </div>
           </div>
           <div class="col-4">         
-            <button type="button" class="btn btn-select" style="padding: 8px 25px;" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR</button>
+            <button type="button" class="btn btn-select" style="padding: 8px 25px;" *ngIf="cajas == 0" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR</button>
+            <button type="button" class="btn btn-select" style="padding: 8px 25px;" *ngIf="cajas != 0" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR<br>( {{cajas}} )</button>
+
+                    
           </div>
         </div>
         <div class="row" *ngIf="!showWeb">
@@ -491,7 +496,8 @@
             <div class="desc-text">
               <p>Máximo 25 kg</p>
             </div>
-            <button type="button" class="btn btn-select" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR</button>
+            <button type="button" class="btn btn-select"  *ngIf="cajas == 0" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR</button>
+            <button type="button" class="btn btn-select"  *ngIf="cajas != 0" data-dismiss="modal" (click)="calcular(); c('Close click')">SELECCIONAR<br>( {{cajas}} )</button>
           </div>
         </div>
       </div>

@@ -101,7 +101,7 @@
     border-radius: 8px;
     border: 0px;
     height: 3.5vh;
-    padding-left: 10px;
+    padding-left: 7px;
 }
 .campos2{
     padding: 0px 0px 15px 16px;
@@ -178,25 +178,7 @@
     height: 100%; /* The height is 400 pixels */
     width: 100%; /* The width is the width of the web page */
 }
-.pac-container {
-    font-family: Arial, sans-serif;
-    z-index: 10000;
-    background-color: red;
-    position: fixed;
-    display: inline-block;
-    float: left;
-  }
-  .pac-input {
-    cursor: pointer;
-    padding: 0.5em;
-    text-overflow: ellipsis;
-    background-color: red;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .pac-item:hover {
-    background-color: yellow;
-  }
+
 
 .iconito{
     height: 1rem;position: absolute; top: 26px;  right: -4px;
@@ -225,11 +207,16 @@
     
   }
   @media (max-width: 490px) {
-        
+    .precio_km{
+        padding: 2px 6px 0px 0px;
+    }  
     .iconito{
         top: 27px;
         right: -4px;
         height: 1.3rem;
+    }
+    .campo2{
+        padding-left: 2px;
     }
   }
   @media (max-width: 320px) {
@@ -662,7 +649,7 @@ label{
         background: #F2F2F2;
         border-radius: 5px;
         margin-bottom: 7px;
-        padding-right: 25px;
+        /*padding-right: 25px;*/
         
     }
 }
