@@ -41,6 +41,7 @@ import { PedidoHistorialEcommerceComponent } from './pedido-historial-ecommerce/
 import { PedidoReprogramarEcommerceComponent } from './pedido-reprogramar-ecommerce/pedido-reprogramar-ecommerce.component';
 import { ProductoComponent } from './producto/producto.component';
 import { AddProductoComponent } from './add-producto/add-producto.component';
+import { GuiasComponent } from './guias/guias.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { AddProductoComponent } from './add-producto/add-producto.component';
     PedidoHistorialEcommerceComponent,
     PedidoReprogramarEcommerceComponent,
     ProductoComponent,
-    AddProductoComponent
+    AddProductoComponent,
+    GuiasComponent
   ],
   imports: [
     BrowserModule,

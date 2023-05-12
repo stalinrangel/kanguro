@@ -28,6 +28,7 @@ import { PedidoHistorialEcommerceComponent } from './pedido-historial-ecommerce/
 import { PedidoReprogramarEcommerceComponent } from './pedido-reprogramar-ecommerce/pedido-reprogramar-ecommerce.component';
 import { ProductoComponent } from './producto/producto.component';
 import { AddProductoComponent } from './add-producto/add-producto.component';
+import { GuiasComponent } from './guias/guias.component';
 
 const routes: Routes =[
   { path: 'section',             component: SectionsComponent },
@@ -38,6 +39,7 @@ const routes: Routes =[
     { path: 'sucursal/:id',          component: SucursalComponent },
     { path: 'print/:id',             component: PrintComponent },
     { path: 'guia/:id',             component: GuiaComponent },
+    { path: 'guias',             component: GuiasComponent },
     { path: 'login',          component: LoginComponent },
     { path: 'particular',          component: ParticularComponent },
     { path: 'ecommerce',          component: EcommerceComponent },

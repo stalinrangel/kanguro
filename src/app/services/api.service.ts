@@ -76,4 +76,15 @@ export class ApiService {
   crear_destino(data): Observable<any> {
     return this.http.post(this.apiUrl+'/destino/store',data)
   }
+  guias(id): Observable<any>{
+    return this.http.get(this.apiUrl+'/guias_ecommerce/'+id)
+  }
+  guias_productos(id): Observable<any>{
+    return this.http.get(this.apiUrl+'/producto_guia/'+id)
+  }
+  crear_guia(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/guias/store',data)
+  }
+
+
 }

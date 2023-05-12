@@ -1,0 +1,481 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: BalooTammudu2;
+}
+
+.derecha{
+    width: 50%;
+}
+.izquierda{
+    width: 50%;
+}
+
+.container{
+    margin: 0 auto;
+}
+.header{
+    margin-top: 3rem;
+    background-color: rgba(255, 187, 0, 1);
+    color: black;
+    padding: 16px 20px 16px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.agregar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 17px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.title{
+    font-size: 22px;
+    line-height: 5px;
+    margin-top: 16px;
+    color: black;
+    font-family: BalooTammudu2Extra;
+}
+.texto{
+    font-family: 'BalooTammudu2';
+    font-size: 12px;
+    color: black;
+    margin-bottom: 16px;
+    margin-top: 5px;
+}
+.cuadro{   
+    padding: 40px 40px 20px 40px;
+}
+.estado{   
+    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+    img{
+        width: 100%;
+        height: auto;
+        max-width: 450px;
+        margin: auto;
+    }
+}
+.estadoweb{
+    margin-top: 65px;
+    margin-right: 50px;
+    height: 380px;
+    background: rgba(237, 237, 237, 0.8);
+    border-radius: 15px;
+    padding: 50px 30px;
+}
+.borderTop{
+    border-top-left-radius: 10px;   
+    border-top-right-radius: 10px;
+}
+.borderBottom{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.texto2{
+    font-size: 16px;
+    color: black;
+    font-family: 'BalooTammudu2';
+}
+.lista{
+    width: 100%;
+    height: 380px;
+    background: #F1F1F1;
+    border-radius: 15px;
+    padding: 10px;
+    min-height: 100px;
+}
+.content-list{
+    height: 100%;
+    overflow-y: auto;
+}
+.tabla_top{
+    width: 100%;
+    height: 30px;
+    background-color: rgba(52, 52, 52, 1);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.poli{
+    margin-right: 5px;
+    height: 45%;
+}
+.tabla{
+    border-radius: 8px;
+    width: 100%;
+    min-height: 30px;
+    background: #ffffff;
+    border-bottom: 2px solid #F1F1F1;
+    color: #000;
+    font-family: "Almarai";
+    font-size: 14px;
+    padding: 20px 0px 10px 15px;
+    line-height: 16px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+.tabla2{
+    border-radius: 8px;
+    width: 100%;
+    min-height: 30px;
+    background: #ffffff;
+    border-bottom: 2px solid #F1F1F1;
+    color: #000;
+    font-family: "Almarai";
+    font-size: 14px;
+    padding: 10px 0px 10px 0px;
+    line-height: 16px;
+    pointer-events: auto;
+    cursor: pointer;
+    min-height: 43vh;
+}
+.tabla-header{
+    background-color: rgba(255, 187, 0, 1);
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.tabla-number{
+    text-align: right;
+    padding-right: 10px;
+    border-bottom: 1px solid rgba(255, 187, 0, 1);
+}
+.texto-factura{
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+}
+.tabla-info{
+    margin: 15px 10px 5px 20px;
+    
+}
+.tabla-content{
+    margin: 15px 10px 5px 20px;
+}
+.tabla-footer{
+    margin: 15px 20px 5px 20px;
+}
+.imprimir{
+    background-color: rgba(255, 187, 0, 1);
+    color: white;
+    padding: 11px 10px 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+    margin-right: 39px;
+    border: 0;
+}
+.tabla:hover{
+    background-color: #FFBD00;
+}
+.selecTable{
+    background-color: #FFBD00;
+    div{
+        font-family: BalooTammudu2-Semi;
+    }
+}
+th{padding: 3px 0px 3px 0px;}
+.tex{
+    font-size: 17px;
+    color: black;
+    line-height: 18px;
+    margin-top: 50px;
+}
+.tex2{
+    font-size: 17px;
+    color: black;
+    line-height: 18px;
+    font-family: BalooTammudu2-Semi;
+}
+.estado{
+    display: flex;
+    flex-direction: column;
+}
+
+.select-wrapper {
+    position: relative;
+    user-select: none;
+    width: 100%;
+}
+.select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #000;
+    height: 35px;
+    line-height: 18px;
+    background: #CACACA;
+    cursor: pointer;
+    span{
+        font-size: 13px;
+        margin-top: 9px;
+        font-family: BalooTammudu2-Semi;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 93%;
+        overflow: hidden;
+    }
+}
+.custom-options {
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-top: 0;
+    background: #E3E3E3;
+    transition: all 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+.select.open .custom-options {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    max-height: 330px;
+    overflow-y: scroll;
+}
+.custom-option {
+    position: relative;
+    display: block;
+    padding: 18px 15px 7px 15px;
+    font-size: 13px;
+    font-weight: 300;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-bottom: 1px solid #fff;
+    max-height: 250px;
+    overflow-y: scroll;
+}
+.custom-option:hover {
+    cursor: pointer;
+    background-color: #b2b2b2;
+    font-family: BalooTammudu2-Semi;
+}
+.custom-option.selected {
+    color: #ffffff;
+    background-color: #305c91;
+}
+.arrow {
+    position: relative;
+    height: 10px;
+    width: 10px;
+}
+.arrow::before, .arrow::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.5s;
+}
+.arrow::before {
+    left: -3px;
+    transform: rotate(-45deg);
+    background-color: #000;
+}
+.arrow::after {
+    left: 4px;
+    transform: rotate(45deg);
+    background-color: #000;
+}
+.open .arrow::before {
+    left: -3px;
+    transform: rotate(45deg);
+}
+.open .arrow::after {
+    left: 4px;
+    transform: rotate(-45deg);
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #DBDBDB;
+    opacity: 0.5;
+    border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+::ng-deep .modal-payment{
+    .modal-content{
+        border-radius: 10px;
+        background-color: transparent;
+        width: 90%;
+        margin: auto;
+        background: rgba(255, 187, 0, 1);
+    }
+    .modal-header{
+        background: rgba(255, 187, 0, 1);
+        color: #ffffff;
+        text-align: center;
+        align-items: center;
+        height: 100px;
+    }
+    .icon-delete{
+        font-family: 'Almarai-Bold';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px !important;
+        color: #FFFFFF !important;
+    }
+    .close{
+        opacity: 1 !important;
+        z-index: 9999 !important;
+        margin-right: 0px;
+    }
+    .modal-body{
+        margin: 0px 12px 0px 13px;
+        padding: 10px 20px;
+        font-family: 'BalooTammudu2';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 33px;
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+    }
+    .content-title{
+        display: flex;
+        align-items: center;
+        .title1{
+            font-family: "BalooTammudu2-Semi";
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 30px;
+            flex: 1;
+            text-align: right;
+            border-right: 3px solid #FFBD00;
+            padding-right: 5px;
+            padding-top: 10px;
+        }
+        .title2{
+            flex: 1;
+            font-family: "BalooTammudu2-Semi";
+            font-size: 35px;
+            text-align: left;
+            padding-left: 7px;
+            line-height: 35px;
+            padding-top: 16px;
+        }
+    }
+    .campos1{
+        margin: 10px 10px 0px 0px;
+    }
+    .campo1{
+        font-weight: bold;
+    }
+    .campo2a{
+        padding-left: 2px;
+        padding-top: 0px;
+        background: #F4F4F4;
+        border: 0px;
+        border-radius: 8px;
+    }
+    .botones{
+        margin-top: 10px;
+        text-align: right;
+    }
+    .btn-pay{
+        background: #FFBB00;
+        border-radius: 5px;
+        font-family: "BalooThambi";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 17px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 100%;
+        padding: 8px;
+        text-align: center;
+        border: none;
+        margin: 5px 0px;
+    }
+    .custom-control{
+        text-align: center;
+        margin-top: 10px;
+    }
+    .custom-control-label{
+        margin-left: 30px;
+        color: white;
+    }
+    .custom-control-input-green:focus~.custom-control-label::before {
+        border-color: #FFBB00 !important;
+        box-shadow: 0 0 0 0.2rem #f6c91540 !important;
+      }
+      
+      .custom-control-input-green:checked~.custom-control-label::before {
+        border-color: #FFBB00 !important;
+        background-color: #FFBB00 !important;
+      }
+      
+      .custom-control-input-green:focus:not(:checked)~.custom-control-label::before {
+        border-color: #FFBB00 !important;
+      }
+      
+      .custom-control-input-green:not(:disabled):active~.custom-control-label::before {
+        background-color: #d6f5dd !important;
+        border-color: #d6f5dd !important;
+      }
+    
+      .custom-control-label::before {
+        border: 1px solid #FFBB00;
+        transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        background: #FFBB00;
+    }
+    .modal-footer{
+        background-color: rgba(255, 187, 0, 1);
+        border-top: none;
+        border-radius: 0px 0px 10px 10px;
+
+    }
+    .guardar{
+        background-color: red;
+        color: white;
+        padding: 11px 10px 5px 10px;
+        border-radius: 10px;
+        text-align: center;
+        margin: 10px 39px 10px;
+        border: 0;
+    }
+}
+
+@media (max-width: 990px) {
+    .derecha{
+        width: 100%;
+    }
+    .izquierda{
+        width: 100%;
+    }
+}
