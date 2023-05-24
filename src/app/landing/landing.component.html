@@ -81,7 +81,7 @@
     <div class="alert alert-default" role="alert" *ngIf="isDanger">
       <strong>Error, no encontramos tu dirección.</strong> 
     </div>
-    <div class="header-web">
+    <!--div class="header-web">
       <div class="container container-web">
         <div class="row">
           <div class="col-6">
@@ -154,12 +154,42 @@
           </div>
         </div>
       </div>
-    </div>
+    </div-->
 
+    
+
+    <section style="margin-top: 30px;">
+      <ngb-carousel
+      #carousel
+      [keyboard]="true"
+      (slide)="onSlide($event)"
+      >
+        <!--ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="img-slider" src="./assets/img/kanguro/slider1.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/particular']"/>
+            <img src="./assets/img/kanguro/Kanguro letras rojas 3.png" alt="" class="kanguro">
+          </div>
+        </ng-template-->
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="img-slider" src="./assets/img/kanguro/slider2.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/ecommerce']"/>
+            <img src="./assets/img/kanguro/Kanguro letras rojas 3.png" alt="" class="kanguro">
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <div class="picsum-img-wrapper">
+            <img class="img-slider" src="./assets/img/kanguro/slider3.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/xl']"/>
+            <img src="./assets/img/kanguro/Kanguro letras rojas 3.png" alt="" class="kanguro">
+          </div>
+        </ng-template>
+       
+      </ngb-carousel>
+    </section>
     <section>
       <div class="container content-info">
         <div class="row">
-          <div class="col-4 phover" [routerLink]="['/particular']">
+          <!--div class="col-4 phover" [routerLink]="['/particular']"-->
+          <div class="col-4 phover">
             <img src="./assets/img/kanguro/iconland1.svg" alt="TRASLADO PARTICULAR" >
             <p class="titleI">TRASLADO PARTICULAR</p>
             <p class="descriptionI">Envío rápido y seguro de <br> tus artículos personales</p>
@@ -176,34 +206,6 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section>
-      <ngb-carousel
-      #carousel
-      [keyboard]="true"
-      (slide)="onSlide($event)"
-      >
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img class="img-slider" src="./assets/img/kanguro/slider1.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/particular']"/>
-            <img src="./assets/img/kanguro/Kanguro letras rojas 3.png" alt="" class="kanguro">
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img class="img-slider" src="./assets/img/kanguro/slider2.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/ecommerce']"/>
-            <img src="./assets/img/kanguro/Kanguro letras rojas 3.png" alt="" class="kanguro">
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img class="img-slider" src="./assets/img/kanguro/slider3.svg" alt="ENVÍOS FLEXIBLES" [routerLink]="['/xl']"/>
-            <img src="./assets/img/kanguro/Kanguro letras rojas 3.png" alt="" class="kanguro">
-          </div>
-        </ng-template>
-       
-      </ngb-carousel>
     </section>
 
     <div style="margin: 100px;"></div>

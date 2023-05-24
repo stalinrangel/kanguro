@@ -57,7 +57,7 @@ const routes: Routes =[
     { path: 'reprogramarEcommerce',          component: PedidoReprogramarEcommerceComponent },
     { path: 'producto',          component: ProductoComponent },
     { path: 'addProducto',          component: AddProductoComponent },
-    { path: '', redirectTo: 'landing', pathMatch: 'full' }
+    { path: '', redirectTo: 'ecommerce', pathMatch: 'full' }
 ];
 
 @NgModule({

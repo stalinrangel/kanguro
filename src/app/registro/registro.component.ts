@@ -35,7 +35,8 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tipo(1);
+    this.tipo(3);
+    this.getTypeStyles3();
   }
 
   open(content, type) {
@@ -95,11 +96,15 @@ export class RegistroComponent implements OnInit {
     this.api.signup(this.model).subscribe({
       next(data){
         //console.log(data);
+        alert('exito')
+        alert(JSON.stringify(data))
         self.uss.set(data);
         self.id=data.id;
         self.router.navigate(['/iniciar']);
       },error(err){
         console.log(err.error.err);
+        alert('error')
+        alert(JSON.stringify(err))
         self.danger();
       }
     })
