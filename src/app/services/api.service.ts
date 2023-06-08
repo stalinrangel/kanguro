@@ -85,6 +85,8 @@ export class ApiService {
   crear_guia(data): Observable<any> {
     return this.http.post(this.apiUrl+'/guias/store',data)
   }
-
+  signup_ckeck(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/auth/signup_check',data)
+  }
 
 }

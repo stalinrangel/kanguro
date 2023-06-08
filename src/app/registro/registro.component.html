@@ -43,20 +43,23 @@
           <p class="tipo"><span > Persona </span> <span style="color:#F43A20;">|</span>&nbsp;<span [style]="getTypeStyles3()" (click)="tipo('3')" style="color:#FFF;">E-Commerce</span> </p>
           <form role="form">
               <input type="text" class="inp" placeholder="Razón social o Nombre" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
-              
-              <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
+              <ng-container *ngIf="razon_social.invalid && razon_social.dirty" style="margin-bottom: 5px;">
+                <span class="help is-danger">El campo nombre es requerido</span>
+              </ng-container>
+              <input type="email" class="inp" placeholder="Correo electrónico"   [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
               <ng-container *ngIf="email.invalid && email.dirty" style="margin-bottom: 5px;">
                   <span class="help is-danger">El campo e-mail es requerido</span>
                 </ng-container>
               <input type="password" class="inp" placeholder="Contraseña"  [(ngModel)]="model.password" name="inputPassword" #password="ngModel" required>
-              <ng-container *ngIf="password.invalid && email.dirty" style="margin-bottom: 5px;">
+              <ng-container *ngIf="password.invalid && password.dirty" style="margin-bottom: 5px;">
                   <span class="help is-danger">El campo password es requerido</span>
                 </ng-container>
           </form>
-          <span class="boton" (click)="open(confirm, 'confirm');registro()">Registrarse</span>
+          <!--button class="boton" [hidden]="!razon_social.invalid && !razon_social.dirty && !email.invalid && !email.dirty && !password.invalid && !password.dirty" (click)="open(confirm, 'confirm');">Registrarse</button-->
+          <button class="boton" [hidden]="puede" (click)="signup_ckeck()">Registrarse</button>
           <p class="sesion" [routerLink]="['/iniciar']">Ya tienes una cuenta? <span style="color:red">Iniciar sesión</span></p>
           <img src="./assets/img/kanguro/o.svg" alt="" class="o">
-          <span class="google" >Continuar con Google</span>
+          <!--span class="google" >Continuar con Google</-->
         </div>
       </div>
       <div class="col-1"></div>

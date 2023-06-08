@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons,  NgbCarousel, NgbCarouselModule, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons,  NgbCarousel, NgbCarouselModule, NgbSlideEvent, NgbSlideEventSource, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from '../services/api.service';
 import { UserStorageService } from '../services/user-storage.service';
 import { Router } from '@angular/router';
@@ -24,6 +24,7 @@ export class RegistroComponent implements OnInit {
   private id:any;
   showWeb: boolean = false;
   public isDanger=false;
+  public puede:boolean=false;
 
   constructor(
     private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router
@@ -41,16 +42,17 @@ export class RegistroComponent implements OnInit {
 
   open(content, type) {
     console.log(type)
-    //https://ng-bootstrap.github.io/#/components/modal/examples#options
+    //content='<ng-template #confirm let-c="close" let-d="dismiss"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('+'Cross click'+')"><span aria-hidden="true" class="icon-delete">X</span></button></div><div class="modal-body"><img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> <p class="text-info">Te hemos enviado un correo electrónico para confirmar tu registro.</p><p class="text-info">No he recibido el correo, <span (click)="reenviar()">reenviar</span>.</p></div></ng-template>';
+    
     if(type == 'confirm'){
-      this.modalService.open(content, { windowClass: 'modal-confirm', size: 'xl',centered: true, backdrop: true }).result.then((result) => {
+      this.modalService.open(MyModalContentComponent, { windowClass: 'modal-confirm', size: 'xl',centered: true, backdrop: true }).result.then((result) => {
         this.closeResult = `Closed with: ${result}`;
       }, (reason) => {      
       });
     } 
   }
   openXl(content) {
-		this.modalService.open(content, { windowClass: 'modal-confirm', size: 'xl',centered: true, backdrop: true }).result.then((result) => {
+		this.modalService.open(MyModalContentComponent, { windowClass: 'modal-confirm', size: 'xl',centered: true, backdrop: true }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {      
     });
@@ -89,25 +91,55 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  registro(){
-    this.model.name=this.model.razon_social;
-    console.log(this.model);
+  signup_ckeck(){
     let self = this;
-    this.api.signup(this.model).subscribe({
+    this.api.signup_ckeck(this.model).subscribe({
       next(data){
-        //console.log(data);
-        alert('exito')
-        alert(JSON.stringify(data))
-        self.uss.set(data);
-        self.id=data.id;
-        self.router.navigate(['/iniciar']);
+        if (data.status!='ok') {
+          alert('Error este Email ya esta registrado!')
+        }else{
+          self.registro();
+        }
       },error(err){
         console.log(err.error.err);
-        alert('error')
-        alert(JSON.stringify(err))
-        self.danger();
+       
       }
     })
+  }
+
+  registro(){
+    console.log(this.model.razon_social,this.model.email,this.model.password)
+    if (this.model.razon_social=='' || this.model.email=='' || this.model.password=='') {
+      alert('Debe completar los campos del registro.')
+    }else{
+      this.model.name=this.model.razon_social;
+      console.log(this.model);
+      let self = this;
+      /*self.open('confirm', 'confirm')
+          setTimeout(() => {
+            self.modalService.dismissAll();
+          }, 6000);*/
+      this.api.signup(this.model).subscribe({
+        next(data){
+          //console.log(data);
+          //alert('exito')
+          //alert(JSON.stringify(data))
+          self.uss.set(data);
+          self.id=data.id;
+          self.open('confirm', 'confirm')
+          setTimeout(() => {
+            self.modalService.dismissAll();
+            self.router.navigate(['/iniciar']);
+          }, 4000);
+          
+        },error(err){
+          console.log(err.error.err);
+          //alert('error')
+          alert(JSON.stringify(err))
+          self.danger();
+        }
+      })
+    }
   }
 
   reenviar(){
@@ -122,4 +154,25 @@ export class RegistroComponent implements OnInit {
       }
     })
   }
+}
+
+@Component({
+  selector: 'app-my-modal-content',
+  template: `
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true" class="icon-delete">X</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> 
+        <p class="text-info">Te hemos enviado un correo electrónico para confirmar tu registro.</p>
+        <p class="text-info">No he recibido el correo, <span>reenviar</span>.</p>
+    </div>
+
+  `
+})
+export class MyModalContentComponent {
+  constructor(public modal: NgbActiveModal) {}
+  
 }
