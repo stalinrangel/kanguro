@@ -30,7 +30,7 @@ export class AddProductoComponent implements OnInit {
     categoria:'',
     modelo:'',
     medidas:'',
-    cantidad: '',
+    cantidad: 0,
     color: '#0CFF24',
     nombre_color: '',
     user_id: ''
@@ -63,7 +63,7 @@ export class AddProductoComponent implements OnInit {
       categoria: ['1'],
       modelo: ['', Validators.required],
       medidas: ['', Validators.required],
-      cantidad: ['', Validators.required],
+      cantidad: [0],
       color: ['', Validators.required],
       nombre_color: ['', Validators.required],
       user_id: [this.id, Validators.required],
@@ -179,8 +179,8 @@ export class AddProductoComponent implements OnInit {
     this.api.add_atributo(data).subscribe({
       next(data){
         console.log(data);
-        //this.router.navigate(['/producto']);
-        this.location.back();
+        self.router.navigate(['/producto']);
+        //this.location.back();
       },error(err){
         console.log(err.error.err);
       }

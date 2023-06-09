@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="inp" placeholder="Cantidad" formControlName="cantidad" name="inputcantidadP" required>
+                    <input type="text" class="inp" placeholder="0" formControlName="cantidad" name="inputcantidadP" disabled >
                     <div *ngIf="serviceForm.controls['cantidad'].invalid && (serviceForm.controls['cantidad'].dirty || serviceForm.controls['cantidad'].touched)"
                     class="alert alert-danger">
                         <div *ngIf="serviceForm.controls['cantidad'].errors?.['required']">
