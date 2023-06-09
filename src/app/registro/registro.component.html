@@ -46,6 +46,10 @@
               <ng-container *ngIf="razon_social.invalid && razon_social.dirty" style="margin-bottom: 5px;">
                 <span class="help is-danger">El campo nombre es requerido</span>
               </ng-container>
+              <input type="number" class="inp" placeholder="Teléfono" [(ngModel)]="model.telefono" name="inputTelefono" #telefono="ngModel" required>
+              <ng-container *ngIf="telefono.invalid && telefono.dirty" style="margin-bottom: 5px;">
+                <span class="help is-danger">El campo telefono es requerido</span>
+              </ng-container>
               <input type="email" class="inp" placeholder="Correo electrónico"   [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
               <ng-container *ngIf="email.invalid && email.dirty" style="margin-bottom: 5px;">
                   <span class="help is-danger">El campo e-mail es requerido</span>
@@ -53,7 +57,7 @@
               <input type="password" class="inp" placeholder="Contraseña"  [(ngModel)]="model.password" name="inputPassword" #password="ngModel" required>
               <ng-container *ngIf="password.invalid && password.dirty" style="margin-bottom: 5px;">
                   <span class="help is-danger">El campo password es requerido</span>
-                </ng-container>
+              </ng-container>
           </form>
           <!--button class="boton" [hidden]="!razon_social.invalid && !razon_social.dirty && !email.invalid && !email.dirty && !password.invalid && !password.dirty" (click)="open(confirm, 'confirm');">Registrarse</button-->
           <button class="boton" [hidden]="puede" (click)="signup_ckeck()">Registrarse</button>

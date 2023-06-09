@@ -16,6 +16,7 @@ export class RegistroComponent implements OnInit {
   public model:any={
     razon_social:'',
     name:'',
+    telefono:'',
     email:'',
     password:'',
     tipo_usuario:'1',
@@ -109,7 +110,7 @@ export class RegistroComponent implements OnInit {
 
   registro(){
     console.log(this.model.razon_social,this.model.email,this.model.password)
-    if (this.model.razon_social=='' || this.model.email=='' || this.model.password=='') {
+    if (this.model.razon_social=='' || this.model.telefono=='' || this.model.email=='' || this.model.password=='') {
       alert('Debe completar los campos del registro.')
     }else{
       this.model.name=this.model.razon_social;
