@@ -42,6 +42,7 @@ import { PedidoReprogramarEcommerceComponent } from './pedido-reprogramar-ecomme
 import { ProductoComponent } from './producto/producto.component';
 import { AddProductoComponent } from './add-producto/add-producto.component';
 import { GuiasComponent } from './guias/guias.component';
+import { TerminosCondicionesComponent } from './terminos-condiciones/terminos-condiciones.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { GuiasComponent } from './guias/guias.component';
     PedidoReprogramarEcommerceComponent,
     ProductoComponent,
     AddProductoComponent,
-    GuiasComponent
+    GuiasComponent,
+    TerminosCondicionesComponent
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,7 @@
 .head1{
     font-family: 'BalooTammudu2Extra';
     color: black;
-    font-size: 51px;
+    font-size: 48px;
     line-height: 53px;
 }
 .red{
@@ -44,9 +44,6 @@
     right: 5%;
     margin-top: 10px;
 }
-.head_botton{
-    
-}
 .head3{
     font-family: 'BalooTammudu2Extra';
     color: #F43A20;
@@ -64,14 +61,18 @@
     font-family: 'BalooTammudu2';
     color: #666666;
 }
+.col6 {
+    display: flex;
+}
 .c1{
     font-size: 18px;
-    margin: 2.5rem 6.5rem 1.5rem 5.5rem;
+    margin: 2.5rem 6.5rem 1.5rem 20px;
     width: 80%;
     line-height: 21px;
+    text-align: justify;
 }
 .container3{
-    margin-top: 100px;
+    margin-top: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,18 +102,39 @@
     cursor: pointer;
 }
 .p2{
-    font-family: 'BalooTammudu2Extra';
+    font-family: 'BalooTammudu2-Semi';
+    color: #FFBD00;
+    font-size: 48px;
+    font-weight: 700;
+    margin: 17rem 30px 0px;
+    letter-spacing: -0.06em;
+    line-height: 55px;
+}
+.p3{
+    font-family: 'BalooTammudu2';
+    color: #939393;
+    font-size: 44px;
+    font-weight: 700;
+    margin: 0px 30px;
+    letter-spacing: -0.06em;
+    line-height: 48px;
+}
+.p4{
+    font-family: 'BalooTammudu2-Semi';
     color: black;
-    font-size: 28px;
-    margin-top: 2.5rem;
+    font-size: 35px;
+    margin: 10rem 30px 0px;
+    letter-spacing: -0.06em;
+    line-height: 35px;
+    text-transform: uppercase;
 }
 .img4x2{
     margin-top: 4.5rem;
-    width: 120%;
+    width: 100%;
 }
 
 .gallery{ 
-    margin: 10rem auto;
+    margin: 5rem auto;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-areas: 
@@ -170,7 +192,7 @@
 .header{
     display: flex;
     flex-direction: column;
-    margin: 6vh 11vh 5vh 11vh;
+    margin: 12vh 11vh 5vh 11vh;
 }
 .header__img{
     margin: 0 3vh 0 3vh;
@@ -355,3 +377,38 @@ hr{
         }
     }
 }
+.circle-black {
+    width: 16px;
+    height: 16px;
+    display: block;
+    background: #151515;
+    border-radius: 50em;
+    margin-top: 2.5rem;
+    margin-left: 5rem;
+    min-width: 16px;
+}
+.footer {
+    height: 83px;
+    background-color: #F43A20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Almarai';
+    font-style: normal;
+    font-weight: 700;
+  
+    p {
+      cursor: pointer;
+    }
+  
+    span {
+        font-weight: bold;
+        color: #FFBD00;
+    }
+  
+    .icon-footer {
+      position:absolute;
+      right: 25px;
+    }
+  }

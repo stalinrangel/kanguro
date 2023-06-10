@@ -132,7 +132,6 @@
     </div-->
     <div class="header">
         <img src="./assets/img/kanguro/eco.svg" alt="" class="">
-        <img src="./assets/img/kanguro/eca.svg" alt="" class="header__img">
     </div>
     
 </section>
@@ -140,22 +139,35 @@
 <section class="container2" *ngIf="showWeb">
     <div class="head4">
         <div class="col6">
-            <p class="c1">Nuestra experiencia en el sector Ecommerce  nos permite ofrecerte soluciones logísticas a la medida de las necesidades de tu negocio, y en el tiempo óptimo de envío. 
+            <span class="circle-black"></span>
+            <p class="c1">
+                Nuestro servicio esta diseñado para optimizar tu cadena de suministro y agilizar tus operaciones logísticas. Desde la recepción y almacenamiento de tus productos hasta el empaquetado y envío, nos encargamos de cada paso para que puedas centrarte en hacer crecer tu negocio.
             </p>
         </div>
         <div class="col6">
-            <p class="c1">Nos encargamos del almacenamiento, picking & packing y la entrega de tus productos en la provincia de Cataluña. Ocúpate de vender! Nosotros nos encargamos del resto!</p>
+            <span class="circle-black"></span>
+            <p class="c1">
+                Al externalizar tus necesidades de almacenamiento y envío a nosotros, puedes centrarte en otras áreas clave de tu negocio, como el marketing, el desarrollo de productos y la atención al cliente. Nos encargamos de la logística para que podamos enfocarte en hacer crecer tu negocio.
+            </p>
         </div>
     </div>
 </section>
 
 <section class="container3" *ngIf="showWeb">
     <p class="head1">
-        ¿Comenzamos?<br>¡Solicita tu presupuesto ahora!
+        ¿Comenzamos? <br> REGISTRATE E INCREMENTA TUS VENTAS
     </p>
     <span class="boton" [routerLink]="['/registro']">SOLICITAR</span>
-    <p class="p2">¡KANGURO LOGISTIC ES EL SOCIO LOGÍSTICO QUE ESTABAS BUSCANDO!</p>
+
+    <p class="p2">¡KANGURO DELIVERY ES EL SOCIO <br> LOGÍSTICO QUE HARA CRECER TU NEGOCIO</p>
+    
+    <p class="p3">Estamos preparados para almacenar y envíar una <br> amplia variedad de productos, adaptándonos a las <br> necesidades de tu negocio.</p>
+    
     <img src="./assets/img/kanguro/4x2.svg" alt="" class="img4x2">
+
+    <p class="p4">
+        Logística sin complicaciones para tu e-Commerce: <br> Descubre nuestro PROCESO paso a paso.
+    </p>
     <!--p class="p2 pp2">¿CÓMO FUNCIONA LA LOGÍSTICA PARA E-COMMERCE? </p>
 
     <div class="row logistica">
@@ -207,4 +219,9 @@
     <figure class="gallery__pic gallery__pic--i6">
         <img src="./assets/img/kanguro/seguimiento.svg" alt="" class="gallery__img">
     </figure>
+</section>
+
+<section class="footer" *ngIf="showWeb">
+    <p [routerLink]="['/terminos']">POLITICA DE COOKIES <span>|</span> LEGAL</p>
+    <img src="./assets/img/kanguro/Kanguro letras blancas 2.png" alt="" class="icon-footer">
 </section>
