@@ -8,7 +8,7 @@
   </div>
    <div class="login">
       <img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> 
-      <p class="tipo">Persona <span style="color:#F43A20;">|</span>&nbsp;<span>E-Commerce</span></p>
+      <p class="tipo"> <!--span style="color:#F43A20;">Persona|&nbsp;</span--><span>Empresa</span></p>
       <form role="form">
          <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
          <ng-container *ngIf="email.invalid && email.dirty">

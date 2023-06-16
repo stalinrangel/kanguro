@@ -20,11 +20,11 @@ export class GuiasComponent implements OnInit {
     id:59,
     productos:JSON.parse("[{\"id\":2,\"cantidad\":\"23\",\"producto\":{\"id\":2,\"producto\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2336\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2031\"},{\"id\":1,\"cantidad\":\"25\",\"producto\":{\"id\":1,\"producto\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2335\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2350\"}]"),
     productos1:JSON.parse("[{\"id\":2,\"cantidad\":\"23\",\"producto\":{\"id\":2,\"producto\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2336\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2031\"},{\"id\":1,\"cantidad\":\"25\",\"producto\":{\"id\":1,\"producto\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2335\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2350\"}]"),
-    receptor: "",
+    receptor: "Kanguro",
     remitente: "",
     guia:''
   };
-  receptor;
+  receptor="Kanguro";
   remitente;
   productos:any=[{
     id:'',

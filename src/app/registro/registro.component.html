@@ -7,7 +7,7 @@
        un envío</p>
     <img src="./assets/img/kanguro/van.png" alt="" class="car">
     <p class="texto">Regístrate  en KANGURO para realizar tu envío o almacenar con <br> nosotros</p>
-    <p class="tipo"><span [style]="getTypeStyles1()" (click)="tipo('1')"> Persona </span> | <span [style]="getTypeStyles3()" (click)="tipo('3')">E-Commerce</span> </p>
+    <p class="tipo"><!--span [style]="getTypeStyles1()" (click)="tipo('1')"> Persona |</span-->  <span [style]="getTypeStyles3()" (click)="tipo('3')">Empresa</span> </p>
     <form role="form">
         <input type="text" class="inp" placeholder="Razón social o Nombre" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
          <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email" name="inputEmail" #email="ngModel" required>
@@ -40,7 +40,7 @@
       </div>
       <div class="col-5 content-row">
         <div class="content-form">
-          <p class="tipo"><span > Persona </span> <span style="color:#F43A20;">|</span>&nbsp;<span [style]="getTypeStyles3()" (click)="tipo('3')" style="color:#FFF;">E-Commerce</span> </p>
+          <p class="tipo"><!--span >  </span> Persona<span style="color:#F43A20;">|&nbsp;</span--><span [style]="getTypeStyles3()" (click)="tipo('3')" style="color:#FFF;">Empresa</span> </p>
           <form role="form">
               <input type="text" class="inp" placeholder="Razón social o Nombre" [(ngModel)]="model.razon_social" name="inputRazon_social" #razon_social="ngModel" required>
               <ng-container *ngIf="razon_social.invalid && razon_social.dirty" style="margin-bottom: 5px;">
@@ -61,7 +61,7 @@
           </form>
           <!--button class="boton" [hidden]="!razon_social.invalid && !razon_social.dirty && !email.invalid && !email.dirty && !password.invalid && !password.dirty" (click)="open(confirm, 'confirm');">Registrarse</button-->
           <button class="boton" [hidden]="puede" (click)="signup_ckeck()">Registrarse</button>
-          <p class="sesion" [routerLink]="['/iniciar']">Ya tienes una cuenta? <span style="color:red">Iniciar sesión</span></p>
+          <p class="sesion" [routerLink]="['/iniciar']">Ya tienes una cuenta? <span style="color:red; cursor: pointer;">Iniciar sesión</span></p>
           <img src="./assets/img/kanguro/o.svg" alt="" class="o">
           <!--span class="google" >Continuar con Google</-->
         </div>

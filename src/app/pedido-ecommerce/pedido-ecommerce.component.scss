@@ -16,7 +16,7 @@
     width: 100%;
 }
 .datos_pedido{
-    width: 60%;
+    width: 95%;
     background: #F1F1F1;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -42,9 +42,12 @@
 }
 .pedido{
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .mapa{
-    width: 40%;
+    visibility: hidden;
+    /*width: 40%;*/
     background: rgba(237, 237, 237, 0.8);
     padding: 22px 16px 22px 16px;
     border-radius: 15px;
@@ -131,6 +134,12 @@
     flex-direction: column;
     
 }
+.campos_final{
+    padding: 0px 0px 0px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
 .campo1{
     font-family: BalooTammudu2Extra;
     color: black;
@@ -140,7 +149,7 @@
     overflow: hidden;  
     text-overflow: clip;
     line-height: 16px;
-    padding-top: 5px;
+    padding-top: 14px;
 }
 .campo2{
     width: 100%;

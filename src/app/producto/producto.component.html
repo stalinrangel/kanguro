@@ -3,13 +3,16 @@
         <h1>E-Commerce</h1>
         <div class="content-menu">
             <img src="./assets/img/kanguro/add.png" alt="add" (click)="addProduct()">
-            <img src="./assets/img/kanguro/xls-file 1.png" alt="add">
-            <img src="./assets/img/kanguro/zoom 1.png" alt="add">
+            <!--img src="./assets/img/kanguro/xls-file 1.png" alt="add">
+            <img src="./assets/img/kanguro/zoom 1.png" alt="add"-->
         </div>
     </div>
     <p class="title">PRODUCTOS</p>
     <div class="row">
-        <div class="col-6" *ngFor="let item of products">
+        <div [hidden]="products.length>0" class="primer" (click)="addProduct()">
+            <span class="boton" >Agrega tu primer producto  <img src="./assets/img/kanguro/add.png" alt="add" ></span>
+        </div>
+        <div class="col-6"  *ngFor="let item of products">
             <div class="content-product">
                 <img class="imageP" src="{{item.imagen}}" alt="imagen">
                 <p class="titleP">{{item.nombre}}</p>
@@ -33,11 +36,11 @@
             <div class="col-6">
                 <div>
                     <img class="imageP" src="{{order_select.imagen}}" alt="imagen">
-                    <p class="titleP1">{{order_select.nombre}}</p>
-                    <p class="cantP">{{order_select.descripcion}}</p>
-                    <p class="cantP">Cantidad disponible: {{order_select.cantidad}}</p>
-                    <button class="solicitar1">EDITAR</button>
-                    <button class="solicitar1">ELIMINAR</button>
+                    <p class="titleP1" disabled>{{order_select.nombre}}</p>
+                    <p class="cantP" disabled>{{order_select.descripcion}}</p>
+                    <p class="cantP" disabled>Cantidad disponible: {{order_select.cantidad}}</p>
+                    <!--button class="solicitar1">EDITAR</button>
+                    <button class="solicitar1">ELIMINAR</button-->
                 </div>
             </div>
             <div class="col-6">
@@ -46,13 +49,13 @@
                     <div class="rectangle-color" *ngFor="let item of order_select.colores" [ngStyle]="{'background-color': item.color}" (click)="selectColor(item)"></div>
                 </div>
                 <p class="text-infoP">Color:</p>
-                <input type="text" class="inp" [(ngModel)]="color_select.nombrecolor" name="nombreC">
+                <input type="text" class="inp" [(ngModel)]="color_select.nombrecolor" name="nombreC" disabled>
                 <p class="text-infoP">Medidas:</p>
-                <input type="text" class="inp" [(ngModel)]="atributo_select.atributo" name="medidaC">
+                <input type="text" class="inp" [(ngModel)]="atributo_select.atributo" name="medidaC" disabled>
                 <p class="text-infoP">Modelo:</p>
-                <input type="text" class="inp" name="modeloC">
+                <input type="text" class="inp" name="modeloC" disabled>
                 <p class="text-infoP">Cantidad por modelo:</p>
-                <input type="text" class="inpCant " [(ngModel)]="atributo_select.cantidad" name="cantidadC">
+                <input type="text" class="inpCant " [(ngModel)]="atributo_select.cantidad" name="cantidadC" disabled>
             </div>
         </div>
     </div>

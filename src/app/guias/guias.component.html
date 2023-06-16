@@ -18,7 +18,7 @@
                     <div class="row tabla" *ngFor="let item of guias; let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true }" (click)="changeOrder(item)">
                         <div class="col-3">{{item.id}}</div>
                         <div class="col-3">{{item.cliente}}</div>
-                        <div class="col-3"><span *ngIf="item.estado==0" style="color:red;font-weight: bold;">Por Entregar</span><span *ngIf="item.estado==1" style="color:green;font-weight: bold;">Entregada</span></div>
+                        <div class="col-3"><span *ngIf="item.estado==0" style="color:red;font-weight: bold;">Por Entregar</span><span *ngIf="item.estado==1" style="color:green;font-weight: bold;">Cargada en sistema</span></div>
                         <div class="col-3">{{item.fecha | date: 'dd/MM/YYYY'}}</div>
                     </div>
                </div>
@@ -144,7 +144,7 @@
             </div>
             <div class=" campos1">
                 <p class="campo1">Receptor</p>
-                <input class="campo2a" type="text" placeholder="" [(ngModel)]="receptor">
+                <input class="campo2a" type="text" placeholder="" [(ngModel)]="receptor" disabled>
             </div>
         </div>
         <div class="texto-factura" style="margin-top: 10px;">

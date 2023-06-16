@@ -6,6 +6,7 @@ import { UserStorageService } from '../services/user-storage.service';
 import { NgbDateStruct, NgbCalendar, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 declare var google: any;
+const now = new Date();
 @Component({
   selector: 'app-pedido-ecommerce',
   templateUrl: './pedido-ecommerce.component.html',
@@ -102,11 +103,15 @@ export class PedidoEcommerceComponent implements OnInit {
     'productos':''
   }
   public rangos:any=[
-    '10-19'
+    '10 Hrs - 19 Hrs'
   ];
   public fecha:any;
   public products: any = [];
   public selec_products: any = [];
+
+  
+  minDate: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()+1};
+  model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
 
   ngOnInit(): void {
     this.user=this.uss.user;

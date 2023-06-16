@@ -43,6 +43,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { AddProductoComponent } from './add-producto/add-producto.component';
 import { GuiasComponent } from './guias/guias.component';
 import { TerminosCondicionesComponent } from './terminos-condiciones/terminos-condiciones.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
+import { ServiciosComponent } from './servicios/servicios.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { TerminosCondicionesComponent } from './terminos-condiciones/terminos-co
     ProductoComponent,
     AddProductoComponent,
     GuiasComponent,
-    TerminosCondicionesComponent
+    TerminosCondicionesComponent,
+    NosotrosComponent,
+    ServiciosComponent
   ],
   imports: [
     BrowserModule,

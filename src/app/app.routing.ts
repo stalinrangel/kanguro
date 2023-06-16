@@ -30,6 +30,8 @@ import { ProductoComponent } from './producto/producto.component';
 import { AddProductoComponent } from './add-producto/add-producto.component';
 import { GuiasComponent } from './guias/guias.component';
 import { TerminosCondicionesComponent } from './terminos-condiciones/terminos-condiciones.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
+import { ServiciosComponent } from './servicios/servicios.component';
 
 const routes: Routes =[
   { path: 'section',             component: SectionsComponent },
@@ -59,6 +61,8 @@ const routes: Routes =[
     { path: 'producto',          component: ProductoComponent },
     { path: 'addProducto',          component: AddProductoComponent },
     { path: 'terminos',          component: TerminosCondicionesComponent },
+    { path: 'servicios',          component: ServiciosComponent },
+    { path: 'nosotros',          component: NosotrosComponent },
     { path: '', redirectTo: 'ecommerce', pathMatch: 'full' }
 ];
 

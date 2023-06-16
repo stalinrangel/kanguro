@@ -54,14 +54,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
-                    <input type="text" class="inp" placeholder="0" formControlName="cantidad" name="inputcantidadP" disabled >
+                <div class="col-4" style="display: flex;justify-content: right;align-items: center;">
+                    <!--input type="text" class="inp" placeholder="0" formControlName="cantidad" name="inputcantidadP" disabled -->
+                    
                     <div *ngIf="serviceForm.controls['cantidad'].invalid && (serviceForm.controls['cantidad'].dirty || serviceForm.controls['cantidad'].touched)"
                     class="alert alert-danger">
                         <div *ngIf="serviceForm.controls['cantidad'].errors?.['required']">
                             Cantidad del producto es requerido
                         </div>
+                       
                     </div>
+                    <p class="title" style="color: black;">Selecciona un color:</p>
                 </div>
                 <div class="col-2">
                     <input class="rectangle-color" type="color" formControlName="color" name="inputcolorP" required>
@@ -84,13 +87,13 @@
                 </div>
             </div>
 
-            <div class="content-btns">
+            <!--div class="content-btns">
                 <div class="add-btn" (click)="open(add,'add')">
                     <p>Agregar más items</p>
                     <img src="./assets/img/kanguro/add.png" alt="add">
                 </div>
                 <button class="solicitar" type="submit">AGREGAR</button>
-            </div>
+            </div-->
         </form>  
     </div>
 </section>

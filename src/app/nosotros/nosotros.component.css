@@ -1,0 +1,85 @@
+.nosotros{
+    margin: 7rem 8rem;
+    min-height: 90vh;
+}
+.text-why{
+    font-family: "BalooTammudu2Extra";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 58px;
+    text-align: center;
+    letter-spacing: -0.06em;
+    color: #000000;
+    margin-bottom: 10px;
+    display: contents;
+}
+.texto {
+    margin-top: 10px;
+    color: #000;
+    font-family: 'Almarai';
+    text-align: justify;
+    font-size: 20px;
+}
+.boton{
+    background-color: #F43A20;
+    color: white;
+    width: 240px;
+    height: 50px;
+    font-size: 34px;
+    font-family: 'BalooTammudu2';
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px 0px 0px;
+    gap: 10px;
+    margin-top: 1.5rem;
+    cursor: pointer;
+}
+.footer {
+    height: 83px;
+    background-color: #F43A20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Almarai';
+    font-style: normal;
+    font-weight: 700;
+  
+   
+  }
+  
+
+  span {
+      font-weight: bold;
+      color: #FFBD00;
+      cursor: pointer;
+  }
+
+  .icon-footer {
+    position:absolute;
+    right: 25px;
+  }
+
+@media (max-width: 660px) {
+    .nosotros{
+        margin: 2rem 3rem;
+    }
+    .text-why{
+        font-size: 34px;
+        line-height: 34px;
+    }
+    .texto{
+        font-size: 14px;
+    }
+    .boton{
+        
+        width: 128px;
+        height: 33px;
+        font-size: 20px;
+        padding: 9px 0px 0px 0px;
+    }
+}

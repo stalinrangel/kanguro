@@ -401,6 +401,7 @@ th{padding: 3px 0px 3px 0px;}
         background: #F4F4F4;
         border: 0px;
         border-radius: 8px;
+        font-style: 18px !important;
     }
     .botones{
         margin-top: 10px;

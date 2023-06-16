@@ -40,6 +40,7 @@
     font-family: 'Almarai';
     font-size: 14px;
     text-align: center;
+    cursor: pointer;
 }
 
 .sesion2{
@@ -52,6 +53,7 @@
         margin-left: 5px;
         font-family: BalooTammudu2-Semi;
     }
+    cursor: pointer;
 }
 .tipo{
     font-size: 20px;
@@ -82,6 +84,7 @@ input::placeholder {
     padding-left: 15px;
 }
 .boton{
+    cursor: pointer;
     background: rgba(244, 58, 32, 1);
     width: 100%;
     color: white;

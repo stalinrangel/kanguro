@@ -1,6 +1,6 @@
 <nav *ngIf="showWeb" id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top" style="background-color: #F43A20;">
   <div class="container">
-    <a class="navbar-brand mr-lg-5" [routerLink]="['/landing']" (click)="inicio()">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/']" (click)="inicio()">
       <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
@@ -11,7 +11,7 @@
       <div class="navbar-collapse-header">
         <div class="row">
           <div class="col-6 collapse-brand">
-            <a [routerLink]="['/landing']">
+            <a [routerLink]="['/']">
               <img src="./assets/img/brand/blue.png">
             </a>
           </div>
@@ -32,18 +32,31 @@
           </a>
         </li-->
         <li class="nav-item">
-          <a class="nav-link" href="/#/ecommerce" (click)="ecommerce()" data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text" [style]="typeStyles2()">Empresa</span>
+          <a class="nav-link" href="/#/" data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text" [style]="typeStyles2()">INICIO</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/#/xl" (click)="xl()"  data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text" [style]="typeStyles3()">Envio XL</span>
+          <div class="dropdown">
+          <a class="nav-link" href="/#/servicios" (click)="ecommerce()" data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text" [style]="typeStyles2()">SERVICIOS</span>
+            
+          </a>
+          
+            <div class="dropdown-content">
+            <a href="/#/servicios"><span class="arriba">Logística E-Commerce</span><br><span class="abajo">Almacenamiento, pick&pack, entrega de la mercancía </span></a>
+            <a href="/#/servicios"><span class="arriba">BrandedBox</span><br><span class="abajo">Soluciones para Impulsar tu Marca con Packaging Personalizado</span></a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#/nosotros" (click)="xl()"  data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text" [style]="typeStyles3()">NOSOTROS</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="" data-toggle="tooltip" title="">
-            <span class="nav-link-inner--text">Contacto</span>
+          <a class="nav-link" href="/#/contacto" data-toggle="tooltip" title="">
+            <span class="nav-link-inner--text">CONTACTO</span>
           </a>
         </li>
       </ul>
@@ -172,7 +185,7 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav align-items-lg-center ml-lg-auto"> <span class="sesion" *ngIf="ensesion.name!=null"> Hola, {{ensesion.name}} </span> <span class="sesion" *ngIf="ensesion.name==null" (click)="iniciar()">Iniciar sesión</span>
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto"> V0.1<span class="sesion" *ngIf="ensesion.name!=null"> Hola, {{ensesion.name}} </span> <span class="sesion" *ngIf="ensesion.name==null" (click)="iniciar()">Iniciar sesión</span>
         <li class="nav-item ml-lg-auto">
           <a class="nav-link nav-link-icon" (click)="showMenuWeb = !showMenuWeb" data-toggle="tooltip">
             <img src="./assets/img/kanguro/profile.png" alt="">
@@ -182,18 +195,18 @@
       
       <!--button (click)="particular()">Particular</button>{{this.show}}
       <button (click)="ecommerce()">E-Commerce</button>
-      <button (click)="cerrar()" [routerLink]="['/landing']">Cerrar sesión</button-->
+      <button (click)="cerrar()" [routerLink]="['/']">Cerrar sesión</button-->
     </div>
   </div>
 </nav>
 
 <nav *ngIf="!showWeb" id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top" style="background-color: #F43A20;">
   <div class="container">
-    <a class="navbar-brand mr-lg-5" [routerLink]="['/landing']">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/']">
       <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
     </a>
     <div>
-      <span class="sesion" *ngIf="ensesion.name !=null"> Hola, {{ensesion.name}} </span>
+      V0.1<span class="sesion" *ngIf="ensesion.name !=null"> Hola, {{ensesion.name}} </span>
       <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed; getUser();"
             [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
         <span class="navbar-toggler-icon"></span>
@@ -299,7 +312,7 @@
           </a>
         </li>
         <li class="nav-item line-bottom">
-          <a class="nav-link" href="/#/landing"  data-toggle="tooltip" title="">
+          <a class="nav-link" href="/#/"  data-toggle="tooltip" title="">
             <span class="nav-link-inner--text text-li">Realizar envíos</span>
           </a>
         </li>
@@ -310,7 +323,7 @@
         </li-->
         <li class="nav-item line-bottom">
           <a class="nav-link" href="/#/ecommerce" data-toggle="tooltip">
-            <span class="nav-link-inner--text text-li">Empresa</span>
+            <span class="nav-link-inner--text text-li">Servicio</span>
           </a>
         </li>
         <li class="nav-item line-bottom">
@@ -319,12 +332,12 @@
           </a>
         </li>
         <li class="nav-item line-bottom">
-          <a class="nav-link" href="/#/landing" data-toggle="tooltip">
+          <a class="nav-link" href="/#/" data-toggle="tooltip">
             <span class="nav-link-inner--text text-li">Inicio</span>
           </a>
         </li>
         <li class="nav-item line-bottom">
-          <a class="nav-link" href="/#/landing" data-toggle="tooltip">
+          <a class="nav-link" href="/#/" data-toggle="tooltip">
             <span class="nav-link-inner--text text-li">Contacto</span>
           </a>
         </li>
