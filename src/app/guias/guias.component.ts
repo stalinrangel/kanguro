@@ -97,7 +97,9 @@ export class GuiasComponent implements OnInit {
       }
     })
     let date:any=new Date();
-    this.fecha=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDay();
+    console.log(date)
+    console.log(date.getDate())
+    this.fecha=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
   }
 
   add(){
@@ -145,6 +147,7 @@ export class GuiasComponent implements OnInit {
         next(data){
           console.log(data);
           self.gui();
+          self.reset();
         },error(err){
           console.log(err);
         }
@@ -152,6 +155,32 @@ export class GuiasComponent implements OnInit {
     }else{
       alert('Las cantidades de los productos no pueden ser 0.')
     }
+  }
+
+  reset(){
+    this.order_select={
+      cliente:"",
+      estado:1,
+      fecha:"",
+      id:59,
+      productos:JSON.parse("[{\"id\":2,\"cantidad\":\"23\",\"producto\":{\"id\":2,\"producto\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2336\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2031\"},{\"id\":1,\"cantidad\":\"25\",\"producto\":{\"id\":1,\"producto\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2335\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2350\"}]"),
+      productos1:JSON.parse("[{\"id\":2,\"cantidad\":\"23\",\"producto\":{\"id\":2,\"producto\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2336\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Celeste con plomo\",\"$$hashKey\":\"object:2031\"},{\"id\":1,\"cantidad\":\"25\",\"producto\":{\"id\":1,\"producto\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2335\"},\"nombre\":\"Limpiador Multifuncional - color:  - medida: Blanco con Naranja\",\"$$hashKey\":\"object:2350\"}]"),
+      receptor: "Kanguro",
+      remitente: "",
+      guia:''
+    };
+    this.receptor="Kanguro";
+    this.remitente="";
+    this.productos=[{
+      id:'',
+      cantidad:0,
+      productos:[],
+      nombre:''
+    }];
+    this.cliente;
+    this.fecha;
+    this.selec_productos=[];
+    this.guia;
   }
   /*
 

@@ -111,14 +111,14 @@
                     <p class="campo1">Cantidad</p>  
                     <input class="sle2" type="text" placeholder="" [(ngModel)]="destino.cantidad" name="inputcantidad" #cantidad="ngModel" required> 
                 </div>
-                <div class="col-5 campos">
+                <div class="col-4 campos">
                     <p class="campo1">Fecha de envío</p>  
                     <input type="text" [placement]="top" class="sle2" [(ngModel)]="destino.fecha_destino" ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" (click)="d.toggle()" name="inputfecha_destino" #fecha_destino="ngModel" required>
                     <ng-container *ngIf="fecha_destino.invalid && fecha_destino.dirty"> 
                     <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
                 </div>
-                <div class="col-5 campos">
+                <div class="col-4 campos">
                     <p class="campo1">Rango de envío</p>  
                     <select [(ngModel)]="destino.hora_destino" class="sle2">
                         <option *ngFor="let r of rangos" [value]="r" [attr.selected]="r">
@@ -126,20 +126,11 @@
                         </option>
                     </select>
                 </div>
-            </div>
-            <div class="row amarillo">
                 <div class="col-2 campos">
-                    
-                </div>
-                <div class="col-5 campos_final">
-                    <!--span class="btn_espacio" (click)="limpiar1(indice)">Limpiar Campos</span-->
-                    <span class="boton" (click)="enviar()" >ENVIAR</span>
-                </div>
-                <div class="col-5 campos">
-                    <!--span class="btn_espacio2" (click)="addDestinos()">Agregar Destino</span-->
-                   
+                    <span class="btn_enviar" (click)="enviar()">ENVIAR</span>
                 </div>
             </div>
+            
             <div class="row  amarillo2" style="padding-bottom: 14px;">
                 <div class="col-2 campos">
                 </div>
@@ -150,9 +141,9 @@
                 </div>
             </div>
         </div>
-        <div class="row medio">
+        <!--div class="row medio">
             <span class="boton ocultar" (click)="enviar()" >ENVIAR</span>
-        </div>
+        </div-->
     </div>
     
     <div class="mapa">

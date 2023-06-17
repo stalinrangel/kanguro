@@ -53,6 +53,13 @@ export class PedidoEcommerceComponent implements OnInit {
     'turno_origen':'2'
   }
   public destinos:any=[];
+
+  minDate: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()+1};
+  model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+
+
+  manana= now.setDate(now.getDate() + 1);
+
   public destino:any={
     'tipo':'',
     'fecha':'',
@@ -97,9 +104,9 @@ export class PedidoEcommerceComponent implements OnInit {
     'cantidad':0,
     'detalle':'',
     'subtotal':0,
-    'fecha_destino':'',
+    'fecha_destino':new Date(this.manana),
     'turno_destino':'2',
-    'hora_destino':'',
+    'hora_destino':'10 Hrs - 19 Hrs',
     'productos':''
   }
   public rangos:any=[
@@ -110,8 +117,7 @@ export class PedidoEcommerceComponent implements OnInit {
   public selec_products: any = [];
 
   
-  minDate: NgbDateStruct = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()+1};
-  model = {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()};
+  
 
   ngOnInit(): void {
     this.user=this.uss.user;
@@ -121,6 +127,7 @@ export class PedidoEcommerceComponent implements OnInit {
    
     this.getDate();
     this.getProduct();
+    console.log(new Date(this.manana))
   }
 
   getProduct(){
