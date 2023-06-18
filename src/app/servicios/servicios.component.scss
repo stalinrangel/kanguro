@@ -1,0 +1,126 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.servicios {
+  margin: 7rem auto;
+  width: 80%;
+  display: block;
+
+  .img-logo { 
+    margin-top: 35px;
+  }
+
+  .text-header {
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 80px;
+    letter-spacing: -0.06em;
+    color: #000000;
+  }
+
+  .boton {
+    background-color: #F43A20;
+    color: white;
+    width: 235px;
+    height: 45px;
+    font-size: 32px;
+    font-family: "BalooTammudu2";
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px 0px 0px;
+    gap: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+  p {
+    letter-spacing: -0.06em;
+    color: #676767;
+    font-size: 19px;
+  }
+
+  .service1 {
+    width: 100%;
+    margin-top: 70px;
+  }
+
+  .text-header2 {
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 45px;
+    display: flex;
+    align-items: flex-end;
+    text-align: center;
+    color: #000000;
+    margin: 8rem 30px 1rem 30px;
+  }
+
+  .line-yellow {
+    border: 1px solid rgba(255, 189, 0, 0.8);
+    margin-top: 5rem;
+  }
+
+  .img-service-right {
+    width: 60%;
+    float: right;
+  }
+
+  .img-service-left {
+    width: 60%;
+    float: left;
+  }
+
+  .text-header3 {
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 45px;
+    color: #000000;
+    width: 100%;
+  }
+
+  .text-justify {
+    text-align: justify;
+  }
+
+  .content-info {
+    margin-top: 8rem;
+  }
+
+  .content-img-end {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .content-img-start {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .container-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5rem 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .content-img-end, .content-img-start {
+    align-items: center !important;
+  }
+}
