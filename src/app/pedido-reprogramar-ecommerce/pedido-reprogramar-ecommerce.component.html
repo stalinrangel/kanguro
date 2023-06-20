@@ -1,19 +1,19 @@
 <section *ngIf="showWeb">
-    <div class="header">
-        <p class="title">ESTADO DEL ENVÍO</p>
-        <p class="texto">Solo se visualizan los envíos en proceso de entrega.</p>
+    <div class="headerweb">
+        <p class="titleweb">ESTADO DEL ENVÍO</p>
+        <p class="textoweb">Solo se visualizan los envíos en proceso de entrega.</p>
     </div>
 
     <div class="row">
         <div class="col-6">
-            <div class="cuadro">
+            <div class="cuadroweb">
                 <p class="texto2">Seleccionar envío:</p>
-                <div class="lista"> 
+                <div class="listaweb"> 
                    <div class="content-list">
-                        <div class="row tabla" *ngFor="let item of orders.slice().reverse(); let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true, 'selecTable': order_select.id == item.id }" (click)="changeOrder(item)">
+                        <div class="row tablaweb" *ngFor="let item of orders; let first = first; let last = last;"  [ngClass]="{'borderTop': first == true, 'borderBottom': last == true, 'selecTableweb': order_select.id == item.id }" style="margin-bottom: 0px;" (click)="changeOrder(item)">
                             <div class="col-3">{{item.id}}</div>
-                            <div class="col-6">{{item.destino}}</div>
-                            <div class="col-3">{{item.fecha | date: 'dd/MM/YYYY'}}</div>
+                            <div class="col-6">{{item.destinos[0].destino}}</div>
+                            <div class="col-3">{{item.destinos[0].fecha_destino | date: 'dd/MM/YYYY'}}</div>
                         </div>
                    </div>
                 </div>
@@ -22,28 +22,43 @@
         <div class="col-6">
             <div class="estado estadoweb" *ngIf="status == '0'">
                 <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
-                <p class="tex">Estado:</p>
-                <p class="tex2">---------</p>     
-            </div>
-            <div class="estado estadoweb" *ngIf="status == '1'">
-                <img src="./assets/img/kanguro/estado1.svg" alt="estado1">
-                <p class="tex">Estado:</p>
-                <p class="tex2">PROCESANDO</p>      
-            </div>
-            <div class="estado estadoweb" *ngIf="status == '2'">
-                <img src="./assets/img/kanguro/estado2.svg" alt="estado2">
-                <p class="tex">Estado:</p>
-                <p class="tex2">EN CAMINO</p>      
-            </div>
-            <div class="estado estadoweb" *ngIf="status == '3'">
-                <img src="./assets/img/kanguro/estado3.svg" alt="estado3">
-                <p class="tex">Estado:</p>
-                <p class="tex2">ENTREGADO</p>      
-            </div>
-            <div class="estado estadoweb" *ngIf="status == '4'">
-                <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
-                <p class="tex">Estado:</p>
-                <p class="tex2">CANCELADO</p>      
+                <div class="row">
+                    <div class="col-6">
+                        <p class="texW">Estado:</p>
+                        <p class="tex2W" *ngIf="order_select.estado_reprogramado == 0">GESTIONANDO</p>   
+                        <P style="color: red;font-weight: bold;" *ngIf="order_select.estado_reprogramado == 1">REPROGRAMADO</P> 
+                    </div>
+                    <div class="col-6">
+                        <p class="texW">Dirección destino</p>
+                        <p class="tex2W"><b>{{order_select.destinos[0].destino}}</b></p>      
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Fecha de envío</p>
+                        <!--p class="tex2W"><b>{{order_select.destinos[0].fecha_destino | date: 'dd/MM/YYYY'}}</b></p--> 
+                        <input type="text" [placement]="top" class="sle2" [(ngModel)]="order_select.destinos[0].fecha_destino" ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" (click)="d.toggle()" name="inputfecha_destino" #fecha_destino="ngModel">   
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Rango de envío</p>
+                        <p class="tex2W"><b>{{order_select.destinos[0].hora_destino}}</b></p>  
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Contacto</p>
+                        <p class="tex2W"><b>{{order_select.destinos[0].nombre_destino}}</b></p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Teléfono</p>
+                        <p class="tex2W"><b>{{order_select.destinos[0].telefono_destino}}</b></p> 
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-12">
+                        <span class="btn_enviar" (click)="reprogramar()">Reprogramar</span>
+                    </div>
+                </div>  
             </div>
         </div>
     </div>
@@ -51,6 +66,7 @@
 
 <section class="container" *ngIf="!showWeb">
     <div class="header">
+        <h1>E-Commerce</h1>
         <p class="title">ESTADO DEL ENVÍO</p>
         <p class="texto">Solo se visualizan los envíos en proceso de entrega.</p>
     </div>
@@ -59,39 +75,55 @@
         <p class="texto2">Seleccionar envío:</p>
         <div class="select-wrapper">
             <div class="select">
-                <div class="select__trigger"><span>{{order_select.id}}  &nbsp;&nbsp; {{order_select.destino}} &nbsp;&nbsp; {{order_select.fecha | date: 'dd/MM/YYYY'}}</span>
+                <div class="select__trigger" ><span>{{order_select.id}}  &nbsp;&nbsp; {{order_select.destino}} &nbsp;&nbsp; {{order_select.fecha | date: 'dd/MM/YYYY'}}</span>
                     <div class="arrow"></div>
                 </div>
                 <div class="custom-options">
-                    <span class="custom-option" *ngFor="let item of orders.slice().reverse()" data-value="item" (click)="changeOrder(item)">{{item.id}}  &nbsp;&nbsp; {{item.destino}} &nbsp;&nbsp; {{item.fecha | date: 'dd/MM/YYYY'}}</span>
+                    <span class="custom-option" *ngFor="let item of orders" data-value="item" (click)="changeOrder(item)">{{item.id}}  &nbsp;&nbsp; {{item.destino}} &nbsp;&nbsp; {{item.fecha | date: 'dd/MM/YYYY'}}</span>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="estado" *ngIf="status == '0'">
-        <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
-        <p class="tex">Estado:</p>
-        <p class="tex2">---------</p>     
+        <img src="./assets/img/kanguro/estadoe0.svg" alt="estado0">
+        <p class="tex">Situación:</p>
+        <p class="tex2">{{order_select.tipo}}</p>     
+        <p class="texa">Estado:</p>
+        <p class="tex2">REPROGRAMADO</p>        
     </div>
-    <div class="estado" *ngIf="status == '1'">
-        <img src="./assets/img/kanguro/estado1.svg" alt="estado1">
-        <p class="tex">Estado:</p>
-        <p class="tex2">PROCESANDO</p>      
-    </div>
-    <div class="estado" *ngIf="status == '2'">
-        <img src="./assets/img/kanguro/estado2.svg" alt="estado2">
-        <p class="tex">Estado:</p>
-        <p class="tex2">EN CAMINO</p>      
-    </div>
-    <div class="estado" *ngIf="status == '3'">
-        <img src="./assets/img/kanguro/estado3.svg" alt="estado3">
-        <p class="tex">Estado:</p>
-        <p class="tex2">ENTREGADO</p>      
-    </div>
-    <div class="estado" *ngIf="status == '4'">
-        <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
-        <p class="tex">Estado:</p>
-        <p class="tex2">CANCELADO</p>      
+    <hr>
+
+    <div class="container-info" *ngIf="order_select.destino != ''">
+        <div class="row justify-content-between">
+          <div class="col-5">
+            <p>Fecha de envío</p>
+            <p><b>{{order_select.destinos[0].fecha_destino | date: 'dd/MM/YYYY'}}</b></p>
+          </div>
+          <div class="col-4 offset-1 text-right">
+            <p>Rango de envío</p>
+            <p><b>{{order_select.destinos[0].hora_destino}}</b></p>
+          </div>
+          <div class="col-2">
+          </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-5">
+              <p>Contacto</p>
+              <p><b>{{order_select.destinos[0].contacto}}</b></p>
+            </div>
+            <div class="col-4 offset-1 text-right">
+              <p>Teléfono</p>
+              <p><b>{{order_select.destinos[0].telefono}}</b></p>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-10">
+              <p>Dirección destino</p>
+              <p><b>{{order_select.destinos[0].destino}}</b></p>
+            </div>
+        </div>
     </div>
 </section>
+

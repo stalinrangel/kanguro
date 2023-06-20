@@ -104,7 +104,7 @@ export class PedidoEcommerceComponent implements OnInit {
     'cantidad':0,
     'detalle':'',
     'subtotal':0,
-    'fecha_destino':new Date(this.manana),
+    'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +1 },
     'turno_destino':'2',
     'hora_destino':'10 Hrs - 19 Hrs',
     'productos':''
@@ -120,6 +120,14 @@ export class PedidoEcommerceComponent implements OnInit {
   
 
   ngOnInit(): void {
+    let diaSemana = now.getDay(); // devuelve 6 para sábado
+
+    if (diaSemana === 6) {
+      console.log('Hoy es sábado');
+      this.minDate= {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()+1};
+    } else {
+      console.log('Hoy no es sábado');
+    }
     this.user=this.uss.user;
     this.user=this.user.user;
     console.log(this.user)
@@ -339,7 +347,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'cantidad':0,
       'detalle':'',
       'subtotal':0,
-      'fecha_destino':'',
+      'fecha_destino':{ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() },
       'turno_destino':'',
       'hora_destino':'',
       'productos':[]
@@ -376,7 +384,7 @@ export class PedidoEcommerceComponent implements OnInit {
     this.destino.nombre=this.user.name;
     this.destino.tipo_usuario=this.user.tipo_usuario;
     console.log(this.destino)
-    this.destino.fecha_destino=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate();
+    this.destino.fecha_destino={ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() };
     this.destinos.push(this.destino);
     this.initMap();
   }

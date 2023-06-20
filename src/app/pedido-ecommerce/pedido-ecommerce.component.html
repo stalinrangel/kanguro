@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-4 campos">
                     <p class="campo1">Teléfono</p>
-                    <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.telefono_destino" name="inputtelefono_destino" #telefono_destino="ngModel" required>
+                    <input class="campo2" type="number" placeholder="" [(ngModel)]="destino.telefono_destino" name="inputtelefono_destino" #telefono_destino="ngModel" required>
                     <ng-container *ngIf="telefono_destino.invalid && telefono_destino.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>
