@@ -61,7 +61,7 @@
                 </div>
                 <div class="col-2 campos">
                     <p class="campo1">Puerta</p>
-                    <input class="campo2" type="text" placeholder="">
+                    <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.puerta">
                 </div>
             </div>
             <div class="row ml">
@@ -81,7 +81,7 @@
                 </div>
                 <div class="col-2 campos">
                     <p class="campo1">C.P.</p>
-                    <input class="campo2" type="text" placeholder="" [(ngModel)]="destino.distrito_destino" name="inputdistrito_destino" #distrito_destino="ngModel" required>
+                    <input class="campo2" type="number" placeholder="" [(ngModel)]="destino.distrito_destino" name="inputdistrito_destino" #distrito_destino="ngModel" required>
                     <ng-container *ngIf="distrito_destino.invalid && distrito_destino.dirty">
                         <span class="help is-danger">Este campo es requerido</span>
                     </ng-container>

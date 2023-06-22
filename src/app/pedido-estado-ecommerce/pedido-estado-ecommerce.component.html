@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="estado estadoweb" *ngIf="status == '0' || status == '1'">
+            <div class="estado estadoweb" *ngIf="status == '0'">
                 <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
                 <div class="row">
                     <div class="col-6">
@@ -65,7 +65,8 @@
                 <div class="row">
                     <div class="col-6">
                         <p class="texW">Estado:</p>
-                        <p class="tex2W">PROCESANDO</p>    
+                        <p class="tex2W" *ngIf="order_select.estado_reprogramado == 0">PROCESANDO</p>   
+                        <P style="color: red;font-weight: bold;" *ngIf="order_select.estado_reprogramado == 1">REPROGRAMADO</P>   
                     </div>
                     <div class="col-6">
                         <p class="texW">Situación:</p>
