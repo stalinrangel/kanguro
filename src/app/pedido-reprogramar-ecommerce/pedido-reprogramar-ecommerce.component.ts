@@ -87,7 +87,7 @@ export class PedidoReprogramarEcommerceComponent implements OnInit {
     })
 
     let destino={
-      estado: 0,
+      estado_destino: 0,
       fecha_destino:f
     };
     this.api.update_destinos(destino,this.order_select.destinos[0].id).subscribe({
