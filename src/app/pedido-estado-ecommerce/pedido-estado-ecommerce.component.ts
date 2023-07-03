@@ -14,7 +14,7 @@ export class PedidoEstadoEcommerceComponent implements OnInit, AfterViewInit {
   order_select: any = {
     destino: ''
   }
-  status: string = '0';
+  status: string = '';
   showWeb: boolean = false;
 
   constructor(private api: ApiService, private uss: UserStorageService, private router: Router) { 
@@ -28,6 +28,7 @@ export class PedidoEstadoEcommerceComponent implements OnInit, AfterViewInit {
     let self = this;
     this.api.estado().subscribe({
       next(data){
+        console.log(data)
         if (data.pedidos) {
           data.pedidos.forEach(element => {
             element.destino = element.destinos[0].destino;
@@ -51,6 +52,7 @@ export class PedidoEstadoEcommerceComponent implements OnInit, AfterViewInit {
   }
 
   changeOrder(item){
+    console.log(item)
     this.order_select = item;
     this.status = item.estado;
   }

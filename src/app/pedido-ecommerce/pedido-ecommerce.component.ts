@@ -50,7 +50,8 @@ export class PedidoEcommerceComponent implements OnInit {
     'cancelado':0,
     'reprogramado':0,
     'tipo_usuario':'',
-    'turno_origen':'2'
+    'turno_origen':'2',
+    'puerta':''
   }
   public destinos:any=[];
 
@@ -87,6 +88,7 @@ export class PedidoEcommerceComponent implements OnInit {
     'distrito_origen':'',
     'zona_origen': '',
     'comentarios':'',
+    'puerta':'',
     'lat':'',
     'lng':'',
     'destino':'',
@@ -104,7 +106,7 @@ export class PedidoEcommerceComponent implements OnInit {
     'cantidad':0,
     'detalle':'',
     'subtotal':0,
-    'fecha_destino':new Date(this.manana),
+    'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
     'turno_destino':'2',
     'hora_destino':'10 Hrs - 19 Hrs',
     'productos':''
@@ -120,6 +122,14 @@ export class PedidoEcommerceComponent implements OnInit {
   
 
   ngOnInit(): void {
+    let diaSemana = now.getDay(); // devuelve 6 para sábado
+
+    if (diaSemana === 6) {
+      console.log('Hoy es sábado');
+      this.minDate= {year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()+2};
+    } else {
+      console.log('Hoy no es sábado');
+    }
     this.user=this.uss.user;
     this.user=this.user.user;
     console.log(this.user)
@@ -236,6 +246,8 @@ export class PedidoEcommerceComponent implements OnInit {
   }
 
   detalle(){
+    this.destino.cantidad=0;
+    this.destino.detalle='';
     let self=this;
     for (let i = 0; i < self.products.length; i++) {
       for (let j = 0; j < self.products[i].colores.length; j++) {
@@ -339,7 +351,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'cantidad':0,
       'detalle':'',
       'subtotal':0,
-      'fecha_destino':'',
+      'fecha_destino':{ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()+1 },
       'turno_destino':'',
       'hora_destino':'',
       'productos':[]
@@ -362,29 +374,29 @@ export class PedidoEcommerceComponent implements OnInit {
 
     //Inicio Origen
     this.orige.tipo='PROGRAMADO';
-    this.orige.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate();
-    this.orige.fecha_origen=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.orige.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate();
+    this.orige.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.orige.estado=0;
     this.orige.nombre=this.user.name;
     this.orige.nombre_origen='Almacen Kanguro';
     this.orige.tipo_usuario=this.user.tipo_usuario;
 
     this.destino.tipo='PROGRAMADO';
-    this.destino.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
-    this.destino.fecha_origen=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.destino.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.destino.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.destino.estado=0;
     this.destino.nombre=this.user.name;
     this.destino.tipo_usuario=this.user.tipo_usuario;
     console.log(this.destino)
-    this.destino.fecha_destino=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate();
+    this.destino.fecha_destino={ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +1};
     this.destinos.push(this.destino);
     this.initMap();
   }
   addDestinos(){
     console.log('add')
     this.destino.tipo='URGENTE';
-    this.destino.fecha=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
-    this.destino.fecha_origen=this.fecha.getFullYear()+'-'+this.fecha.getMonth()+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.destino.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.destino.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.destino.estado=0;
     this.destino.nombre=this.user.name;
     this.destino.tipo_usuario=this.user.tipo_usuario;
@@ -559,7 +571,8 @@ export class PedidoEcommerceComponent implements OnInit {
   }
   set_markers(val,i){
     console.log(val)
-    
+    this.destinos[i-1].lat2=val.lat();
+    this.destinos[i-1].lng2=val.lng();
     const marker = new google.maps.Marker({
       position: val,
       map: this.map,
@@ -653,10 +666,16 @@ export class PedidoEcommerceComponent implements OnInit {
     setTimeout(function(){
       console.log(self.autocomplete[i].getPlace())
       if (self.autocomplete[i].getPlace()!=undefined) {
+        console.log('place')
+        self.destinos[i-1].destino=self.autocomplete[i].getPlace().name;
+        self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[6].long_name;
+        //cargar la latitud y lng desde el geocode
+        //self.destinos[i-1].lat2="";
+        //self.destinos[i-1].lng2="";
         self.autocomplete[i].addListener("place_changed", self.onPlaceChanged(i));
-        self.traceRoute(i);
+        //self.traceRoute(i);
       }else{
-
+        console.log('geocode')
         self.geocoder.geocode({
             'address': self.destinos[i-1].destino
           }, function(responses) {

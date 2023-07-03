@@ -8,53 +8,39 @@
 .container{
     margin: 0 auto;
 }
+h1{
+    color: #FFBD00;
+}
 .header{
-    margin-top: 3rem;
-    background-color: rgba(255, 187, 0, 1);
+    margin-top: 1rem;
     color: black;
     padding: 16px 16px 16px 16px;
 }
 .title{
+    font-family: BalooTammudu2Extra;
     font-size: 22px;
     line-height: 5px;
-    margin-top: 16px;
+    margin-top: 5px;
     color: black;
-    font-family: BalooTammudu2Extra;
 }
 .texto{
-    font-family: 'BalooTammudu2';
-    font-size: 12px;
+    font-size: 15px;
     color: black;
-    margin-bottom: 16px;
     margin-top: 5px;
+    margin-bottom: 16px;
+    font-family: BalooTammudu2;
 }
 .cuadro{   
-    padding: 40px 40px 20px 40px;
+    padding: 0px 20px 20px 20px;
 }
 .estado{   
-    margin: 2.5rem 2.5rem 2.5rem 2.5rem;
+    margin: 2.5rem 2.5rem 20px 2.5rem;
     img{
         width: 100%;
         height: auto;
         max-width: 450px;
         margin: auto;
     }
-}
-.estadoweb{
-    margin-top: 65px;
-    margin-right: 50px;
-    height: 380px;
-    background: rgba(237, 237, 237, 0.8);
-    border-radius: 15px;
-    padding: 50px 30px;
-}
-.borderTop{
-    border-top-left-radius: 10px;   
-    border-top-right-radius: 10px;
-}
-.borderBottom{
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 .texto2{
     font-size: 16px;
@@ -63,20 +49,13 @@
 }
 .lista{
     width: 100%;
-    height: 380px;
-    background: #F1F1F1;
-    border-radius: 15px;
-    padding: 10px;
-    min-height: 100px;
-}
-.content-list{
-    height: 100%;
-    overflow-y: auto;
+    overflow-y: scroll;
+    max-height: 400px;
 }
 .tabla_top{
     width: 100%;
     height: 30px;
-    background-color: rgba(52, 52, 52, 1);
+    background-color: #f2f2f2;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -87,25 +66,13 @@
 }
 .tabla{
     width: 100%;
-    min-height: 30px;
-    background: #ffffff;
-    border-bottom: 2px solid #F1F1F1;
-    color: #000;
-    font-family: "Almarai";
-    font-size: 14px;
-    padding: 20px 0px 10px 15px;
-    line-height: 16px;
-    pointer-events: auto;
-    cursor: pointer;
-}
-.tabla:hover{
-    background-color: #FFBD00;
-}
-.selecTable{
-    background-color: #FFBD00;
-    div{
-        font-family: BalooTammudu2-Semi;
-    }
+    height: 30px;
+    background: #f2f2f2;
+    border-top: 1px solid black;
+    color: black;
+    font-family: 'Almarai';
+    font-size: 13px;
+    padding: 3px 0px 3px 0px;
 }
 th{padding: 3px 0px 3px 0px;}
 .tex{
@@ -113,6 +80,17 @@ th{padding: 3px 0px 3px 0px;}
     color: black;
     line-height: 18px;
     margin-top: 50px;
+}
+.tex1{
+    font-size: 17px;
+    color: black;
+    line-height: 18px;
+}
+.texa{
+    font-size: 17px;
+    color: black;
+    line-height: 18px;
+    margin-top: 20px;
 }
 .tex2{
     font-size: 17px;
@@ -146,7 +124,7 @@ th{padding: 3px 0px 3px 0px;}
     color: #000;
     height: 35px;
     line-height: 18px;
-    background: #CACACA;
+    background: #F2F2F2;
     cursor: pointer;
     span{
         font-size: 13px;
@@ -165,7 +143,7 @@ th{padding: 3px 0px 3px 0px;}
     left: 0;
     right: 0;
     border-top: 0;
-    background: #E3E3E3;
+    background: #F2F2F2;
     transition: all 0.5s;
     opacity: 0;
     visibility: hidden;
@@ -176,8 +154,6 @@ th{padding: 3px 0px 3px 0px;}
     opacity: 1;
     visibility: visible;
     pointer-events: all;
-    max-height: 330px;
-    overflow-y: scroll;
 }
 .custom-option {
     position: relative;
@@ -217,12 +193,12 @@ th{padding: 3px 0px 3px 0px;}
 .arrow::before {
     left: -3px;
     transform: rotate(-45deg);
-    background-color: #000;
+    background-color: #FFBB00;
 }
 .arrow::after {
     left: 4px;
     transform: rotate(45deg);
-    background-color: #000;
+    background-color: #FFBB00;
 }
 .open .arrow::before {
     left: -3px;
@@ -232,25 +208,129 @@ th{padding: 3px 0px 3px 0px;}
     left: 4px;
     transform: rotate(-45deg);
 }
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
+hr{
+    border-top: 1px solid #FFBD00;
+}
+.container-info{
+    color: #000;
+    padding: 30px 2.5rem 2.5rem 2.5rem;
+    p{
+        line-height: 20px;
+    }
+}
+b{
+    font-family: BalooTammudu2-Semi; 
+}
+.row{
+    margin-bottom: 10px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: transparent; 
-}
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #DBDBDB;
-    opacity: 0.5;
+.headerweb{
+    margin-top: 3rem;
+    background-color: rgba(255, 187, 0, 1);
+    color: black;
+    padding: 16px 16px 16px 16px;
+}
+.titleweb{
+    font-size: 22px;
+    line-height: 5px;
+    margin-top: 16px;
+    color: black;
+    font-family: BalooTammudu2Extra;
+}
+.textoweb{
+    font-family: 'BalooTammudu2';
+    font-size: 12px;
+    color: black;
+    margin-bottom: 16px;
+    margin-top: 5px;
+}
+.cuadroweb{   
+    padding: 40px 40px 20px 40px;
+}
+.estadoweb{
+    margin-top: 65px;
+    margin-right: 50px;
+    height: 480px;
+    background: rgba(237, 237, 237, 0.8);
     border-radius: 15px;
+    padding: 50px 30px;
+    img{
+        max-width: 400px;
+    }
 }
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+.listaweb{
+    width: 100%;
+    height: 380px;
+    background: #F1F1F1;
+    border-radius: 15px;
+    padding: 10px;
+    min-height: 100px;
+}
+.content-list{
+    height: 100%;
+    overflow-y: auto;
+}
+.tablaweb{
+    width: 100%;
+    min-height: 30px;
+    background: #ffffff;
+    border-bottom: 2px solid #F1F1F1;
+    color: #000;
+    font-family: "Almarai";
+    font-size: 14px;
+    padding: 20px 0px 10px 15px;
+    line-height: 16px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+.tablaweb:hover{
+    background-color: #FFBD00;
+}
+.selecTableweb{
+    background-color: #FFBD00;
+    div{
+        font-family: BalooTammudu2-Semi;
+    }
+}
+.borderTop{
+    border-top-left-radius: 10px;   
+    border-top-right-radius: 10px;
+}
+.borderBottom{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.texW{
+    font-size: 14px;
+    color: black;
+    line-height: 14px;
+    margin-top: 50px;
+}
+.tex1W{
+    font-size: 14px;
+    color: black;
+    line-height: 14px;
+}
+.tex2W{
+    font-size: 14px;
+    color: black;
+    line-height: 14px;
+    font-family: BalooTammudu2-Semi;
+}
+.btn_enviar{
+    margin-top: 24px;
+    display: flex;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    font-family: BalooTammudu2-Semi;
+    color: white;
+    background: red;
+    padding: 6px 0px 0px 0px;
+    border-radius: 12px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 18px;
 }

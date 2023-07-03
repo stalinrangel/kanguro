@@ -67,7 +67,7 @@ export class AddProductoComponent implements OnInit {
       color: ['', Validators.required],
       nombre_color: ['', Validators.required],
       user_id: [this.id, Validators.required],
-      precio: ['', Validators.required]
+      precio: ['0', Validators.required]
     }, { updateOn: 'submit' });
   }
 

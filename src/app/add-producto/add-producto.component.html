@@ -7,9 +7,9 @@
             </button>
         </div>
         <div>
-            <div class="content-img">
+            <div class="content-img" style="cursor: pointer;">
                 <label for="filesx">
-                    <img *ngIf="!photo" src="./assets/img/kanguro/notes 1.png" alt="add">
+                    <img *ngIf="!photo" src="./assets/img/kanguro/notes 1.png" alt="add" style="cursor: pointer;">
                     <input (change)=takePicture2($event) accept=".png,.jpg,.jpeg" class="input" type="file" id="filesx" name="filesx"> 
                     <img id="output" [src]="photo" *ngIf="photo" alt="img">
                 </label>
@@ -79,13 +79,13 @@
                 </div>
             </div>
 
-            <input type="text" class="inp" placeholder="Precio" formControlName="precio" name="inputprecioP" required>
+            <!--input type="text" class="inp" placeholder="Precio" formControlName="precio" name="inputprecioP" required>
             <div *ngIf="serviceForm.controls['precio'].invalid && (serviceForm.controls['precio'].dirty || serviceForm.controls['precio'].touched)"
             class="alert alert-danger">
                 <div *ngIf="serviceForm.controls['precio'].errors?.['required']">
                     Precio es requerido
                 </div>
-            </div>
+            </div-->
 
             <!--div class="content-btns">
                 <div class="add-btn" (click)="open(add,'add')">

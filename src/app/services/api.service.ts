@@ -46,6 +46,9 @@ export class ApiService {
   estado(): Observable<any> {
     return this.http.get(this.apiUrl+'/pedido_con_productos')
   }
+  estado_reprogramado(): Observable<any> {
+    return this.http.get(this.apiUrl+'/pedido_con_productos')
+  }
   historial(date): Observable<any> {
     return this.http.get(this.apiUrl+'/pedido_historial?fecha_destino='+date)
   }
@@ -87,6 +90,12 @@ export class ApiService {
   }
   signup_ckeck(data): Observable<any> {
     return this.http.post(this.apiUrl+'/auth/signup_check',data)
+  }
+  update_pedidos(data,id): Observable<any> {
+    return this.http.put(this.apiUrl+'/update_pedidos/'+id,data)
+  }
+  update_destinos(data,id): Observable<any> {
+    return this.http.put(this.apiUrl+'/update_destinos/'+id,data)
   }
 
 }

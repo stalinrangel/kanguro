@@ -22,15 +22,51 @@
         <div class="col-6">
             <div class="estado estadoweb" *ngIf="status == '0'">
                 <img src="./assets/img/kanguro/estado0.svg" alt="estado0">
-                <p class="tex">Estado:</p>
-                <p class="tex2">---------</p>     
+                <div class="row">
+                    <div class="col-6">
+                        <p class="texW">Estado:</p>
+                        <p class="tex2W" *ngIf="order_select.estado_reprogramado == 0">GESTIONANDO</p>   
+                        <P style="color: red;font-weight: bold;" *ngIf="order_select.estado_reprogramado == 1">REPROGRAMADO</P> 
+                    </div>
+                    <div class="col-6">
+                        <p class="texW">Situación:</p>
+                        <p class="tex2W">{{order_select.tipo}}</p>    
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Fecha de envío</p>
+                        <p class="tex2W"><b>{{order_select.fecha_destino | date: 'dd/MM/YYYY'}}</b></p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Rango de envío</p>
+                        <p class="tex2W"><b>{{order_select.hora_destino}}</b></p>  
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-6">
+                        <p class="tex1W">Contacto</p>
+                        <p class="tex2W"><b>{{order_select.contacto}}</b></p>    
+                    </div>
+                    <div class="col-6">
+                        <p class="tex1W">Teléfono</p>
+                        <p class="tex2W"><b>{{order_select.telefono}}</b></p> 
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-12">
+                        <p class="tex1W">Dirección destino</p>
+                        <p class="tex2W"><b>{{order_select.destino}}</b></p>    
+                    </div>
+                </div>  
             </div>
             <div class="estado estadoweb" *ngIf="status == '1'">
                 <img src="./assets/img/kanguro/estado1.svg" alt="estado1">
                 <div class="row">
                     <div class="col-6">
                         <p class="texW">Estado:</p>
-                        <p class="tex2W">PROCESANDO</p>    
+                        <p class="tex2W" *ngIf="order_select.estado_reprogramado == 0">PROCESANDO</p>   
+                        <P style="color: red;font-weight: bold;" *ngIf="order_select.estado_reprogramado == 1">REPROGRAMADO</P>   
                     </div>
                     <div class="col-6">
                         <p class="texW">Situación:</p>
@@ -174,7 +210,9 @@
     <div class="estado" *ngIf="status == '0'">
         <img src="./assets/img/kanguro/estadoe0.svg" alt="estado0">
         <p class="tex">Situación:</p>
-        <p class="tex">Estado:</p>    
+        <p class="tex2">{{order_select.tipo}}</p>     
+        <p class="texa">Estado:</p>
+        <p class="tex2">GESTIONANDO</p>        
     </div>
     <div class="estado" *ngIf="status == '1'">
         <img src="./assets/img/kanguro/estadoe1.svg" alt="estado1">
