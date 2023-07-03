@@ -1,0 +1,90 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.contacto {
+  margin: 5rem auto;
+  width: 80%;
+  display: block;
+
+  .text-header {
+    font-family: 'BalooTammudu2-Semi';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 80px;
+    letter-spacing: -0.06em;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .container-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+
+    p {
+      margin-left: 10px;
+      color: #676767;
+    }
+  }
+
+  .campo {
+    background: rgba(217, 217, 217, 0.3);
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+  }
+
+  .button {
+    background: #FFBD00;
+    border-radius: 30px;
+    color: white;
+    width: 100%;
+    height: 45px;
+    font-size: 25px;
+    font-family: "BalooTammudu2";
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 17px 0px 0px 0px;
+    gap: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+}
+.footer {
+  height: 83px;
+  background-color: #F43A20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Almarai';
+  font-style: normal;
+  font-weight: 700;
+
+  p {
+    cursor: pointer;
+  }
+
+  span {
+      font-weight: bold;
+      color: #FFBD00;
+  }
+
+  .icon-footer {
+    position:absolute;
+    right: 25px;
+  }
+}

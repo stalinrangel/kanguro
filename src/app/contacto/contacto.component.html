@@ -1,1 +1,32 @@
-<p>contacto works!</p>
+<section class="contacto">
+  <p class="text-header">Contáctanos</p>
+  <div class="row justify-content-between">
+    <div class="col-lg-6 col-sm-12">
+      <div class="container-flex">
+        <img src="assets/img/kanguro/location.svg" class="img-logo">
+        <p>C. de Pinto Murillo, 82 (08191) Rubí, Barcelona</p>
+      </div>
+      <div class="container-flex">
+        <img src="assets/img/kanguro/phone.svg" class="img-logo">
+        <p>+34 000000000</p>
+      </div>
+      <div class="container-flex">
+        <img src="assets/img/kanguro/mail.svg" class="img-logo">
+        <p>contacto@kangurodelivery.com</p>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+      <input class="campo" type="text" placeholder="NOMBRE Y APELLIDOS">
+      <input class="campo" type="text" placeholder="MAIL">
+      <textarea class="campo" type="text" placeholder="MENSAJE">
+      </textarea>
+      <span class="button" [routerLink]="['/registro']">ENVIAR</span>
+    </div>
+  </div>
+</section>
+
+<section class="footer" *ngIf="showWeb">
+  <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png" alt="" class="icon-footer">
+  <p [routerLink]="['/terminos']">POLITICA DE COOKIES <span>|</span> LEGAL</p>
+  <img src="./assets/img/kanguro/Kanguro letras blancas 2.png" alt="" class="icon-footer">
+</section>
