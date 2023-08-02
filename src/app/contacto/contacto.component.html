@@ -1,7 +1,10 @@
+<div class="alert alert-default" role="alert" *ngIf="isDanger">
+  <strong>Error al enviar al Email! Comunicate con el servicio al cliente.</strong> .
+</div>
 <section class="contacto">
   <p class="text-header">Contáctanos</p>
   <div class="row justify-content-between">
-    <div class="col-lg-6 col-sm-12">
+    <div class="col-lg-6 col-sm-12" style="padding-right: 2.2rem;">
       <div class="container-flex">
         <img src="assets/img/kanguro/location.svg" class="img-logo">
         <p>C. de Pinto Murillo, 82 (08191) Rubí, Barcelona</p>
@@ -14,19 +17,34 @@
         <img src="assets/img/kanguro/mail.svg" class="img-logo">
         <p>contacto@kangurodelivery.com</p>
       </div>
+      <div>
+        <img src="assets/img/kanguro/contacto-mapa.svg" style="width: 100%;">
+      </div>
     </div>
-    <div class="col-lg-6 col-sm-12">
-      <input class="campo" type="text" placeholder="NOMBRE Y APELLIDOS">
-      <input class="campo" type="text" placeholder="MAIL">
-      <textarea class="campo" type="text" placeholder="MENSAJE">
-      </textarea>
-      <span class="button" [routerLink]="['/registro']">ENVIAR</span>
+    <div class="col-lg-6 col-sm-12" style="padding-left: 2.2rem;">
+      <input class="campo" type="text" placeholder="NOMBRE Y APELLIDOS" [(ngModel)]="nombre">
+      <input class="campo" type="email" placeholder="MAIL" [(ngModel)]="email">
+      <textarea class="campo" type="text" placeholder="MENSAJE" [(ngModel)]="mensaje"></textarea>
+      <button class="button" (click)="enviar()">ENVIAR</button>
     </div>
   </div>
 </section>
 
 <section class="footer" *ngIf="showWeb">
-  <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png" alt="" class="icon-footer">
+  <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png" alt="" class="icon-footer2">
   <p [routerLink]="['/terminos']">POLITICA DE COOKIES <span>|</span> LEGAL</p>
   <img src="./assets/img/kanguro/Kanguro letras blancas 2.png" alt="" class="icon-footer">
 </section>
+
+<!-- MODAL CONFIRM -->
+<ng-template #confirm let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true" class="icon-delete">X</span>
+    </button>
+  </div>
+  <div class="modal-body">
+      <img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> 
+      <p class="text-info">¡Gracias por contactarnos!.</p>
+  </div>
+</ng-template>

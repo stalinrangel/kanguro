@@ -97,5 +97,8 @@ export class ApiService {
   update_destinos(data,id): Observable<any> {
     return this.http.put(this.apiUrl+'/update_destinos/'+id,data)
   }
+  contacto(data): Observable<any> {
+    return this.http.post(this.apiUrl+'/auth/contacto',data)
+  }
 
 }

@@ -24,6 +24,7 @@ export interface IAlert {
 })
 export class AddProductoComponent implements OnInit {
 
+  isSubmitting = false;
   public model:any={
     nombre:'',
     descripcion:'',
@@ -80,13 +81,17 @@ export class AddProductoComponent implements OnInit {
   }
 
   takePicture2(event){
+
     const input = event.target.files[0];
+    console.log(input)
     var reader = new FileReader();
 
     reader.onload = (event: any) => {
       this.photo = event.target.result;
+      console.log(this.photo)
       let file : File = input;
       this.photoUrl = file;
+      console.log(this.photoUrl)
     }
     
     reader.readAsDataURL(event.target.files[0]);
@@ -98,6 +103,7 @@ export class AddProductoComponent implements OnInit {
   }
 
   addProduct(serviceForm){
+    this.isSubmitting=true;
     console.log(serviceForm.value)
     console.log(serviceForm.valid)
     if (serviceForm.valid) {
@@ -130,6 +136,7 @@ export class AddProductoComponent implements OnInit {
   uploadPhoto(id){
     let self = this;
     let formData = new FormData();
+    console.log(this.photoUrl);
     formData.append("file", this.photoUrl);
     this.api.subir_imagen(formData).subscribe({
       next(data){

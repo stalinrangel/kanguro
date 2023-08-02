@@ -16,7 +16,13 @@ export class PedidoEcommerceComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,private api: ApiService, private uss: UserStorageService, private router: Router, private calendar: NgbCalendar
-  ) { }
+  ) { 
+    var mediaqueryList = window.matchMedia("(min-width: 992px)");
+    if(mediaqueryList.matches) {
+      this.showWeb = true;
+    }
+  }
+  showWeb: boolean = false;
   public user:any;
   closeResult: string;
   public autocomplete:google.maps.places.Autocomplete[] = [];
@@ -109,12 +115,13 @@ export class PedidoEcommerceComponent implements OnInit {
     'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
     'turno_destino':'2',
     'hora_destino':'10 Hrs - 19 Hrs',
-    'productos':''
+    'productos':[]
   }
+  fechaselec= { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 };
   public rangos:any=[
     '10 Hrs - 19 Hrs'
   ];
-  public fecha:any;
+  public fecha:any=now;
   public products: any = [];
   public selec_products: any = [];
 
@@ -236,7 +243,8 @@ export class PedidoEcommerceComponent implements OnInit {
       for (let j = 0; j < self.products[i].colores.length; j++) {
         for (let k = 0; k < self.products[i].colores[j].atributos.length; k++) {
           if (self.products[i].colores[j].atributos[k].cant>0) {
-            this.selec_products.push(self.products[i])
+            //this.selec_products.push(self.products[i])
+            //this.destinos[this.pos].productos.push(self.products[i]);
           }
         }
       }
@@ -246,30 +254,44 @@ export class PedidoEcommerceComponent implements OnInit {
   }
 
   detalle(){
-    this.destino.cantidad=0;
-    this.destino.detalle='';
+    //this.destino.cantidad=0;
+    //this.destino.detalle='';
     let self=this;
     for (let i = 0; i < self.products.length; i++) {
       for (let j = 0; j < self.products[i].colores.length; j++) {
         for (let k = 0; k < self.products[i].colores[j].atributos.length; k++) {
           if (self.products[i].colores[j].atributos[k].cant>0) {
-            this.destino.detalle=this.destino.detalle+self.products[i].colores[j].atributos[k].cant+' '+self.products[i].nombre+' '+self.products[i].colores[j].nombrecolor+' '+self.products[i].colores[j].atributos[k].atributo+'. ';
-            this.destino.cantidad=this.destino.cantidad+self.products[i].colores[j].atributos[k].cant;
+            //this.destino.detalle=this.destino.detalle+self.products[i].colores[j].atributos[k].cant+' '+self.products[i].nombre+' '+self.products[i].colores[j].nombrecolor+' '+self.products[i].colores[j].atributos[k].atributo+'. ';
+            //this.destino.cantidad=this.destino.cantidad+self.products[i].colores[j].atributos[k].cant;
+            this.destinos[this.pos].detalle=this.destinos[this.pos].detalle+self.products[i].colores[j].atributos[k].cant+' '+self.products[i].nombre+' '+self.products[i].colores[j].nombrecolor+' '+self.products[i].colores[j].atributos[k].atributo+'. ';
+            console.log(self.products[i].colores[j].atributos[k].cant)
+            console.log(this.destinos[this.pos].cantida)
+            this.destinos[this.pos].cantidad=this.destinos[this.pos].cantidad+self.products[i].colores[j].atributos[k].cant;
+            this.destinos[this.pos].productos.push(self.products[i]);
+
           }
         }
       }
     }
-
-    this.destino.productos=this.selec_products;
+    console.log(this.destinos)
+    //this.destino.productos=this.selec_products;
+    this.calcular();
   }
-
+  cantidad:any=0;
   calcular(){
-    this.precio=6;
+    this.precio=6*this.destinos.length;
+    this.cantidad=0;
+    for (let i = 0; i < this.destinos.length; i++) {
+      console.log(this.products[i].cantidad)
+      this.cantidad+=this.products[i].cantidad;
+    }
+    this.destino.cantidad=this.cantidad;
   }
 
   enviar(){
     console.log(this.orige)
     console.log(this.destinos)
+    console.log(this.autocomplete)
     this.calcular();
     for (let i = 0; i < this.destinos.length; i++) {
       this.destinos[i].nombre_origen=this.orige.nombre_origen;
@@ -278,14 +300,16 @@ export class PedidoEcommerceComponent implements OnInit {
       this.destinos[i].distrito_origen=this.orige.distrito_origen;
       this.destinos[i].telefono_origen=this.orige.telefono_origen;
       this.destinos[i].comentarios=this.orige.comentarios;
-      this.destinos[i].fecha_destino=this.destinos[i].fecha_destino.year+'-'+this.destinos[i].fecha_destino.month+'-'+this.destinos[i].fecha_destino.day;
+      this.destinos[i].fecha_destino=this.fechaselec.year+'-'+this.fechaselec.month+'-'+this.fechaselec.day;
+      this.destinos[i].fecha=this.fechaselec.year+'-'+this.fechaselec.month+'-'+this.fechaselec.day;
       this.destinos[i].lat=this.orige.lat;
       this.destinos[i].lng=this.orige.lng;
     }
-
+    console.log(this.orige)
+    console.log(this.destinos)
     this.crear_pedido();
   }
-
+  
   crear_pedido(){
     let self = this;
     let destinos=JSON.stringify(this.destinos);
@@ -374,7 +398,9 @@ export class PedidoEcommerceComponent implements OnInit {
 
     //Inicio Origen
     this.orige.tipo='PROGRAMADO';
+    console.log(this.fecha)
     this.orige.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate();
+    console.log(this.orige.fecha)
     this.orige.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.orige.estado=0;
     this.orige.nombre=this.user.name;
@@ -392,15 +418,87 @@ export class PedidoEcommerceComponent implements OnInit {
     this.destinos.push(this.destino);
     this.initMap();
   }
+
+
   addDestinos(){
     console.log('add')
-    this.destino.tipo='URGENTE';
+    /**this.destino.tipo='URGENTE';
     this.destino.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.destino.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
     this.destino.estado=0;
     this.destino.nombre=this.user.name;
-    this.destino.tipo_usuario=this.user.tipo_usuario;
-    this.destinos.push(this.destino);
+    this.destino.tipo_usuario=this.user.tipo_usuario;*/
+    
+
+
+    this.destinos.push(
+      {
+        'tipo':'PROGRAMADO',
+        'fecha':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate(),
+        'fecha_origen':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
+        'hora':'',
+        'horario':'',
+        'estado':0,
+        'nombre':'',
+        'forma_pago': '',
+        'costo':0,
+        'costo_recojo': 0,
+        'km':'',
+        'min':'',
+        'cajap':'',
+        'cajam':'',
+        'cajag':'',
+        'cancelado':0,
+        'reprogramado':0,
+        'tipo_usuario':this.user.tipo_usuario,
+        'pedido_id':'',
+        'origen':'',
+        'departamento_origen':'',
+        'nombre_origen':'Almacen Kanguro',
+        'telefono_origen':'',
+        'distrito_origen':'',
+        'zona_origen': '',
+        'comentarios':'',
+        'lat':'',
+        'lng':'',
+        'destino':'',
+        'departamento_destino':'',
+        'nombre_destino':'',
+        'telefono_destino':'',
+        'distrito_destino':'',
+        'zona_destino':'',
+        'comentarios2':'',
+        'lat2':'',
+        'lng2':'',
+        'n_marcador':'',
+        'cobrarecommerce':'',
+        'descuento':'',
+        'cantidad':0,
+        'detalle':'',
+        'subtotal':0,
+        'fecha_destino':{ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()+1 },
+        'turno_destino':'',
+        'hora_destino':'',
+        'productos':[]
+      }
+    );
+    let self=this;
+    setTimeout(function() { 
+      let tam=self.destinos.length;
+      let pac="pac-input"+(tam-1);
+      console.log(pac)
+      const input = document.getElementById(pac) as HTMLInputElement;
+      console.log( this.options)
+      console.log( self.options)
+      self.autocomplete.push(new google.maps.places.Autocomplete(input, this.options));
+      console.log(tam)
+     }, 2000);
+    
+    
+  }
+  deleteDestinos(i){
+    this.destinos.splice(i);
+    this.autocomplete.splice(i+1);
   }
   getDate(){
     let self = this;
@@ -422,6 +520,7 @@ export class PedidoEcommerceComponent implements OnInit {
     })
   }
   // Initialize and add the map
+  options:any;
   initMap() {
     this.center = { lat: 41.363218, lng: 2.112014 };
 
@@ -469,10 +568,12 @@ export class PedidoEcommerceComponent implements OnInit {
       position: center,
       map: this.map,
     });*/
+    
     let self=this;
+    
     setTimeout(function(){
       const input = document.getElementById("pac-input") as HTMLInputElement;
-      const input2 = document.getElementById("pac-input2") as HTMLInputElement;
+      const input2 = document.getElementById("pac-input0") as HTMLInputElement;
       console.log(input2)
       const options = {
         bounds: defaultBounds,
@@ -481,6 +582,7 @@ export class PedidoEcommerceComponent implements OnInit {
         strictBounds: true,
         types: ["geocode"],
       };
+      this.options=options;
       const options2 = {
         fields: ["address_components", "geometry", "icon", "name"],
         types: ["establishment"],
@@ -659,16 +761,34 @@ export class PedidoEcommerceComponent implements OnInit {
         }
     }, 800);
   }
+
+  buildAddressDestino(address){
+    console.log(address)
+    let dir='';
+    for (let i = 0; i < address.length; i++) {
+     dir += ' '+address[i].long_name;
+    }
+    return dir;
+  }
+  buildZipCodeDestino(address){
+    console.log(address)
+    let zip='';
+    for (let i = 0; i < address.length; i++) {
+     zip = address[i].long_name;
+    }
+    return zip;
+  }
   ver2(i){
     console.log(i)
+    console.log(this.autocomplete)
     let self=this;
     //this.limpiar();
     setTimeout(function(){
       console.log(self.autocomplete[i].getPlace())
       if (self.autocomplete[i].getPlace()!=undefined) {
         console.log('place')
-        self.destinos[i-1].destino=self.autocomplete[i].getPlace().name;
-        self.destinos[i-1].distrito_destino=self.autocomplete[i].getPlace().address_components[6].long_name;
+        self.destinos[i-1].destino=self.buildAddressDestino(self.autocomplete[i].getPlace().address_components);
+        self.destinos[i-1].distrito_destino=self.buildZipCodeDestino(self.autocomplete[i].getPlace().address_components);
         //cargar la latitud y lng desde el geocode
         //self.destinos[i-1].lat2="";
         //self.destinos[i-1].lng2="";
