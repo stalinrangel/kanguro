@@ -68,7 +68,7 @@ export class PedidoEcommerceComponent implements OnInit {
   manana= now.setDate(now.getDate() + 1);
 
   public destino:any={
-    'tipo':'',
+    'tipo':'PROGRAMADO',
     'fecha':'',
     'fecha_origen':'',
     'hora':'',
@@ -208,6 +208,7 @@ export class PedidoEcommerceComponent implements OnInit {
   }
 
   add(p){
+    this.pos2=p;
     let self=this;
     let color = self.products[p].c;
     let atributo = self.products[p].a;
@@ -221,6 +222,7 @@ export class PedidoEcommerceComponent implements OnInit {
   }
 
   quitar(p){
+    this.pos2=p;
     let self=this;
     let color = self.products[p].c;
     let atributo = self.products[p].a;
@@ -232,13 +234,22 @@ export class PedidoEcommerceComponent implements OnInit {
       self.products[p].selec_cantidad=self.products[p].colores[color].atributos[atributo].cantidad;
     }
   }
+  pos2=0;
   n(i){
     console.log(i)
     this.pos=i;
   }
   despachar(){
-    this.selec_products=[];
     let self=this;
+    let p= this.pos2;
+    let color = self.products[p].c;
+    let atributo = self.products[p].a;
+    console.log(p,color,atributo);
+    if (self.products[p].colores[color].atributos[atributo].cant>0) {
+      self.products[p].selec_selec=0;  
+    }
+    this.selec_products=[];
+    
     for (let i = 0; i < self.products.length; i++) {
       for (let j = 0; j < self.products[i].colores.length; j++) {
         for (let k = 0; k < self.products[i].colores[j].atributos.length; k++) {
@@ -264,8 +275,7 @@ export class PedidoEcommerceComponent implements OnInit {
             //this.destino.detalle=this.destino.detalle+self.products[i].colores[j].atributos[k].cant+' '+self.products[i].nombre+' '+self.products[i].colores[j].nombrecolor+' '+self.products[i].colores[j].atributos[k].atributo+'. ';
             //this.destino.cantidad=this.destino.cantidad+self.products[i].colores[j].atributos[k].cant;
             this.destinos[this.pos].detalle=this.destinos[this.pos].detalle+self.products[i].colores[j].atributos[k].cant+' '+self.products[i].nombre+' '+self.products[i].colores[j].nombrecolor+' '+self.products[i].colores[j].atributos[k].atributo+'. ';
-            console.log(self.products[i].colores[j].atributos[k].cant)
-            console.log(this.destinos[this.pos].cantida)
+           
             this.destinos[this.pos].cantidad=this.destinos[this.pos].cantidad+self.products[i].colores[j].atributos[k].cant;
             this.destinos[this.pos].productos.push(self.products[i]);
 
@@ -282,16 +292,14 @@ export class PedidoEcommerceComponent implements OnInit {
     this.precio=6*this.destinos.length;
     this.cantidad=0;
     for (let i = 0; i < this.destinos.length; i++) {
-      console.log(this.products[i].cantidad)
-      this.cantidad+=this.products[i].cantidad;
+      console.log(this.destinos[i].cantidad)
+      this.cantidad+=this.destinos[i].cantidad;
     }
     this.destino.cantidad=this.cantidad;
   }
 
   enviar(){
-    console.log(this.orige)
-    console.log(this.destinos)
-    console.log(this.autocomplete)
+
     this.calcular();
     for (let i = 0; i < this.destinos.length; i++) {
       this.destinos[i].nombre_origen=this.orige.nombre_origen;
@@ -301,11 +309,11 @@ export class PedidoEcommerceComponent implements OnInit {
       this.destinos[i].telefono_origen=this.orige.telefono_origen;
       this.destinos[i].comentarios=this.orige.comentarios;
       this.destinos[i].fecha_destino=this.fechaselec.year+'-'+this.fechaselec.month+'-'+this.fechaselec.day;
-      this.destinos[i].fecha=this.fechaselec.year+'-'+this.fechaselec.month+'-'+this.fechaselec.day;
+      this.destinos[i].fecha=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
       this.destinos[i].lat=this.orige.lat;
       this.destinos[i].lng=this.orige.lng;
     }
-    console.log(this.orige)
+   // console.log(this.orige)
     console.log(this.destinos)
     this.crear_pedido();
   }
@@ -332,12 +340,12 @@ export class PedidoEcommerceComponent implements OnInit {
 
   limpiar1(i){
     this.destinos[i]={
-      'tipo':'',
-      'fecha':'',
-      'fecha_origen':'',
+      'tipo':'PROGRAMADO',
+      'fecha':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
+      'fecha_origen':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
       'hora':'',
       'horario':'',
-      'estado':'',
+      'estado':0,
       'nombre':'',
       'forma_pago': '',
       'costo':0,
@@ -349,7 +357,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'cajag':'',
       'cancelado':0,
       'reprogramado':0,
-      'tipo_usuario':'',
+      'tipo_usuario':this.user.tipo_usuario,
       'pedido_id':'',
       'origen':'',
       'departamento_origen':'',
@@ -358,6 +366,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'distrito_origen':'',
       'zona_origen': '',
       'comentarios':'',
+      'puerta':'',
       'lat':'',
       'lng':'',
       'destino':'',
@@ -375,9 +384,9 @@ export class PedidoEcommerceComponent implements OnInit {
       'cantidad':0,
       'detalle':'',
       'subtotal':0,
-      'fecha_destino':{ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()+1 },
-      'turno_destino':'',
-      'hora_destino':'',
+      'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
+      'turno_destino':'2',
+      'hora_destino':'10 Hrs - 19 Hrs',
       'productos':[]
     };
   }
@@ -399,23 +408,72 @@ export class PedidoEcommerceComponent implements OnInit {
     //Inicio Origen
     this.orige.tipo='PROGRAMADO';
     console.log(this.fecha)
-    this.orige.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate();
+    this.orige.fecha=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
     console.log(this.orige.fecha)
-    this.orige.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.orige.fecha_origen=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00';
     this.orige.estado=0;
     this.orige.nombre=this.user.name;
     this.orige.nombre_origen='Almacen Kanguro';
     this.orige.tipo_usuario=this.user.tipo_usuario;
 
     this.destino.tipo='PROGRAMADO';
-    this.destino.fecha=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
-    this.destino.fecha_origen=this.fecha.getFullYear()+'-'+(this.fecha.getMonth()+1)+'-'+this.fecha.getDate()+' '+this.fecha.getHours()+':'+'00'+':'+'00';
+    this.destino.fecha=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00';
+    this.destino.fecha_origen=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00';
     this.destino.estado=0;
     this.destino.nombre=this.user.name;
     this.destino.tipo_usuario=this.user.tipo_usuario;
     console.log(this.destino)
-    this.destino.fecha_destino={ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +1};
-    this.destinos.push(this.destino);
+    this.destino.fecha_destino={ year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() +1};
+    this.destinos.push({
+      'tipo':'PROGRAMADO',
+      'fecha':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
+      'fecha_origen':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
+      'hora':'',
+      'horario':'',
+      'estado':0,
+      'nombre':'',
+      'forma_pago': '',
+      'costo':0,
+      'costo_recojo': 0,
+      'km':'',
+      'min':'',
+      'cajap':'',
+      'cajam':'',
+      'cajag':'',
+      'cancelado':0,
+      'reprogramado':0,
+      'tipo_usuario':this.user.tipo_usuario,
+      'pedido_id':'',
+      'origen':'',
+      'departamento_origen':'',
+      'nombre_origen':'Almacen Kanguro',
+      'telefono_origen':'',
+      'distrito_origen':'',
+      'zona_origen': '',
+      'comentarios':'',
+      'puerta':'',
+      'lat':'',
+      'lng':'',
+      'destino':'',
+      'departamento_destino':'',
+      'nombre_destino':'',
+      'telefono_destino':'',
+      'distrito_destino':'',
+      'zona_destino':'',
+      'comentarios2':'',
+      'lat2':'',
+      'lng2':'',
+      'n_marcador':'',
+      'cobrarecommerce':'',
+      'descuento':'',
+      'cantidad':0,
+      'detalle':'',
+      'subtotal':0,
+      'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
+      'turno_destino':'2',
+      'hora_destino':'10 Hrs - 19 Hrs',
+      'productos':[]
+      });
     this.initMap();
   }
 
@@ -434,7 +492,7 @@ export class PedidoEcommerceComponent implements OnInit {
     this.destinos.push(
       {
         'tipo':'PROGRAMADO',
-        'fecha':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate(),
+        'fecha':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
         'fecha_origen':now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
         'hora':'',
         'horario':'',
@@ -459,6 +517,7 @@ export class PedidoEcommerceComponent implements OnInit {
         'distrito_origen':'',
         'zona_origen': '',
         'comentarios':'',
+        'puerta':'',
         'lat':'',
         'lng':'',
         'destino':'',
@@ -476,9 +535,9 @@ export class PedidoEcommerceComponent implements OnInit {
         'cantidad':0,
         'detalle':'',
         'subtotal':0,
-        'fecha_destino':{ year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()+1 },
-        'turno_destino':'',
-        'hora_destino':'',
+        'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
+        'turno_destino':'2',
+        'hora_destino':'10 Hrs - 19 Hrs',
         'productos':[]
       }
     );
