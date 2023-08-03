@@ -210,10 +210,14 @@
             <br>
             <p class="titulo">DESTINO</p>
             <div class="destino" *ngFor="let destino of destinos;let indice=index">
+                <hr style="color: cadetblue;" *ngIf="indice>0" >
+                <div class="row" *ngIf="indice>0" class="btn_limpiar" style="z-index: 1; position: relative; padding-top: 10px; padding-right: 30px;">
+                    <p class="limpiar" (click)="deleteDestinos(indice)"  style="font-size: 2vh; font-weight: bold; height: 4.0vh; padding: 0.8vh 1.6vh 1vh 1.6vh; border-radius: 40px;">x</p>
+                </div>
                 <div class="row ml">
                     <div class="col-8 campos">
                         <p class="campo1">Dirección de Destino </p>
-                        <input class="campo2" type="text" placeholder=""  id="pac-input{{indice}}" (blur)="ver2(indice)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
+                        <input class="campo2" type="text" placeholder=""   id="pac-input{{indice}}" (blur)="ver2(indice+1)" [(ngModel)]="destino.destino" name="inputdestino" #destino="ngModel" required>
                         <ng-container *ngIf="destino.invalid && destino.dirty">
                             <span class="help is-danger">Este campo es requerido</span>
                         </ng-container>
@@ -263,7 +267,7 @@
                 <div class="row ml">
                     <div class="col-10 campos2">
                         <p class="campo1">Productos</p>
-                        <textarea name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="destino.detalle" name="inputdetalle" #detalle="ngModel" required></textarea>
+                        <textarea disabled name="" id="" cols="30" rows="10" class="campo2" style="height: 54px;" [(ngModel)]="destino.detalle" name="inputdetalle" #detalle="ngModel" required></textarea>
                         <ng-container *ngIf="detalle.invalid && detalle.dirty">
                             <span class="help is-danger">Este campo es requerido</span>
                         </ng-container>
@@ -272,43 +276,45 @@
                         <img src="./assets/img/kanguro/cesta.svg" (click)="n(indice);open(view,'view')" alt="" class="cesta">
                     </div>
                 </div>
-                <div class="row amarillo" style="padding-top: 14px;">
-                    <div class="col-2 campos">
-                        <p class="campo1" style="overflow: inherit;">Cantidad</p>  
-                        <input class="sle2" type="text" placeholder="" [(ngModel)]="destino.cantidad" name="inputcantidad" #cantidad="ngModel" required> 
-                    </div>
-                    <div class="col-4 campos">
-                        <p class="campo1">Fecha de envío</p>  
-                        <input type="text" [placement]="top" class="sle2" [(ngModel)]="fechaselec" ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" (click)="d.toggle()" name="inputfecha_destino" #fecha_destino="ngModel" required>
-                        <ng-container *ngIf="fecha_destino.invalid && fecha_destino.dirty"> 
-                        <span class="help is-danger">Este campo es requerido</span>
-                        </ng-container>
-                    </div>
-                    <div class="col-3 campos">
-                        <p class="campo1" style="overflow: inherit;">Rango de envío</p>  
-                        <select [(ngModel)]="destino.hora_destino" class="sle2">
-                            <option *ngFor="let r of rangos" [value]="r" [attr.selected]="r">
-                            {{r}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="col-3 campos">
-                        <span class="btn_enviar" (click)="enviar()" style="width: 98%;">ENVIAR</span>
-                    </div>
-                </div>
+
                 
-                <div class="row  amarillo2" style="padding-bottom: 14px;">
-                    <div class="col-2 campos">
-                    </div>
-                    <div class="col-5 campos">
-                    </div>
-                    <div class="col-5 campos">
-                        <!--span class="btn_enviar" (click)="enviar()">ENVIAR</span-->
-                    </div>
+                
+            </div>
+            <div class="row amarillo" style="padding-top: 14px;">
+                <div class="col-2 campos">
+                    <p class="campo1" style="overflow: inherit;">Cantidad</p>  
+                    <input class="sle2" type="text" placeholder="" [(ngModel)]="destino.cantidad" name="inputcantidad" #cantidad="ngModel" required> 
+                </div>
+                <div class="col-4 campos">
+                    <p class="campo1">Fecha de envío</p>  
+                    <input type="text" [placement]="top" class="sle2" [(ngModel)]="destino.fecha_destino" ngbDatepicker #d="ngbDatepicker" [minDate]="minDate" (click)="d.toggle()" name="inputfecha_destino" #fecha_destino="ngModel" required>
+                    <ng-container *ngIf="fecha_destino.invalid && fecha_destino.dirty"> 
+                    <span class="help is-danger">Este campo es requerido</span>
+                    </ng-container>
+                </div>
+                <div class="col-3 campos">
+                    <p class="campo1" style="overflow: inherit;">Rango de envío</p>  
+                    <select [(ngModel)]="destino.hora_destino" class="sle2">
+                        <option *ngFor="let r of rangos" [value]="r" [attr.selected]="r">
+                        {{r}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-3 campos">
+                    <span class="btn_enviar" (click)="enviar()" style="width: 98%;">ENVIAR</span>
+                </div>
+            </div>
+            <div class="row  amarillo2" style="padding-bottom: 14px;">
+                <div class="col-2 campos">
+                </div>
+                <div class="col-5 campos">
+                </div>
+                <div class="col-5 campos">
+                    <!--span class="btn_enviar" (click)="enviar()">ENVIAR</span-->
                 </div>
             </div>
             <div class="row medio">
-                <span class="boton ocultar" (click)="addDestinos()" >AGREGAR DESTINO</span>
+                <span class="boton ocultar" (click)="addDestinos()" style="font-size: 22px;">AGREGAR DESTINO</span>
             </div>
         </div>
         

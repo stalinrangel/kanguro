@@ -38,6 +38,7 @@ export class PedidoEstadoEcommerceComponent implements OnInit, AfterViewInit {
             element.hora_destino = element.destinos[0].hora_destino;
           });
           self.orders = data.pedidos;
+          self.orders.reverse();
         }
       },error(err){
         console.log(err.error.err);

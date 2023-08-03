@@ -110,6 +110,7 @@ export class PedidoEcommerceComponent implements OnInit {
     'cobrarecommerce':'',
     'descuento':'',
     'cantidad':0,
+    'cantidadtotal':0,
     'detalle':'',
     'subtotal':0,
     'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
@@ -238,6 +239,14 @@ export class PedidoEcommerceComponent implements OnInit {
   n(i){
     console.log(i)
     this.pos=i;
+    let self=this;
+    for (let i = 0; i < self.products.length; i++) {
+      for (let j = 0; j < self.products[i].colores.length; j++) {
+        for (let k = 0; k < self.products[i].colores[j].atributos.length; k++) {
+          self.products[i].colores[j].atributos[k].cant=0
+        }
+      }
+    }
   }
   despachar(){
     let self=this;
@@ -245,9 +254,10 @@ export class PedidoEcommerceComponent implements OnInit {
     let color = self.products[p].c;
     let atributo = self.products[p].a;
     console.log(p,color,atributo);
-    if (self.products[p].colores[color].atributos[atributo].cant>0) {
+    //if (self.products[p].colores[color].atributos[atributo].cant>0) {
       self.products[p].selec_selec=0;  
-    }
+    //}
+    
     this.selec_products=[];
     
     for (let i = 0; i < self.products.length; i++) {
@@ -268,6 +278,7 @@ export class PedidoEcommerceComponent implements OnInit {
     //this.destino.cantidad=0;
     //this.destino.detalle='';
     let self=this;
+    let aux={};
     for (let i = 0; i < self.products.length; i++) {
       for (let j = 0; j < self.products[i].colores.length; j++) {
         for (let k = 0; k < self.products[i].colores[j].atributos.length; k++) {
@@ -275,9 +286,14 @@ export class PedidoEcommerceComponent implements OnInit {
             //this.destino.detalle=this.destino.detalle+self.products[i].colores[j].atributos[k].cant+' '+self.products[i].nombre+' '+self.products[i].colores[j].nombrecolor+' '+self.products[i].colores[j].atributos[k].atributo+'. ';
             //this.destino.cantidad=this.destino.cantidad+self.products[i].colores[j].atributos[k].cant;
             this.destinos[this.pos].detalle=this.destinos[this.pos].detalle+self.products[i].colores[j].atributos[k].cant+' '+self.products[i].nombre+' '+self.products[i].colores[j].nombrecolor+' '+self.products[i].colores[j].atributos[k].atributo+'. ';
-           
-            this.destinos[this.pos].cantidad=this.destinos[this.pos].cantidad+self.products[i].colores[j].atributos[k].cant;
-            this.destinos[this.pos].productos.push(self.products[i]);
+            this.destinos[this.pos].cantidadtotal=this.destinos[this.pos].cantidadtotal+self.products[i].colores[j].atributos[k].cant;
+            this.destinos[this.pos].cantidad=self.products[i].colores[j].atributos[k].cant;
+            //self.products[i].nombre+=self.products[i].colores[j].atributos[k].cant;
+            //aux=self.products[i];
+            aux = Object.assign({}, self.products[i]);
+            console.log('cant:',self.products[i].colores[j].atributos[k].cant)
+            this.push_productos(this.pos,aux,self.products[i].colores[j].atributos[k].cant)
+            //this.destinos[this.pos].productos.push(aux);
 
           }
         }
@@ -287,13 +303,24 @@ export class PedidoEcommerceComponent implements OnInit {
     //this.destino.productos=this.selec_products;
     this.calcular();
   }
+  push_productos(pos,product,n){
+    console.log(product)
+    const objetoCopia = JSON.parse(JSON.stringify(product));
+
+    this.destinos[pos].productos.push(objetoCopia);
+;
+  }
   cantidad:any=0;
   calcular(){
+    /*let p= this.pos2;
+    let color = this.products[p].c;
+    let atributo = this.products[p].a;
+    this.products[p].colores[color].atributos[atributo].cant=0;*/
     this.precio=6*this.destinos.length;
     this.cantidad=0;
     for (let i = 0; i < this.destinos.length; i++) {
       console.log(this.destinos[i].cantidad)
-      this.cantidad+=this.destinos[i].cantidad;
+      this.cantidad+=this.destinos[i].cantidadtotal;
     }
     this.destino.cantidad=this.cantidad;
   }
@@ -315,7 +342,7 @@ export class PedidoEcommerceComponent implements OnInit {
     }
    // console.log(this.orige)
     console.log(this.destinos)
-    this.crear_pedido();
+   this.crear_pedido();
   }
   
   crear_pedido(){
@@ -382,6 +409,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'cobrarecommerce':'',
       'descuento':'',
       'cantidad':0,
+      'cantidadtotal':0,
       'detalle':'',
       'subtotal':0,
       'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
@@ -467,6 +495,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'cobrarecommerce':'',
       'descuento':'',
       'cantidad':0,
+      'cantidadtotal':0,
       'detalle':'',
       'subtotal':0,
       'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
@@ -533,6 +562,7 @@ export class PedidoEcommerceComponent implements OnInit {
         'cobrarecommerce':'',
         'descuento':'',
         'cantidad':0,
+        'cantidadtotal':0,
         'detalle':'',
         'subtotal':0,
         'fecha_destino': { year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate() +2 },
