@@ -298,6 +298,7 @@ export class PedidoEcommerceComponent implements OnInit {
           }
         }
       }
+      self.products[i].producto_id=self.products[i].id;
     }
     console.log(this.destinos)
     //this.destino.productos=this.selec_products;
@@ -321,6 +322,7 @@ export class PedidoEcommerceComponent implements OnInit {
     for (let i = 0; i < this.destinos.length; i++) {
       console.log(this.destinos[i].cantidad)
       this.cantidad+=this.destinos[i].cantidadtotal;
+      this.destinos[i].costo=6;
     }
     this.destino.cantidad=this.cantidad;
   }
@@ -339,6 +341,7 @@ export class PedidoEcommerceComponent implements OnInit {
       this.destinos[i].fecha=now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate()+' '+now.getHours()+':'+'00'+':'+'00',
       this.destinos[i].lat=this.orige.lat;
       this.destinos[i].lng=this.orige.lng;
+      this.destinos[i].nombre=this.user.name;
     }
    // console.log(this.orige)
     console.log(this.destinos)
@@ -373,7 +376,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'hora':'',
       'horario':'',
       'estado':0,
-      'nombre':'',
+      'nombre':this.user.name,
       'forma_pago': '',
       'costo':0,
       'costo_recojo': 0,
@@ -459,7 +462,7 @@ export class PedidoEcommerceComponent implements OnInit {
       'hora':'',
       'horario':'',
       'estado':0,
-      'nombre':'',
+      'nombre':this.user.name,
       'forma_pago': '',
       'costo':0,
       'costo_recojo': 0,
@@ -526,7 +529,7 @@ export class PedidoEcommerceComponent implements OnInit {
         'hora':'',
         'horario':'',
         'estado':0,
-        'nombre':'',
+        'nombre':this.user.name,
         'forma_pago': '',
         'costo':0,
         'costo_recojo': 0,

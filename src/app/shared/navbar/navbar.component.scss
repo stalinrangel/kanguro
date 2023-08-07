@@ -60,6 +60,9 @@
     .nav-link{
         cursor: pointer;
     }
+    .nav-link:hover{
+        background-color: #FFBB00;
+    }
     .navbar-nav .nav-link{
         padding-top: 0px;
         padding-bottom: 0px;
@@ -168,7 +171,7 @@
         height: 18px;       
     } 
     .item-ye{
-        background-color: #FFBD00;
+        
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
         display: flex;
@@ -180,6 +183,7 @@
             flex: 1;
         }
     }
+    
     .img-logo{
         margin: 0px;
     }
@@ -187,4 +191,7 @@
         margin-bottom: 13px;
         margin-top: 8px;
     }
+}
+e:hover{
+    background-color: #FFBD00 !important;
 }

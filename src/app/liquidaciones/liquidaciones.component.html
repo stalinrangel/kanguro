@@ -1,0 +1,182 @@
+<div class="header">
+    <div>
+        <p class="title">LIQUIDACIONES</p>
+        <p class="texto">Resumen y estado de tus liquidaciones.</p>
+    </div>
+    <!--div class="agregar" (click)="open(payment, 'payment');">
+        <p style="font-weight: bold; margin-right: 10px;">Agregar</p>
+        <img src="./assets/img/kanguro/add.png" alt="" class="" width="20px" height="20px">
+    </div-->
+</div>
+
+<div class="row">
+    <div class="izquierda">
+        <div class="cuadro">
+            <p class="texto2">Selecciona la liquidación:</p>
+            <div class="lista"> 
+               <div class="content-list">
+                    <div class="row tabla" *ngFor="let item of guias; let first = first; let last = last;" [ngClass]="{'borderTop': first == true, 'borderBottom': last == true }" (click)="changeOrder(item)">
+                        <div class="col-1">N°{{item.id}}</div>
+                        <div class="col-4">{{item.nombre_ecommerce}}</div>
+                        <div class="col-2">({{item.nordens.length}}) pedidos</div>
+                        <div class="col-2"><span *ngIf="item.depositado==0" style="color:red;font-weight: bold;">Por pagar</span><span *ngIf="item.depositado==1" style="color:green;font-weight: bold;">Pagada</span></div>
+                        <div class="col-2">{{item.created_at | date: 'dd/MM/YYYY'}}</div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="derecha">
+        <div class="cuadro">
+            <div class="lista" style="    margin-top: 28px;">
+                <div class="content-list" >
+                    <div class="tabla-header">
+                        RESUMEN
+                    </div>
+                    <div class="tabla2" *ngIf="mostrar">
+                        <div >
+                            <div class="tabla-number">
+                                Liquidación Nro.{{order_select.id}}
+                            </div>   
+                            <div class="tabla-info">
+                                <div style="text-align:right;margin-bottom: 10px;">
+                                    <p>Fecha: {{order_select.created_at | date: 'dd/MM/YYYY'}}</p>
+                                </div>
+
+                                <p>Empresa: {{order_select.nombre_ecommerce}}</p>
+                                <div class="texto-factura">
+                                    <p class="col-2" style="font-weight: bold;" >ID-PEDIDO</p><p class="col-7" style="font-weight: bold;">CLIENTE</p><p class="col-2" style="font-weight: bold;">MONTO</p>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid rgba(255, 187, 0, 1);"></div>
+                            <div class="tabla-content">
+                                <div class="row" *ngFor="let item of order_select.productos1; let first = first; let last = last;">
+                                    <p class="col-2" style="font-size: 16px;">{{item.n_orden}}</p>
+                                    <p class="col-7" style="font-size: 16px;">{{item.cliente}}</p>
+                                    <p class="col-2" style="font-size: 16px;">{{item.total_servicios}}€</p>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid rgba(255, 187, 0, 1);"></div>
+                            <div class="tabla-footer">
+                                <div style="display: flex; justify-content: space-between;     margin-bottom: 20px;">
+                                    <p>Estado: <span *ngIf="order_select.depositado==0" style="color:red;font-weight: bold;">Por pagar</span><span *ngIf="order_select.depositado==1" style="color:green;font-weight: bold;">Pagada</span></p>
+                                    <p>Total: {{total}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--div style="text-align: right;">
+    <button class="imprimir" printSectionId="print-section" ngxPrint>IMPRIMIR</button>
+</div-->
+<div id="print-section" [hidden]="true">
+    <div class="tabla-number">
+        Liquidación Nro.{{order_select.id}}
+    </div>   
+    <div class="tabla-info">
+        <div style="text-align:right;margin-bottom: 10px;">
+            <p>Fecha: {{order_select.created_at | date: 'dd/MM/YYYY'}}</p>
+        </div>
+
+        <p>Cliente: {{order_select.nombre_ecommerce}}</p>
+        <div class="texto-factura">
+            <p class="col-2" style="font-weight: bold;" >ID-PEDIDO</p><p class="col-7" style="font-weight: bold;">CLIENTE</p><p class="col-2" style="font-weight: bold;">MONTO</p>
+        </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255, 187, 0, 1);"></div>
+    <div class="tabla-content">
+        <div class="row" *ngFor="let item of order_select.productos1; let first = first; let last = last;">
+            <p class="col-2" style="font-size: 16px;">{{item.id}}</p>
+            <p class="col-7" style="font-size: 16px;">{{item.cliente}}</p>
+            <p class="col-2" style="font-size: 16px;">{{item.total_servicios}}€</p>
+        </div>
+    </div>
+    <div style="border-top: 1px solid rgba(255, 187, 0, 1);"></div>
+    <div class="tabla-footer">
+        <div style="display: flex; justify-content: space-between;     margin-bottom: 20px;">
+            <p>Estado: <span *ngIf="order_select.depositado==0" style="color:red;font-weight: bold;">Por pagar</span><span *ngIf="order_select.depositado==1" style="color:green;font-weight: bold;">Pagada</span></p>
+            <p>Total: {{total}}</p>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL PAGO -->
+<ng-template #payment let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <p style="margin-left: 20px;">AGREGAR GUÍA</p>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true" class="icon-delete">X</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="content-title">
+        </div>
+        <div class="row">
+            <p class="campo1">Empresa: {{user.name}}</p>
+        </div>
+        <div class="row">
+            <div class=" campos1">
+                <p class="campo1">Nro de Guía</p>
+                <input class="campo2a" type="text" placeholder="00" [(ngModel)]="guia">
+            </div>
+            <div class=" campos1">
+                <p class="campo1">Fecha de envío</p>
+                <input type="date" class="campo2a" type="text" placeholder="dd/mm/yyyy" [(ngModel)]="fecha">
+                <!--input
+                                class="form-control"
+                                placeholder="DD/MM/YYYY"
+                                name="dp"
+                                [(ngModel)]="model"
+                                ngbDatepicker
+                                #d="ngbDatepicker"
+                                (ngModelChange)="updateDay($event)"
+                /-->
+            </div>
+        </div>
+        <div class="row">
+            <div class=" campos1">
+                <p class="campo1">Remitente</p>
+                <input class="campo2a" type="text" placeholder="" [(ngModel)]="remitente">
+            </div>
+            <div class=" campos1">
+                <p class="campo1">Receptor</p>
+                <input class="campo2a" type="text" placeholder="" [(ngModel)]="receptor" disabled>
+            </div>
+        </div>
+        <div class="texto-factura" style="margin-top: 10px;">
+            <p style="font-weight: bold;">PRODUCTO</p>
+        </div>
+        <div style="border-top: 1px solid rgba(255, 187, 0, 1);"></div>
+        <div *ngFor="let item of productos; let i = index">
+            <div class="row" style="display: flex; flex-direction: row;">
+                <div class="campos1">
+                    <p class="campo1">Cantidad</p>
+                    <input class="campo2a"  type="number" placeholder="" [(ngModel)]="item.cantidad">
+                </div>
+                <div class="campos1">
+                    <p class="campo1">Producto</p>
+                    <select class="campo2a" style="min-width: 170px; min-height: 41px;" type="text" placeholder="" [(ngModel)]="item.productos">
+                        <option *ngFor="let items of selec_productos" [value]="items.id">{{items.producto}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="botones">
+                <img src="./assets/img/kanguro/bmenos.svg" alt="" class="" width="30px" height="30px" (click)="delete()" style="cursor: pointer;">
+                <img src="./assets/img/kanguro/bmas.svg" style="margin-left: 10px;" alt="" class="" width="30px" height="30px" (click)="add()" style="cursor: pointer;">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="guardar" (click)="guardar();d('Cross click')">Guardar</button><br><br><br>
+    </div>
+</ng-template>

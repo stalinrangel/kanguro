@@ -65,18 +65,18 @@
       <ul class="menu-web align-items-lg-center" *ngIf="showMenuWeb && ensesion.name!=null && showApp == '0'">
         <div class="content-web">
           <li class="nav-item">
-            <a class="nav-link item-ye" href="/#/pedido" (click)="realizarEnvio(2)" data-toggle="tooltip" title="">
+            <a class="nav-link item-ye e" href="/#/pedido" (click)="realizarEnvio(2)" data-toggle="tooltip" title="">
               <p class="nav-link-inner--text">Realizar envíos</p>
               <img class="img-logo" src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/#/estadoPedido" (click)="estadoEnvio(2)" data-toggle="tooltip" title="">
+            <a class="nav-link e" href="/#/estadoPedido" (click)="estadoEnvio(2)" data-toggle="tooltip" title="">
               <span class="nav-link-inner--text">Estado del envío</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/#/historialPedido" (click)="historialEnvio(2)"  data-toggle="tooltip" title="">
+            <a class="nav-link e" href="/#/historialPedido" (click)="historialEnvio(2)"  data-toggle="tooltip" title="">
               <span class="nav-link-inner--text">Historial de envíos</span>
             </a>
           </li>
@@ -138,6 +138,11 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/#/liquidaciones" (click)="misProductos()"  data-toggle="tooltip" title="">
+              <span class="nav-link-inner--text">Liquidaciones</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/#/miCuenta" (click)="miCuenta()" data-toggle="tooltip" title="">
               <span class="nav-link-inner--text">Mi cuenta</span>
             </a>
@@ -185,7 +190,7 @@
           </a>
         </li>
       </ul>
-      <ul class="navbar-nav align-items-lg-center ml-lg-auto"> V0.6<span class="sesion" *ngIf="ensesion.name!=null"> Hola, {{ensesion.name}} </span> <span class="sesion" *ngIf="ensesion.name==null" (click)="iniciar()">Iniciar sesión</span>
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto"> V0.9<span class="sesion" *ngIf="ensesion.name!=null"> Hola, {{ensesion.name}} </span> <span class="sesion" *ngIf="ensesion.name==null" (click)="iniciar()">Iniciar sesión</span>
         <li class="nav-item ml-lg-auto">
           <a class="nav-link nav-link-icon" (click)="showMenuWeb = !showMenuWeb" data-toggle="tooltip">
             <img src="./assets/img/kanguro/profile.png" alt="">
@@ -206,7 +211,7 @@
       <img src="./assets/img/kanguro/isotipo color BLANCO SOLIDO 1.png">
     </a>
     <div>
-      V0.6<span class="sesion" *ngIf="ensesion.name !=null"> Hola, {{ensesion.name}} </span>
+      V0.9<span class="sesion" *ngIf="ensesion.name !=null"> Hola, {{ensesion.name}} </span>
       <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed; getUser();"
             [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
         <span class="navbar-toggler-icon"></span>
@@ -281,6 +286,11 @@
         <li class="nav-item line-bottom">
           <a class="nav-link" href="/#/guias" data-toggle="tooltip">
             <span class="nav-link-inner--text text-li">Guias</span>
+          </a>
+        </li>
+        <li class="nav-item line-bottom">
+          <a class="nav-link" href="/#/liquidaciones" data-toggle="tooltip">
+            <span class="nav-link-inner--text text-li">Liquidaciones</span>
           </a>
         </li>
         <li class="nav-item line-bottom">

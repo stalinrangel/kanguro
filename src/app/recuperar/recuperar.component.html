@@ -1,0 +1,41 @@
+
+<div class="content-login">
+    <div class="alert alert-default" role="alert" *ngIf="isDanger">
+       <strong>Error al iniciar sesión</strong> .
+    </div>
+    <div class="alert alert-info" role="alert" *ngIf="isInfo">
+       <strong>Bienvenido!</strong>
+   </div>
+    <div class="login">
+       <img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> 
+       <p class="tipo"> <!--span style="color:#F43A20;">Persona|&nbsp;</span--><span>Recuperar contraseña</span></p>
+       <form role="form">
+          <input type="text" class="inp" placeholder="Contraseña"  [(ngModel)]="model.password1" name="inputEmail" #password1="ngModel" required>
+          <ng-container *ngIf="password1.invalid && password1.dirty">
+             <span class="help is-danger">Contraseña 1 requerida</span>
+           </ng-container>
+          <input type="text" class="inp" placeholder="Repita Contraseña"  [(ngModel)]="model.password2" name="inputPassword" #password2="ngModel" required>
+          <ng-container *ngIf="password2.invalid && password2.dirty">
+             <span class="help is-danger">Contraseña 2 requerida</span>
+           </ng-container>
+       </form>
+       
+        <span class="boton" (click)="restablecer()">Restablecer</span>
+    </div>
+ </div>
+ 
+ <ng-template #confirm let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true" class="icon-delete">X</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <img src="./assets/img/kanguro/logotipoblanco.svg" alt="" class="logotipo"> 
+        <p class="text-info">Para recuperar su contraseña de acceso, deberá ingresar el e-mail con el que se registro en nuestro portal y le enviaremos la información necesaria para la restauración.</p>
+        <input type="email" class="inp" placeholder="Correo electrónico"  [(ngModel)]="model.email">
+ 
+        <p class="text-info"> <span (click)="recuperar()">Recuperar</span>.</p>
+    </div>
+  </ng-template>
+ 

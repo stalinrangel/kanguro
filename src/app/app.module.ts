@@ -45,6 +45,8 @@ import { GuiasComponent } from './guias/guias.component';
 import { TerminosCondicionesComponent } from './terminos-condiciones/terminos-condiciones.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ServiciosComponent } from './servicios/servicios.component';
+import { RecuperarComponent } from './recuperar/recuperar.component';
+import { LiquidacionesComponent } from './liquidaciones/liquidaciones.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { ServiciosComponent } from './servicios/servicios.component';
     GuiasComponent,
     TerminosCondicionesComponent,
     NosotrosComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    RecuperarComponent,
+    LiquidacionesComponent
   ],
   imports: [
     BrowserModule,

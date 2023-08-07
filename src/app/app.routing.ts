@@ -32,6 +32,8 @@ import { GuiasComponent } from './guias/guias.component';
 import { TerminosCondicionesComponent } from './terminos-condiciones/terminos-condiciones.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ServiciosComponent } from './servicios/servicios.component';
+import { RecuperarComponent } from './recuperar/recuperar.component';
+import { LiquidacionesComponent } from './liquidaciones/liquidaciones.component';
 
 const routes: Routes =[
   { path: 'section',             component: SectionsComponent },
@@ -43,6 +45,7 @@ const routes: Routes =[
     { path: 'print/:id',             component: PrintComponent },
     { path: 'guia/:id',             component: GuiaComponent },
     { path: 'guias',             component: GuiasComponent },
+    { path: 'liquidaciones',             component: LiquidacionesComponent },
     { path: 'login',          component: LoginComponent },
     { path: 'particular',          component: ParticularComponent },
     { path: 'ecommerce',          component: EcommerceComponent },
@@ -63,6 +66,7 @@ const routes: Routes =[
     { path: 'terminos',          component: TerminosCondicionesComponent },
     { path: 'servicios',          component: ServiciosComponent },
     { path: 'nosotros',          component: NosotrosComponent },
+    { path: 'recuperar/:id',          component: RecuperarComponent },
     { path: '', redirectTo: 'ecommerce', pathMatch: 'full' }
 ];
 

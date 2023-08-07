@@ -27,6 +27,10 @@ export class ApiService {
     console.log(model)
     return this.http.post(this.apiUrl+'/auth/signup', model)
   }
+  recuperar(model: any): Observable<any> {
+    console.log(model)
+    return this.http.put(this.apiUrl+'/auth/password', model)
+  }
   reenviar(id): Observable<any> {
     console.log(id)
     return this.http.get(this.apiUrl+'/auth/enviar_validacion/'+id)
@@ -84,6 +88,9 @@ export class ApiService {
   }
   guias_productos(id): Observable<any>{
     return this.http.get(this.apiUrl+'/producto_guia/'+id)
+  }
+  liquidaciones(id): Observable<any>{
+    return this.http.get(this.apiUrl+'/liquidaciones/'+id)
   }
   crear_guia(data): Observable<any> {
     return this.http.post(this.apiUrl+'/guias/store',data)
