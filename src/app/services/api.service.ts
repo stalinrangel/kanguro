@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  public apiUrl="https://kangurodelivery.com/api_bar/public/api";
+  public apiUrl="http://18.217.203.87/api_bar/public/api";
   constructor(private http:HttpClient) { }
 
   pedido(id: any): Observable<any> {

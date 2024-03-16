@@ -67,7 +67,7 @@ const routes: Routes =[
     { path: 'servicios',          component: ServiciosComponent },
     { path: 'nosotros',          component: NosotrosComponent },
     { path: 'recuperar/:id',          component: RecuperarComponent },
-    { path: '', redirectTo: 'ecommerce', pathMatch: 'full' }
+    { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
 @NgModule({
